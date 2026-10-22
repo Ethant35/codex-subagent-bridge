@@ -42,3 +42,11 @@ gh api repos/Ethant35/codex-subagent-bridge/actions/permissions
 ```
 
 Once OPENROUTER_API_KEY is supplied securely to the process environment, run `CPB_LIVE_OPENROUTER=1 CPB_LIVE_CODEX=1 npm test` and record real outcomes. Claude maintainer instructions are in CONTRIBUTING.md. No secrets should be pasted into chat or committed. The usage checker is scoped to the current tool session and must be restarted in a future session.
+
+## Published review state
+
+Draft PR: https://github.com/Ethant35/codex-subagent-bridge/pull/1 (attached to this chat). Branch is pushed. Implementation/evidence head before this handoff-only update: 2732f139a91ff0310d83334305c761966ea5ffaf. Use `git rev-parse HEAD` for the current documentation head. Main is unchanged, no release exists, and Actions is disabled with zero runs.
+
+Goal remains unfinished. External blocker audit: first goal turn, missing OpenRouter credentials and Claude account/CLI. All credential-independent work performed in this turn is complete and reviewable. Do not mark the goal complete. The exact native parent/live OpenRouter release gate is still untested. Future blocked turns must recheck whether credentials or authorized account access changed; do not repeatedly rerun the same local suite without new evidence.
+
+No project subprocess or implementation worker remains active after validation. The session-scoped usage checker is stopped when this work turn ends; restart it before further active work. Last observed account window was 15% used (85% remaining), so this stop is due to external verification blockers, not quota exhaustion. Temporary clean-checkout/install directory was removed after its evidence was saved. No user config file was edited.
