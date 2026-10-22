@@ -2,7 +2,7 @@
 
 Author: Ethan. Verification date: 2026-10-22. Core v1.0: **PASS, CB-01 through CB-18**. Live Claude remains pending.
 
-GitHub Actions is intentionally omitted and disabled at repository level per Ethan. All evidence here is local. No CI pass is claimed. The core gate is satisfied; final packaging checks precede the authorized main merge and v1.0.0 release.
+GitHub Actions is intentionally omitted and disabled at repository level per Ethan. All evidence here is local. No CI pass is claimed. The core gate and final packaging checks pass; the authorized main merge and v1.0.0 release can proceed.
 
 ## Environment and evidence
 
@@ -12,7 +12,7 @@ Final local suite: **73 scenarios: 51 passed, 22 external skips, 0 failed** (`CP
 
 The timeout check expires before provider submission. Cancellation was verified after a real provider response and local tool execution, during the second request; its terminal state is CANCELLED. This does not certify that remote billing immediately stops. Sanitized actual run records, provider generation IDs, response usage/cost, events, and successful native-parent output are retained under `evidence/live/`.
 
-Reproducible checks: `npm ci`, `npm run check`, `npm test`, `npm audit --omit=dev`, `npm pack`, clean archive installation, CLI help/doctor, and clean-checkout E2E. Evidence files under `evidence/` contain the final local run and packaging outcome. Clean checkout/archive installation passed at source commit `3f1448766212219eee0511e28f97a85c77d519f6`; later changes tighten Claude output validation, add direct cancellation checkpoints, and expand E2E coverage, with a fresh local test run recorded. No provider response is mocked. Process-control tests run real operating-system processes, not fake Claude binaries or invented Claude result JSON.
+Reproducible checks: `npm ci`, `npm run check`, `npm test`, `npm audit --omit=dev`, `npm pack`, clean archive installation, CLI help/doctor, and clean-checkout E2E. Evidence files under `evidence/` contain the final local run and packaging outcome. Clean checkout at `68c76b2` passed npm ci, TypeScript checks, and the full default E2E suite (50 passed, 23 explicit skips, zero failures); `evidence/release-clean-install.txt` records the exact commit and commands. The network-enabled suite separately passed its real invalid-key failure case. The packaged 1.0.0 CLI passed version/help/doctor and a live file-read test. No provider response is mocked. Process-control tests run real operating-system processes, not fake Claude binaries or invented Claude result JSON.
 
 ## Scenario matrix
 
