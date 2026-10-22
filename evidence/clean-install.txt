@@ -1,0 +1,670 @@
+$ git clone --no-hardlinks /Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge /var/folders/j_/l874vytd19j5hkhl05ymffbc0000gn/T/cpb-clean-pbn1gvds/checkout
+Cloning into '/var/folders/j_/l874vytd19j5hkhl05ymffbc0000gn/T/cpb-clean-pbn1gvds/checkout'...
+done.
+
+exit=0
+
+$ git rev-parse HEAD
+3f1448766212219eee0511e28f97a85c77d519f6
+
+exit=0
+
+$ npm ci
+
+added 108 packages, and audited 109 packages in 2s
+
+35 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+exit=0
+
+$ npm run check
+
+> codex-subagent-bridge@0.1.0 check
+> tsc --noEmit
+
+
+exit=0
+
+$ npm test
+
+> codex-subagent-bridge@0.1.0 test
+> npm run build && node --test --test-concurrency=1 tests/*.test.mjs
+
+
+> codex-subagent-bridge@0.1.0 build
+> tsc && chmod +x dist/cli.js
+
+TAP version 13
+# Subtest: CB-01/15 CLI --help
+ok 1 - CB-01/15 CLI --help
+  ---
+  duration_ms: 111.1235
+  ...
+# Subtest: CB-01/15 CLI providers --json
+ok 2 - CB-01/15 CLI providers --json
+  ---
+  duration_ms: 110.954208
+  ...
+# Subtest: CB-01/15 CLI doctor --json
+ok 3 - CB-01/15 CLI doctor --json
+  ---
+  duration_ms: 165.571708
+  ...
+# Subtest: CB-01/15 CLI doctor --provider openrouter --json
+ok 4 - CB-01/15 CLI doctor --provider openrouter --json
+  ---
+  duration_ms: 109.547
+  ...
+# Subtest: CB-01/15 CLI doctor --provider claude --json
+ok 5 - CB-01/15 CLI doctor --provider claude --json
+  ---
+  duration_ms: 165.534167
+  ...
+# Subtest: CB-01/15 CLI auth-status --provider claude --json
+ok 6 - CB-01/15 CLI auth-status --provider claude --json
+  ---
+  duration_ms: 163.497875
+  ...
+# Subtest: CB-02 missing OpenRouter credentials persists BLOCKED without touching source
+ok 7 - CB-02 missing OpenRouter credentials persists BLOCKED without touching source
+  ---
+  duration_ms: 137.835
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"instructions":""}
+ok 8 - CB-03/07 invalid envelope rejected {"instructions":""}
+  ---
+  duration_ms: 111.605625
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"instructions":"  "}
+ok 9 - CB-03/07 invalid envelope rejected {"instructions":"  "}
+  ---
+  duration_ms: 113.320291
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"version":2}
+ok 10 - CB-03/07 invalid envelope rejected {"version":2}
+  ---
+  duration_ms: 114.096375
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"writablePaths":["../secret"]}
+ok 11 - CB-03/07 invalid envelope rejected {"writablePaths":["../secret"]}
+  ---
+  duration_ms: 113.370125
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"readablePaths":["/etc/passwd"]}
+ok 12 - CB-03/07 invalid envelope rejected {"readablePaths":["/etc/passwd"]}
+  ---
+  duration_ms: 110.611791
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"provider":"claude","backend":"api","credentialMode":"api-key"}
+ok 13 - CB-03/07 invalid envelope rejected {"provider":"claude","backend":"api","credentialMode":"api-key"}
+  ---
+  duration_ms: 111.442583
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"maxToolSteps":-1}
+ok 14 - CB-03/07 invalid envelope rejected {"maxToolSteps":-1}
+  ---
+  duration_ms: 110.531166
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"networkPolicy":"all"}
+ok 15 - CB-03/07 invalid envelope rejected {"networkPolicy":"all"}
+  ---
+  duration_ms: 109.9925
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"unexpected":"value"}
+ok 16 - CB-03/07 invalid envelope rejected {"unexpected":"value"}
+  ---
+  duration_ms: 114.859125
+  ...
+# Subtest: CB-03 missing task arguments fail before execution
+ok 17 - CB-03 missing task arguments fail before execution
+  ---
+  duration_ms: 110.4005
+  ...
+# Subtest: CB-13 restart inspect and duplicate task protection
+ok 18 - CB-13 restart inspect and duplicate task protection
+  ---
+  duration_ms: 576.072208
+  ...
+# Subtest: CB-14 synthetic secrets redacted from JSON and disk records
+ok 19 - CB-14 synthetic secrets redacted from JSON and disk records
+  ---
+  duration_ms: 132.486834
+  ...
+# Subtest: CB-18 conflicting billing mode refused without provider execution
+ok 20 - CB-18 conflicting billing mode refused without provider execution
+  ---
+  duration_ms: 139.63125
+  ...
+# Subtest: CB-16 real SDK import and submission setup without inference
+ok 21 - CB-16 real SDK import and submission setup without inference
+  ---
+  duration_ms: 163.155958
+  ...
+# Subtest: CB-08 source symlink rejected before provider call
+ok 22 - CB-08 source symlink rejected before provider call
+  ---
+  duration_ms: 125.693833
+  ...
+# Subtest: CB-08 production MCP file capability enforces reads, writes, traversal, and step budget
+ok 23 - CB-08 production MCP file capability enforces reads, writes, traversal, and step budget
+  ---
+  duration_ms: 126.314584
+  ...
+# Subtest: CB-06 MCP discovery and validation uses production cpb_delegate (live parent separately gated)
+ok 24 - CB-06 MCP discovery and validation uses production cpb_delegate (live parent separately gated)
+  ---
+  duration_ms: 149.107166
+  ...
+# Subtest: CB-02 Claude sdk missing API key is actionable
+ok 25 - CB-02 Claude sdk missing API key is actionable
+  ---
+  duration_ms: 133.244625
+  ...
+# Subtest: CB-02 Claude cli missing API key is actionable
+ok 26 - CB-02 Claude cli missing API key is actionable
+  ---
+  duration_ms: 134.15275
+  ...
+# Subtest: CB-18 SDK subscription fails closed under official authentication policy
+ok 27 - CB-18 SDK subscription fails closed under official authentication policy
+  ---
+  duration_ms: 137.813083
+  ...
+# Subtest: CB-08 hard-linked source is rejected
+ok 28 - CB-08 hard-linked source is rejected
+  ---
+  duration_ms: 131.014917
+  ...
+# Subtest: CB-14 conflicting synthetic Claude credentials never leak to logs
+ok 29 - CB-14 conflicting synthetic Claude credentials never leak to logs
+  ---
+  duration_ms: 133.970541
+  ...
+# Subtest: CB-09 task deadline before provider submission persists TIMED_OUT
+ok 30 - CB-09 task deadline before provider submission persists TIMED_OUT
+  ---
+  duration_ms: 231.948458
+  ...
+# Subtest: CB-04 live OpenRouter reads actual file
+ok 31 - CB-04 live OpenRouter reads actual file # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.337917
+  ...
+# Subtest: CB-05 live OpenRouter exact authorized edit
+ok 32 - CB-05 live OpenRouter exact authorized edit # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.069958
+  ...
+# Subtest: CB-06 native Codex parent uses OpenRouter child result
+ok 33 - CB-06 native Codex parent uses OpenRouter child result # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.035791
+  ...
+# Subtest: CB-07 live unique instruction survives conversion
+ok 34 - CB-07 live unique instruction survives conversion # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.031292
+  ...
+# Subtest: CB-09 live task timeout persists TIMED_OUT
+ok 35 - CB-09 live task timeout persists TIMED_OUT # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.031916
+  ...
+# Subtest: CB-10 live task cancellation persists CANCELLED
+ok 36 - CB-10 live task cancellation persists CANCELLED # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.029
+  ...
+# Subtest: CB-11 concurrent real tasks keep independent workspaces/results
+ok 37 - CB-11 concurrent real tasks keep independent workspaces/results # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.025625
+  ...
+# Subtest: CB-12 real OpenRouter rejects invalid authentication
+ok 38 - CB-12 real OpenRouter rejects invalid authentication # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.026625
+  ...
+# Subtest: CB-19 real Claude sdk read
+ok 39 - CB-19 real Claude sdk read # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.163583
+  ...
+# Subtest: CB-20 real Claude cli read
+ok 40 - CB-20 real Claude cli read # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.225458
+  ...
+# Subtest: CB-21 native Codex to Claude sdk
+ok 41 - CB-21 native Codex to Claude sdk # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.064792
+  ...
+# Subtest: CB-22 native Codex to Claude cli
+ok 42 - CB-22 native Codex to Claude cli # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.334292
+  ...
+# Subtest: CB-23 Claude sdk edits only authorized file
+ok 43 - CB-23 Claude sdk edits only authorized file # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.025042
+  ...
+# Subtest: CB-23 Claude cli edits only authorized file
+ok 44 - CB-23 Claude cli edits only authorized file # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.021
+  ...
+# Subtest: CB-24 Claude sdk timeout cannot become COMPLETED
+ok 45 - CB-24 Claude sdk timeout cannot become COMPLETED # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.01975
+  ...
+# Subtest: CB-24 Claude cli timeout cannot become COMPLETED
+ok 46 - CB-24 Claude cli timeout cannot become COMPLETED # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.019916
+  ...
+# Subtest: CB-24 real Claude rate-limit reproduction
+ok 47 - CB-24 real Claude rate-limit reproduction # SKIP BLOCKED_EXTERNAL: requires an authorized account in a reproducible rate-limited state; never induce quota exhaustion
+  ---
+  duration_ms: 0.019916
+  ...
+# Subtest: captures stdout, stderr, exit code, and bounded streaming lines
+ok 48 - captures stdout, stderr, exit code, and bounded streaming lines
+  ---
+  duration_ms: 43.629208
+  ...
+# Subtest: passes stdin byte-for-byte
+ok 49 - passes stdin byte-for-byte
+  ---
+  duration_ms: 41.539375
+  ...
+# Subtest: returns a clear error for a missing executable
+ok 50 - returns a clear error for a missing executable
+  ---
+  duration_ms: 1.428458
+  ...
+# Subtest: terminates the process group when output exceeds its limit
+ok 51 - terminates the process group when output exceeds its limit
+  ---
+  duration_ms: 40.323125
+  ...
+# Subtest: times out a real process and reaps it
+ok 52 - times out a real process and reaps it
+  ---
+  duration_ms: 85.289958
+  ...
+# Subtest: cancels a real process and reaps it
+ok 53 - cancels a real process and reaps it
+  ---
+  duration_ms: 46.985959
+  ...
+# Subtest: bounds progress callback lines from a real child
+ok 54 - bounds progress callback lines from a real child
+  ---
+  duration_ms: 48.645583
+  ...
+# Subtest: kills descendants that keep inherited pipes open after leader exit
+ok 55 - kills descendants that keep inherited pipes open after leader exit
+  ---
+  duration_ms: 42.015209
+  ...
+# Subtest: kills same-group descendants that ignore SIGTERM and close their pipes
+ok 56 - kills same-group descendants that ignore SIGTERM and close their pipes
+  ---
+  duration_ms: 40.9365
+  ...
+1..56
+# tests 56
+# suites 0
+# pass 39
+# fail 0
+# cancelled 0
+# skipped 17
+# todo 0
+# duration_ms 5012.115625
+
+exit=0
+
+$ npm pack --json
+
+> codex-subagent-bridge@0.1.0 prepack
+> npm run build
+
+
+> codex-subagent-bridge@0.1.0 build
+> tsc && chmod +x dist/cli.js
+
+[
+  {
+    "id": "codex-subagent-bridge@0.1.0",
+    "name": "codex-subagent-bridge",
+    "version": "0.1.0",
+    "size": 46703,
+    "unpackedSize": 181819,
+    "shasum": "9d2cf0c3e9893db564ac6401875ac5c4ac12b99f",
+    "integrity": "sha512-Fr0Q6BGQuhqdjL/Buex+bcEnYqDDB6eQGTNs/1ryFq1At/UCfUtbgtf2TTJ/rQEO3GrYVGqmZ3yy/ddvRldt0A==",
+    "filename": "codex-subagent-bridge-0.1.0.tgz",
+    "files": [
+      {
+        "path": "ACCEPTANCE.md",
+        "size": 5312,
+        "mode": 420
+      },
+      {
+        "path": "ARCHITECTURE.md",
+        "size": 3523,
+        "mode": 420
+      },
+      {
+        "path": "LICENSE",
+        "size": 1065,
+        "mode": 420
+      },
+      {
+        "path": "PROVIDERS.md",
+        "size": 3770,
+        "mode": 420
+      },
+      {
+        "path": "README.md",
+        "size": 6192,
+        "mode": 420
+      },
+      {
+        "path": "SECURITY.md",
+        "size": 3978,
+        "mode": 420
+      },
+      {
+        "path": "dist/claude-sdk-runner.d.ts",
+        "size": 11,
+        "mode": 420
+      },
+      {
+        "path": "dist/claude-sdk-runner.js",
+        "size": 5478,
+        "mode": 420
+      },
+      {
+        "path": "dist/claude-sdk-runner.js.map",
+        "size": 5755,
+        "mode": 420
+      },
+      {
+        "path": "dist/cli.d.ts",
+        "size": 31,
+        "mode": 420
+      },
+      {
+        "path": "dist/cli.js",
+        "size": 8208,
+        "mode": 493
+      },
+      {
+        "path": "dist/cli.js.map",
+        "size": 7901,
+        "mode": 420
+      },
+      {
+        "path": "dist/file-tools.d.ts",
+        "size": 691,
+        "mode": 420
+      },
+      {
+        "path": "dist/file-tools.js",
+        "size": 3892,
+        "mode": 420
+      },
+      {
+        "path": "dist/file-tools.js.map",
+        "size": 4154,
+        "mode": 420
+      },
+      {
+        "path": "dist/process.d.ts",
+        "size": 860,
+        "mode": 420
+      },
+      {
+        "path": "dist/process.js",
+        "size": 9265,
+        "mode": 420
+      },
+      {
+        "path": "dist/process.js.map",
+        "size": 7371,
+        "mode": 420
+      },
+      {
+        "path": "dist/providers/claude.d.ts",
+        "size": 588,
+        "mode": 420
+      },
+      {
+        "path": "dist/providers/claude.js",
+        "size": 20489,
+        "mode": 420
+      },
+      {
+        "path": "dist/providers/claude.js.map",
+        "size": 18993,
+        "mode": 420
+      },
+      {
+        "path": "dist/providers/openrouter.d.ts",
+        "size": 353,
+        "mode": 420
+      },
+      {
+        "path": "dist/providers/openrouter.js",
+        "size": 9277,
+        "mode": 420
+      },
+      {
+        "path": "dist/providers/openrouter.js.map",
+        "size": 9096,
+        "mode": 420
+      },
+      {
+        "path": "dist/redact.d.ts",
+        "size": 114,
+        "mode": 420
+      },
+      {
+        "path": "dist/redact.js",
+        "size": 922,
+        "mode": 420
+      },
+      {
+        "path": "dist/redact.js.map",
+        "size": 1264,
+        "mode": 420
+      },
+      {
+        "path": "dist/runner.d.ts",
+        "size": 155,
+        "mode": 420
+      },
+      {
+        "path": "dist/runner.js",
+        "size": 5289,
+        "mode": 420
+      },
+      {
+        "path": "dist/runner.js.map",
+        "size": 5699,
+        "mode": 420
+      },
+      {
+        "path": "dist/schema.d.ts",
+        "size": 1188,
+        "mode": 420
+      },
+      {
+        "path": "dist/schema.js",
+        "size": 2508,
+        "mode": 420
+      },
+      {
+        "path": "dist/schema.js.map",
+        "size": 3557,
+        "mode": 420
+      },
+      {
+        "path": "dist/store.d.ts",
+        "size": 1016,
+        "mode": 420
+      },
+      {
+        "path": "dist/store.js",
+        "size": 4274,
+        "mode": 420
+      },
+      {
+        "path": "dist/store.js.map",
+        "size": 5481,
+        "mode": 420
+      },
+      {
+        "path": "dist/types.d.ts",
+        "size": 1341,
+        "mode": 420
+      },
+      {
+        "path": "dist/types.js",
+        "size": 267,
+        "mode": 420
+      },
+      {
+        "path": "dist/types.js.map",
+        "size": 320,
+        "mode": 420
+      },
+      {
+        "path": "dist/workspace.d.ts",
+        "size": 485,
+        "mode": 420
+      },
+      {
+        "path": "dist/workspace.js",
+        "size": 4815,
+        "mode": 420
+      },
+      {
+        "path": "dist/workspace.js.map",
+        "size": 5312,
+        "mode": 420
+      },
+      {
+        "path": "examples/task.json",
+        "size": 651,
+        "mode": 420
+      },
+      {
+        "path": "package.json",
+        "size": 908,
+        "mode": 420
+      }
+    ],
+    "entryCount": 44,
+    "bundled": []
+  }
+]
+
+exit=0
+
+$ npm init -y
+Wrote to /private/var/folders/j_/l874vytd19j5hkhl05ymffbc0000gn/T/cpb-clean-pbn1gvds/install/package.json:
+
+{
+  "name": "install",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+
+
+
+
+exit=0
+
+$ npm install /var/folders/j_/l874vytd19j5hkhl05ymffbc0000gn/T/cpb-clean-pbn1gvds/checkout/codex-subagent-bridge-0.1.0.tgz
+
+added 106 packages, and audited 107 packages in 4s
+
+35 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+exit=0
+
+$ /var/folders/j_/l874vytd19j5hkhl05ymffbc0000gn/T/cpb-clean-pbn1gvds/install/node_modules/.bin/cpb --help
+(node:28309) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Codex Subagent Bridge (cpb)
+Usage:
+  cpb doctor [--provider openrouter|claude] [--json]
+  cpb providers [--json]
+  cpb models --provider openrouter [--json]
+  cpb auth-status --provider claude [--json]
+  cpb delegate --provider PROVIDER [--backend api|sdk|cli] --model MODEL --task-file FILE [--json]
+  cpb runs [--json]
+  cpb inspect RUN_ID [--json]
+  cpb cancel RUN_ID [--json]
+  cpb mcp
+
+Task files use the version 1 envelope in examples/task.json. CPB_HOME selects a private metadata directory.
+Provider credentials come only from the process environment or official Claude CLI login.
+
+exit=0
+
+$ /var/folders/j_/l874vytd19j5hkhl05ymffbc0000gn/T/cpb-clean-pbn1gvds/install/node_modules/.bin/cpb doctor --json
+(node:28313) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "node": "v22.13.1",
+  "platform": "darwin",
+  "supported": true,
+  "integration": "MCP stdio cpb_delegate",
+  "openrouter": {
+    "apiKeyPresent": false,
+    "status": "MISSING_CREDENTIALS"
+  },
+  "claude": {
+    "sdk": {
+      "available": true
+    },
+    "sdkSetup": {
+      "validated": true,
+      "inferencePerformed": false
+    },
+    "cli": {
+      "available": false
+    },
+    "auth": {
+      "available": false,
+      "loggedIn": null,
+      "reason": "cli_missing"
+    },
+    "configuredCredentialNames": [],
+    "warnings": [],
+    "liveInference": "not-tested"
+  }
+}
+
+exit=0
+
+source_commit=3f1448766212219eee0511e28f97a85c77d519f6
+result=PASS

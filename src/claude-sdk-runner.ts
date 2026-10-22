@@ -44,7 +44,7 @@ function safeProgress(message: SDKMessage): Record<string, unknown> | undefined 
     return { type: 'cpb_event', event: 'session', sessionId: message.session_id ?? null };
   }
   if (message.type === 'rate_limit_event') {
-    return { type: 'cpb_event', event: 'rate_limit', observed: true };
+    return { type: 'cpb_event', event: 'rate_limit', observed: true, status: message.rate_limit_info.status };
   }
   if (message.type === 'system' && message.subtype === 'permission_denied') {
     return { type: 'cpb_event', event: 'permission_denied', observed: true };

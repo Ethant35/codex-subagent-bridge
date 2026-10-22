@@ -8,7 +8,9 @@ GitHub Actions is intentionally omitted and disabled at repository level per Eth
 
 macOS arm64; Node 22.13.1; npm 10.9.2; native Codex CLI 0.163.0. Official Claude Agent SDK 0.3.308. No standalone Claude CLI or Claude account is available. OPENROUTER_API_KEY and Claude credential variables are absent. OpenRouter's real public model catalog was queried; it lists openai/gpt-4.1-mini with tools support. No paid inference, live Claude task, or native Codex-to-live-child test was performed.
 
-Reproducible checks: `npm ci`, `npm run check`, `npm test`, `npm audit --omit=dev`, `npm pack`, clean archive installation, CLI help/doctor, and clean-checkout E2E. Evidence files under `evidence/` contain the final local run and packaging outcome. No provider response is mocked. Process-control tests run real operating-system processes, not fake Claude binaries or invented Claude result JSON.
+Latest local suite: **62 scenarios: 39 passed, 23 skipped as BLOCKED_EXTERNAL, 0 failed**. These counts include sub-scenarios; the CB matrix below determines release status.
+
+Reproducible checks: `npm ci`, `npm run check`, `npm test`, `npm audit --omit=dev`, `npm pack`, clean archive installation, CLI help/doctor, and clean-checkout E2E. Evidence files under `evidence/` contain the final local run and packaging outcome. Clean checkout/archive installation passed at source commit `3f1448766212219eee0511e28f97a85c77d519f6`; later changes tighten Claude output validation and expand the opt-in live suite, with a fresh local test run recorded. No provider response is mocked. Process-control tests run real operating-system processes, not fake Claude binaries or invented Claude result JSON.
 
 ## Scenario matrix
 

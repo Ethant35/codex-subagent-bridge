@@ -206,6 +206,7 @@ function classifyClaudeLines(lines: string[], task: Task, toolFailureSeen: boole
   let result: ProviderResult | undefined;
   for (const line of lines) {
     const event = parseJsonLine(line);
+    if (!event) fail('CLAUDE_MALFORMED_OUTPUT','Claude returned malformed structured output.');
     if (event?.type === 'result') result = sdkResultFromLine(line, task);
   }
   if (!result) fail('CLAUDE_EMPTY_RESULT', 'Claude exited without a structured final result.');
@@ -229,7 +230,7 @@ function emitSdkProgress(ctx: ProviderContext, line: string) {
       costUsd: numeric(event.total_cost_usd),
     });
   } else if (event.type === 'rate_limit_event') {
-    ctx.event('claude.rate_limit', { observed: true });
+    ctx.event('claude.rate_limit', { observed: true, status: (event.rate_limit_info as {status?:unknown} | undefined)?.status });
   } else if (event.type === 'system' && event.subtype === 'permission_denied') {
     ctx.event('claude.permission_denied', { observed: true });
   }

@@ -10,289 +10,319 @@ TAP version 13
 # Subtest: CB-01/15 CLI --help
 ok 1 - CB-01/15 CLI --help
   ---
-  duration_ms: 98.507667
+  duration_ms: 97.20575
   ...
 # Subtest: CB-01/15 CLI providers --json
 ok 2 - CB-01/15 CLI providers --json
   ---
-  duration_ms: 101.672125
+  duration_ms: 97.539167
   ...
 # Subtest: CB-01/15 CLI doctor --json
 ok 3 - CB-01/15 CLI doctor --json
   ---
-  duration_ms: 152.849958
+  duration_ms: 145.387667
   ...
 # Subtest: CB-01/15 CLI doctor --provider openrouter --json
 ok 4 - CB-01/15 CLI doctor --provider openrouter --json
   ---
-  duration_ms: 110.333459
+  duration_ms: 98.3855
   ...
 # Subtest: CB-01/15 CLI doctor --provider claude --json
 ok 5 - CB-01/15 CLI doctor --provider claude --json
   ---
-  duration_ms: 154.1
+  duration_ms: 143.773708
   ...
 # Subtest: CB-01/15 CLI auth-status --provider claude --json
 ok 6 - CB-01/15 CLI auth-status --provider claude --json
   ---
-  duration_ms: 156.378542
+  duration_ms: 143.935583
   ...
 # Subtest: CB-02 missing OpenRouter credentials persists BLOCKED without touching source
 ok 7 - CB-02 missing OpenRouter credentials persists BLOCKED without touching source
   ---
-  duration_ms: 137.411583
+  duration_ms: 125.452459
   ...
 # Subtest: CB-03/07 invalid envelope rejected {"instructions":""}
 ok 8 - CB-03/07 invalid envelope rejected {"instructions":""}
   ---
-  duration_ms: 114.790375
+  duration_ms: 100.120834
   ...
 # Subtest: CB-03/07 invalid envelope rejected {"instructions":"  "}
 ok 9 - CB-03/07 invalid envelope rejected {"instructions":"  "}
   ---
-  duration_ms: 110.59075
+  duration_ms: 100.282417
   ...
 # Subtest: CB-03/07 invalid envelope rejected {"version":2}
 ok 10 - CB-03/07 invalid envelope rejected {"version":2}
   ---
-  duration_ms: 107.347708
+  duration_ms: 106.806375
   ...
 # Subtest: CB-03/07 invalid envelope rejected {"writablePaths":["../secret"]}
 ok 11 - CB-03/07 invalid envelope rejected {"writablePaths":["../secret"]}
   ---
-  duration_ms: 107.305834
+  duration_ms: 103.480333
   ...
 # Subtest: CB-03/07 invalid envelope rejected {"readablePaths":["/etc/passwd"]}
 ok 12 - CB-03/07 invalid envelope rejected {"readablePaths":["/etc/passwd"]}
   ---
-  duration_ms: 105.005125
+  duration_ms: 107.22575
   ...
 # Subtest: CB-03/07 invalid envelope rejected {"provider":"claude","backend":"api","credentialMode":"api-key"}
 ok 13 - CB-03/07 invalid envelope rejected {"provider":"claude","backend":"api","credentialMode":"api-key"}
   ---
-  duration_ms: 103.025125
+  duration_ms: 106.531875
   ...
 # Subtest: CB-03/07 invalid envelope rejected {"maxToolSteps":-1}
 ok 14 - CB-03/07 invalid envelope rejected {"maxToolSteps":-1}
   ---
-  duration_ms: 104.555458
+  duration_ms: 116.261583
   ...
 # Subtest: CB-03/07 invalid envelope rejected {"networkPolicy":"all"}
 ok 15 - CB-03/07 invalid envelope rejected {"networkPolicy":"all"}
   ---
-  duration_ms: 107.451292
+  duration_ms: 116.142917
   ...
 # Subtest: CB-03/07 invalid envelope rejected {"unexpected":"value"}
 ok 16 - CB-03/07 invalid envelope rejected {"unexpected":"value"}
   ---
-  duration_ms: 104.229083
+  duration_ms: 115.74225
   ...
 # Subtest: CB-03 missing task arguments fail before execution
 ok 17 - CB-03 missing task arguments fail before execution
   ---
-  duration_ms: 101.617708
+  duration_ms: 104.670458
   ...
 # Subtest: CB-13 restart inspect and duplicate task protection
 ok 18 - CB-13 restart inspect and duplicate task protection
   ---
-  duration_ms: 518.332333
+  duration_ms: 525.178292
   ...
 # Subtest: CB-14 synthetic secrets redacted from JSON and disk records
 ok 19 - CB-14 synthetic secrets redacted from JSON and disk records
   ---
-  duration_ms: 122.651917
+  duration_ms: 125.150625
   ...
 # Subtest: CB-18 conflicting billing mode refused without provider execution
 ok 20 - CB-18 conflicting billing mode refused without provider execution
   ---
-  duration_ms: 116.615917
+  duration_ms: 123.855
   ...
 # Subtest: CB-16 real SDK import and submission setup without inference
 ok 21 - CB-16 real SDK import and submission setup without inference
   ---
-  duration_ms: 150.186875
+  duration_ms: 144.420917
   ...
 # Subtest: CB-08 source symlink rejected before provider call
 ok 22 - CB-08 source symlink rejected before provider call
   ---
-  duration_ms: 123.178958
+  duration_ms: 119.701292
   ...
 # Subtest: CB-08 production MCP file capability enforces reads, writes, traversal, and step budget
 ok 23 - CB-08 production MCP file capability enforces reads, writes, traversal, and step budget
   ---
-  duration_ms: 121.557416
+  duration_ms: 114.419333
   ...
 # Subtest: CB-06 MCP discovery and validation uses production cpb_delegate (live parent separately gated)
 ok 24 - CB-06 MCP discovery and validation uses production cpb_delegate (live parent separately gated)
   ---
-  duration_ms: 142.408458
+  duration_ms: 132.48125
   ...
 # Subtest: CB-02 Claude sdk missing API key is actionable
 ok 25 - CB-02 Claude sdk missing API key is actionable
   ---
-  duration_ms: 122.566958
+  duration_ms: 126.163375
   ...
 # Subtest: CB-02 Claude cli missing API key is actionable
 ok 26 - CB-02 Claude cli missing API key is actionable
   ---
-  duration_ms: 122.798666
+  duration_ms: 121.365042
   ...
 # Subtest: CB-18 SDK subscription fails closed under official authentication policy
 ok 27 - CB-18 SDK subscription fails closed under official authentication policy
   ---
-  duration_ms: 118.921709
+  duration_ms: 120.541375
   ...
 # Subtest: CB-08 hard-linked source is rejected
 ok 28 - CB-08 hard-linked source is rejected
   ---
-  duration_ms: 116.411209
+  duration_ms: 113.184208
   ...
 # Subtest: CB-14 conflicting synthetic Claude credentials never leak to logs
 ok 29 - CB-14 conflicting synthetic Claude credentials never leak to logs
   ---
-  duration_ms: 122.084625
+  duration_ms: 115.801208
   ...
 # Subtest: CB-09 task deadline before provider submission persists TIMED_OUT
 ok 30 - CB-09 task deadline before provider submission persists TIMED_OUT
   ---
-  duration_ms: 251.625333
+  duration_ms: 213.824541
   ...
 # Subtest: CB-04 live OpenRouter reads actual file
 ok 31 - CB-04 live OpenRouter reads actual file # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.379542
+  duration_ms: 0.335375
   ...
 # Subtest: CB-05 live OpenRouter exact authorized edit
 ok 32 - CB-05 live OpenRouter exact authorized edit # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.08975
+  duration_ms: 0.075584
   ...
 # Subtest: CB-06 native Codex parent uses OpenRouter child result
 ok 33 - CB-06 native Codex parent uses OpenRouter child result # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.034334
+  duration_ms: 0.029375
   ...
 # Subtest: CB-07 live unique instruction survives conversion
 ok 34 - CB-07 live unique instruction survives conversion # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.031958
+  duration_ms: 0.028291
   ...
 # Subtest: CB-09 live task timeout persists TIMED_OUT
 ok 35 - CB-09 live task timeout persists TIMED_OUT # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.036458
+  duration_ms: 0.0295
   ...
 # Subtest: CB-10 live task cancellation persists CANCELLED
 ok 36 - CB-10 live task cancellation persists CANCELLED # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.031917
+  duration_ms: 0.0265
   ...
 # Subtest: CB-11 concurrent real tasks keep independent workspaces/results
 ok 37 - CB-11 concurrent real tasks keep independent workspaces/results # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.027459
+  duration_ms: 0.02125
   ...
 # Subtest: CB-12 real OpenRouter rejects invalid authentication
 ok 38 - CB-12 real OpenRouter rejects invalid authentication # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.026375
+  duration_ms: 0.028875
   ...
 # Subtest: CB-19 real Claude sdk read
 ok 39 - CB-19 real Claude sdk read # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.26225
+  duration_ms: 0.169042
   ...
 # Subtest: CB-20 real Claude cli read
 ok 40 - CB-20 real Claude cli read # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.274375
+  duration_ms: 0.21025
   ...
 # Subtest: CB-21 native Codex to Claude sdk
 ok 41 - CB-21 native Codex to Claude sdk # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.075083
+  duration_ms: 0.363041
   ...
 # Subtest: CB-22 native Codex to Claude cli
 ok 42 - CB-22 native Codex to Claude cli # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.027583
+  duration_ms: 0.02075
   ...
 # Subtest: CB-23 Claude sdk edits only authorized file
 ok 43 - CB-23 Claude sdk edits only authorized file # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.02275
+  duration_ms: 0.015375
   ...
 # Subtest: CB-23 Claude cli edits only authorized file
 ok 44 - CB-23 Claude cli edits only authorized file # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.021583
+  duration_ms: 0.013666
   ...
 # Subtest: CB-24 Claude sdk timeout cannot become COMPLETED
 ok 45 - CB-24 Claude sdk timeout cannot become COMPLETED # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.016333
+  duration_ms: 0.013417
   ...
 # Subtest: CB-24 Claude cli timeout cannot become COMPLETED
 ok 46 - CB-24 Claude cli timeout cannot become COMPLETED # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
   ---
-  duration_ms: 0.0155
+  duration_ms: 0.013208
   ...
 # Subtest: CB-24 real Claude rate-limit reproduction
 ok 47 - CB-24 real Claude rate-limit reproduction # SKIP BLOCKED_EXTERNAL: requires an authorized account in a reproducible rate-limited state; never induce quota exhaustion
   ---
-  duration_ms: 0.015125
+  duration_ms: 0.013208
+  ...
+# Subtest: CB-23 Claude sdk forbidden write is blocked by broker
+ok 48 - CB-23 Claude sdk forbidden write is blocked by broker # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.013042
+  ...
+# Subtest: CB-23 Claude cli forbidden write is blocked by broker
+ok 49 - CB-23 Claude cli forbidden write is blocked by broker # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.012792
+  ...
+# Subtest: CB-24 Claude sdk real invalid-model failure
+ok 50 - CB-24 Claude sdk real invalid-model failure # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.013208
+  ...
+# Subtest: CB-24 Claude cli real invalid-model failure
+ok 51 - CB-24 Claude cli real invalid-model failure # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.014334
+  ...
+# Subtest: CB-24 Claude sdk cancellation after runtime start
+ok 52 - CB-24 Claude sdk cancellation after runtime start # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.014708
+  ...
+# Subtest: CB-24 Claude cli cancellation after runtime start
+ok 53 - CB-24 Claude cli cancellation after runtime start # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.014
   ...
 # Subtest: captures stdout, stderr, exit code, and bounded streaming lines
-ok 48 - captures stdout, stderr, exit code, and bounded streaming lines
+ok 54 - captures stdout, stderr, exit code, and bounded streaming lines
   ---
-  duration_ms: 43.415792
+  duration_ms: 37.68575
   ...
 # Subtest: passes stdin byte-for-byte
-ok 49 - passes stdin byte-for-byte
+ok 55 - passes stdin byte-for-byte
   ---
-  duration_ms: 41.790458
+  duration_ms: 36.0545
   ...
 # Subtest: returns a clear error for a missing executable
-ok 50 - returns a clear error for a missing executable
+ok 56 - returns a clear error for a missing executable
   ---
-  duration_ms: 1.15825
+  duration_ms: 0.896625
   ...
 # Subtest: terminates the process group when output exceeds its limit
-ok 51 - terminates the process group when output exceeds its limit
+ok 57 - terminates the process group when output exceeds its limit
   ---
-  duration_ms: 41.538375
+  duration_ms: 35.21
   ...
 # Subtest: times out a real process and reaps it
-ok 52 - times out a real process and reaps it
+ok 58 - times out a real process and reaps it
   ---
-  duration_ms: 84.136
+  duration_ms: 84.754166
   ...
 # Subtest: cancels a real process and reaps it
-ok 53 - cancels a real process and reaps it
+ok 59 - cancels a real process and reaps it
   ---
-  duration_ms: 48.690709
+  duration_ms: 47.387375
   ...
 # Subtest: bounds progress callback lines from a real child
-ok 54 - bounds progress callback lines from a real child
+ok 60 - bounds progress callback lines from a real child
   ---
-  duration_ms: 50.381709
+  duration_ms: 44.683458
   ...
 # Subtest: kills descendants that keep inherited pipes open after leader exit
-ok 55 - kills descendants that keep inherited pipes open after leader exit
+ok 61 - kills descendants that keep inherited pipes open after leader exit
   ---
-  duration_ms: 44.244583
+  duration_ms: 38.44375
   ...
 # Subtest: kills same-group descendants that ignore SIGTERM and close their pipes
-ok 56 - kills same-group descendants that ignore SIGTERM and close their pipes
+ok 62 - kills same-group descendants that ignore SIGTERM and close their pipes
   ---
-  duration_ms: 44.246083
+  duration_ms: 37.699834
   ...
-1..56
-# tests 56
+1..62
+# tests 62
 # suites 0
 # pass 39
 # fail 0
 # cancelled 0
-# skipped 17
+# skipped 23
 # todo 0
-# duration_ms 4761.6245
+# duration_ms 4613.615917
