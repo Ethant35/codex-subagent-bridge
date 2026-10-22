@@ -8,9 +8,9 @@ GitHub Actions is intentionally omitted and disabled at repository level per Eth
 
 macOS arm64; Node 22.13.1; npm 10.9.2; native Codex CLI 0.163.0. Official Claude Agent SDK 0.3.308. No standalone Claude CLI or Claude account is available. OPENROUTER_API_KEY and Claude credential variables are absent. OpenRouter's real public model catalog was queried; it lists openai/gpt-4.1-mini with tools support. No paid inference, live Claude task, or native Codex-to-live-child test was performed.
 
-Latest local suite: **62 scenarios: 39 passed, 23 skipped as BLOCKED_EXTERNAL, 0 failed**. These counts include sub-scenarios; the CB matrix below determines release status.
+Latest local suite: **64 scenarios: 42 passed, 22 skipped as BLOCKED_EXTERNAL, 0 failed**. Command: `CPB_NETWORK_E2E=1 npm test`. The network opt-in calls the real OpenRouter service with a deliberately invalid synthetic key; it does not need or use a valid account credential. Default `npm test` skips that network case too. These counts include sub-scenarios; the CB matrix below determines release status.
 
-Reproducible checks: `npm ci`, `npm run check`, `npm test`, `npm audit --omit=dev`, `npm pack`, clean archive installation, CLI help/doctor, and clean-checkout E2E. Evidence files under `evidence/` contain the final local run and packaging outcome. Clean checkout/archive installation passed at source commit `3f1448766212219eee0511e28f97a85c77d519f6`; later changes tighten Claude output validation and expand the opt-in live suite, with a fresh local test run recorded. No provider response is mocked. Process-control tests run real operating-system processes, not fake Claude binaries or invented Claude result JSON.
+Reproducible checks: `npm ci`, `npm run check`, `npm test`, `npm audit --omit=dev`, `npm pack`, clean archive installation, CLI help/doctor, and clean-checkout E2E. Evidence files under `evidence/` contain the final local run and packaging outcome. Clean checkout/archive installation passed at source commit `3f1448766212219eee0511e28f97a85c77d519f6`; later changes tighten Claude output validation, add direct cancellation checkpoints, and expand E2E coverage, with a fresh local test run recorded. No provider response is mocked. Process-control tests run real operating-system processes, not fake Claude binaries or invented Claude result JSON.
 
 ## Scenario matrix
 
@@ -25,9 +25,9 @@ Reproducible checks: `npm ci`, `npm run check`, `npm test`, `npm audit --omit=de
 | CB-07 | Unique instruction / lost task | PARTIAL | Empty instructions rejected and exact submitted text/hash persisted; live unique marker blocked |
 | CB-08 | Permission denial | PASS (broker boundary) | Real production MCP reads/writes; unauthorized reads/writes/traversal, symlinks and hard links denied; logs checked. Claude runtime boundary still pending |
 | CB-09 | Timeout | PASS (local) | Real supervised process terminates; production task expires before provider submission and persists TIMED_OUT. Live cancellation/remote billing not certified |
-| CB-10 | Cancellation | PARTIAL | Real process group cancellation passes; provider-connected cpb cancel test requires credentials |
-| CB-11 | Concurrent delegated tasks | BLOCKED_EXTERNAL | SQLite two-slot enforcement implemented; independent live tasks/results test requires key |
-| CB-12 | Provider failure | BLOCKED_EXTERNAL | Real invalid-auth OpenRouter test is opt-in; no success record substituted |
+| CB-10 | Cancellation | PASS (local) | Production cpb cancel during snapshot preparation and queue waiting persists CANCELLED; real process groups terminate. Remote inference cancellation still requires live verification |
+| CB-11 | Concurrent delegated tasks | PARTIAL | Two actual CLI tasks hold independent slots; a third queues, cancels, and later work acquires released slots. Independent successful provider results still require a key |
+| CB-12 | Provider failure | PASS | Production CLI contacted the real OpenRouter service with an invalid synthetic key and persisted AUTH_FAILED/FAILED, no result or leaked secret |
 | CB-13 | Persistent records | PASS | Separate CLI restart inspects records, lists runs, rejects duplicate IDs, refuses terminal-run cancellation |
 | CB-14 | Credential redaction | PASS | Deliberately invalid synthetic secrets absent from command output/run JSON/events; conflict values not echoed |
 | CB-15 | Claude availability | PASS | CLI absence reported; auth is unknown rather than falsely logged out |

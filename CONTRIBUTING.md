@@ -4,6 +4,8 @@ Author: Ethan
 
 Use Node 22.13+ on macOS or Linux. Run `npm ci`, `npm run check`, and `npm test` from a clean checkout. Tests are E2E: real CLI commands, MCP processes, files, SDK setup, and OS process behavior. Do not add mocked LLM responses, fabricated success records, or unit tests as substitutes for provider acceptance.
 
+Run `CPB_NETWORK_E2E=1 npm test` to also check a real OpenRouter authentication failure using a deliberately invalid synthetic key. No valid provider credential or paid inference is needed for that case.
+
 Live testing is opt-in and can incur provider charges. Supply credentials through the process environment, not command arguments or committed files. Then select the applicable flags:
 
 ```sh
