@@ -1,0 +1,55 @@
+TAP version 13
+# Subtest: CB-08/09 named pipe in source cannot block the production task deadline
+ok 1 - CB-08/09 named pipe in source cannot block the production task deadline
+  ---
+  duration_ms: 117.386916
+  ...
+# Subtest: CB-08 MCP read_file malformed arguments are durably audited
+ok 2 - CB-08 MCP read_file malformed arguments are durably audited
+  ---
+  duration_ms: 115.968583
+  ...
+# Subtest: CB-08 MCP write_file malformed arguments are durably audited
+ok 3 - CB-08 MCP write_file malformed arguments are durably audited
+  ---
+  duration_ms: 113.833417
+  ...
+# Subtest: CB-08 unknown MCP tool is denied and durably audited
+ok 4 - CB-08 unknown MCP tool is denied and durably audited
+  ---
+  duration_ms: 117.388916
+  ...
+# Subtest: CB-08 a durable denial prevents later writes, including after server restart
+ok 5 - CB-08 a durable denial prevents later writes, including after server restart
+  ---
+  duration_ms: 226.225125
+  ...
+# Subtest: CB-08/11 overlapping MCP processes share one task step budget
+ok 6 - CB-08/11 overlapping MCP processes share one task step budget
+  ---
+  duration_ms: 224.192125
+  ...
+# Subtest: CB-08 concurrent calls cannot overspend a shared tool budget
+ok 7 - CB-08 concurrent calls cannot overspend a shared tool budget
+  ---
+  duration_ms: 280.92525
+  ...
+# Subtest: CB-08 write rejects a fifo without modifying its target
+ok 8 - CB-08 write rejects a fifo without modifying its target
+  ---
+  duration_ms: 132.986417
+  ...
+# Subtest: CB-08 write rejects a hardlink without modifying its target
+ok 9 - CB-08 write rejects a hardlink without modifying its target
+  ---
+  duration_ms: 116.611166
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1561.534375

@@ -16,9 +16,26 @@ export function checkedPath(root:string,relative:string,allowMissing=false):stri
   }
   return current;
 }
+function regular(s:fs.Stats) {
+  if(!s.isFile()||s.nlink!==1||s.size>MAX_FILE_BYTES)throw new BridgeError('FILE_DENIED','Only bounded regular files with one link are supported');
+}
 export function readFileSafe(root:string,p:string):Buffer {
-  const f=checkedPath(root,p);const fd=fs.openSync(f,fs.constants.O_RDONLY|fs.constants.O_NOFOLLOW);
-  try {const s=fs.fstatSync(fd);if(!s.isFile()||s.nlink!==1||s.size>MAX_FILE_BYTES)throw new BridgeError('FILE_DENIED','Only bounded regular files with one link are supported');return fs.readFileSync(fd);}finally{fs.closeSync(fd);}
+  const f=checkedPath(root,p);regular(fs.lstatSync(f));
+  const fd=fs.openSync(f,fs.constants.O_RDONLY|fs.constants.O_NOFOLLOW|fs.constants.O_NONBLOCK);
+  try {
+    regular(fs.fstatSync(fd));const buffer=Buffer.alloc(MAX_FILE_BYTES+1);let length=0;
+    while(length<buffer.length){const n=fs.readSync(fd,buffer,length,buffer.length-length,null);if(!n)break;length+=n;}
+    if(length>MAX_FILE_BYTES)throw new BridgeError('FILE_DENIED','File grew beyond size limit');
+    return buffer.subarray(0,length);
+  }finally{fs.closeSync(fd);}
+}
+export function writeFileSafe(root:string,p:string,data:string|Buffer) {
+  if(Buffer.byteLength(data)>MAX_FILE_BYTES)throw new BridgeError('FILE_LIMIT','File exceeds size limit');
+  const f=checkedPath(root,p,true);
+  try{regular(fs.lstatSync(f));}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
+  fs.mkdirSync(path.dirname(f),{recursive:true,mode:0o700});
+  const fd=fs.openSync(f,fs.constants.O_WRONLY|fs.constants.O_CREAT|fs.constants.O_NOFOLLOW|fs.constants.O_NONBLOCK,0o600);
+  try{regular(fs.fstatSync(fd));fs.ftruncateSync(fd,0);fs.writeFileSync(fd,data);fs.fsyncSync(fd);}finally{fs.closeSync(fd);}
 }
 export class Workspace {
   readonly original = new Map<string,string|null>();
@@ -47,9 +64,7 @@ export class Workspace {
     }
     // Validate the entire change set before any write. Local concurrent attackers are outside this boundary.
     for(const c of changes) {
-      checkedPath(this.task.workspaceRoot,c.p,true);fs.mkdirSync(path.dirname(c.target),{recursive:true,mode:0o700});
-      const fd=fs.openSync(c.target,fs.constants.O_WRONLY|fs.constants.O_CREAT|fs.constants.O_TRUNC|fs.constants.O_NOFOLLOW,0o600);
-      try{fs.writeFileSync(fd,c.data);fs.fsyncSync(fd);}finally{fs.closeSync(fd);}
+      writeFileSafe(this.task.workspaceRoot,c.p,c.data);
     }
     return changes.map(c=>c.p);
   }

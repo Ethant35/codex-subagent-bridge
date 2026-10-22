@@ -40,7 +40,7 @@ export async function delegate(value:unknown,store=new Store(),externalSignal?:A
     checkpoint();
     const result:ProviderResult=await(task.provider==='openrouter'?runOpenRouter(ctx):runClaude(ctx));
     checkpoint();
-    if(fs.existsSync(path.join(store.dir(run.id),'tool-failure')))throw new BridgeError('TOOL_FAILED','A tool operation failed; model output cannot certify completion');
+    tools.assertHealthy();
     if(!result.output.trim())throw new BridgeError('EMPTY_RESULT','Child returned no result');
     if(task.resultFormat==='json'){try{JSON.parse(result.output);}catch{throw new BridgeError('INVALID_RESULT','Child result is not valid JSON');}}
     checkpoint();

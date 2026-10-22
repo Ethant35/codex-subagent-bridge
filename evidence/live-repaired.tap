@@ -1,0 +1,20 @@
+TAP version 13
+# Subtest: CB-06 native Codex parent uses OpenRouter child result
+ok 1 - CB-06 native Codex parent uses OpenRouter child result
+  ---
+  duration_ms: 9527.274083
+  ...
+# Subtest: CB-07 live unique instruction survives conversion
+ok 2 - CB-07 live unique instruction survives conversion
+  ---
+  duration_ms: 1954.9285
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11535.404875

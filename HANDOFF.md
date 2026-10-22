@@ -1,3 +1,19 @@
+# Current handoff
+
+Author: Ethan. Updated 2026-10-22.
+
+Core CB-01 through CB-18 now pass. OpenRouter verified end to end. Claude SDK and CLI implemented; live Claude verification pending. No further paid tests are needed for this implementation. Ten actual OpenRouter task records report USD 0.001284948, with a possible unreported charge for one cancelled request. Two native Codex gpt-6-luna subscription attempts were used; the repaired integration passed. Per-task cap was USD 0.02. Credentials were transient and are not saved for the next session.
+
+The capability audit fixed FIFO hangs, unlogged rejected MCP calls, nonpersistent failure enforcement, and cross-process tool-budget bypasses. Nine adversarial production CLI/MCP scenarios pass. Latest local suite: 51 pass, 22 external skips, zero failures. Seven separately opted-in live core scenarios pass; the packed 1.0.0 artifact also passed a real read after the final completion-ledger guard. Consult ACCEPTANCE.md and evidence/ for exact outcomes, including retained initial test-setup failures.
+
+Release preparation is complete except the final clean-checkout verification and GitHub publication steps being performed in this turn. PR #1 is the release vehicle; inspect GitHub for current merge/tag state. The implementation is CLI/MCP only. No frontend or extra provider was introduced. Claude CB-19 through CB-24 remain explicitly unverified and do not block the authorized core-only release.
+
+Keep GitHub Actions disabled, preserve ~/.codex/config.toml, and do not alter the parent repository. Package and Git author identity are Ethan. Both optional workers are stopped. Check account usage through the supported tool during active work; the current session monitor is not a persistent daemon.
+
+---
+
+# Historical work log
+
 # Codex Subagent Bridge handoff
 
 Author: Ethan. Updated 2026-10-22.
@@ -64,3 +80,10 @@ The supported goal tool now records status BLOCKED after the same missing-access
 Core v1.0 is NOT DONE. Resume requires an authorized OpenRouter key in the launching environment to verify successful child read/edit/unique instruction/concurrency and the native Codex-to-child-to-parent result. Claude live CB-19..24 also need an authorized account and, for CLI tests, the official executable. No legitimate provider access can be inferred from a successful invalid-key failure test. No merge, tag, or release has been created. Actions remains disabled and has zero runs.
 
 No implementation workers or project subprocesses remain running. The supported usage checker is stopped after this final handoff; its last read showed 19% used, 81% remaining. Stop was caused by external verification blockers, not account exhaustion. Restart usage checks every 55 seconds when active work resumes. The working branch is codex/bridge-v1; use the commands above and record new live evidence before changing release status.
+
+
+## Current work: authorized live access and capability hardening
+
+Ethan supplied OpenRouter access and authorized economical live tests, preferring deepseek/deepseek-v4.1-flash-1017. The key is supplied to test launchers over a terminal with echo disabled and held only in process memory/environment; it is not written to repository files or command arguments. Native Codex login reports ChatGPT authentication. No Claude access was added.
+
+The focused be-ambitious audit reproduced six broker failures and fixed regular-file validation, durable tool denials, persistent failure enforcement, and shared tool-step accounting. Nine focused scenarios and the full local suite passed (51 pass, 22 external skips). Live OpenRouter read has now passed and reported USD 0.00011981. Further live gates are running; do not infer their result from this interim note. The original missing-OpenRouter-access blocker is removed. Each live task is capped at USD 0.02. Sanitized actual run/events evidence is retained in evidence/live. Do not repeat paid successful cases without a new reason.

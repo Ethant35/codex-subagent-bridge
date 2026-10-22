@@ -3,7 +3,7 @@ Delegate Codex tasks to OpenRouter and Claude subagents
 
 Codex Subagent Bridge exposes `cpb_delegate`, a local MCP tool for a native OpenAI Codex parent. It returns the actual child output, usage when available, source paths, run state, and correlation IDs. It does not replace Codex's built-in subagent provider.
 
-**Development preview. Core v1.0 is NOT DONE.** Credential-independent checks pass. Live OpenRouter and native Codex-to-OpenRouter verification require credentials. Claude SDK and CLI adapters are implemented; live Claude verification is pending. See [ACCEPTANCE.md](ACCEPTANCE.md) for exact evidence and gaps. There is no v1.0.0 release.
+**OpenRouter verified end to end. Claude SDK and CLI implemented; live Claude verification pending.** Core CB-01 through CB-18 pass. See [ACCEPTANCE.md](ACCEPTANCE.md) for exact evidence and limitations.
 
 ## Install from source
 
@@ -52,6 +52,8 @@ tool_timeout_sec = 180
 Keep the MCP timeout greater than the task runtime. Keep the parent on its native OpenAI provider. Tell it:
 
 > Use cpb_delegate with the full version 1 envelope from task.json, a fresh taskId, and a correlationId for this parent session. Delegate the file-reading task. Use the returned child result to write your answer. If state is not COMPLETED, report the failure instead of inventing a child result.
+
+For explicitly authorized unattended tests, the launch-only override `-c 'mcp_servers.cpb.tools.cpb_delegate.approval_mode="approve"'` grants this tool approval for that process. Interactive use can retain normal prompts. See the [official configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference).
 
 `cpb_delegate` accepts the envelope fields directly as its tool arguments. It returns a structured JSON run in its MCP text content and sets `isError` for unsuccessful runs. Task cancellation, including MCP request cancellation, propagates to the child. [Official Codex MCP documentation](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
 

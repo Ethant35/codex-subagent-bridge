@@ -2,6 +2,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
+import { z } from 'zod';
+import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import { CallToolRequestSchema,ListToolsRequestSchema,McpError,ErrorCode } from '@modelcontextprotocol/sdk/types.js';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { taskSchema,parseTask } from './schema.js';
@@ -29,7 +32,7 @@ Provider credentials come only from the process environment or official Claude C
 `;
 function output(value:unknown) {process.stdout.write(JSON.stringify(redact(value),null,2)+'\n');}
 async function mcp() {
-  const server=new McpServer({name:'codex-subagent-bridge',version:'0.1.0'});
+  const server=new McpServer({name:'codex-subagent-bridge',version:'1.0.0'});
   const active=new Set<AbortController>();
   const previousClose=server.server.onclose;
   server.server.onclose=()=>{for(const controller of active)controller.abort();previousClose?.();};
@@ -44,20 +47,24 @@ async function mcp() {
 async function toolServer(file:string) {
   const st=fs.lstatSync(file);if(!st.isFile() || st.isSymbolicLink() || (st.mode&0o077))throw new BridgeError('UNSAFE_CAPABILITY','Capability must be a private regular file');
   const config=JSON.parse(fs.readFileSync(file,'utf8')) as ToolConfig;parseTask(config.task);
-  const tools=new FileTools(config);const server=new McpServer({name:'cpb-files',version:'0.1.0'});
+  const tools=new FileTools(config);const server=new Server({name:'cpb-files',version:'1.0.0'},{capabilities:{tools:{}}});
   const timer=setTimeout(()=>process.exit(1),Math.max(1,config.deadline-Date.now()));timer.unref();
-  for(const name of config.task.allowedOperations) {
-    server.registerTool(name,{description:`Authorized workspace operation: ${name}`,inputSchema:toolSchemas[name],annotations:{readOnlyHint:name!=='write_file',destructiveHint:name==='write_file',openWorldHint:false}},async(args: unknown)=>{
-      try{return {content:[{type:'text' as const,text:await tools.execute(name,args)}]};}
-      catch(e){return {content:[{type:'text' as const,text:JSON.stringify({error:e instanceof BridgeError?e.code:'TOOL_ERROR'})}],isError:true};}
-    });
-  }
+  server.setRequestHandler(ListToolsRequestSchema,async()=>({tools:config.task.allowedOperations.map(name=>({name,description:`Authorized workspace operation: ${name}`,inputSchema:z.toJSONSchema(toolSchemas[name]) as {type:'object'},annotations:{readOnlyHint:name!=='write_file',destructiveHint:name==='write_file',openWorldHint:false}}))}));
+  // The broker must see calls before argument validation so denied calls are durable too.
+  server.setRequestHandler(CallToolRequestSchema,async request=>{
+    const {name,arguments:args}=request.params;
+    try{return {content:[{type:'text' as const,text:await tools.execute(name,args??{})}]};}
+    catch(e){
+      if(!config.task.allowedOperations.includes(name as never))throw new McpError(ErrorCode.InvalidParams,'Unknown or unauthorized tool');
+      return {content:[{type:'text' as const,text:JSON.stringify({error:e instanceof BridgeError?e.code:'TOOL_ERROR'})}],isError:true};
+    }
+  });
   await server.connect(new StdioServerTransport());
 }
 async function main() {
   const {values,positionals}=parseArgs({allowPositionals:true,options:{help:{type:'boolean',short:'h'},version:{type:'boolean'},json:{type:'boolean'},provider:{type:'string'},backend:{type:'string'},model:{type:'string'},'task-file':{type:'string'}}});
   const command=positionals[0];
-  if(values.version){output({version:'0.1.0'});return;}
+  if(values.version){output({version:'1.0.0'});return;}
   if(values.help || !command){process.stdout.write(help);return;}
   if(values.provider && !['openrouter','claude'].includes(values.provider))throw new BridgeError('INVALID_PROVIDER','Exactly two providers are supported: openrouter and claude');
   switch(command) {

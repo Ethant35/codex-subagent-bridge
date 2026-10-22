@@ -1,0 +1,100 @@
+{
+  "run": {
+    "id": "97bae633-cf68-4ee5-ab1f-1fce22a90f5a",
+    "correlationId": "48d795ca-e0cc-44aa-bfe5-73586034c630",
+    "state": "CANCELLED",
+    "task": {
+      "version": 1,
+      "taskId": "97bae633-cf68-4ee5-ab1f-1fce22a90f5a",
+      "correlationId": "48d795ca-e0cc-44aa-bfe5-73586034c630",
+      "provider": "openrouter",
+      "backend": "api",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "instructions": "Use read_file to read fact.txt. Return only its exact content, with no commentary.",
+      "workspaceRoot": "<fixture>/repo",
+      "allowedOperations": [
+        "read_file",
+        "list_files"
+      ],
+      "readablePaths": [
+        "fact.txt"
+      ],
+      "writablePaths": [],
+      "maxRuntimeMs": 120000,
+      "maxToolSteps": 8,
+      "maxSpendUsd": 0.02,
+      "expectedOutput": "Exact fact.txt contents",
+      "resultFormat": "text",
+      "networkPolicy": "provider-only"
+    },
+    "instructionHash": "cb6ebf7e7ce84c3170fc6232c783f360473cf1fdd07e542eb2121e70974b93aa",
+    "pid": 61928,
+    "createdAt": "2026-10-22T19:47:17.116Z",
+    "updatedAt": "2026-10-22T19:47:21.646Z",
+    "workspace": "<fixture>/state/runs/97bae633-cf68-4ee5-ab1f-1fce22a90f5a/workspace",
+    "error": {
+      "code": "CANCELLED",
+      "message": "Execution cancelled"
+    }
+  },
+  "events": [
+    {
+      "at": "2026-10-22T19:47:17.126Z",
+      "type": "state",
+      "detail": {
+        "state": "RUNNING"
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:17.253Z",
+      "type": "provider_request",
+      "detail": {
+        "turn": 0,
+        "model": "deepseek/deepseek-v4.1-flash-1017",
+        "maxTokens": 4096
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:21.510Z",
+      "type": "provider_response",
+      "detail": {
+        "generationId": "gen-1792698437-kUuciJDbKsFpWGBPOyDf",
+        "inputTokens": 428,
+        "outputTokens": 84,
+        "costUsd": 0.00007196,
+        "turn": 0
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:21.512Z",
+      "type": "tool_allowed",
+      "detail": {
+        "name": "read_file",
+        "path": "fact.txt",
+        "step": 1
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:21.518Z",
+      "type": "provider_request",
+      "detail": {
+        "turn": 1,
+        "model": "deepseek/deepseek-v4.1-flash-1017",
+        "maxTokens": 4096
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:21.651Z",
+      "type": "state",
+      "detail": {
+        "state": "CANCELLED",
+        "error": {
+          "code": "CANCELLED",
+          "message": "Execution cancelled"
+        }
+      }
+    }
+  ],
+  "reportedCostUsd": 0.00007196,
+  "parent": null
+}

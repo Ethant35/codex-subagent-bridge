@@ -52,6 +52,7 @@ export async function runOpenRouter(ctx:ProviderContext):Promise<ProviderResult>
       maxTokens=Math.min(maxTokens,completionPrice===0?maxTokens:Math.floor((remaining-reserve)/completionPrice));
       if(remaining<=reserve || maxTokens<64)throw new BridgeError('BUDGET_EXHAUSTED','Remaining budget cannot cover the next bounded request','BLOCKED');
     }
+    ctx.event('provider_request',{turn,model:task.model,maxTokens});
     const data=await jsonRequest(BASE+'/chat/completions',{method:'POST',headers:{Authorization:`Bearer ${key}`,'Content-Type':'application/json','X-Title':'Codex Subagent Bridge'},body:JSON.stringify({model:task.model,messages,tools,tool_choice:'auto',max_tokens:maxTokens,usage:{include:true},provider:{allow_fallbacks:false,require_parameters:true,...(task.maxSpendUsd!==null?{max_price:{prompt:promptPrice*1_000_000,completion:completionPrice*1_000_000}}:{})}})},signal) as {id?:string;model?:string;error?:unknown;usage?:{prompt_tokens?:number;completion_tokens?:number;cost?:number};choices?:Array<{finish_reason?:string;message?:{role?:string;content?:unknown;tool_calls?:Array<{id?:string;type?:string;function?:{name?:string;arguments?:string}}>}}>};
     if(data.error)throw new BridgeError('PROVIDER_ERROR','OpenRouter returned a provider error');
     if(data.model && data.model!==task.model)throw new BridgeError('MODEL_CHANGED','OpenRouter returned a different model; no further execution allowed');
