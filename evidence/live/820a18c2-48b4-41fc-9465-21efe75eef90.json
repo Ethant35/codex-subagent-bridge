@@ -1,0 +1,98 @@
+{
+  "run": {
+    "id": "820a18c2-48b4-41fc-9465-21efe75eef90",
+    "correlationId": "9de0004f-6a35-4cc1-865f-02d4baf699c3",
+    "state": "COMPLETED",
+    "task": {
+      "version": 1,
+      "taskId": "820a18c2-48b4-41fc-9465-21efe75eef90",
+      "correlationId": "9de0004f-6a35-4cc1-865f-02d4baf699c3",
+      "provider": "openrouter",
+      "backend": "api",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "instructions": "Use read_file to read fact.txt. Return only its exact content, with no commentary.",
+      "workspaceRoot": "<fixture>/repo",
+      "allowedOperations": [
+        "read_file",
+        "list_files"
+      ],
+      "readablePaths": [
+        "fact.txt"
+      ],
+      "writablePaths": [],
+      "maxRuntimeMs": 120000,
+      "maxToolSteps": 8,
+      "maxSpendUsd": 0.02,
+      "expectedOutput": "Exact fact.txt contents",
+      "resultFormat": "text",
+      "networkPolicy": "provider-only"
+    },
+    "instructionHash": "cb6ebf7e7ce84c3170fc6232c783f360473cf1fdd07e542eb2121e70974b93aa",
+    "pid": 59268,
+    "createdAt": "2026-10-22T19:45:44.483Z",
+    "updatedAt": "2026-10-22T19:45:51.581Z",
+    "workspace": "<fixture>/state/runs/820a18c2-48b4-41fc-9465-21efe75eef90/workspace",
+    "changedPaths": [],
+    "result": {
+      "output": "fact-ae3624a1-bae6-4b6e-b171-d7080310d8e0",
+      "usage": {
+        "inputTokens": 933,
+        "outputTokens": 109,
+        "costUsd": 0.00011981
+      },
+      "sessionId": "gen-1792698347-grl3YiNFc6yR1BUQmI5U",
+      "sources": [
+        "fact.txt"
+      ]
+    }
+  },
+  "events": [
+    {
+      "at": "2026-10-22T19:45:44.494Z",
+      "type": "state",
+      "detail": {
+        "state": "RUNNING"
+      }
+    },
+    {
+      "at": "2026-10-22T19:45:47.818Z",
+      "type": "provider_response",
+      "detail": {
+        "generationId": "gen-1792698344-beYfEzJnO8iI0TdNQ7VU",
+        "inputTokens": 428,
+        "outputTokens": 45,
+        "costUsd": 0.00005246,
+        "turn": 0
+      }
+    },
+    {
+      "at": "2026-10-22T19:45:47.822Z",
+      "type": "tool_allowed",
+      "detail": {
+        "name": "read_file",
+        "path": "fact.txt",
+        "step": 1
+      }
+    },
+    {
+      "at": "2026-10-22T19:45:51.580Z",
+      "type": "provider_response",
+      "detail": {
+        "generationId": "gen-1792698347-grl3YiNFc6yR1BUQmI5U",
+        "inputTokens": 505,
+        "outputTokens": 64,
+        "costUsd": 0.00006735,
+        "turn": 1
+      }
+    },
+    {
+      "at": "2026-10-22T19:45:51.586Z",
+      "type": "state",
+      "detail": {
+        "state": "COMPLETED"
+      }
+    }
+  ],
+  "reportedCostUsd": 0.00011981,
+  "parent": null
+}

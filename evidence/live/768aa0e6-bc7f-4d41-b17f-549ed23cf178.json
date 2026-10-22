@@ -1,0 +1,62 @@
+{
+  "run": {
+    "id": "768aa0e6-bc7f-4d41-b17f-549ed23cf178",
+    "correlationId": "637727dd-bc51-4858-930d-6d93a311d323",
+    "state": "TIMED_OUT",
+    "task": {
+      "version": 1,
+      "taskId": "768aa0e6-bc7f-4d41-b17f-549ed23cf178",
+      "correlationId": "637727dd-bc51-4858-930d-6d93a311d323",
+      "provider": "openrouter",
+      "backend": "api",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "instructions": "Use read_file to read fact.txt. Return only its exact content, with no commentary.",
+      "workspaceRoot": "<fixture>/repo",
+      "allowedOperations": [
+        "read_file",
+        "list_files"
+      ],
+      "readablePaths": [
+        "fact.txt"
+      ],
+      "writablePaths": [],
+      "maxRuntimeMs": 10,
+      "maxToolSteps": 8,
+      "maxSpendUsd": 0.02,
+      "expectedOutput": "Exact fact.txt contents",
+      "resultFormat": "text",
+      "networkPolicy": "provider-only"
+    },
+    "instructionHash": "cb6ebf7e7ce84c3170fc6232c783f360473cf1fdd07e542eb2121e70974b93aa",
+    "pid": 61926,
+    "createdAt": "2026-10-22T19:47:16.835Z",
+    "updatedAt": "2026-10-22T19:47:16.878Z",
+    "workspace": "<fixture>/state/runs/768aa0e6-bc7f-4d41-b17f-549ed23cf178/workspace",
+    "error": {
+      "code": "TIMEOUT",
+      "message": "Task exceeded its maximum runtime"
+    }
+  },
+  "events": [
+    {
+      "at": "2026-10-22T19:47:16.845Z",
+      "type": "state",
+      "detail": {
+        "state": "RUNNING"
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:16.882Z",
+      "type": "state",
+      "detail": {
+        "state": "TIMED_OUT",
+        "error": {
+          "code": "TIMEOUT",
+          "message": "Task exceeded its maximum runtime"
+        }
+      }
+    }
+  ],
+  "reportedCostUsd": 0,
+  "parent": null
+}

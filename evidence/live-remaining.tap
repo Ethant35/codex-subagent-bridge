@@ -1,0 +1,79 @@
+TAP version 13
+# Subtest: CB-05 live OpenRouter exact authorized edit
+ok 1 - CB-05 live OpenRouter exact authorized edit
+  ---
+  duration_ms: 11512.772084
+  ...
+# Subtest: CB-06 native Codex parent uses OpenRouter child result
+not ok 2 - CB-06 native Codex parent uses OpenRouter child result
+  ---
+  duration_ms: 7422.52625
+  location: '/Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge/tests/live.test.mjs:43:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'Delegation failed: the `cpb_delegate` call requires approval, but approval is unavailable.'
+    - 'PARENT:fact-1414b470-3df6-416e-8ee7-df51474ae717'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'PARENT:fact-1414b470-3df6-416e-8ee7-df51474ae717'
+  actual: 'Delegation failed: the `cpb_delegate` call requires approval, but approval is unavailable.'
+  operator: 'strictEqual'
+  stack: |-
+    parent (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/live.test.mjs:38:110)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/live.test.mjs:43:166)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: CB-07 live unique instruction survives conversion
+not ok 3 - CB-07 live unique instruction survives conversion
+  ---
+  duration_ms: 34031.89375
+  location: '/Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge/tests/live.test.mjs:44:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'fact-c212007e-9e20-4e7e-9718-45d14f7c7368'
+    - 'instruction-a3ccdd8c-bdf0-41fe-ae92-52045c5f4405'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'instruction-a3ccdd8c-bdf0-41fe-ae92-52045c5f4405'
+  actual: 'fact-c212007e-9e20-4e7e-9718-45d14f7c7368'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/live.test.mjs:44:272)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: CB-09 live task timeout persists TIMED_OUT
+ok 4 - CB-09 live task timeout persists TIMED_OUT
+  ---
+  duration_ms: 305.32825
+  ...
+# Subtest: CB-10 live task cancellation after a real provider response persists CANCELLED
+ok 5 - CB-10 live task cancellation after a real provider response persists CANCELLED
+  ---
+  duration_ms: 4690.482667
+  ...
+# Subtest: CB-11 concurrent real tasks keep independent workspaces/results
+ok 6 - CB-11 concurrent real tasks keep independent workspaces/results
+  ---
+  duration_ms: 5598.566916
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 4
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 63617.990208

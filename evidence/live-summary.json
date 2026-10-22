@@ -1,0 +1,18 @@
+{
+  "author": "Ethan",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "runCount": 10,
+  "reportedCostUsd": 0.001284948,
+  "unknownCancelledRequestCharge": true,
+  "perTaskMaxSpendUsd": 0.02,
+  "nativeCodexModel": "gpt-6-luna",
+  "nativeCodexAuth": "ChatGPT subscription",
+  "nativeParentAttempts": 2,
+  "nativeParentSuccessfulAttempts": 1,
+  "notes": [
+    "Includes the contradictory initial instruction fixture and its repair.",
+    "Cancelled request may have incurred unreported provider charges.",
+    "No paid successful case rerun except one final packed-artifact read after the completion-ledger guard changed.",
+    "Native subscription cost is not included in provider USD totals."
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "run": {
+    "id": "bec7021e-94b2-49fb-a053-5b89a0105020",
+    "correlationId": "27c57e1a-9011-49d8-bb21-03e10eb954a0",
+    "state": "COMPLETED",
+    "task": {
+      "version": 1,
+      "taskId": "bec7021e-94b2-49fb-a053-5b89a0105020",
+      "correlationId": "27c57e1a-9011-49d8-bb21-03e10eb954a0",
+      "provider": "openrouter",
+      "backend": "api",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "instructions": "Use read_file to read fact.txt. Return only its exact content, with no commentary.",
+      "workspaceRoot": "<fixture>/repo",
+      "allowedOperations": [
+        "read_file",
+        "list_files"
+      ],
+      "readablePaths": [
+        "fact.txt"
+      ],
+      "writablePaths": [],
+      "maxRuntimeMs": 120000,
+      "maxToolSteps": 8,
+      "maxSpendUsd": 0.02,
+      "expectedOutput": "Exact fact.txt contents",
+      "resultFormat": "text",
+      "networkPolicy": "provider-only"
+    },
+    "instructionHash": "cb6ebf7e7ce84c3170fc6232c783f360473cf1fdd07e542eb2121e70974b93aa",
+    "pid": 62050,
+    "createdAt": "2026-10-22T19:47:21.830Z",
+    "updatedAt": "2026-10-22T19:47:27.299Z",
+    "workspace": "<fixture>/state/runs/bec7021e-94b2-49fb-a053-5b89a0105020/workspace",
+    "changedPaths": [],
+    "result": {
+      "output": "fact-cb5d3aaf-8459-480f-8f0a-0a400bcf3449",
+      "usage": {
+        "inputTokens": 935,
+        "outputTokens": 69,
+        "costUsd": 0.00009995
+      },
+      "sessionId": "gen-1792698444-i6MRuIF0PlFFdvnOilJK",
+      "sources": [
+        "fact.txt"
+      ]
+    }
+  },
+  "events": [
+    {
+      "at": "2026-10-22T19:47:21.848Z",
+      "type": "state",
+      "detail": {
+        "state": "RUNNING"
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:21.977Z",
+      "type": "provider_request",
+      "detail": {
+        "turn": 0,
+        "model": "deepseek/deepseek-v4.1-flash-1017",
+        "maxTokens": 4096
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:24.489Z",
+      "type": "provider_response",
+      "detail": {
+        "generationId": "gen-1792698442-H0azxYGCfKdubhfdCQ0D",
+        "inputTokens": 428,
+        "outputTokens": 40,
+        "costUsd": 0.00004996,
+        "turn": 0
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:24.492Z",
+      "type": "tool_allowed",
+      "detail": {
+        "name": "read_file",
+        "path": "fact.txt",
+        "step": 1
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:24.497Z",
+      "type": "provider_request",
+      "detail": {
+        "turn": 1,
+        "model": "deepseek/deepseek-v4.1-flash-1017",
+        "maxTokens": 4096
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:27.298Z",
+      "type": "provider_response",
+      "detail": {
+        "generationId": "gen-1792698444-i6MRuIF0PlFFdvnOilJK",
+        "inputTokens": 507,
+        "outputTokens": 29,
+        "costUsd": 0.00004999,
+        "turn": 1
+      }
+    },
+    {
+      "at": "2026-10-22T19:47:27.302Z",
+      "type": "state",
+      "detail": {
+        "state": "COMPLETED"
+      }
+    }
+  ],
+  "reportedCostUsd": 0.00009995,
+  "parent": null
+}

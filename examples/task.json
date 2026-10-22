@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "taskId": "a0000000-0000-4000-8000-000000000001",
+  "correlationId": "codex-parent-example",
+  "provider": "openrouter",
+  "backend": "api",
+  "model": "openai/gpt-4.1-mini",
+  "instructions": "Read README.md using read_file. Summarize its purpose and cite the file.",
+  "workspaceRoot": "/absolute/path/to/repository",
+  "allowedOperations": ["read_file", "list_files"],
+  "readablePaths": ["README.md"],
+  "writablePaths": [],
+  "maxRuntimeMs": 120000,
+  "maxToolSteps": 8,
+  "maxSpendUsd": 0.10,
+  "expectedOutput": "A concise, file-grounded summary of README.md",
+  "resultFormat": "text",
+  "networkPolicy": "provider-only"
+}

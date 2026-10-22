@@ -1,0 +1,177 @@
+TAP version 13
+# Subtest: CB-08/09 named pipe in source cannot block the production task deadline
+not ok 1 - CB-08/09 named pipe in source cannot block the production task deadline
+  ---
+  duration_ms: 2018.942333
+  location: '/Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge/tests/capability.test.mjs:17:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Unsupported source blocked until the external watchdog killed the CLI
+    + actual - expected
+    
+    + Error: spawnSync /Users/ethantarnarider/.nvm/versions/node/v22.13.1/bin/node ETIMEDOUT
+    +     at Object.spawnSync (node:internal/child_process:1120:20)
+    +     at spawnSync (node:child_process:868:24)
+    +     at TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/capability.test.mjs:22:11)
+    +     at Test.runInAsyncScope (node:async_hooks:211:14)
+    +     at Test.run (node:internal/test_runner/test:931:25)
+    +     at Test.start (node:internal/test_runner/test:829:17)
+    +     at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17) {
+    +   code: 'ETIMEDOUT',
+    +   errno: -60,
+    +   path: '/Users/ethantarnarider/.nvm/versions/node/v22.13.1/bin/node',
+    +   spawnargs: [
+    +     '/Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge/dist/cli.js',
+    +     'delegate',
+    +     '--provider',
+    +     'openrouter',
+    +     '--model',
+    +     'openai/gpt-4.1-mini',
+    +     '--task-file',
+    +     '/private/var/folders/j_/l874vytd19j5hkhl05ymffbc0000gn/T/cpb-capability-UGKSZZ/task.json'
+    +   ],
+    +   syscall: 'spawnSync /Users/ethantarnarider/.nvm/versions/node/v22.13.1/bin/node'
+    + }
+    - undefined
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  actual:
+  error: 'spawnSync /Users/ethantarnarider/.nvm/versions/node/v22.13.1/bin/node ETIMEDOUT'
+  stack: |-
+    Object.spawnSync (node:internal/child_process:1120:20)
+    spawnSync (node:child_process:868:24)
+    TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/capability.test.mjs:22:11)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:931:25)
+    Test.start (node:internal/test_runner/test:829:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/capability.test.mjs:23:10)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:931:25)
+    Test.start (node:internal/test_runner/test:829:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: CB-08 MCP read_file malformed arguments are durably audited
+not ok 2 - CB-08 MCP read_file malformed arguments are durably audited
+  ---
+  duration_ms: 138.623667
+  location: '/Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge/tests/capability.test.mjs:26:46'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(f.log().some(e=>e.type==='tool_denied'&&e.detail.name===name))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/capability.test.mjs:27:142)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: CB-08 MCP write_file malformed arguments are durably audited
+not ok 3 - CB-08 MCP write_file malformed arguments are durably audited
+  ---
+  duration_ms: 112.175
+  location: '/Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge/tests/capability.test.mjs:26:46'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(f.log().some(e=>e.type==='tool_denied'&&e.detail.name===name))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/capability.test.mjs:27:142)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: CB-08 unknown MCP tool is denied and durably audited
+not ok 4 - CB-08 unknown MCP tool is denied and durably audited
+  ---
+  duration_ms: 116.9315
+  location: '/Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge/tests/capability.test.mjs:29:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(f.log().some(e=>e.type==='tool_denied'&&e.detail.name==='shell'))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/capability.test.mjs:30:226)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: CB-08 a durable denial prevents later writes, including after server restart
+not ok 5 - CB-08 a durable denial prevents later writes, including after server restart
+  ---
+  duration_ms: 219.581167
+  location: '/Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge/tests/capability.test.mjs:32:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/capability.test.mjs:33:323)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: CB-08/11 overlapping MCP processes share one task step budget
+not ok 6 - CB-08/11 overlapping MCP processes share one task step budget
+  ---
+  duration_ms: 220.081666
+  location: '/Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge/tests/capability.test.mjs:35:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/capability.test.mjs:36:388)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 0
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2946.183958
