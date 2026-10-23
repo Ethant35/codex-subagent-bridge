@@ -1,27 +1,29 @@
-# Guided onboarding phase handoff
+# Completed v1.2.0 release handoff
 
 Author: Ethan. Updated 2026-10-22 (America/Los_Angeles).
 
 Repository: https://github.com/Ethant35/codex-subagent-bridge
-Branch: codex/guided-onboarding. Baseline 722105d (published v1.1.0 runtime).
-Prior completed handoff preserved in ignored .readiness-backups/usability/HANDOFF-before.md.
+Release: https://github.com/Ethant35/codex-subagent-bridge/releases/tag/v1.2.0
+Implementation PR #4 merged. Tag commit 97a4c16. Implementation commits 9e1624b and 440a3b2. Personal Git/tag/package author Ethan. Current bookkeeping branch: codex/release-1.2-verification.
 
-## Authorization and guard
+## Outcome
 
-Ethan authorized implementation, tests, PR and accepted release for a guided CLI/MCP journey. No GUI or notarization needed. No GitHub Actions/global config changes. New phase goal active; prior goal complete. Usage checked immediately (46% used) and active functions cell 2 checks every55 seconds. Stop at >=90% used in ANY window; unknown stays unknown. Stop own workers/processes, save handoff, pause goal and checker, end. No credits/resets/provider/account bypass or automatic resume.
+The authorized guided CLI/MCP usability phase is complete within the supported local OpenRouter boundary. `start` creates/replays a safe example; `task` generates IDs/paths/envelopes; `connect` previews then applies project-only MCP settings with explicit trust; `run` requires a finite positive cap plus explicit spending consent and creates new execution IDs. Native Codex uses read-only `cpb_prepare` before the existing delegation tool. Existing command JSON remains stable; readable output is optional for those commands. Release installation is first in the docs. No GUI, notarization, global config edit, hook or workflow was added.
 
-Up to TWO Luna High assistants authorized; assistants may not spawn agents. Root hands-on lead. Finished/stopped bounded workers: project_connect (src/project-connect.ts + tests/project-connect.test.mjs), onboarding_docs (README.md + docs/onboarding.md). Root owns guided commands, CLI integration, tests/evidence/release. Preserve their changes.
+## Verification
 
-## Current plan and gates
+- Clean source export used fresh npm ci, typecheck and build. Final suite:129 local passes,23 explicit external skips,0 failures. A source refinement to human recovery output was followed by a full suite repeat. Dependency audit:0 vulnerabilities.
+- Three real tasks passed: installed-package first read, actual native Luna High prepare/delegate/child-result consumption, and returning use from the downloaded release archive. Each task application cap $0.02. Total reported OpenRouter cost $0.000198084; model deepseek/deepseek-v4.1-flash-1017. No remaining live test allowance in this phase. Native subscription usage is separate.
+- Native trust exercised actual project config in an isolated Codex home with the same official account through a temporary auth-file symlink. One launch-only trust configuration attempt failed before inference; a second isolated attempt without account auth returned401 before any child inference. Both retained as evidence. One authenticated native Luna High parent completed. No global config edits.
+- Update from downloaded v1.1.0, rollback, retained history, deliberate corrupt copied record, complete-store restore and read-only recovery passed without provider calls.
+- Public release URL fresh install passed9 command checks, including refusal without spending consent. All153 installed package files match the downloaded archive. All45 runtime hashes match the live-tested consumer. Author metadata/local links/no-secret/account-path/bundled-dependency checks pass.
+- Archive SHA256: ca57d622aca0c31e6dc49b0557f0b0ca4594a65ba34b76fc651992befd342437;199461bytes. RELEASE_ARTIFACT.json records prepublication binding; PUBLICATION_VERIFICATION.json records downloaded/public installation and third live result. Bookkeeping does not alter the tagged/archive runtime.
+- Actions remains disabled with zero runs. Global config hash unchanged. One floor-guard assertion-change notice is reviewed in docs/readiness/usability.md: exact MCP discovery now includes the added tool; no old assertion/skip was weakened. Earlier Semgrep is historical; changed source received focused manual review and tests.
 
-Add start (safe sample/check), task (generated bounded envelope), connect (preview then explicit project config trust), run (explicit finite cap plus spending consent and fresh IDs). Preserve legacy JSON behavior; new commands human output with --json. MCP cpb_prepare generates zero-spend tasks. Keep original cpb_delegate contract. No routine UUID/JSON editing. No automatic paid retry.
+## Scope and cleanup
 
-At most THREE new live child checks, each application cap $0.02 (total application allocation $0.06), preferred authorized DeepSeek flash model; two completed calls, combined reported cost $0.000133344; one native Luna High parent succeeded. One local config-only launch failed before inference and one isolated no-auth launch returned401 before any child inference. Native Codex subscription tests bounded. No keys in files/argv/logs.
+Qualified: single trusted local user, macOS arm64 / Node22.13.1, OpenRouter CLI/native MCP. Claude remains experimental. Other platforms and Node versions are unqualified. No unfamiliar-user study or assistive-technology test is claimed. Existing per-file publication, provider-billing and dependency-license limits remain in READINESS/OPERATIONS/THIRD_PARTY_NOTICES.
 
-Completed: implementation;129 tests pass,23 external skips; types/build/audit; reviewed single floor discovery assertion change; clean install; first live task and native MCP parent; update/rollback/history/corruption/restore. Pending: final package inspection; PR attachment/merge/tag/release; downloaded-release repeat live task and final evidence. Do not claim completion with any gate open. Skills explicitly loaded: shipping-and-launch, api-and-interface-design, impeccable (context + onboard + craft-floor), baseline-ui, fixing-accessibility, systematic-debugging, verification-before-completion; OpenAI Docs for MCP project trust. Local skill provenance already recorded under docs/readiness.
+Both bounded Luna High assistants are finished and interrupted; neither spawned agents. Owned temporary source exports, consumer installs, stores and temporary Codex home/auth symlink have been removed. Selected logs/archive remain under ignored .readiness-backups/usability/qualification. The saved temporary path is provenance only and no longer exists. No API key was saved in files or argv.
 
-Actions verified disabled with zero runs before edits. User config untouched. Memory quickpass no relevant hits.
-
-## Working evidence
-
-Temporary qualification directory is recorded in ignored .readiness-backups/usability/location.txt. It holds clean source, installed consumers, private test state and logs. The temporary Codex home contains an auth-file symlink to the existing authorized account, not copied credentials; unlink it during owned temporary cleanup. No key saved. Release records under evidence/usability preserve sanitized results and runtime hashes. Usage latest63% used/37% remaining. Both assistants stopped. Global config SHA256 baseline retained in ignored backup.
+The account guard checked immediately and every55seconds in functions cell2. Most recent67%used/33%remaining, account-wide. Guard stops during final shutdown; new work must establish a new active check. Goal is marked complete only after final bookkeeping/verification. No automatic continuation. Prior v1.1.0 handoff remains in ignored backup and Git history.
