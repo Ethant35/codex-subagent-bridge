@@ -1,4 +1,4 @@
-$ git clone --no-hardlinks /Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge /var/folders/j_/l874vytd19j5hkhl05ymffbc0000gn/T/cpb-clean-pbn1gvds/checkout
+$ git clone --no-hardlinks <checkout> /var/folders/j_/l874vytd19j5hkhl05ymffbc0000gn/T/cpb-clean-pbn1gvds/checkout
 Cloning into '/var/folders/j_/l874vytd19j5hkhl05ymffbc0000gn/T/cpb-clean-pbn1gvds/checkout'...
 done.
 

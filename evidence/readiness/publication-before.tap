@@ -1,0 +1,87 @@
+TAP version 13
+# Subtest: publication disk-full failure preserves the original destination bytes
+not ok 1 - publication disk-full failure preserves the original destination bytes
+  ---
+  duration_ms: 4.020792
+  location: '<checkout>/tests/publication.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + ''
+    - 'original a.txt'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'original a.txt'
+  actual: ''
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/publication.test.mjs:11:182)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:931:25)
+    Test.start (node:internal/test_runner/test:829:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: partial publication retains originals and a durable per-file recovery journal
+not ok 2 - partial publication retains originals and a durable per-file recovery journal
+  ---
+  duration_ms: 8.178083
+  location: '<checkout>/tests/publication.test.mjs:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + ''
+    - 'original b.txt'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'original b.txt'
+  actual: ''
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/publication.test.mjs:12:275)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:931:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:629:18)
+    Test.postRun (node:internal/test_runner/test:1042:19)
+    Test.run (node:internal/test_runner/test:970:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: publication checks cancellation between files and records recoverable progress
+not ok 3 - publication checks cancellation between files and records recoverable progress
+  ---
+  duration_ms: 9.819125
+  location: '<checkout>/tests/publication.test.mjs:13:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/publication.test.mjs:13:121)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:931:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:629:18)
+    Test.postRun (node:internal/test_runner/test:1042:19)
+    Test.run (node:internal/test_runner/test:970:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: publication preserves existing file mode and leaves no temporary source files
+ok 4 - publication preserves existing file mode and leaves no temporary source files
+  ---
+  duration_ms: 10.177583
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 1
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 85.092084

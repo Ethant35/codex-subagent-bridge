@@ -1,11 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
+import { appendPrivateJSONL,ensurePrivateFile } from './store.js';
 import { randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { readFileSafe, writeFileSafe, MAX_FILE_BYTES } from './workspace.js';
 import { BridgeError, type Task } from './types.js';
-import { redact } from './redact.js';
 export interface ToolConfig { task:Task; workspace:string; eventPath:string; deadline:number; }
 export const toolSchemas = {
   read_file: z.object({path:z.string()}).strict(),
@@ -23,13 +23,11 @@ export class FileTools {
       if(!row||row.failed||row.owner!==null)throw new BridgeError('TOOL_FAILED','Tool ledger contains failed or unfinished work');
     }finally{db.close();}
   }
-  event(type:string,detail:unknown) {
-    const fd=fs.openSync(this.config.eventPath,'a',0o600);
-    try{fs.writeSync(fd,JSON.stringify(redact({at:new Date().toISOString(),type,detail}))+'\n');fs.fsyncSync(fd);}finally{fs.closeSync(fd);}
-  }
+  event(type:string,detail:unknown) {appendPrivateJSONL(this.config.eventPath,{at:new Date().toISOString(),type,detail});}
   async execute(name:string,args:unknown):Promise<string> {
     const {task,workspace}=this.config,dir=path.dirname(this.config.eventPath),token=randomUUID();
-    const db=new DatabaseSync(path.join(dir,'tool-ledger.sqlite'));let step=0,owned=false;
+    const ledger=path.join(dir,'tool-ledger.sqlite');ensurePrivateFile(ledger);
+    const db=new DatabaseSync(ledger);let step=0,owned=false;
     db.exec('PRAGMA busy_timeout=1000; PRAGMA synchronous=FULL; CREATE TABLE IF NOT EXISTS ledger (id INTEGER PRIMARY KEY, steps INTEGER NOT NULL, failed INTEGER NOT NULL, owner INTEGER, token TEXT); INSERT OR IGNORE INTO ledger VALUES (1,0,0,NULL,NULL)');
     fs.chmodSync(path.join(dir,'tool-ledger.sqlite'),0o600);
     try {
@@ -66,7 +64,7 @@ export class FileTools {
     } catch(e) {
       if(db.isTransaction)db.exec('ROLLBACK');
       db.exec('UPDATE ledger SET failed=1 WHERE id=1');
-      const code=e instanceof BridgeError?e.code:'TOOL_ERROR';this.event('tool_denied',{name,code,step});
+      const code=e instanceof BridgeError?e.code:'TOOL_ERROR';this.event('tool_denied',{name:/^[A-Za-z_][A-Za-z0-9_-]{0,63}$/.test(name)?name:'invalid_tool_name',code,step});
       // A permanent failure marker prevents a later plausible model answer from hiding a tool failure.
       fs.writeFileSync(path.join(path.dirname(this.config.eventPath),'tool-failure'),code,{mode:0o600});
       throw new BridgeError(code,'Tool operation failed or was denied',e instanceof BridgeError?e.state:'FAILED');

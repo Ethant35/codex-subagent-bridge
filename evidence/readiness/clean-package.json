@@ -1,0 +1,105 @@
+{
+  "author": "Ethan",
+  "date": "2026-10-22",
+  "source": "Fresh dependency install followed by a reviewed provider-only repair; full typecheck/suite/build repeated after repair. Dependencies unchanged.",
+  "node": "v22.13.1",
+  "npm": "10.9.2",
+  "platform": "Darwin",
+  "architecture": "arm64",
+  "install": "npm ci PASS",
+  "typecheck": "PASS",
+  "tests": {
+    "passed": 113,
+    "skippedExternal": 23,
+    "failed": 0
+  },
+  "audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "pack": "PASS",
+  "consumerInstall": "PASS",
+  "consumerChecks": [
+    {
+      "command": "cpb --help",
+      "status": "PASS"
+    },
+    {
+      "command": "cpb --version",
+      "status": "PASS"
+    },
+    {
+      "command": "cpb doctor",
+      "status": "PASS"
+    },
+    {
+      "command": "cpb sample",
+      "status": "PASS"
+    },
+    {
+      "command": "cpb validate",
+      "status": "PASS"
+    },
+    {
+      "command": "cpb diagnose",
+      "status": "PASS"
+    },
+    {
+      "command": "cpb runs",
+      "status": "PASS"
+    }
+  ],
+  "packageAuthor": "Ethan",
+  "runtimeHashes": {
+    "dist/claude-sdk-runner.d.ts": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "dist/claude-sdk-runner.js": "2b1eeca8ae2e3ae1aab166f1b7041b665e57b0bdc1dd137590470dd9e7fcbf48",
+    "dist/claude-sdk-runner.js.map": "3f44707de203b607d354aba1ca3335412767c4bff12c6152bb936aadc632b0bb",
+    "dist/cli.d.ts": "43e818adf60173644896298637f47b01d5819b17eda46eaa32d0c7d64724d012",
+    "dist/cli.js": "5740df90130e9d01f844be3826217668978573d3f53adba711a6cf672b35ec7f",
+    "dist/cli.js.map": "8de7a4eb73d903d5803adc8fff95c957c59b6c9586c7a86e9e7aff03abd249cf",
+    "dist/file-tools.d.ts": "43c1753effb46beaf530648d1845c1c3b9e5d2d34377bd0a47f2c61259942e99",
+    "dist/file-tools.js": "e462d62e8949dc7bab6c06355cab75e06278acc4cb73b7021d4ec25982c9bb7e",
+    "dist/file-tools.js.map": "10bd3485a19900529e3e095ae846952c8bce67c22f08a5eb8e9c4728af856d68",
+    "dist/local-commands.d.ts": "0347681872bf4159b5007fee86dd1bee4695b897b5f76f10d092447275c3c32b",
+    "dist/local-commands.js": "3b38ee54edbaf9b16d1a3563acd0748de6ada64c1fc122703974fe1a43b515dd",
+    "dist/local-commands.js.map": "f6ef32b3f9c76c1428c32a677770465d5a63cd0e7f01525dc2ce8deedeb7cdf7",
+    "dist/process.d.ts": "a0aa7091474e0d606edd46eb2c78c8629844ee987573416140cc983f9ab581ec",
+    "dist/process.js": "24eb11e9c893f374203123cecb26120ae5534f6c1ef5621b59721c12372539f1",
+    "dist/process.js.map": "4dd53d3874f6caea39614f38be64d02ce87922061937bc0ee56aa2e7c489008a",
+    "dist/providers/claude.d.ts": "8f1937feeb99d3fe43464918d81b1207e201d35771f82e4a718c0251d20b94ea",
+    "dist/providers/claude.js": "4b123922fe7a1448e8cd25d57b05ad1278db4ee016b34184912552fd8e93a0dd",
+    "dist/providers/claude.js.map": "843b4e5dfdf86e9aa89d646dc0c13c3d64844992385cd7e27d22c452ee551e03",
+    "dist/providers/openrouter.d.ts": "809625a03dce916e326772259627234fe2f27bc7bd6e8b1e5ac280e802988704",
+    "dist/providers/openrouter.js": "7cf4c365abccdc7f6e6547e2e4ad3f5ac257ca6bb0b08c47a059159047534f92",
+    "dist/providers/openrouter.js.map": "42962792ac417c6ae40c120121a2479bf94f644df498ebc9335bd22dc5824205",
+    "dist/redact.d.ts": "7f00cf7dc6baefac7e809f6e4178dd2850ee94e0de6c565bb67b896d0de877b0",
+    "dist/redact.js": "d27d8d54dbad7617b8b136c4cfc4f92ee91d53fd87cfd4e1f1973d21af1d7d6b",
+    "dist/redact.js.map": "e8c3b6a2324a127e564ee848987b1c5a417a8d44b89f17b58a8b908265ff1c90",
+    "dist/runner.d.ts": "e0901470c0cd395ae7127daa00d2df6a87ce83781ecd003b6ed8536e3740cb03",
+    "dist/runner.js": "1291dd7738ec41a55b948ad9272ea271ce9366094163ec93251693bbc97defdb",
+    "dist/runner.js.map": "969bf25c7203116746873eaf4980f93242a07819a720f599774da9dc13a489bb",
+    "dist/schema.d.ts": "18ff53a3eac97d7c46b27d34b484ac80809a46d0be3e947f19ee8041df94f1f9",
+    "dist/schema.js": "c03686a89f45cbbf3677d4b6bd41b1b9de98694732b971344f6ebc43110871c6",
+    "dist/schema.js.map": "96cee84f5a61f7ebad98ed2a02af3444ab526735406440ceb10cf8408c1c0c4a",
+    "dist/store.d.ts": "31ab572a54e27d82373d2673a36d9ed02d22be2a79e0a3eed0b69a2c2755c9a3",
+    "dist/store.js": "ba295fa6e0d6d0315b34937598bf9c799586f16c745cca18cdbb66966ee75e45",
+    "dist/store.js.map": "665717f6aa331e6a94207944817e3a7990a9ada47533a06376c1020891ab821b",
+    "dist/types.d.ts": "4a1e5f424d95a360fcc9791ac5f22f12d8773187785f625492783b173d0bea94",
+    "dist/types.js": "7204af26856cc0f25d48230995265f8888ba2f93c4b3b677cf12197d4d1f7ebd",
+    "dist/types.js.map": "8ac08e3e84557365e4cfb571a07cf7368b7b8c52da4dff93ed25dbca319b2892",
+    "dist/workspace.d.ts": "65173dd323e300be02f1dfd6ed794a18c8a5727716d8b46576757bb9271793e7",
+    "dist/workspace.js": "155aa26f7675825ac51547c76d57f39dea8a4c29bf6110ae7a4fdba2aff3a409",
+    "dist/workspace.js.map": "4cf61a79909d5fbf78cbb998ebe3ff978ee57d5053d3344aaec3099fa3cebbd5"
+  },
+  "providerCalls": 0,
+  "limitations": [
+    "Final archive is rebuilt after documentation/evidence updates; release verification must compare every runtime hash.",
+    "SQLite emits the expected Node 22 experimental warning.",
+    "macOS arm64 only; no Claude live qualification."
+  ],
+  "repairVerification": "30 provider tests; 113 total passes; public catalog reads 399 tool models; no paid inference in catalog check."
+}

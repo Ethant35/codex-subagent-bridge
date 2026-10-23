@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { createHash } from 'node:crypto';
+import { atomicJSON } from './store.js';
+import { randomUUID, createHash } from 'node:crypto';
 import { BridgeError, type Task } from './types.js';
 export const MAX_FILE_BYTES=512_000;
 const digest=(b:Buffer)=>createHash('sha256').update(b).digest('hex');
@@ -34,27 +35,45 @@ export function writeFileSafe(root:string,p:string,data:string|Buffer) {
   const f=checkedPath(root,p,true);
   try{regular(fs.lstatSync(f));}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
   fs.mkdirSync(path.dirname(f),{recursive:true,mode:0o700});
-  const fd=fs.openSync(f,fs.constants.O_WRONLY|fs.constants.O_CREAT|fs.constants.O_NOFOLLOW|fs.constants.O_NONBLOCK,0o600);
-  try{regular(fs.fstatSync(fd));fs.ftruncateSync(fd,0);fs.writeFileSync(fd,data);fs.fsyncSync(fd);}finally{fs.closeSync(fd);}
+  // Write beside the target, then rename. A failed/short write must never truncate the old file.
+  // Node 22 fs flags/rename/fsync: https://nodejs.org/download/release/v22.13.1/docs/api/fs.html
+  const temp=path.join(path.dirname(f),'.cpb-'+randomUUID()+'.tmp');let mode=0o600;
+  try{mode=fs.lstatSync(f).mode&0o777;}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
+  let fd:number|undefined;
+  try {
+    fd=fs.openSync(temp,fs.constants.O_WRONLY|fs.constants.O_CREAT|fs.constants.O_EXCL|fs.constants.O_NOFOLLOW,0o600);
+    fs.writeFileSync(fd,data);fs.fchmodSync(fd,mode);fs.fsyncSync(fd);fs.closeSync(fd);fd=undefined;
+    checkedPath(root,p,true);fs.renameSync(temp,f);
+    const directory=fs.openSync(path.dirname(f),fs.constants.O_RDONLY);try{fs.fsyncSync(directory);}finally{fs.closeSync(directory);}
+  }finally{
+    if(fd!==undefined)fs.closeSync(fd);
+    try{fs.unlinkSync(temp);}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
+  }
 }
 export class Workspace {
   readonly original = new Map<string,string|null>();
   constructor(readonly task:Task, readonly root:string) {}
-  prepare() {
+  prepare(checkpoint:()=>void=()=>{}) {
     const source=this.task.workspaceRoot;
     if(fs.realpathSync(source)!==source || !fs.statSync(source).isDirectory())throw new BridgeError('INVALID_WORKSPACE','Use a canonical existing workspace directory');
     fs.mkdirSync(this.root,{mode:0o700});
     let bytes=0;
     for(const p of new Set([...this.task.readablePaths,...this.task.writablePaths])) {
+      checkpoint();
       let b:Buffer;
       try {b=readFileSafe(source,p);}catch(e) {if((e as NodeJS.ErrnoException).code==='ENOENT' && this.task.writablePaths.includes(p)){checkedPath(source,p,true);this.original.set(p,null);continue;}throw e;}
       bytes+=b.length;if(bytes>8_000_000)throw new BridgeError('WORKSPACE_LIMIT','Authorized snapshot exceeds 8 MB');
-      this.original.set(p,digest(b)); const target=checkedPath(this.root,p,true);fs.mkdirSync(path.dirname(target),{recursive:true,mode:0o700});fs.writeFileSync(target,b,{mode:0o600});
+      this.original.set(p,digest(b));
+      if(this.task.writablePaths.includes(p)){
+        const originals=path.join(path.dirname(this.root),'originals');fs.mkdirSync(originals,{recursive:true,mode:0o700});writeFileSafe(originals,p,b);
+      }
+      const target=checkedPath(this.root,p,true);fs.mkdirSync(path.dirname(target),{recursive:true,mode:0o700});fs.writeFileSync(target,b,{mode:0o600});
     }
   }
-  publish():string[] {
+  publish(checkpoint:()=>void=()=>{}):string[] {
     const changes:Array<{p:string;data:Buffer;target:string}>=[];
     for(const p of this.task.writablePaths) {
+      checkpoint();
       const staged=checkedPath(this.root,p,true);if(!fs.existsSync(staged))continue;
       const data=readFileSafe(this.root,p);if(digest(data)===this.original.get(p))continue;
       const target=checkedPath(this.task.workspaceRoot,p,true);
@@ -62,10 +81,17 @@ export class Workspace {
       if(now!==this.original.get(p))throw new BridgeError('WRITE_CONFLICT','Source changed during task; staged edits retained, no changes published','BLOCKED');
       changes.push({p,data,target});
     }
-    // Validate the entire change set before any write. Local concurrent attackers are outside this boundary.
-    for(const c of changes) {
-      writeFileSafe(this.task.workspaceRoot,c.p,c.data);
-    }
+    const journal={version:1,taskId:this.task.taskId,state:'PREPARED',files:changes.map(c=>({path:c.p,beforeHash:this.original.get(c.p)??null,afterHash:digest(c.data),status:'pending'}))};
+    const journalPath=path.join(path.dirname(this.root),'publication.json');
+    atomicJSON(journalPath,journal);
+    try {
+      journal.state='PUBLISHING';atomicJSON(journalPath,journal);
+      for(const [index,c] of changes.entries()) {
+        checkpoint();writeFileSafe(this.task.workspaceRoot,c.p,c.data);
+        journal.files[index]!.status='published';atomicJSON(journalPath,journal);
+      }
+      checkpoint();journal.state='COMPLETED';atomicJSON(journalPath,journal);
+    }catch(e){journal.state='INTERRUPTED';atomicJSON(journalPath,journal);throw e;}
     return changes.map(c=>c.p);
   }
 }

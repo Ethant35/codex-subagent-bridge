@@ -1,0 +1,59 @@
+{
+  "author": "Ethan",
+  "date": "2026-10-22T20:34:59.613Z",
+  "sourceTag": "v1.0.0",
+  "sourceCommit": "5f3a3eb62b9e0341839a5c78ecdd2eb5c1859f0e",
+  "node": "v22.13.1",
+  "platform": "darwin",
+  "arch": "arm64",
+  "providerCalls": 0,
+  "dependencyReuse": "identical lockfile; archived old source rebuilt against installed lock",
+  "upgrade": "PASS",
+  "wholeStoreBackup": "PASS",
+  "corruptionDetected": "PASS",
+  "restoredInspection": "PASS",
+  "oldCodeRollbackInspection": "PASS",
+  "restoredScheduler": "PASS",
+  "hashes": [
+    {
+      "file": "runs/8dbfdbdc-be88-4bf9-8e45-e5270981e096/events.jsonl",
+      "mode": 384,
+      "sha256": "f0e6d4934d7e2c01ba104ecee95fefe514caca07af52b292dd95caa271f311a3"
+    },
+    {
+      "file": "runs/8dbfdbdc-be88-4bf9-8e45-e5270981e096/originals/fact.txt",
+      "mode": 384,
+      "sha256": "482b22aaf40819424c033ee434c86577b7af8080fe1c2d8aa5efd3528a1131ac"
+    },
+    {
+      "file": "runs/8dbfdbdc-be88-4bf9-8e45-e5270981e096/run.json",
+      "mode": 384,
+      "sha256": "211c685d59304352cccaf9ada7151b72d84f2fe3e41b739ab89b1bd78c4600dd"
+    },
+    {
+      "file": "runs/8dbfdbdc-be88-4bf9-8e45-e5270981e096/workspace/fact.txt",
+      "mode": 384,
+      "sha256": "482b22aaf40819424c033ee434c86577b7af8080fe1c2d8aa5efd3528a1131ac"
+    },
+    {
+      "file": "runs/f54a3be0-eff0-425d-9839-5dededfc5355/events.jsonl",
+      "mode": 384,
+      "sha256": "5d48a0ea2d5de348877704ad5e60be0f5b4eb49d1b10c63ab89032133b1105fa"
+    },
+    {
+      "file": "runs/f54a3be0-eff0-425d-9839-5dededfc5355/run.json",
+      "mode": 384,
+      "sha256": "9f520a18fe93c9cf94bc008704bd38546fc1233544cc4518ae0c7a928e720a99"
+    },
+    {
+      "file": "runs/f54a3be0-eff0-425d-9839-5dededfc5355/workspace/fact.txt",
+      "mode": 384,
+      "sha256": "482b22aaf40819424c033ee434c86577b7af8080fe1c2d8aa5efd3528a1131ac"
+    },
+    {
+      "file": "scheduler.sqlite",
+      "mode": 384,
+      "sha256": "914b576bc4822801092eb62a9d077068e5c8d668e1f0ba07c7bed38a466ce0dc"
+    }
+  ]
+}

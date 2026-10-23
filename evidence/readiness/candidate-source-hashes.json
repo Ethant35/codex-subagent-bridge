@@ -1,0 +1,33 @@
+{
+  "author": "Ethan",
+  "date": "2026-10-22",
+  "sha256": {
+    "src/claude-sdk-runner.ts": "7b924e6e5791a377c5160a4d27716a3f3f6c5393c5993435c540f998c2d77b29",
+    "src/cli.ts": "487ccea62f5657da0663ac3e69c9a5256a1ca1c8aabde6d65108c2a3f85824a2",
+    "src/file-tools.ts": "5ce72d203de1bbfb931f7eca53ef207f93d7fd653b70e095d9da23bb2f6204f2",
+    "src/local-commands.ts": "c3460b58966e43fec8aca8fe179b310e897876987ab969d19a00c61ea74a1577",
+    "src/process.ts": "75c04ab71237c6488b9274100a42584a07ec297e7fbe3242c20422b2b49ae5a1",
+    "src/providers/claude.ts": "43bf9c9b6b14b9d121ac250c954b639bb0e3f65608605d9c11fc123ec2ea5b9b",
+    "src/providers/openrouter.ts": "71c37c3d3f5b4e90b41e08af798256671da490144315936d65fea7f77b6422ef",
+    "src/redact.ts": "ff6275a2a1d3512f2af382bb9d173cc99c1ad99b3b37480ae247429aab6082a1",
+    "src/runner.ts": "150beb8963150833d4c0314da70d795f9f7997fcca0808740697a30d5fb45b2c",
+    "src/schema.ts": "83a0f5bd320908e3626708bc83691e7c82e59b4ccaf1286eb914b5d02dea575e",
+    "src/store.ts": "1b455dba2c956fcdf1933ea6d805560be7c14e249737358250381e5165c3d10b",
+    "src/types.ts": "23bdb1447795bb7ae7caf6772c120d3dc6b7c661a1552b799ec1b910792a7140",
+    "src/workspace.ts": "1ad74a49e1e9ce3a3948043db9476ae3e84810d1280e48534e7cf5a20314b501",
+    "tests/capability.test.mjs": "6f88bb4d1118e8eaac7fdc4ba3ee42d1608e262011ed3700a47a64759df591e4",
+    "tests/cli.test.mjs": "7649dd469b071081c3c2378df6cde055f36ada07d3ec985c2136f1f9c6a4da83",
+    "tests/lifecycle.test.mjs": "cfc51afd31307bfd7300f5763b9820eea2dcc287784f57803ab56579193d27c5",
+    "tests/live.test.mjs": "68d1f9cf468f87a73be276d2c74048d53cf575cef02895abd2a29595430d0c7b",
+    "tests/network-failure.test.mjs": "babb1687304a3058d3bd1a19015ce575b84039fc9f96321d7dc2f00ca67b38ef",
+    "tests/onboarding.test.mjs": "6942955f53376eaaa2cd4eb91db27428544eac2c5e75057d383becd2c458aa54",
+    "tests/process.test.mjs": "a59d66b41b097ce32b36e407eeba9b416f77923922b8b54c87df6ca069ceab57",
+    "tests/providers-openrouter.test.mjs": "0bf12de8ccb0044f98b13d12a0ccfd42f9901663a4ea44b04e6b68028f4046a6",
+    "tests/publication.test.mjs": "2502a3dfd23148794cdd7c22e7bb2d402fffafa23c277d5d13f7c54bd87a4401",
+    "tests/runner-recovery.test.mjs": "54fe8781ba6091b758318a0365d3254d0543c51ffa2e78c6e54ddab8b073cc0b",
+    "tests/storage.test.mjs": "925e2cf097d4d11b822202195ffa29280f89e3c32e84abdf6120c9aac75da2cd",
+    "package.json": "2cb1594da3f0ab28828de32c79fe2f9e5dd6015893bdc214ae8b4c2db22be051",
+    "package-lock.json": "1571cf691a29a7dcc4772aa4dde91050960d03ba79ab4344668080c864db4fba",
+    "tsconfig.json": "d38f582c640c55b69683b46ce491accd28d970e66b4d4ecafd204d820d5172c0"
+  }
+}

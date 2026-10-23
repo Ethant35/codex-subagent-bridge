@@ -1,0 +1,95 @@
+TAP version 13
+# Subtest: CB-05 live OpenRouter exact authorized edit
+not ok 1 - CB-05 live OpenRouter exact authorized edit
+  ---
+  duration_ms: 366.335083
+  location: '<qualification>/source/tests/live.test.mjs:42:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    {
+      "id": "5a142334-486b-4e3c-b5a4-e309f55c771d",
+      "correlationId": "6c9fa999-831b-40ed-a9ac-2a45c291d470",
+      "state": "FAILED",
+      "task": {
+        "version": 1,
+        "taskId": "5a142334-486b-4e3c-b5a4-e309f55c771d",
+        "correlationId": "6c9fa999-831b-40ed-a9ac-2a45c291d470",
+        "provider": "openrouter",
+        "backend": "api",
+        "model": "deepseek/deepseek-v4.1-flash-1017",
+        "instructions": "Use write_file to create result.txt with exactly \"edited by child\\n\". Then say done.",
+        "workspaceRoot": "<fixture>/repo",
+        "allowedOperations": [
+          "write_file"
+        ],
+        "readablePaths": [],
+        "writablePaths": [
+          "result.txt"
+        ],
+        "maxRuntimeMs": 120000,
+        "maxToolSteps": 8,
+        "maxSpendUsd": 0.02,
+        "expectedOutput": "Exact fact.txt contents",
+        "resultFormat": "text",
+        "networkPolicy": "provider-only"
+      },
+      "instructionHash": "4bd16476c01f887edebece6e8b32d03a49319420465d853658e933c9111a98ea",
+      "pid": 67515,
+      "createdAt": "2026-10-23T05:10:01.040Z",
+      "updatedAt": "2026-10-23T05:10:01.251Z",
+      "workspace": "<fixture>/state/runs/5a142334-486b-4e3c-b5a4-e309f55c771d/workspace",
+      "error": {
+        "code": "MALFORMED_CATALOG",
+        "message": "OpenRouter catalog is invalid"
+      }
+    }
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    complete (file://<qualification>/source/tests/live.test.mjs:31:75)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async TestContext.<anonymous> (file://<qualification>/source/tests/live.test.mjs:42:329)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: CB-06 native Codex parent uses OpenRouter child result
+not ok 2 - CB-06 native Codex parent uses OpenRouter child result
+  ---
+  duration_ms: 6807.86325
+  location: '<qualification>/source/tests/live.test.mjs:43:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'Delegation failed: `MALFORMED_CATALOG` — OpenRouter catalog is invalid.'
+    - 'PARENT:fact-651bb4e8-778f-474c-9184-a90af3c9c8d1'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'PARENT:fact-651bb4e8-778f-474c-9184-a90af3c9c8d1'
+  actual: 'Delegation failed: `MALFORMED_CATALOG` — OpenRouter catalog is invalid.'
+  operator: 'strictEqual'
+  stack: |-
+    parent (file://<qualification>/source/tests/live.test.mjs:38:110)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async TestContext.<anonymous> (file://<qualification>/source/tests/live.test.mjs:43:166)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7233.875667

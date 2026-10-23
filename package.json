@@ -1,6 +1,6 @@
 {
   "name": "codex-subagent-bridge",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Bounded external delegation for native OpenAI Codex",
   "type": "module",
   "bin": {
@@ -19,7 +19,17 @@
     "PROVIDERS.md",
     "SECURITY.md",
     "ACCEPTANCE.md",
-    "examples"
+    "examples",
+    "OPERATIONS.md",
+    "READINESS.md",
+    "THIRD_PARTY_NOTICES.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "docs",
+    "evidence",
+    "licenses",
+    "src",
+    "CONSTRAINTS.md"
   ],
   "scripts": {
     "build": "tsc && chmod +x dist/cli.js",

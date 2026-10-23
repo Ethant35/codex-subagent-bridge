@@ -1,0 +1,706 @@
+
+> codex-subagent-bridge@1.1.0 test
+> npm run build && node --test --test-concurrency=1 tests/*.test.mjs
+
+
+> codex-subagent-bridge@1.1.0 build
+> tsc && chmod +x dist/cli.js
+
+TAP version 13
+# Subtest: CB-08/09 named pipe in source cannot block the production task deadline
+ok 1 - CB-08/09 named pipe in source cannot block the production task deadline
+  ---
+  duration_ms: 169.35325
+  ...
+# Subtest: CB-08 MCP read_file malformed arguments are durably audited
+ok 2 - CB-08 MCP read_file malformed arguments are durably audited
+  ---
+  duration_ms: 148.176042
+  ...
+# Subtest: CB-08 MCP write_file malformed arguments are durably audited
+ok 3 - CB-08 MCP write_file malformed arguments are durably audited
+  ---
+  duration_ms: 139.800334
+  ...
+# Subtest: CB-08 unknown MCP tool is denied and durably audited
+ok 4 - CB-08 unknown MCP tool is denied and durably audited
+  ---
+  duration_ms: 137.607541
+  ...
+# Subtest: CB-08 a durable denial prevents later writes, including after server restart
+ok 5 - CB-08 a durable denial prevents later writes, including after server restart
+  ---
+  duration_ms: 272.461459
+  ...
+# Subtest: CB-08/11 overlapping MCP processes share one task step budget
+ok 6 - CB-08/11 overlapping MCP processes share one task step budget
+  ---
+  duration_ms: 273.974666
+  ...
+# Subtest: CB-08 concurrent calls cannot overspend a shared tool budget
+ok 7 - CB-08 concurrent calls cannot overspend a shared tool budget
+  ---
+  duration_ms: 1419.49975
+  ...
+# Subtest: CB-08 write rejects a fifo without modifying its target
+ok 8 - CB-08 write rejects a fifo without modifying its target
+  ---
+  duration_ms: 1167.74475
+  ...
+# Subtest: CB-08 write rejects a hardlink without modifying its target
+ok 9 - CB-08 write rejects a hardlink without modifying its target
+  ---
+  duration_ms: 559.49925
+  ...
+# Subtest: CB-01/15 CLI --help
+ok 10 - CB-01/15 CLI --help
+  ---
+  duration_ms: 151.277417
+  ...
+# Subtest: CB-01/15 CLI providers --json
+ok 11 - CB-01/15 CLI providers --json
+  ---
+  duration_ms: 113.580625
+  ...
+# Subtest: CB-01/15 CLI doctor --json
+ok 12 - CB-01/15 CLI doctor --json
+  ---
+  duration_ms: 212.940625
+  ...
+# Subtest: CB-01/15 CLI doctor --provider openrouter --json
+ok 13 - CB-01/15 CLI doctor --provider openrouter --json
+  ---
+  duration_ms: 172.771959
+  ...
+# Subtest: CB-01/15 CLI doctor --provider claude --json
+ok 14 - CB-01/15 CLI doctor --provider claude --json
+  ---
+  duration_ms: 167.791834
+  ...
+# Subtest: CB-01/15 CLI auth-status --provider claude --json
+ok 15 - CB-01/15 CLI auth-status --provider claude --json
+  ---
+  duration_ms: 173.566084
+  ...
+# Subtest: CB-02 missing OpenRouter credentials persists BLOCKED without touching source
+ok 16 - CB-02 missing OpenRouter credentials persists BLOCKED without touching source
+  ---
+  duration_ms: 169.921584
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"instructions":""}
+ok 17 - CB-03/07 invalid envelope rejected {"instructions":""}
+  ---
+  duration_ms: 111.736
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"instructions":"  "}
+ok 18 - CB-03/07 invalid envelope rejected {"instructions":"  "}
+  ---
+  duration_ms: 123.302042
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"version":2}
+ok 19 - CB-03/07 invalid envelope rejected {"version":2}
+  ---
+  duration_ms: 114.176792
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"writablePaths":["../secret"]}
+ok 20 - CB-03/07 invalid envelope rejected {"writablePaths":["../secret"]}
+  ---
+  duration_ms: 121.094958
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"readablePaths":["/etc/passwd"]}
+ok 21 - CB-03/07 invalid envelope rejected {"readablePaths":["/etc/passwd"]}
+  ---
+  duration_ms: 123.439666
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"provider":"claude","backend":"api","credentialMode":"api-key"}
+ok 22 - CB-03/07 invalid envelope rejected {"provider":"claude","backend":"api","credentialMode":"api-key"}
+  ---
+  duration_ms: 119.589583
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"maxToolSteps":-1}
+ok 23 - CB-03/07 invalid envelope rejected {"maxToolSteps":-1}
+  ---
+  duration_ms: 161.274042
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"networkPolicy":"all"}
+ok 24 - CB-03/07 invalid envelope rejected {"networkPolicy":"all"}
+  ---
+  duration_ms: 603.330792
+  ...
+# Subtest: CB-03/07 invalid envelope rejected {"unexpected":"value"}
+ok 25 - CB-03/07 invalid envelope rejected {"unexpected":"value"}
+  ---
+  duration_ms: 367.197125
+  ...
+# Subtest: CB-03 missing task arguments fail before execution
+ok 26 - CB-03 missing task arguments fail before execution
+  ---
+  duration_ms: 565.689292
+  ...
+# Subtest: CB-13 restart inspect and duplicate task protection
+ok 27 - CB-13 restart inspect and duplicate task protection
+  ---
+  duration_ms: 2033.745292
+  ...
+# Subtest: CB-14 synthetic secrets redacted from JSON and disk records
+ok 28 - CB-14 synthetic secrets redacted from JSON and disk records
+  ---
+  duration_ms: 320.038791
+  ...
+# Subtest: CB-18 conflicting billing mode refused without provider execution
+ok 29 - CB-18 conflicting billing mode refused without provider execution
+  ---
+  duration_ms: 233.903084
+  ...
+# Subtest: CB-16 real SDK import and submission setup without inference
+ok 30 - CB-16 real SDK import and submission setup without inference
+  ---
+  duration_ms: 204.669666
+  ...
+# Subtest: CB-08 source symlink rejected before provider call
+ok 31 - CB-08 source symlink rejected before provider call
+  ---
+  duration_ms: 173.059792
+  ...
+# Subtest: CB-08 production MCP file capability enforces reads, writes, traversal, and step budget
+ok 32 - CB-08 production MCP file capability enforces reads, writes, traversal, and step budget
+  ---
+  duration_ms: 193.536333
+  ...
+# Subtest: CB-06 MCP discovery and validation uses production cpb_delegate (live parent separately gated)
+ok 33 - CB-06 MCP discovery and validation uses production cpb_delegate (live parent separately gated)
+  ---
+  duration_ms: 181.200583
+  ...
+# Subtest: CB-02 Claude sdk missing API key is actionable
+ok 34 - CB-02 Claude sdk missing API key is actionable
+  ---
+  duration_ms: 163.967666
+  ...
+# Subtest: CB-02 Claude cli missing API key is actionable
+ok 35 - CB-02 Claude cli missing API key is actionable
+  ---
+  duration_ms: 174.241041
+  ...
+# Subtest: CB-18 SDK subscription fails closed under official authentication policy
+ok 36 - CB-18 SDK subscription fails closed under official authentication policy
+  ---
+  duration_ms: 155.513
+  ...
+# Subtest: CB-08 hard-linked source is rejected
+ok 37 - CB-08 hard-linked source is rejected
+  ---
+  duration_ms: 163.4965
+  ...
+# Subtest: CB-14 conflicting synthetic Claude credentials never leak to logs
+ok 38 - CB-14 conflicting synthetic Claude credentials never leak to logs
+  ---
+  duration_ms: 167.924709
+  ...
+# Subtest: CB-09 task deadline before provider submission persists TIMED_OUT
+ok 39 - CB-09 task deadline before provider submission persists TIMED_OUT
+  ---
+  duration_ms: 268.6125
+  ...
+# Subtest: CB-10 production cpb cancel is honored after synchronous snapshot resumes
+ok 40 - CB-10 production cpb cancel is honored after synchronous snapshot resumes
+  ---
+  duration_ms: 602.40325
+  ...
+# Subtest: CB-11 two real running tasks hold slots; third queues and cancels independently
+ok 41 - CB-11 two real running tasks hold slots; third queues and cancels independently
+  ---
+  duration_ms: 1890.393708
+  ...
+# Subtest: CB-04 live OpenRouter reads actual file
+ok 42 - CB-04 live OpenRouter reads actual file # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.367416
+  ...
+# Subtest: CB-05 live OpenRouter exact authorized edit
+ok 43 - CB-05 live OpenRouter exact authorized edit # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.083708
+  ...
+# Subtest: CB-06 native Codex parent uses OpenRouter child result
+ok 44 - CB-06 native Codex parent uses OpenRouter child result # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.031416
+  ...
+# Subtest: CB-07 live unique instruction survives conversion
+ok 45 - CB-07 live unique instruction survives conversion # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.032833
+  ...
+# Subtest: CB-09 live task timeout persists TIMED_OUT
+ok 46 - CB-09 live task timeout persists TIMED_OUT # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.032958
+  ...
+# Subtest: CB-10 live task cancellation after a real provider response persists CANCELLED
+ok 47 - CB-10 live task cancellation after a real provider response persists CANCELLED # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.0285
+  ...
+# Subtest: CB-11 concurrent real tasks keep independent workspaces/results
+ok 48 - CB-11 concurrent real tasks keep independent workspaces/results # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.339292
+  ...
+# Subtest: CB-19 real Claude sdk read
+ok 49 - CB-19 real Claude sdk read # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.026542
+  ...
+# Subtest: CB-20 real Claude cli read
+ok 50 - CB-20 real Claude cli read # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.179084
+  ...
+# Subtest: CB-21 native Codex to Claude sdk
+ok 51 - CB-21 native Codex to Claude sdk # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.224125
+  ...
+# Subtest: CB-22 native Codex to Claude cli
+ok 52 - CB-22 native Codex to Claude cli # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.065959
+  ...
+# Subtest: CB-23 Claude sdk edits only authorized file
+ok 53 - CB-23 Claude sdk edits only authorized file # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.022709
+  ...
+# Subtest: CB-23 Claude cli edits only authorized file
+ok 54 - CB-23 Claude cli edits only authorized file # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.01775
+  ...
+# Subtest: CB-24 Claude sdk timeout cannot become COMPLETED
+ok 55 - CB-24 Claude sdk timeout cannot become COMPLETED # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.015167
+  ...
+# Subtest: CB-24 Claude cli timeout cannot become COMPLETED
+ok 56 - CB-24 Claude cli timeout cannot become COMPLETED # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.015041
+  ...
+# Subtest: CB-24 real Claude rate-limit reproduction
+ok 57 - CB-24 real Claude rate-limit reproduction # SKIP BLOCKED_EXTERNAL: requires an authorized account in a reproducible rate-limited state; never induce quota exhaustion
+  ---
+  duration_ms: 0.014917
+  ...
+# Subtest: CB-23 Claude sdk forbidden write is blocked by broker
+ok 58 - CB-23 Claude sdk forbidden write is blocked by broker # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.014792
+  ...
+# Subtest: CB-23 Claude cli forbidden write is blocked by broker
+ok 59 - CB-23 Claude cli forbidden write is blocked by broker # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.014792
+  ...
+# Subtest: CB-24 Claude sdk real invalid-model failure
+ok 60 - CB-24 Claude sdk real invalid-model failure # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.017792
+  ...
+# Subtest: CB-24 Claude cli real invalid-model failure
+ok 61 - CB-24 Claude cli real invalid-model failure # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.014542
+  ...
+# Subtest: CB-24 Claude sdk cancellation after runtime start
+ok 62 - CB-24 Claude sdk cancellation after runtime start # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.014417
+  ...
+# Subtest: CB-24 Claude cli cancellation after runtime start
+ok 63 - CB-24 Claude cli cancellation after runtime start # SKIP BLOCKED_EXTERNAL: live opt-in and authorized provider credentials required
+  ---
+  duration_ms: 0.015834
+  ...
+# Subtest: CB-12/14 real OpenRouter rejects synthetic credential without disclosure
+ok 64 - CB-12/14 real OpenRouter rejects synthetic credential without disclosure # SKIP Network E2E opt-in required; no real credentials needed
+  ---
+  duration_ms: 0.256208
+  ...
+# Subtest: fresh sample and validation are offline, private, noninteractive and never overwrite
+ok 65 - fresh sample and validation are offline, private, noninteractive and never overwrite
+  ---
+  duration_ms: 641.388833
+  ...
+# Subtest: task-file FIFO is rejected promptly without hanging the CLI
+ok 66 - task-file FIFO is rejected promptly without hanging the CLI
+  ---
+  duration_ms: 118.107291
+  ...
+# Subtest: help contains actual quickstart and recovery/diagnostic commands without terminal controls
+ok 67 - help contains actual quickstart and recovery/diagnostic commands without terminal controls
+  ---
+  duration_ms: 120.943625
+  ...
+# Subtest: shareable diagnostics exclude exact task instructions and output content
+ok 68 - shareable diagnostics exclude exact task instructions and output content
+  ---
+  duration_ms: 427.631834
+  ...
+# Subtest: invalid pagination options fail explicitly, including null and empty values
+ok 69 - invalid pagination options fail explicitly, including null and empty values
+  ---
+  duration_ms: 347.575042
+  ...
+# Subtest: offline validation leaves subscription login unknown and reports API-key presence separately
+ok 70 - offline validation leaves subscription login unknown and reports API-key presence separately
+  ---
+  duration_ms: 1104.140708
+  ...
+# Subtest: captures stdout, stderr, exit code, and bounded streaming lines
+ok 71 - captures stdout, stderr, exit code, and bounded streaming lines
+  ---
+  duration_ms: 45.436083
+  ...
+# Subtest: passes stdin byte-for-byte
+ok 72 - passes stdin byte-for-byte
+  ---
+  duration_ms: 44.970875
+  ...
+# Subtest: returns a clear error for a missing executable
+ok 73 - returns a clear error for a missing executable
+  ---
+  duration_ms: 1.185209
+  ...
+# Subtest: terminates the process group when output exceeds its limit
+ok 74 - terminates the process group when output exceeds its limit
+  ---
+  duration_ms: 42.926792
+  ...
+# Subtest: times out a real process and reaps it
+ok 75 - times out a real process and reaps it
+  ---
+  duration_ms: 85.683
+  ...
+# Subtest: cancels a real process and reaps it
+ok 76 - cancels a real process and reaps it
+  ---
+  duration_ms: 46.216416
+  ...
+# Subtest: bounds progress callback lines from a real child
+ok 77 - bounds progress callback lines from a real child
+  ---
+  duration_ms: 54.685917
+  ...
+# Subtest: kills descendants that keep inherited pipes open after leader exit
+ok 78 - kills descendants that keep inherited pipes open after leader exit
+  ---
+  duration_ms: 56.492791
+  ...
+# Subtest: kills same-group descendants that ignore SIGTERM and close their pipes
+ok 79 - kills same-group descendants that ignore SIGTERM and close their pipes
+  ---
+  duration_ms: 200.735583
+  ...
+# (node:89265) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: controlled successful read preserves exact instructions and executes one authorized read
+ok 80 - controlled successful read preserves exact instructions and executes one authorized read
+  ---
+  duration_ms: 11.832916
+  ...
+# Subtest: finite budget rejects missing prompt price before inference
+ok 81 - finite budget rejects missing prompt price before inference
+  ---
+  duration_ms: 0.370291
+  ...
+# Subtest: controlled provider rejects missing choices without false completion
+ok 82 - controlled provider rejects missing choices without false completion
+  ---
+  duration_ms: 0.693375
+  ...
+# Subtest: controlled provider rejects null tool-call entry without false completion
+ok 83 - controlled provider rejects null tool-call entry without false completion
+  ---
+  duration_ms: 0.533875
+  ...
+# Subtest: controlled provider rejects object output without false completion
+ok 84 - controlled provider rejects object output without false completion
+  ---
+  duration_ms: 0.738416
+  ...
+# Subtest: controlled provider rejects empty output without false completion
+ok 85 - controlled provider rejects empty output without false completion
+  ---
+  duration_ms: 0.305209
+  ...
+# Subtest: controlled provider rejects unknown cost under finite cap without false completion
+ok 86 - controlled provider rejects unknown cost under finite cap without false completion
+  ---
+  duration_ms: 0.222667
+  ...
+# Subtest: controlled provider rejects malformed tool-call JSON without false completion
+ok 87 - controlled provider rejects malformed tool-call JSON without false completion
+  ---
+  duration_ms: 0.375625
+  ...
+# Subtest: malformed catalog entries fail closed before inference
+ok 88 - malformed catalog entries fail closed before inference
+  ---
+  duration_ms: 0.32925
+  ...
+# Subtest: null catalog JSON is classified as malformed without inference
+ok 89 - null catalog JSON is classified as malformed without inference
+  ---
+  duration_ms: 0.397
+  ...
+# Subtest: null completion JSON is classified as malformed without retry
+ok 90 - null completion JSON is classified as malformed without retry
+  ---
+  duration_ms: 0.328416
+  ...
+# Subtest: HTTP 401 inference response fails without retry
+ok 91 - HTTP 401 inference response fails without retry
+  ---
+  duration_ms: 0.254833
+  ...
+# Subtest: HTTP 429 inference response fails without retry
+ok 92 - HTTP 429 inference response fails without retry
+  ---
+  duration_ms: 0.132083
+  ...
+# Subtest: uncertain failed inference request is never retried
+ok 93 - uncertain failed inference request is never retried
+  ---
+  duration_ms: 0.173
+  ...
+# Subtest: oversized catalog response is rejected before inference
+ok 94 - oversized catalog response is rejected before inference
+  ---
+  duration_ms: 0.410084
+  ...
+# Subtest: interrupted inference response fails without retry
+ok 95 - interrupted inference response fails without retry
+  ---
+  duration_ms: 0.254375
+  ...
+# Subtest: abort during inference response stops without retry
+ok 96 - abort during inference response stops without retry
+  ---
+  duration_ms: 0.167875
+  ...
+# Subtest: structured pricing overrides use conservative rates without weakening provider price caps
+ok 97 - structured pricing overrides use conservative rates without weakening provider price caps
+  ---
+  duration_ms: 0.157333
+  ...
+# Subtest: finite budget rejects non-array override before inference
+ok 98 - finite budget rejects non-array override before inference
+  ---
+  duration_ms: 0.106959
+  ...
+# Subtest: finite budget rejects null entry override before inference
+ok 99 - finite budget rejects null entry override before inference
+  ---
+  duration_ms: 0.063958
+  ...
+# Subtest: finite budget rejects unknown prompt override before inference
+ok 100 - finite budget rejects unknown prompt override before inference
+  ---
+  duration_ms: 0.064333
+  ...
+# Subtest: finite budget rejects unknown completion override before inference
+ok 101 - finite budget rejects unknown completion override before inference
+  ---
+  duration_ms: 0.061625
+  ...
+# Subtest: finite budget rejects request charge override before inference
+ok 102 - finite budget rejects request charge override before inference
+  ---
+  duration_ms: 0.061958
+  ...
+# Subtest: finite budget rejects negative price override before inference
+ok 103 - finite budget rejects negative price override before inference
+  ---
+  duration_ms: 0.130833
+  ...
+# Subtest: omitted request price requires explicit zero request-price routing cap
+ok 104 - omitted request price requires explicit zero request-price routing cap
+  ---
+  duration_ms: 0.115542
+  ...
+# Subtest: invalid or nonzero base request price null blocks inference
+ok 105 - invalid or nonzero base request price null blocks inference
+  ---
+  duration_ms: 0.080791
+  ...
+# Subtest: invalid or nonzero base request price "" blocks inference
+ok 106 - invalid or nonzero base request price "" blocks inference
+  ---
+  duration_ms: 0.067334
+  ...
+# Subtest: invalid or nonzero base request price "invalid" blocks inference
+ok 107 - invalid or nonzero base request price "invalid" blocks inference
+  ---
+  duration_ms: 0.0655
+  ...
+# Subtest: invalid or nonzero base request price "-1" blocks inference
+ok 108 - invalid or nonzero base request price "-1" blocks inference
+  ---
+  duration_ms: 0.053791
+  ...
+# Subtest: invalid or nonzero base request price "0.1" blocks inference
+ok 109 - invalid or nonzero base request price "0.1" blocks inference
+  ---
+  duration_ms: 0.05425
+  ...
+# (node:89271) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: publication disk-full failure preserves the original destination bytes
+ok 110 - publication disk-full failure preserves the original destination bytes
+  ---
+  duration_ms: 108.539833
+  ...
+# Subtest: partial publication retains originals and a durable per-file recovery journal
+ok 111 - partial publication retains originals and a durable per-file recovery journal
+  ---
+  duration_ms: 63.980666
+  ...
+# Subtest: publication checks cancellation between files and records recoverable progress
+ok 112 - publication checks cancellation between files and records recoverable progress
+  ---
+  duration_ms: 61.637167
+  ...
+# Subtest: publication preserves existing file mode and leaves no temporary source files
+ok 113 - publication preserves existing file mode and leaves no temporary source files
+  ---
+  duration_ms: 99.534708
+  ...
+# Subtest: recovery compares observed bytes after interruption and never overwrites divergent edits
+ok 114 - recovery compares observed bytes after interruption and never overwrites divergent edits
+  ---
+  duration_ms: 87.346417
+  ...
+# Subtest: recovery reads a bounded journal for the maximum valid path count
+ok 115 - recovery reads a bounded journal for the maximum valid path count
+  ---
+  duration_ms: 30.264666
+  ...
+# (node:89306) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: cancellation polling faults while queued abort safely and release process listeners
+ok 116 - cancellation polling faults while queued abort safely and release process listeners
+  ---
+  duration_ms: 56.161167
+  ...
+# Subtest: final run save failure rejects without success, releases the slot, and retains recovery data
+ok 117 - final run save failure rejects without success, releases the slot, and retains recovery data
+  ---
+  duration_ms: 12.821875
+  ...
+# Subtest: final event failure rejects and records FAILED after the cancelled run save
+ok 118 - final event failure rejects and records FAILED after the cancelled run save
+  ---
+  duration_ms: 10.867542
+  ...
+# Subtest: non-ENOENT capability cleanup failure is classified and never returned as success
+ok 119 - non-ENOENT capability cleanup failure is classified and never returned as success
+  ---
+  duration_ms: 12.388042
+  ...
+# (node:89311) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: list reports corrupt run records instead of silently omitting them
+ok 120 - list reports corrupt run records instead of silently omitting them
+  ---
+  duration_ms: 13.209584
+  ...
+# Subtest: run IDs must be canonical UUIDs before any store path is formed
+ok 121 - run IDs must be canonical UUIDs before any store path is formed
+  ---
+  duration_ms: 8.208334
+  ...
+# Subtest: persisted owner PID must be a positive safe integer
+ok 122 - persisted owner PID must be a positive safe integer
+  ---
+  duration_ms: 10.691291
+  ...
+# Subtest: persisted task records are validated without echoing task contents
+ok 123 - persisted task records are validated without echoing task contents
+  ---
+  duration_ms: 9.622709
+  ...
+# Subtest: existing runs directory must stay private and must not be a symlink
+ok 124 - existing runs directory must stay private and must not be a symlink
+  ---
+  duration_ms: 10.430583
+  ...
+# Subtest: run directory symlink cannot redirect record writes outside the store
+ok 125 - run directory symlink cannot redirect record writes outside the store
+  ---
+  duration_ms: 9.51525
+  ...
+# Subtest: corrupt scheduler database produces a classified, non-destructive error
+ok 126 - corrupt scheduler database produces a classified, non-destructive error
+  ---
+  duration_ms: 9.609959
+  ...
+# Subtest: newer scheduler schema is rejected before any mutation
+ok 127 - newer scheduler schema is rejected before any mutation
+  ---
+  duration_ms: 12.82975
+  ...
+# Subtest: SQLite lock contention has a stable error code
+ok 128 - SQLite lock contention has a stable error code
+  ---
+  duration_ms: 5135.643875
+  ...
+# Subtest: records and scheduler schema from the released v1.0.0 Store remain readable and migrate additively
+ok 129 - records and scheduler schema from the released v1.0.0 Store remain readable and migrate additively
+  ---
+  duration_ms: 14.610875
+  ...
+# Subtest: event and cancellation paths reject symlinks
+ok 130 - event and cancellation paths reject symlinks
+  ---
+  duration_ms: 17.148375
+  ...
+# Subtest: private JSONL helper appends bounded, redacted, fsynced records and rejects unsafe paths
+ok 131 - private JSONL helper appends bounded, redacted, fsynced records and rejects unsafe paths
+  ---
+  duration_ms: 13.027417
+  ...
+# Subtest: ensurePrivateFile creates a mode-0600 file and rejects existing symlinks
+ok 132 - ensurePrivateFile creates a mode-0600 file and rejects existing symlinks
+  ---
+  duration_ms: 16.866167
+  ...
+# Subtest: uppercase UUID spelling remains addressable for existing records
+ok 133 - uppercase UUID spelling remains addressable for existing records
+  ---
+  duration_ms: 20.548292
+  ...
+# Subtest: list returns bounded stable pages with a lossless cursor walk
+ok 134 - list returns bounded stable pages with a lossless cursor walk
+  ---
+  duration_ms: 2369.732459
+  ...
+# Subtest: scheduler reserves exactly two slots and reuses a released slot
+ok 135 - scheduler reserves exactly two slots and reuses a released slot
+  ---
+  duration_ms: 21.419917
+  ...
+# Subtest: run record FIFO is rejected promptly in a child process
+ok 136 - run record FIFO is rejected promptly in a child process
+  ---
+  duration_ms: 86.674917
+  ...
+1..136
+# tests 136
+# suites 0
+# pass 113
+# fail 0
+# cancelled 0
+# skipped 23
+# todo 0
+# duration_ms 27391.571792

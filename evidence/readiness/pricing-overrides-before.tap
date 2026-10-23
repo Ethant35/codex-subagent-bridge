@@ -1,0 +1,241 @@
+TAP version 13
+# (node:70535) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: controlled successful read preserves exact instructions and executes one authorized read
+ok 1 - controlled successful read preserves exact instructions and executes one authorized read
+  ---
+  duration_ms: 9.847458
+  ...
+# Subtest: finite budget rejects missing request price before inference
+ok 2 - finite budget rejects missing request price before inference
+  ---
+  duration_ms: 0.298708
+  ...
+# Subtest: controlled provider rejects missing choices without false completion
+ok 3 - controlled provider rejects missing choices without false completion
+  ---
+  duration_ms: 0.3885
+  ...
+# Subtest: controlled provider rejects null tool-call entry without false completion
+ok 4 - controlled provider rejects null tool-call entry without false completion
+  ---
+  duration_ms: 0.352458
+  ...
+# Subtest: controlled provider rejects object output without false completion
+ok 5 - controlled provider rejects object output without false completion
+  ---
+  duration_ms: 0.703542
+  ...
+# Subtest: controlled provider rejects empty output without false completion
+ok 6 - controlled provider rejects empty output without false completion
+  ---
+  duration_ms: 1.122208
+  ...
+# Subtest: controlled provider rejects unknown cost under finite cap without false completion
+ok 7 - controlled provider rejects unknown cost under finite cap without false completion
+  ---
+  duration_ms: 1.585083
+  ...
+# Subtest: controlled provider rejects malformed tool-call JSON without false completion
+ok 8 - controlled provider rejects malformed tool-call JSON without false completion
+  ---
+  duration_ms: 1.235375
+  ...
+# Subtest: malformed catalog entries fail closed before inference
+ok 9 - malformed catalog entries fail closed before inference
+  ---
+  duration_ms: 0.997792
+  ...
+# Subtest: null catalog JSON is classified as malformed without inference
+ok 10 - null catalog JSON is classified as malformed without inference
+  ---
+  duration_ms: 0.444667
+  ...
+# Subtest: null completion JSON is classified as malformed without retry
+ok 11 - null completion JSON is classified as malformed without retry
+  ---
+  duration_ms: 0.345042
+  ...
+# Subtest: HTTP 401 inference response fails without retry
+ok 12 - HTTP 401 inference response fails without retry
+  ---
+  duration_ms: 0.392834
+  ...
+# Subtest: HTTP 429 inference response fails without retry
+ok 13 - HTTP 429 inference response fails without retry
+  ---
+  duration_ms: 0.126875
+  ...
+# Subtest: uncertain failed inference request is never retried
+ok 14 - uncertain failed inference request is never retried
+  ---
+  duration_ms: 0.160459
+  ...
+# Subtest: oversized catalog response is rejected before inference
+ok 15 - oversized catalog response is rejected before inference
+  ---
+  duration_ms: 0.330958
+  ...
+# Subtest: interrupted inference response fails without retry
+ok 16 - interrupted inference response fails without retry
+  ---
+  duration_ms: 0.211125
+  ...
+# Subtest: abort during inference response stops without retry
+ok 17 - abort during inference response stops without retry
+  ---
+  duration_ms: 0.203166
+  ...
+# Subtest: structured pricing overrides use conservative rates without weakening provider price caps
+not ok 18 - structured pricing overrides use conservative rates without weakening provider price caps
+  ---
+  duration_ms: 0.151917
+  location: '<checkout>/tests/providers-openrouter.test.mjs:243:1'
+  failureType: 'testCodeFailure'
+  error: 'OpenRouter catalog is invalid'
+  code: 'MALFORMED_CATALOG'
+  name: 'BridgeError'
+  stack: |-
+    models (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/dist/providers/openrouter.js:81:15)
+    async runOpenRouter (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/dist/providers/openrouter.js:99:20)
+    async file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:249:18
+    async withFetch (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:71:12)
+    async TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:248:3)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: finite budget rejects non-array override before inference
+not ok 19 - finite budget rejects non-array override before inference
+  ---
+  duration_ms: 0.288041
+  location: '<checkout>/tests/providers-openrouter.test.mjs:260:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+    
+    Caught error:
+    
+    BridgeError: OpenRouter catalog is invalid
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:262:5
+    async withFetch (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:71:12)
+    async TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:261:3)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: finite budget rejects null entry override before inference
+not ok 20 - finite budget rejects null entry override before inference
+  ---
+  duration_ms: 0.099875
+  location: '<checkout>/tests/providers-openrouter.test.mjs:260:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+    
+    Caught error:
+    
+    BridgeError: OpenRouter catalog is invalid
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:262:5
+    async withFetch (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:71:12)
+    async TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:261:3)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: finite budget rejects unknown prompt override before inference
+not ok 21 - finite budget rejects unknown prompt override before inference
+  ---
+  duration_ms: 0.088833
+  location: '<checkout>/tests/providers-openrouter.test.mjs:260:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+    
+    Caught error:
+    
+    BridgeError: OpenRouter catalog is invalid
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:262:5
+    async withFetch (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:71:12)
+    async TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:261:3)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: finite budget rejects unknown completion override before inference
+not ok 22 - finite budget rejects unknown completion override before inference
+  ---
+  duration_ms: 0.085583
+  location: '<checkout>/tests/providers-openrouter.test.mjs:260:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+    
+    Caught error:
+    
+    BridgeError: OpenRouter catalog is invalid
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:262:5
+    async withFetch (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:71:12)
+    async TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:261:3)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: finite budget rejects request charge override before inference
+not ok 23 - finite budget rejects request charge override before inference
+  ---
+  duration_ms: 0.081542
+  location: '<checkout>/tests/providers-openrouter.test.mjs:260:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+    
+    Caught error:
+    
+    BridgeError: OpenRouter catalog is invalid
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:262:5
+    async withFetch (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:71:12)
+    async TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:261:3)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: finite budget rejects negative price override before inference
+not ok 24 - finite budget rejects negative price override before inference
+  ---
+  duration_ms: 0.13225
+  location: '<checkout>/tests/providers-openrouter.test.mjs:260:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+    
+    Caught error:
+    
+    BridgeError: OpenRouter catalog is invalid
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:262:5
+    async withFetch (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:71:12)
+    async TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/providers-openrouter.test.mjs:261:3)
+    async Test.run (node:internal/test_runner/test:932:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 17
+# fail 7
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 141.581833

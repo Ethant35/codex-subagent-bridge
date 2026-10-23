@@ -1,0 +1,114 @@
+{
+  "author": "Ethan",
+  "date": "2026-10-22T20:37:00.365Z",
+  "node": "v22.13.1",
+  "os": "27.2.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "providerCalls": 0,
+  "workspace": [
+    {
+      "fileCount": 16,
+      "sourceBytes": 8000000,
+      "samples": [
+        {
+          "prepareMs": 143.142542,
+          "publishMs": 349.690042,
+          "rssBytes": 108216320
+        },
+        {
+          "prepareMs": 171.48958300000004,
+          "publishMs": 328.41437499999995,
+          "rssBytes": 120258560
+        },
+        {
+          "prepareMs": 151.44629200000008,
+          "publishMs": 307.87245899999994,
+          "rssBytes": 136806400
+        },
+        {
+          "prepareMs": 172.2360000000001,
+          "publishMs": 323.84175000000005,
+          "rssBytes": 134037504
+        },
+        {
+          "prepareMs": 162.94583399999965,
+          "publishMs": 344.5585000000001,
+          "rssBytes": 144703488
+        }
+      ]
+    },
+    {
+      "fileCount": 1000,
+      "sourceBytes": 100000,
+      "samples": [
+        {
+          "prepareMs": 8289.535708,
+          "publishMs": 18407.358583,
+          "rssBytes": 184696832
+        },
+        {
+          "prepareMs": 8196.864875,
+          "publishMs": 17929.171084,
+          "rssBytes": 133758976
+        }
+      ]
+    }
+  ],
+  "mcpSoak": {
+    "requests": 100,
+    "expectedState": "BLOCKED missing credentials",
+    "elapsedMs": 3859.636749999998,
+    "medianMs": 38.93470800000068,
+    "p95Ms": 42.85466599999927,
+    "rssSamples": [
+      {
+        "afterRuns": 1,
+        "kib": 75008
+      },
+      {
+        "afterRuns": 11,
+        "kib": 76064
+      },
+      {
+        "afterRuns": 21,
+        "kib": 78448
+      },
+      {
+        "afterRuns": 31,
+        "kib": 79184
+      },
+      {
+        "afterRuns": 41,
+        "kib": 82160
+      },
+      {
+        "afterRuns": 51,
+        "kib": 82336
+      },
+      {
+        "afterRuns": 61,
+        "kib": 82416
+      },
+      {
+        "afterRuns": 71,
+        "kib": 82544
+      },
+      {
+        "afterRuns": 81,
+        "kib": 82688
+      },
+      {
+        "afterRuns": 91,
+        "kib": 82720
+      }
+    ],
+    "postSoakSlotReuse": "PASS"
+  },
+  "limits": [
+    "Single host and local filesystem; warm/cache effects uncontrolled.",
+    "RSS is sampled, not a leak proof or isolated peak allocation.",
+    "MCP soak exercises real transport/persistence/scheduler failures; it does not simulate successful provider compatibility.",
+    "Every writable source file has a private original copy; temporary staging and backups increase disk usage."
+  ]
+}

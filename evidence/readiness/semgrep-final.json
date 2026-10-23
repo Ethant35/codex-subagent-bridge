@@ -1,0 +1,124 @@
+{
+  "author": "Ethan",
+  "date": "2026-10-22",
+  "engine": "Community",
+  "mode": "run-all",
+  "metrics": false,
+  "sourceUpload": false,
+  "approvedPlan": "Unchanged prior user approval; initial raw results preserved locally under initial/",
+  "scans": [
+    {
+      "lang": "all",
+      "ruleset": "p/secrets",
+      "findings": 0,
+      "filesScanned": 104,
+      "partial": false,
+      "exitCode": 0
+    },
+    {
+      "lang": "all",
+      "ruleset": "p/security-audit",
+      "findings": 0,
+      "filesScanned": 104,
+      "partial": false,
+      "exitCode": 0
+    },
+    {
+      "lang": "all",
+      "ruleset": "https://github.com/trailofbits/semgrep-rules",
+      "findings": 0,
+      "filesScanned": 104,
+      "partial": false,
+      "exitCode": 0
+    },
+    {
+      "lang": "all",
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "findings": 0,
+      "filesScanned": 104,
+      "partial": true,
+      "exitCode": 2
+    },
+    {
+      "lang": "all",
+      "ruleset": "https://github.com/apiiro/malicious-code-ruleset",
+      "findings": 5,
+      "filesScanned": 16,
+      "partial": true,
+      "exitCode": 2
+    },
+    {
+      "lang": "javascript",
+      "ruleset": "p/javascript",
+      "findings": 0,
+      "filesScanned": 16,
+      "partial": false,
+      "exitCode": 0
+    },
+    {
+      "lang": "javascript",
+      "ruleset": "p/nodejs",
+      "findings": 0,
+      "filesScanned": 16,
+      "partial": false,
+      "exitCode": 0
+    },
+    {
+      "lang": "typescript",
+      "ruleset": "p/typescript",
+      "findings": 0,
+      "filesScanned": 13,
+      "partial": false,
+      "exitCode": 0
+    }
+  ],
+  "mergedFindings": [
+    {
+      "rule": "static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.obfuscation.generic-obfuscation-operators",
+      "file": "scripts/floor-guard.mjs",
+      "line": 76,
+      "disposition": "Required guard regex literals; false positive."
+    },
+    {
+      "rule": "static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.obfuscation.generic-obfuscation-operators",
+      "file": "scripts/floor-guard.mjs",
+      "line": 77,
+      "disposition": "Required guard regex literals; false positive."
+    },
+    {
+      "rule": "static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.generic-one-liners",
+      "file": "scripts/operations-drill.mjs",
+      "line": 50,
+      "disposition": "Local verification script fixture/report readability advisory; reviewed."
+    },
+    {
+      "rule": "static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.generic-one-liners",
+      "file": "scripts/readiness-performance.mjs",
+      "line": 14,
+      "disposition": "Local verification script fixture/report readability advisory; reviewed."
+    },
+    {
+      "rule": "static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.generic-one-liners",
+      "file": "scripts/readiness-performance.mjs",
+      "line": 44,
+      "disposition": "Local verification script fixture/report readability advisory; reviewed."
+    }
+  ],
+  "revisions": {
+    "apiiro-malicious-code-ruleset": "a21246b666f34db899f0e33add7237ed70fab790",
+    "elttam-semgrep-rules": "244268562cc92d33f54b8a60a187df5520f91b26",
+    "trailofbits-semgrep-rules": "31390b3a99c04c81522d1b37c8d1900aa2dd4094"
+  },
+  "limitations": [
+    "No Pro or cross-file coverage.",
+    "Elttam and Apiiro partial: Java/Dart and one JavaScript switch-pattern rule fail to compile.",
+    "Two regex-literal false positives and three local script readability advisories reviewed; no release-blocking finding."
+  ],
+  "failed": [],
+  "skipped": [],
+  "coveredNothing": [],
+  "oversized": [],
+  "excludePattern": "static_analysis_semgrep_1",
+  "maxTargetBytes": 20000000,
+  "sourceCheckpoint": "After live-catalog pricing override/request-cap repair"
+}

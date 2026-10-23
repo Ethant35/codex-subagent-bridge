@@ -1,0 +1,213 @@
+{
+  "author": "Ethan",
+  "date": "2026-10-22",
+  "approval": "Approve this scan plan",
+  "engine": "Community, no cross-file claim",
+  "mode": "run-all",
+  "steps": [
+    {
+      "step": 1,
+      "status": "complete"
+    },
+    {
+      "step": 2,
+      "status": "complete"
+    },
+    {
+      "step": 3,
+      "status": "complete"
+    },
+    {
+      "step": 4,
+      "status": "complete"
+    },
+    {
+      "step": 5,
+      "status": "complete"
+    }
+  ],
+  "scans": [
+    {
+      "lang": "all",
+      "ruleset": "p/secrets",
+      "findings": 0,
+      "filesScanned": 70,
+      "partial": false,
+      "exitCode": 0
+    },
+    {
+      "lang": "all",
+      "ruleset": "p/security-audit",
+      "findings": 0,
+      "filesScanned": 70,
+      "partial": false,
+      "exitCode": 0
+    },
+    {
+      "lang": "all",
+      "ruleset": "https://github.com/trailofbits/semgrep-rules",
+      "findings": 0,
+      "filesScanned": 70,
+      "partial": false,
+      "exitCode": 0
+    },
+    {
+      "lang": "all",
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "findings": 0,
+      "filesScanned": 70,
+      "partial": true,
+      "exitCode": 2
+    },
+    {
+      "lang": "all",
+      "ruleset": "https://github.com/apiiro/malicious-code-ruleset",
+      "findings": 4,
+      "filesScanned": 13,
+      "partial": true,
+      "exitCode": 2
+    },
+    {
+      "lang": "javascript",
+      "ruleset": "p/javascript",
+      "findings": 0,
+      "filesScanned": 13,
+      "partial": false,
+      "exitCode": 0
+    },
+    {
+      "lang": "javascript",
+      "ruleset": "p/nodejs",
+      "findings": 0,
+      "filesScanned": 13,
+      "partial": false,
+      "exitCode": 0
+    },
+    {
+      "lang": "typescript",
+      "ruleset": "p/typescript",
+      "findings": 0,
+      "filesScanned": 13,
+      "partial": false,
+      "exitCode": 0
+    }
+  ],
+  "findings": [
+    {
+      "rule": "static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.generic-one-liners",
+      "file": "src/cli.ts",
+      "line": 89,
+      "severity": "INFO",
+      "category": "readability"
+    },
+    {
+      "rule": "static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.generic-one-liners",
+      "file": "src/local-commands.ts",
+      "line": 29,
+      "severity": "INFO",
+      "category": "readability"
+    },
+    {
+      "rule": "static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.generic-one-liners",
+      "file": "src/local-commands.ts",
+      "line": 42,
+      "severity": "INFO",
+      "category": "readability"
+    },
+    {
+      "rule": "static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.generic-one-liners",
+      "file": "src/providers/openrouter.ts",
+      "line": 69,
+      "severity": "INFO",
+      "category": "readability"
+    }
+  ],
+  "errors": [
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules-audit.java.spring.security.audit.entrypoints.rest-RestController:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\n@org.springframework.web.bind.annotation.RestController(...)\nclass $CLASS\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules-audit.java.jax-rs.security.audit.entrypoints.jax-rs.path-class:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\n@jakarta.ws.rs.Path(...)\nclass $CLASS\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules-audit.java.struts2.security.audit.entrypoints.convention-annotation-class:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\n@$ANNOTATION($...PARAMS)\nclass $CLASS\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules-audit.java.jax-rs.security.audit.entrypoints.path-class:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\n@jakarta.ws.rs.Path(...)\nclass $CLASS\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules-audit.java.spring.security.audit.entrypoints.java.servlet.filter:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\nclass $CLASS implements javax.servlet.Filter\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules-audit.java.struts2.security.audit.entrypoints.class-extends-action-support:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\nclass $CLASS extends ActionSupport\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules-audit.java.spring.security.audit.entrypoints.rest-RequestMapping:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\n@org.springframework.web.bind.annotation.RequestMapping(...)\nclass $CLASS\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules-audit.java.spring.security.audit.entrypoints.rest-CrossOrigin:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\n@org.springframework.web.bind.annotation.CrossOrigin(...)\nclass $CLASS\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules-audit.java.spring.security.audit.entrypoints.rest-Priority:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\n@javax.annotation.Priority(...)\nclass $CLASS\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules-audit.java.struts2.security.audit.entrypoints.convention-annotation-class-method:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\n@$ANNOTATION($...PARAMS)\nclass $CLASS\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules-audit.java.spring.security.audit.entrypoints.rest-Order:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\n@org.springframework.core.annotation.Order(...)\nclass $CLASS\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.elttam-semgrep-rules.rules.java.spring.security.audit.remoting.UnsafeHttpInvokerServiceExporter-extends:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\nclass $CLASS extends org.springframework.remoting.rmi.RemoteInvocationSerializingExporter\n\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/apiiro/malicious-code-ruleset",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.obfuscation.dart.dart-obfuscation-conditions:\n Invalid pattern for Dart: Stdlib.Parsing.Parse_error\n----- pattern -----\nswitch ($VAR) { ... }\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/apiiro/malicious-code-ruleset",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.obfuscation.java.java-obfuscation-declarations:\n Invalid pattern for Java: Stdlib.Parsing.Parse_error\n----- pattern -----\nclass $VAR\n----- end pattern -----\n"
+    },
+    {
+      "ruleset": "https://github.com/apiiro/malicious-code-ruleset",
+      "type": "Rule parse error",
+      "message": "Rule parse error in rule static_analysis_semgrep_1.repos.apiiro-malicious-code-ruleset.obfuscation.javascript_typescript.javascript-obfuscation-conditions:\n Invalid pattern for JavaScript: Stdlib.Parsing.Parse_error\n----- pattern -----\nswitch ($VAR) { case ... }\n----- end pattern -----\n"
+    }
+  ],
+  "revisions": {
+    "apiiro-malicious-code-ruleset": "a21246b666f34db899f0e33add7237ed70fab790",
+    "elttam-semgrep-rules": "244268562cc92d33f54b8a60a187df5520f91b26",
+    "trailofbits-semgrep-rules": "31390b3a99c04c81522d1b37c8d1900aa2dd4094"
+  },
+  "failed": [],
+  "skipped": [],
+  "coveredNothing": [],
+  "oversized": [],
+  "excludePattern": "static_analysis_semgrep_1",
+  "maxTargetBytes": 20000000
+}

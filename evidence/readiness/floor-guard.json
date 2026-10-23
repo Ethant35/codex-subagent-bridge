@@ -1,0 +1,52 @@
+{
+  "author": "Ethan",
+  "cases": [
+    {
+      "case": "clean",
+      "exitCode": 0,
+      "expected": 0
+    },
+    {
+      "case": "untracked-suppression",
+      "exitCode": 1,
+      "expected": 1
+    },
+    {
+      "case": "staged-skip",
+      "exitCode": 1,
+      "expected": 1
+    },
+    {
+      "case": "removed-assertion",
+      "exitCode": 1,
+      "expected": 1
+    },
+    {
+      "case": "lower-minimum",
+      "exitCode": 1,
+      "expected": 1
+    },
+    {
+      "case": "raise-maximum",
+      "exitCode": 1,
+      "expected": 1
+    },
+    {
+      "case": "tighten",
+      "exitCode": 0,
+      "expected": 0
+    },
+    {
+      "case": "new-exception",
+      "exitCode": 1,
+      "expected": 1
+    },
+    {
+      "case": "invalid-base",
+      "exitCode": 2,
+      "expected": 2
+    }
+  ],
+  "result": "PASS",
+  "notes": "Isolated git fixture; untracked and staged changes included; output does not print matched content."
+}

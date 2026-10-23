@@ -1,0 +1,36 @@
+{
+  "id": "22222222-2222-4222-8222-222222222222",
+  "correlationId": "280ea48c-cd5e-431a-91d0-b1a777277b1d",
+  "state": "CANCELLED",
+  "task": {
+    "version": 1,
+    "taskId": "22222222-2222-4222-8222-222222222222",
+    "correlationId": "d5477dcc-e858-4265-9382-332a19efb013",
+    "provider": "openrouter",
+    "backend": "api",
+    "model": "openai/gpt-4.1-mini",
+    "instructions": "Local compatibility fixture only; no model call was made.",
+    "workspaceRoot": "/tmp/cpb-fixture-workspace",
+    "allowedOperations": [
+      "read_file"
+    ],
+    "readablePaths": [
+      "README.md"
+    ],
+    "writablePaths": [],
+    "maxRuntimeMs": 30000,
+    "maxToolSteps": 2,
+    "maxSpendUsd": 0.1,
+    "expectedOutput": "No provider result is present in this fixture.",
+    "resultFormat": "text",
+    "networkPolicy": "provider-only"
+  },
+  "instructionHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pid": 2677,
+  "createdAt": "2026-01-01T00:00:00.000Z",
+  "updatedAt": "2026-10-22T20:20:04.696Z",
+  "error": {
+    "code": "CANCELLED",
+    "message": "Generated locally from the v1.0.0 Store; no provider call was made."
+  }
+}

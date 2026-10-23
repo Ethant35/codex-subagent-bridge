@@ -1,0 +1,2245 @@
+{
+  "author": "Ethan",
+  "reviewDate": "2026-10-22",
+  "scope": "Production dependency tree only; package-lock v3 plus installed node_modules on this macOS arm64 host. Development-only packages excluded.",
+  "root": {
+    "name": "codex-subagent-bridge",
+    "version": "1.0.0",
+    "declaredLicense": "MIT",
+    "licenseFile": "LICENSE",
+    "licenseFilePresent": true,
+    "licenseFileNonEmpty": true,
+    "directRuntimeDependencies": {
+      "@anthropic-ai/claude-agent-sdk": "0.3.308",
+      "@modelcontextprotocol/sdk": "1.32.1",
+      "zod": "^4.0.0"
+    }
+  },
+  "environment": {
+    "os": "darwin",
+    "arch": "arm64",
+    "node": "v22.13.1",
+    "npm": "10.9.2"
+  },
+  "audit": {
+    "command": "npm audit --omit=dev",
+    "result": "passed",
+    "vulnerabilities": 0,
+    "recordedOutput": "found 0 vulnerabilities"
+  },
+  "counts": {
+    "lockedProductionPackageEntries": 112,
+    "installedProductionPackageEntries": 105,
+    "notInstalledOptionalOrPlatformSpecific": 7,
+    "licenseValuesInLock": {
+      "SEE LICENSE IN README.md": 1,
+      "SEE LICENSE IN LICENSE.md": 8,
+      "Apache-2.0": 2,
+      "MIT": 90,
+      "Unlicense": 1,
+      "BSD-3-Clause": 2,
+      "ISC": 7,
+      "BSD-2-Clause": 1
+    },
+    "licenseValuesInstalled": {
+      "SEE LICENSE IN README.md": 1,
+      "SEE LICENSE IN LICENSE.md": 1,
+      "Apache-2.0": 2,
+      "MIT": 90,
+      "Unlicense": 1,
+      "BSD-3-Clause": 2,
+      "ISC": 7,
+      "BSD-2-Clause": 1
+    },
+    "installedPackageEntriesWithNonemptyLicenseNoticeOrCopyingFile": 104,
+    "installedPackageEntriesMissingSuchFile": 1
+  },
+  "anthropicRuntime": {
+    "wrapperPackage": "@anthropic-ai/claude-agent-sdk@0.3.308",
+    "wrapperLicenseDeclaration": "SEE LICENSE IN README.md",
+    "wrapperLicenseTextFilePresent": "node_modules/@anthropic-ai/claude-agent-sdk/LICENSE.md",
+    "wrapperLicenseText": "© Anthropic PBC. All rights reserved. Use is subject to the Legal Agreements outlined here: https://code.claude.com/docs/en/legal-and-compliance.",
+    "runtimeVersion": "2.1.308",
+    "nativePackage": "@anthropic-ai/claude-agent-sdk-darwin-arm64@0.3.308",
+    "nativePackageLicenseDeclaration": "SEE LICENSE IN LICENSE.md",
+    "nativePackageLicenseFile": "LICENSE.md",
+    "nativeExecutable": {
+      "path": "node_modules/@anthropic-ai/claude-agent-sdk-darwin-arm64/claude",
+      "format": "Mach-O arm64 executable",
+      "sizeBytes": 274675680,
+      "sha256": "ca923c86ac84b30574a82331a05b6e066c27477a926ceaffe46a845a33e4dd37",
+      "matchesSdkManifestChecksum": true
+    },
+    "additionalLockedPlatformPackages": []
+  },
+  "reviewFlags": [
+    {
+      "package": "@anthropic-ai/claude-agent-sdk",
+      "issue": "Not MIT/OSI license. Package metadata directs to README; installed LICENSE.md says all rights reserved and links Anthropic legal terms. Official README says use of SDK, including products/services offered to end users, is governed by Anthropic Commercial Terms, except separately licensed components."
+    },
+    {
+      "package": "@anthropic-ai/claude-agent-sdk-darwin-arm64",
+      "issue": "The install includes a separate 262 MB executable package under its own SEE LICENSE IN LICENSE.md declaration. Its license file also reserves all rights and points to Anthropic legal terms. Do not treat the SDK wrapper as MIT or assume root project MIT overrides these terms."
+    },
+    {
+      "package": "standardwebhooks@1.1.1",
+      "issue": "Installed package.json declares MIT but its installed npm artifact has no LICENSE/NOTICE/COPYING file. The upstream repository root license is Apache-2.0 while the JS package manifest declares MIT. Resolve package-scoped license and ensure applicable license text is distributed before treating the MIT obligation as fully evidenced."
+    }
+  ],
+  "sources": [
+    {
+      "kind": "local-lockfile",
+      "path": "package-lock.json"
+    },
+    {
+      "kind": "installed-package-metadata",
+      "path": "node_modules/**/package.json"
+    },
+    {
+      "kind": "local-license-scan",
+      "method": "top-level LICENSE, LICENCE, NOTICE, COPYING, LICENSES files; non-empty check; no semantic license text audit for every package"
+    },
+    {
+      "kind": "official-upstream",
+      "url": "https://github.com/anthropics/claude-agent-sdk-typescript"
+    },
+    {
+      "kind": "official-legal",
+      "url": "https://code.claude.com/docs/en/legal-and-compliance"
+    },
+    {
+      "kind": "official-legal-terms",
+      "url": "https://www.anthropic.com/legal/commercial-terms"
+    },
+    {
+      "kind": "official-standardwebhooks-package",
+      "url": "https://github.com/standard-webhooks/standard-webhooks/blob/main/libraries/javascript/package.json"
+    },
+    {
+      "kind": "official-standardwebhooks-root-license",
+      "url": "https://github.com/standard-webhooks/standard-webhooks/blob/main/LICENSE"
+    }
+  ],
+  "packages": [
+    {
+      "path": "node_modules/@anthropic-ai/claude-agent-sdk",
+      "name": "@anthropic-ai/claude-agent-sdk",
+      "lockedVersion": "0.3.308",
+      "installed": true,
+      "installedVersion": "0.3.308",
+      "declaredLicense": "SEE LICENSE IN README.md",
+      "lockLicense": "SEE LICENSE IN README.md",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE.md",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/@anthropic-ai/claude-agent-sdk-darwin-arm64",
+      "name": "@anthropic-ai/claude-agent-sdk-darwin-arm64",
+      "lockedVersion": "0.3.308",
+      "installed": true,
+      "installedVersion": "0.3.308",
+      "declaredLicense": "SEE LICENSE IN LICENSE.md",
+      "lockLicense": "SEE LICENSE IN LICENSE.md",
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE.md",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/@anthropic-ai/claude-agent-sdk-darwin-x64",
+      "name": "node_modules/@anthropic-ai/claude-agent-sdk-darwin-x64",
+      "lockedVersion": "0.3.308",
+      "installed": false,
+      "installedVersion": null,
+      "declaredLicense": "SEE LICENSE IN LICENSE.md",
+      "lockLicense": "SEE LICENSE IN LICENSE.md",
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "licenseEvidenceStatus": "not-installed-text-not-verified",
+      "licenseFiles": []
+    },
+    {
+      "path": "node_modules/@anthropic-ai/claude-agent-sdk-linux-arm64",
+      "name": "node_modules/@anthropic-ai/claude-agent-sdk-linux-arm64",
+      "lockedVersion": "0.3.308",
+      "installed": false,
+      "installedVersion": null,
+      "declaredLicense": "SEE LICENSE IN LICENSE.md",
+      "lockLicense": "SEE LICENSE IN LICENSE.md",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "licenseEvidenceStatus": "not-installed-text-not-verified",
+      "licenseFiles": []
+    },
+    {
+      "path": "node_modules/@anthropic-ai/claude-agent-sdk-linux-arm64-musl",
+      "name": "node_modules/@anthropic-ai/claude-agent-sdk-linux-arm64-musl",
+      "lockedVersion": "0.3.308",
+      "installed": false,
+      "installedVersion": null,
+      "declaredLicense": "SEE LICENSE IN LICENSE.md",
+      "lockLicense": "SEE LICENSE IN LICENSE.md",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "licenseEvidenceStatus": "not-installed-text-not-verified",
+      "licenseFiles": []
+    },
+    {
+      "path": "node_modules/@anthropic-ai/claude-agent-sdk-linux-x64",
+      "name": "node_modules/@anthropic-ai/claude-agent-sdk-linux-x64",
+      "lockedVersion": "0.3.308",
+      "installed": false,
+      "installedVersion": null,
+      "declaredLicense": "SEE LICENSE IN LICENSE.md",
+      "lockLicense": "SEE LICENSE IN LICENSE.md",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "licenseEvidenceStatus": "not-installed-text-not-verified",
+      "licenseFiles": []
+    },
+    {
+      "path": "node_modules/@anthropic-ai/claude-agent-sdk-linux-x64-musl",
+      "name": "node_modules/@anthropic-ai/claude-agent-sdk-linux-x64-musl",
+      "lockedVersion": "0.3.308",
+      "installed": false,
+      "installedVersion": null,
+      "declaredLicense": "SEE LICENSE IN LICENSE.md",
+      "lockLicense": "SEE LICENSE IN LICENSE.md",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "licenseEvidenceStatus": "not-installed-text-not-verified",
+      "licenseFiles": []
+    },
+    {
+      "path": "node_modules/@anthropic-ai/claude-agent-sdk-win32-arm64",
+      "name": "node_modules/@anthropic-ai/claude-agent-sdk-win32-arm64",
+      "lockedVersion": "0.3.308",
+      "installed": false,
+      "installedVersion": null,
+      "declaredLicense": "SEE LICENSE IN LICENSE.md",
+      "lockLicense": "SEE LICENSE IN LICENSE.md",
+      "optional": true,
+      "os": [
+        "win32"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "licenseEvidenceStatus": "not-installed-text-not-verified",
+      "licenseFiles": []
+    },
+    {
+      "path": "node_modules/@anthropic-ai/claude-agent-sdk-win32-x64",
+      "name": "node_modules/@anthropic-ai/claude-agent-sdk-win32-x64",
+      "lockedVersion": "0.3.308",
+      "installed": false,
+      "installedVersion": null,
+      "declaredLicense": "SEE LICENSE IN LICENSE.md",
+      "lockLicense": "SEE LICENSE IN LICENSE.md",
+      "optional": true,
+      "os": [
+        "win32"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "licenseEvidenceStatus": "not-installed-text-not-verified",
+      "licenseFiles": []
+    },
+    {
+      "path": "node_modules/@anthropic-ai/sdk",
+      "name": "@anthropic-ai/sdk",
+      "lockedVersion": "1.1.0",
+      "installed": true,
+      "installedVersion": "1.1.0",
+      "declaredLicense": "Apache-2.0",
+      "lockLicense": "Apache-2.0",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/@babel/runtime",
+      "name": "@babel/runtime",
+      "lockedVersion": "7.29.10",
+      "installed": true,
+      "installedVersion": "7.29.10",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/@hono/node-server",
+      "name": "@hono/node-server",
+      "lockedVersion": "2.1.5",
+      "installed": true,
+      "installedVersion": "2.1.5",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/@modelcontextprotocol/sdk",
+      "name": "@modelcontextprotocol/sdk",
+      "lockedVersion": "1.32.1",
+      "installed": true,
+      "installedVersion": "1.32.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/@opentelemetry/api",
+      "name": "@opentelemetry/api",
+      "lockedVersion": "1.10.0",
+      "installed": true,
+      "installedVersion": "1.10.0",
+      "declaredLicense": "Apache-2.0",
+      "lockLicense": "Apache-2.0",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/@stablelib/base64",
+      "name": "@stablelib/base64",
+      "lockedVersion": "1.0.1",
+      "installed": true,
+      "installedVersion": "1.0.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/accepts",
+      "name": "accepts",
+      "lockedVersion": "2.0.0",
+      "installed": true,
+      "installedVersion": "2.0.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/ajv",
+      "name": "ajv",
+      "lockedVersion": "8.20.0",
+      "installed": true,
+      "installedVersion": "8.20.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/ajv-formats",
+      "name": "ajv-formats",
+      "lockedVersion": "3.0.1",
+      "installed": true,
+      "installedVersion": "3.0.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/body-parser",
+      "name": "body-parser",
+      "lockedVersion": "2.4.0",
+      "installed": true,
+      "installedVersion": "2.4.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/body-parser/node_modules/content-type",
+      "name": "content-type",
+      "lockedVersion": "2.1.0",
+      "installed": true,
+      "installedVersion": "2.1.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/bytes",
+      "name": "bytes",
+      "lockedVersion": "3.1.2",
+      "installed": true,
+      "installedVersion": "3.1.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/call-bind-apply-helpers",
+      "name": "call-bind-apply-helpers",
+      "lockedVersion": "1.0.2",
+      "installed": true,
+      "installedVersion": "1.0.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/call-bound",
+      "name": "call-bound",
+      "lockedVersion": "1.0.4",
+      "installed": true,
+      "installedVersion": "1.0.4",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/content-disposition",
+      "name": "content-disposition",
+      "lockedVersion": "2.0.1",
+      "installed": true,
+      "installedVersion": "2.0.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/content-type",
+      "name": "content-type",
+      "lockedVersion": "1.0.5",
+      "installed": true,
+      "installedVersion": "1.0.5",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/cookie",
+      "name": "cookie",
+      "lockedVersion": "0.7.2",
+      "installed": true,
+      "installedVersion": "0.7.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/cookie-signature",
+      "name": "cookie-signature",
+      "lockedVersion": "1.2.2",
+      "installed": true,
+      "installedVersion": "1.2.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/cors",
+      "name": "cors",
+      "lockedVersion": "2.8.6",
+      "installed": true,
+      "installedVersion": "2.8.6",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/cross-spawn",
+      "name": "cross-spawn",
+      "lockedVersion": "7.0.6",
+      "installed": true,
+      "installedVersion": "7.0.6",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/debug",
+      "name": "debug",
+      "lockedVersion": "4.4.3",
+      "installed": true,
+      "installedVersion": "4.4.3",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/depd",
+      "name": "depd",
+      "lockedVersion": "2.0.0",
+      "installed": true,
+      "installedVersion": "2.0.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/dunder-proto",
+      "name": "dunder-proto",
+      "lockedVersion": "1.0.1",
+      "installed": true,
+      "installedVersion": "1.0.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/ee-first",
+      "name": "ee-first",
+      "lockedVersion": "1.1.1",
+      "installed": true,
+      "installedVersion": "1.1.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/encodeurl",
+      "name": "encodeurl",
+      "lockedVersion": "2.0.0",
+      "installed": true,
+      "installedVersion": "2.0.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/es-define-property",
+      "name": "es-define-property",
+      "lockedVersion": "1.0.1",
+      "installed": true,
+      "installedVersion": "1.0.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/es-errors",
+      "name": "es-errors",
+      "lockedVersion": "1.3.0",
+      "installed": true,
+      "installedVersion": "1.3.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/es-object-atoms",
+      "name": "es-object-atoms",
+      "lockedVersion": "1.1.2",
+      "installed": true,
+      "installedVersion": "1.1.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/escape-html",
+      "name": "escape-html",
+      "lockedVersion": "1.0.3",
+      "installed": true,
+      "installedVersion": "1.0.3",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/etag",
+      "name": "etag",
+      "lockedVersion": "1.8.1",
+      "installed": true,
+      "installedVersion": "1.8.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/eventsource",
+      "name": "eventsource",
+      "lockedVersion": "3.0.7",
+      "installed": true,
+      "installedVersion": "3.0.7",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/eventsource-parser",
+      "name": "eventsource-parser",
+      "lockedVersion": "3.1.1",
+      "installed": true,
+      "installedVersion": "3.1.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/express",
+      "name": "express",
+      "lockedVersion": "5.3.0",
+      "installed": true,
+      "installedVersion": "5.3.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/express-rate-limit",
+      "name": "express-rate-limit",
+      "lockedVersion": "8.7.1",
+      "installed": true,
+      "installedVersion": "8.7.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "license",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/express/node_modules/content-type",
+      "name": "content-type",
+      "lockedVersion": "2.1.0",
+      "installed": true,
+      "installedVersion": "2.1.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/fast-deep-equal",
+      "name": "fast-deep-equal",
+      "lockedVersion": "3.1.3",
+      "installed": true,
+      "installedVersion": "3.1.3",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/fast-sha256",
+      "name": "fast-sha256",
+      "lockedVersion": "1.3.0",
+      "installed": true,
+      "installedVersion": "1.3.0",
+      "declaredLicense": "Unlicense",
+      "lockLicense": "Unlicense",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/fast-uri",
+      "name": "fast-uri",
+      "lockedVersion": "3.1.9",
+      "installed": true,
+      "installedVersion": "3.1.9",
+      "declaredLicense": "BSD-3-Clause",
+      "lockLicense": "BSD-3-Clause",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/finalhandler",
+      "name": "finalhandler",
+      "lockedVersion": "2.1.1",
+      "installed": true,
+      "installedVersion": "2.1.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/forwarded",
+      "name": "forwarded",
+      "lockedVersion": "0.2.0",
+      "installed": true,
+      "installedVersion": "0.2.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/fresh",
+      "name": "fresh",
+      "lockedVersion": "2.0.0",
+      "installed": true,
+      "installedVersion": "2.0.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/function-bind",
+      "name": "function-bind",
+      "lockedVersion": "1.1.2",
+      "installed": true,
+      "installedVersion": "1.1.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/get-intrinsic",
+      "name": "get-intrinsic",
+      "lockedVersion": "1.3.0",
+      "installed": true,
+      "installedVersion": "1.3.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/get-proto",
+      "name": "get-proto",
+      "lockedVersion": "1.0.1",
+      "installed": true,
+      "installedVersion": "1.0.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/gopd",
+      "name": "gopd",
+      "lockedVersion": "1.2.0",
+      "installed": true,
+      "installedVersion": "1.2.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/has-symbols",
+      "name": "has-symbols",
+      "lockedVersion": "1.1.0",
+      "installed": true,
+      "installedVersion": "1.1.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/hasown",
+      "name": "hasown",
+      "lockedVersion": "2.0.4",
+      "installed": true,
+      "installedVersion": "2.0.4",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/hono",
+      "name": "hono",
+      "lockedVersion": "4.13.13",
+      "installed": true,
+      "installedVersion": "4.13.13",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/http-errors",
+      "name": "http-errors",
+      "lockedVersion": "2.0.1",
+      "installed": true,
+      "installedVersion": "2.0.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/iconv-lite",
+      "name": "iconv-lite",
+      "lockedVersion": "0.7.3",
+      "installed": true,
+      "installedVersion": "0.7.3",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/inherits",
+      "name": "inherits",
+      "lockedVersion": "2.0.4",
+      "installed": true,
+      "installedVersion": "2.0.4",
+      "declaredLicense": "ISC",
+      "lockLicense": "ISC",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/ip-address",
+      "name": "ip-address",
+      "lockedVersion": "10.7.4",
+      "installed": true,
+      "installedVersion": "10.7.4",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/ipaddr.js",
+      "name": "ipaddr.js",
+      "lockedVersion": "1.9.1",
+      "installed": true,
+      "installedVersion": "1.9.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/is-promise",
+      "name": "is-promise",
+      "lockedVersion": "4.0.0",
+      "installed": true,
+      "installedVersion": "4.0.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/isexe",
+      "name": "isexe",
+      "lockedVersion": "2.0.0",
+      "installed": true,
+      "installedVersion": "2.0.0",
+      "declaredLicense": "ISC",
+      "lockLicense": "ISC",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/jose",
+      "name": "jose",
+      "lockedVersion": "6.2.13",
+      "installed": true,
+      "installedVersion": "6.2.13",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE.md",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/json-schema-to-ts",
+      "name": "json-schema-to-ts",
+      "lockedVersion": "3.1.1",
+      "installed": true,
+      "installedVersion": "3.1.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/json-schema-traverse",
+      "name": "json-schema-traverse",
+      "lockedVersion": "1.0.0",
+      "installed": true,
+      "installedVersion": "1.0.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/json-schema-typed",
+      "name": "json-schema-typed",
+      "lockedVersion": "8.0.2",
+      "installed": true,
+      "installedVersion": "8.0.2",
+      "declaredLicense": "BSD-2-Clause",
+      "lockLicense": "BSD-2-Clause",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE.md",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/math-intrinsics",
+      "name": "math-intrinsics",
+      "lockedVersion": "1.1.0",
+      "installed": true,
+      "installedVersion": "1.1.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/media-typer",
+      "name": "media-typer",
+      "lockedVersion": "1.1.1",
+      "installed": true,
+      "installedVersion": "1.1.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/merge-descriptors",
+      "name": "merge-descriptors",
+      "lockedVersion": "2.0.0",
+      "installed": true,
+      "installedVersion": "2.0.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "license",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/mime-db",
+      "name": "mime-db",
+      "lockedVersion": "1.54.0",
+      "installed": true,
+      "installedVersion": "1.54.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/mime-types",
+      "name": "mime-types",
+      "lockedVersion": "3.0.2",
+      "installed": true,
+      "installedVersion": "3.0.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/ms",
+      "name": "ms",
+      "lockedVersion": "2.1.3",
+      "installed": true,
+      "installedVersion": "2.1.3",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "license.md",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/negotiator",
+      "name": "negotiator",
+      "lockedVersion": "1.1.0",
+      "installed": true,
+      "installedVersion": "1.1.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/negotiator/node_modules/content-type",
+      "name": "content-type",
+      "lockedVersion": "2.1.0",
+      "installed": true,
+      "installedVersion": "2.1.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/object-assign",
+      "name": "object-assign",
+      "lockedVersion": "4.1.1",
+      "installed": true,
+      "installedVersion": "4.1.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "license",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/object-inspect",
+      "name": "object-inspect",
+      "lockedVersion": "1.13.4",
+      "installed": true,
+      "installedVersion": "1.13.4",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/on-finished",
+      "name": "on-finished",
+      "lockedVersion": "2.4.2",
+      "installed": true,
+      "installedVersion": "2.4.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/once",
+      "name": "once",
+      "lockedVersion": "1.4.0",
+      "installed": true,
+      "installedVersion": "1.4.0",
+      "declaredLicense": "ISC",
+      "lockLicense": "ISC",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/parseurl",
+      "name": "parseurl",
+      "lockedVersion": "1.3.3",
+      "installed": true,
+      "installedVersion": "1.3.3",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/path-key",
+      "name": "path-key",
+      "lockedVersion": "3.1.1",
+      "installed": true,
+      "installedVersion": "3.1.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "license",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/path-to-regexp",
+      "name": "path-to-regexp",
+      "lockedVersion": "8.4.2",
+      "installed": true,
+      "installedVersion": "8.4.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/pkce-challenge",
+      "name": "pkce-challenge",
+      "lockedVersion": "5.0.1",
+      "installed": true,
+      "installedVersion": "5.0.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/proxy-addr",
+      "name": "proxy-addr",
+      "lockedVersion": "2.0.8",
+      "installed": true,
+      "installedVersion": "2.0.8",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/qs",
+      "name": "qs",
+      "lockedVersion": "6.16.1",
+      "installed": true,
+      "installedVersion": "6.16.1",
+      "declaredLicense": "BSD-3-Clause",
+      "lockLicense": "BSD-3-Clause",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE.md",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/range-parser",
+      "name": "range-parser",
+      "lockedVersion": "1.3.0",
+      "installed": true,
+      "installedVersion": "1.3.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/raw-body",
+      "name": "raw-body",
+      "lockedVersion": "3.0.2",
+      "installed": true,
+      "installedVersion": "3.0.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/require-from-string",
+      "name": "require-from-string",
+      "lockedVersion": "2.0.2",
+      "installed": true,
+      "installedVersion": "2.0.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "license",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/router",
+      "name": "router",
+      "lockedVersion": "2.2.0",
+      "installed": true,
+      "installedVersion": "2.2.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/safer-buffer",
+      "name": "safer-buffer",
+      "lockedVersion": "2.1.2",
+      "installed": true,
+      "installedVersion": "2.1.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/send",
+      "name": "send",
+      "lockedVersion": "1.2.1",
+      "installed": true,
+      "installedVersion": "1.2.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/serve-static",
+      "name": "serve-static",
+      "lockedVersion": "2.2.1",
+      "installed": true,
+      "installedVersion": "2.2.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/setprototypeof",
+      "name": "setprototypeof",
+      "lockedVersion": "1.2.0",
+      "installed": true,
+      "installedVersion": "1.2.0",
+      "declaredLicense": "ISC",
+      "lockLicense": "ISC",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/shebang-command",
+      "name": "shebang-command",
+      "lockedVersion": "2.0.0",
+      "installed": true,
+      "installedVersion": "2.0.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "license",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/shebang-regex",
+      "name": "shebang-regex",
+      "lockedVersion": "3.0.0",
+      "installed": true,
+      "installedVersion": "3.0.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "license",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/side-channel",
+      "name": "side-channel",
+      "lockedVersion": "1.1.1",
+      "installed": true,
+      "installedVersion": "1.1.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/side-channel-list",
+      "name": "side-channel-list",
+      "lockedVersion": "1.0.1",
+      "installed": true,
+      "installedVersion": "1.0.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/side-channel-map",
+      "name": "side-channel-map",
+      "lockedVersion": "1.0.1",
+      "installed": true,
+      "installedVersion": "1.0.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/side-channel-weakmap",
+      "name": "side-channel-weakmap",
+      "lockedVersion": "1.0.2",
+      "installed": true,
+      "installedVersion": "1.0.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/standardwebhooks",
+      "name": "standardwebhooks",
+      "lockedVersion": "1.1.1",
+      "installed": true,
+      "installedVersion": "1.1.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "missing-license-notice-copying-file",
+      "licenseFiles": []
+    },
+    {
+      "path": "node_modules/statuses",
+      "name": "statuses",
+      "lockedVersion": "2.0.2",
+      "installed": true,
+      "installedVersion": "2.0.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/toidentifier",
+      "name": "toidentifier",
+      "lockedVersion": "1.0.1",
+      "installed": true,
+      "installedVersion": "1.0.1",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/ts-algebra",
+      "name": "ts-algebra",
+      "lockedVersion": "2.0.0",
+      "installed": true,
+      "installedVersion": "2.0.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/type-is",
+      "name": "type-is",
+      "lockedVersion": "2.1.0",
+      "installed": true,
+      "installedVersion": "2.1.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/type-is/node_modules/content-type",
+      "name": "content-type",
+      "lockedVersion": "2.1.0",
+      "installed": true,
+      "installedVersion": "2.1.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/unpipe",
+      "name": "unpipe",
+      "lockedVersion": "1.0.0",
+      "installed": true,
+      "installedVersion": "1.0.0",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/vary",
+      "name": "vary",
+      "lockedVersion": "1.1.2",
+      "installed": true,
+      "installedVersion": "1.1.2",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/which",
+      "name": "which",
+      "lockedVersion": "2.0.2",
+      "installed": true,
+      "installedVersion": "2.0.2",
+      "declaredLicense": "ISC",
+      "lockLicense": "ISC",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/wrappy",
+      "name": "wrappy",
+      "lockedVersion": "1.0.2",
+      "installed": true,
+      "installedVersion": "1.0.2",
+      "declaredLicense": "ISC",
+      "lockLicense": "ISC",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/zod",
+      "name": "zod",
+      "lockedVersion": "4.6.7",
+      "installed": true,
+      "installedVersion": "4.6.7",
+      "declaredLicense": "MIT",
+      "lockLicense": "MIT",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    },
+    {
+      "path": "node_modules/zod-to-json-schema",
+      "name": "zod-to-json-schema",
+      "lockedVersion": "3.25.2",
+      "installed": true,
+      "installedVersion": "3.25.2",
+      "declaredLicense": "ISC",
+      "lockLicense": "ISC",
+      "optional": false,
+      "os": null,
+      "cpu": null,
+      "licenseEvidenceStatus": "file-present-nonempty",
+      "licenseFiles": [
+        {
+          "file": "LICENSE",
+          "nonEmpty": true
+        }
+      ]
+    }
+  ]
+}

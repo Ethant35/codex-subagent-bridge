@@ -1,0 +1,33 @@
+{
+  "author": "Ethan",
+  "date": "2026-10-22",
+  "scope": "Runner cancellation polling and terminal cleanup",
+  "redReproduction": {
+    "testFile": "tests/runner-recovery.test.mjs",
+    "observedBeforeFix": [
+      "Queued cancellation-store exception escaped the interval as an uncaught exception.",
+      "Injected final save failure did not reject delegation.",
+      "Injected final event failure escaped as a raw error and left the capability file behind.",
+      "Non-ENOENT capability unlink failure was swallowed and delegation returned normally."
+    ],
+    "providerCalls": 0,
+    "networkCalls": 0
+  },
+  "greenVerification": {
+    "command": "npm run build && node --test --test-concurrency=1 tests/runner-recovery.test.mjs",
+    "testsPassed": 4,
+    "testsFailed": 0,
+    "durationMs": 187
+  },
+  "behavior": [
+    "Cancellation polling failures abort through a generic STORE_CANCEL_CHECK_FAILED reason and are observed by normal async control flow.",
+    "Final save/event failures return generic classified errors, release the claimed slot, and attempt to persist FAILED after a partial terminal write.",
+    "Capability removal ignores only ENOENT; other failures are classified and prevent success reporting.",
+    "Process signal listeners and timer callbacks are removed before final storage operations.",
+    "Failed or interrupted runs retain staged workspace and original-file recovery copies."
+  ],
+  "limits": [
+    "A failed filesystem write may prevent the best-effort FAILED replacement from persisting; delegation rejects and does not return a successful Run in that case.",
+    "The controlled-store tests avoid real providers and network requests; they do not qualify provider compatibility."
+  ]
+}
