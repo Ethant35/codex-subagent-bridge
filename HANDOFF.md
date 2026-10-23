@@ -10,7 +10,7 @@ The active account guard checks get_usage_limits every 55 seconds in functions c
 
 ## Checkout and completed work
 
-Repository: https://github.com/Ethant35/codex-subagent-bridge. Branch codex/production-readiness, based on published v1.0.0 commit 5f3a3eb62b9e0341839a5c78ecdd2eb5c1859f0e. Release v1.1.0 is published at https://github.com/Ethant35/codex-subagent-bridge/releases/tag/v1.1.0. Implementation PR #2 merged; tag commit 6e75bd384a1a8a7d1be3f9f693a13f944d9a65a1, implementation commit 4d0b1111bb97d9029da48bb69ff6d3e7420ff843. Implementation author and annotated-tag tagger are Ethan.
+Repository: https://github.com/Ethant35/codex-subagent-bridge. Current bookkeeping branch: codex/release-1.1-verification. Implementation branch codex/production-readiness was based on published v1.0.0 commit 5f3a3eb62b9e0341839a5c78ecdd2eb5c1859f0e. Release v1.1.0 is published at https://github.com/Ethant35/codex-subagent-bridge/releases/tag/v1.1.0. Implementation PR #2 merged; tag commit 6e75bd384a1a8a7d1be3f9f693a13f944d9a65a1, implementation commit 4d0b1111bb97d9029da48bb69ff6d3e7420ff843. Implementation author and annotated-tag tagger are Ethan.
 
 - Durable per-file publication, original backups, progress journal and read-only hash recovery.
 - Private bounded store reads/events, FIFO protection, visible corruption, stable bounded pagination, transactional slots/schema migration and controlled lifecycle failures.
