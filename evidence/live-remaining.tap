@@ -8,7 +8,7 @@ ok 1 - CB-05 live OpenRouter exact authorized edit
 not ok 2 - CB-06 native Codex parent uses OpenRouter child result
   ---
   duration_ms: 7422.52625
-  location: '/Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge/tests/live.test.mjs:43:1'
+  location: '<checkout>/tests/live.test.mjs:43:1'
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
@@ -23,9 +23,9 @@ not ok 2 - CB-06 native Codex parent uses OpenRouter child result
   actual: 'Delegation failed: the `cpb_delegate` call requires approval, but approval is unavailable.'
   operator: 'strictEqual'
   stack: |-
-    parent (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/live.test.mjs:38:110)
+    parent (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/live.test.mjs:38:110)
     process.processTicksAndRejections (node:internal/process/task_queues:105:5)
-    async TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/live.test.mjs:43:166)
+    async TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/live.test.mjs:43:166)
     async Test.run (node:internal/test_runner/test:932:9)
     async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
   ...
@@ -33,7 +33,7 @@ not ok 2 - CB-06 native Codex parent uses OpenRouter child result
 not ok 3 - CB-07 live unique instruction survives conversion
   ---
   duration_ms: 34031.89375
-  location: '/Users/ethantarnarider/Documents/ChatGPT/Open source/codex-subagent-bridge/tests/live.test.mjs:44:1'
+  location: '<checkout>/tests/live.test.mjs:44:1'
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
@@ -48,7 +48,7 @@ not ok 3 - CB-07 live unique instruction survives conversion
   actual: 'fact-c212007e-9e20-4e7e-9718-45d14f7c7368'
   operator: 'strictEqual'
   stack: |-
-    TestContext.<anonymous> (file:///Users/ethantarnarider/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/live.test.mjs:44:272)
+    TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/live.test.mjs:44:272)
     process.processTicksAndRejections (node:internal/process/task_queues:105:5)
     async Test.run (node:internal/test_runner/test:932:9)
     async Test.processPendingSubtests (node:internal/test_runner/test:629:7)

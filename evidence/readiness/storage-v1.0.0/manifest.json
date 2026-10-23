@@ -1,0 +1,20 @@
+{
+  "sourceTag": "v1.0.0",
+  "sourceCommit": "5f3a3eb62b9e0341839a5c78ecdd2eb5c1859f0e",
+  "generation": "git archive v1.0.0; npm ci; npm run build; imported released dist/store.js; called Store.create and Store.acquire/release",
+  "providerCalls": 0,
+  "records": [
+    {
+      "file": "records/11111111-1111-4111-8111-111111111111.json",
+      "sha256": "ebf49ec3f5edefe9486674fad2fe10c90e63b1a83a83858689a54d32ed2d5275"
+    },
+    {
+      "file": "records/22222222-2222-4222-8222-222222222222.json",
+      "sha256": "1dd7b7c1aef3eda82909a6ea825a555d2bd2c4d3da531dfb27388cdf7cc962ac"
+    }
+  ],
+  "database": {
+    "file": "scheduler.sqlite",
+    "sha256": "c5fd3552552b58367c519344209845942a6a79aa7e7a3f908f137cc8f05d90a5"
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "author": "Ethan",
+  "reviewDate": "2026-10-22",
+  "baseline": {
+    "tag": "v1.0.0",
+    "commit": "5f3a3eb62b9e0341839a5c78ecdd2eb5c1859f0e"
+  },
+  "productSurface": {
+    "type": "local-node-cli-and-stdio-mcp-server",
+    "entryPoint": "package.json bin cpb -> dist/cli.js",
+    "sourceInventory": [
+      "src/claude-sdk-runner.ts",
+      "src/cli.ts",
+      "src/file-tools.ts",
+      "src/process.ts",
+      "src/providers/claude.ts",
+      "src/providers/openrouter.ts",
+      "src/redact.ts",
+      "src/runner.ts",
+      "src/schema.ts",
+      "src/store.ts",
+      "src/types.ts",
+      "src/workspace.ts",
+      "src/local-commands.ts"
+    ],
+    "gui": false,
+    "react": false,
+    "nativeApp": false,
+    "webDevServer": false,
+    "nativeFuzzHarness": false,
+    "nodeEngine": ">=22.13.0",
+    "declaredOperatingSystems": [
+      "macOS",
+      "Linux"
+    ],
+    "windowsClaudeExecution": "unsupported",
+    "recordedHost": {
+      "os": "macOS 27.2.0 arm64",
+      "node": "22.13.1",
+      "npm": "10.9.2"
+    },
+    "scopeFinding": "No browser/native interface exists for visual, React, or WCAG control auditing. Keep terminal help, onboarding, machine-readable diagnostics, actionable errors, privacy, and recovery guidance clear. No native fuzz harness is present; do not fabricate fuzz work."
+  },
+  "conditionalSkills": [
+    {
+      "name": "impeccable",
+      "sourceFilesRead": [
+        ".agents/skills/impeccable/SKILL.md",
+        ".agents/skills/impeccable/reference/operate.md",
+        ".agents/skills/impeccable/reference/onboard.md",
+        ".agents/README.md"
+      ],
+      "applicability": "conditional; no graphical interface or onboarding flow",
+      "applied": "Used its explicit CLI-only guidance for help, quickstart, and diagnostics; no engine call because no graphical interface is in scope."
+    },
+    {
+      "name": "baseline-ui",
+      "sourceFilesRead": [
+        ".agents/skills/baseline-ui/SKILL.md"
+      ],
+      "applicability": "not applicable; no UI code",
+      "applied": "No UI changes or fabricated UI work."
+    },
+    {
+      "name": "fixing-accessibility",
+      "sourceFilesRead": [
+        ".agents/skills/fixing-accessibility/SKILL.md"
+      ],
+      "applicability": "conditional; HTML/native controls and focus behavior are absent",
+      "applied": "No WCAG conformance claim. CLI text clarity is retained as a documentation check."
+    },
+    {
+      "name": "web-design-guidelines",
+      "sourceFilesRead": [
+        ".agents/skills/web-design-guidelines/SKILL.md"
+      ],
+      "applicability": "not applicable; no web UI files or browser surface",
+      "applied": "No current web-guideline fetch or UI review."
+    },
+    {
+      "name": "vercel-react-best-practices",
+      "sourceFilesRead": [
+        ".agents/skills/react-best-practices/SKILL.md",
+        ".agents/skills/react-best-practices/AGENTS.md"
+      ],
+      "applicability": "not applicable; no React or Next.js dependency/source",
+      "applied": "No React implementation or review."
+    },
+    {
+      "name": "vercel-composition-patterns",
+      "sourceFilesRead": [
+        ".agents/skills/composition-patterns/SKILL.md",
+        ".agents/skills/composition-patterns/AGENTS.md"
+      ],
+      "applicability": "not applicable; no React component tree",
+      "applied": "No component work created to force applicability."
+    },
+    {
+      "name": "harness-writing",
+      "sourceFilesRead": [
+        ".agents/skills/harness-writing/SKILL.md"
+      ],
+      "applicability": "not applicable; no native fuzz target or fuzz corpus",
+      "applied": "No fuzz harness added; current evidence is deterministic local CLI/MCP tests."
+    }
+  ],
+  "releaseSkill": {
+    "name": "shipping-and-launch",
+    "sourceFilesRead": [
+      ".agents/skills/shipping-and-launch/SKILL.md",
+      ".agents/references/definition-of-done.md",
+      ".agents/references/security-checklist.md",
+      ".agents/references/performance-checklist.md",
+      ".agents/references/accessibility-checklist.md",
+      ".agents/references/observability-checklist.md"
+    ],
+    "adaptedFor": "locally installed CLI; web-service infrastructure, CDN, browser metrics, dashboards, and page accessibility scans are not product surfaces"
+  },
+  "historicalEvidence": {
+    "acceptanceRecord": "ACCEPTANCE.md",
+    "reportedCoreStatus": "CB-01 through CB-18 passed on the recorded host",
+    "cleanInstallRecord": "evidence/release-clean-install.txt",
+    "cleanInstallCommit": "68c76b262d1a3ef28dd64778a2ecc6fd60b740df",
+    "cleanInstallOutcome": "npm ci, type check, and default full suite passed; 50 passed, 23 explicit skips, zero failed",
+    "packagedCliSmoke": "evidence/live-packed.tap",
+    "claudeStatus": "CB-19 through CB-24 BLOCKED_EXTERNAL; no Claude account/API key or standalone official CLI",
+    "claimBoundary": "Historical evidence applies to the artifact/environment recorded in ACCEPTANCE.md; rerun against the final publication artifact. It does not prove an updater, backup/restore, all declared platforms, complete license inventory, or live Claude compatibility."
+  },
+  "releaseChecklist": [
+    {
+      "id": "fresh-install-and-package",
+      "status": "historical-evidence-present-rerun-final-artifact",
+      "required": "npm ci, npm run check, npm test, npm audit --omit=dev, npm pack, clean consumer archive install, CLI help/doctor, local-only smoke; record artifact hash and exact environment.",
+      "evidence": [
+        "evidence/release-clean-install.txt",
+        "evidence/live-packed.tap",
+        "ACCEPTANCE.md"
+      ]
+    },
+    {
+      "id": "update-and-rollback",
+      "status": "evidence-required",
+      "required": "Upgrade previous package/artifact, inspect existing CPB_HOME, restore previous version, and verify records remain intact; record commands and outcome.",
+      "evidence": [],
+      "note": "No in-product updater or upgrade/rollback drill is recorded."
+    },
+    {
+      "id": "offline-backup-and-restore",
+      "status": "evidence-required",
+      "required": "Stop all bridge/provider processes, back up complete private CPB_HOME including scheduler.sqlite, run records/events and retained recovery workspaces, restore into isolated directory, run list/inspect, and verify integrity.",
+      "evidence": [
+        "evidence/readiness/storage-v1-baseline.tap",
+        "evidence/readiness/storage-v1.0.0/manifest.json"
+      ],
+      "note": "Existing persistence/restart tests do not constitute an offline backup/restore drill."
+    },
+    {
+      "id": "diagnostics-privacy-and-recovery",
+      "status": "historical-tests-present-recheck-final-artifact",
+      "required": "Check absent CLI/key, invalid credentials, provider error, malformed state, and cancellation. Verify explicit unknown/unavailable/logged-out states and that JSON/events do not disclose credentials, prompt, source content, or raw provider stderr.",
+      "evidence": [
+        "ACCEPTANCE.md",
+        "tests/cli.test.mjs",
+        "tests/live.test.mjs"
+      ]
+    },
+    {
+      "id": "dependency-license-review",
+      "status": "license-evidence-required",
+      "required": "Review exact production dependency tree and lifecycle scripts, verify lockfile, run supported dependency advisory audit, and record third-party license/SBOM review and dispositions.",
+      "evidence": [
+        "package.json",
+        "package-lock.json",
+        "ACCEPTANCE.md"
+      ],
+      "note": "npm audit evidence does not establish license compatibility or complete inventory."
+    },
+    {
+      "id": "os-node-support-matrix",
+      "status": "single-host-tested",
+      "required": "State minimum versus tested versions separately; run clean install/build/test/smoke for each claimed OS and Node combination, including process cancellation and storage checks.",
+      "evidence": [
+        "package.json",
+        "README.md",
+        "ACCEPTANCE.md"
+      ],
+      "tested": [
+        "macOS arm64 / Node 22.13.1 / npm 10.9.2"
+      ],
+      "declared": [
+        "macOS",
+        "Linux",
+        "Node >=22.13.0"
+      ],
+      "unsupported": [
+        "Windows supervised Claude execution"
+      ],
+      "note": "Linux and additional Node versions are not established by the recorded run."
+    },
+    {
+      "id": "claude-experimental-qualification",
+      "status": "blocked-external",
+      "required": "With authorized official credentials/runtime only, test SDK and CLI read, authorized edit, forbidden edit, cancellation/timeout, provider failure, actual cost metadata, and runtime permissions; do not fake output or induce quota exhaustion.",
+      "evidence": [
+        "ACCEPTANCE.md",
+        "PROVIDERS.md"
+      ],
+      "blockers": [
+        "No Claude account/API key available",
+        "No standalone official Claude CLI available"
+      ],
+      "claim": "SDK initialization and generic process supervision are not live Claude compatibility. Keep cross-provider release unverified."
+    }
+  ],
+  "authorMetadata": "This Markdown/JSON evidence has no standard personal-author metadata field; author provenance is recorded in-file.",
+  "assessmentPhase": "initial; current status superseded by READINESS.md and subsequent evidence",
+  "resumedEvidence": [
+    "evidence/readiness/operations.json",
+    "evidence/readiness/dependencies.json",
+    "evidence/readiness/credential-validation-after.tap",
+    "READINESS.md"
+  ]
+}

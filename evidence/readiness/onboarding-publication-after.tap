@@ -1,0 +1,62 @@
+TAP version 13
+# Subtest: fresh sample and validation are offline, private, noninteractive and never overwrite
+ok 1 - fresh sample and validation are offline, private, noninteractive and never overwrite
+  ---
+  duration_ms: 619.145167
+  ...
+# Subtest: task-file FIFO is rejected promptly without hanging the CLI
+ok 2 - task-file FIFO is rejected promptly without hanging the CLI
+  ---
+  duration_ms: 105.855167
+  ...
+# Subtest: help contains actual quickstart and recovery/diagnostic commands without terminal controls
+ok 3 - help contains actual quickstart and recovery/diagnostic commands without terminal controls
+  ---
+  duration_ms: 105.345958
+  ...
+# Subtest: shareable diagnostics exclude exact task instructions and output content
+ok 4 - shareable diagnostics exclude exact task instructions and output content
+  ---
+  duration_ms: 363.913792
+  ...
+# Subtest: invalid pagination options fail explicitly, including null and empty values
+ok 5 - invalid pagination options fail explicitly, including null and empty values
+  ---
+  duration_ms: 324.151625
+  ...
+# (node:92878) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: publication disk-full failure preserves the original destination bytes
+ok 6 - publication disk-full failure preserves the original destination bytes
+  ---
+  duration_ms: 117.361167
+  ...
+# Subtest: partial publication retains originals and a durable per-file recovery journal
+ok 7 - partial publication retains originals and a durable per-file recovery journal
+  ---
+  duration_ms: 57.388792
+  ...
+# Subtest: publication checks cancellation between files and records recoverable progress
+ok 8 - publication checks cancellation between files and records recoverable progress
+  ---
+  duration_ms: 60.236417
+  ...
+# Subtest: publication preserves existing file mode and leaves no temporary source files
+ok 9 - publication preserves existing file mode and leaves no temporary source files
+  ---
+  duration_ms: 80.862375
+  ...
+# Subtest: recovery compares observed bytes after interruption and never overwrites divergent edits
+ok 10 - recovery compares observed bytes after interruption and never overwrites divergent edits
+  ---
+  duration_ms: 71.612333
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1571.426875

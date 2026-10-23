@@ -1,0 +1,3 @@
+# Exact-path exclusions, reviewed 2026-10-22. The guard contains its own detection patterns.
+scripts/floor-guard.mjs
+# Evidence describes intentional pre-fix failures and tool/compiler output; it is not application code.

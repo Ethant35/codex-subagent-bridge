@@ -1,0 +1,20 @@
+TAP version 13
+# Subtest: CB-05 live OpenRouter exact authorized edit
+ok 1 - CB-05 live OpenRouter exact authorized edit
+  ---
+  duration_ms: 4933.483
+  ...
+# Subtest: CB-06 native Codex parent uses OpenRouter child result
+ok 2 - CB-06 native Codex parent uses OpenRouter child result
+  ---
+  duration_ms: 12208.814375
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17199.724667

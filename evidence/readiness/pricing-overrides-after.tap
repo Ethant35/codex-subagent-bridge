@@ -1,0 +1,162 @@
+TAP version 13
+# (node:75069) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: controlled successful read preserves exact instructions and executes one authorized read
+ok 1 - controlled successful read preserves exact instructions and executes one authorized read
+  ---
+  duration_ms: 12.031125
+  ...
+# Subtest: finite budget rejects missing prompt price before inference
+ok 2 - finite budget rejects missing prompt price before inference
+  ---
+  duration_ms: 0.382958
+  ...
+# Subtest: controlled provider rejects missing choices without false completion
+ok 3 - controlled provider rejects missing choices without false completion
+  ---
+  duration_ms: 0.525875
+  ...
+# Subtest: controlled provider rejects null tool-call entry without false completion
+ok 4 - controlled provider rejects null tool-call entry without false completion
+  ---
+  duration_ms: 0.417625
+  ...
+# Subtest: controlled provider rejects object output without false completion
+ok 5 - controlled provider rejects object output without false completion
+  ---
+  duration_ms: 0.868666
+  ...
+# Subtest: controlled provider rejects empty output without false completion
+ok 6 - controlled provider rejects empty output without false completion
+  ---
+  duration_ms: 0.35575
+  ...
+# Subtest: controlled provider rejects unknown cost under finite cap without false completion
+ok 7 - controlled provider rejects unknown cost under finite cap without false completion
+  ---
+  duration_ms: 0.262875
+  ...
+# Subtest: controlled provider rejects malformed tool-call JSON without false completion
+ok 8 - controlled provider rejects malformed tool-call JSON without false completion
+  ---
+  duration_ms: 0.41875
+  ...
+# Subtest: malformed catalog entries fail closed before inference
+ok 9 - malformed catalog entries fail closed before inference
+  ---
+  duration_ms: 0.373167
+  ...
+# Subtest: null catalog JSON is classified as malformed without inference
+ok 10 - null catalog JSON is classified as malformed without inference
+  ---
+  duration_ms: 0.418083
+  ...
+# Subtest: null completion JSON is classified as malformed without retry
+ok 11 - null completion JSON is classified as malformed without retry
+  ---
+  duration_ms: 0.349542
+  ...
+# Subtest: HTTP 401 inference response fails without retry
+ok 12 - HTTP 401 inference response fails without retry
+  ---
+  duration_ms: 0.260208
+  ...
+# Subtest: HTTP 429 inference response fails without retry
+ok 13 - HTTP 429 inference response fails without retry
+  ---
+  duration_ms: 0.12325
+  ...
+# Subtest: uncertain failed inference request is never retried
+ok 14 - uncertain failed inference request is never retried
+  ---
+  duration_ms: 0.144583
+  ...
+# Subtest: oversized catalog response is rejected before inference
+ok 15 - oversized catalog response is rejected before inference
+  ---
+  duration_ms: 0.338333
+  ...
+# Subtest: interrupted inference response fails without retry
+ok 16 - interrupted inference response fails without retry
+  ---
+  duration_ms: 0.260042
+  ...
+# Subtest: abort during inference response stops without retry
+ok 17 - abort during inference response stops without retry
+  ---
+  duration_ms: 0.21
+  ...
+# Subtest: structured pricing overrides use conservative rates without weakening provider price caps
+ok 18 - structured pricing overrides use conservative rates without weakening provider price caps
+  ---
+  duration_ms: 0.23625
+  ...
+# Subtest: finite budget rejects non-array override before inference
+ok 19 - finite budget rejects non-array override before inference
+  ---
+  duration_ms: 0.121167
+  ...
+# Subtest: finite budget rejects null entry override before inference
+ok 20 - finite budget rejects null entry override before inference
+  ---
+  duration_ms: 0.092875
+  ...
+# Subtest: finite budget rejects unknown prompt override before inference
+ok 21 - finite budget rejects unknown prompt override before inference
+  ---
+  duration_ms: 0.08375
+  ...
+# Subtest: finite budget rejects unknown completion override before inference
+ok 22 - finite budget rejects unknown completion override before inference
+  ---
+  duration_ms: 0.079958
+  ...
+# Subtest: finite budget rejects request charge override before inference
+ok 23 - finite budget rejects request charge override before inference
+  ---
+  duration_ms: 0.084417
+  ...
+# Subtest: finite budget rejects negative price override before inference
+ok 24 - finite budget rejects negative price override before inference
+  ---
+  duration_ms: 0.185583
+  ...
+# Subtest: omitted request price requires explicit zero request-price routing cap
+ok 25 - omitted request price requires explicit zero request-price routing cap
+  ---
+  duration_ms: 0.135625
+  ...
+# Subtest: invalid or nonzero base request price null blocks inference
+ok 26 - invalid or nonzero base request price null blocks inference
+  ---
+  duration_ms: 0.085625
+  ...
+# Subtest: invalid or nonzero base request price "" blocks inference
+ok 27 - invalid or nonzero base request price "" blocks inference
+  ---
+  duration_ms: 0.075542
+  ...
+# Subtest: invalid or nonzero base request price "invalid" blocks inference
+ok 28 - invalid or nonzero base request price "invalid" blocks inference
+  ---
+  duration_ms: 0.063167
+  ...
+# Subtest: invalid or nonzero base request price "-1" blocks inference
+ok 29 - invalid or nonzero base request price "-1" blocks inference
+  ---
+  duration_ms: 0.053583
+  ...
+# Subtest: invalid or nonzero base request price "0.1" blocks inference
+ok 30 - invalid or nonzero base request price "0.1" blocks inference
+  ---
+  duration_ms: 0.054375
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 134.477583

@@ -1,0 +1,36 @@
+{
+  "id": "11111111-1111-4111-8111-111111111111",
+  "correlationId": "ebdfac7a-8f26-48c9-bf56-8d52ed034d0c",
+  "state": "FAILED",
+  "task": {
+    "version": 1,
+    "taskId": "11111111-1111-4111-8111-111111111111",
+    "correlationId": "fde483aa-a2f8-4a41-beb2-c59434f75075",
+    "provider": "openrouter",
+    "backend": "api",
+    "model": "openai/gpt-4.1-mini",
+    "instructions": "Local compatibility fixture only; no model call was made.",
+    "workspaceRoot": "/tmp/cpb-fixture-workspace",
+    "allowedOperations": [
+      "read_file"
+    ],
+    "readablePaths": [
+      "README.md"
+    ],
+    "writablePaths": [],
+    "maxRuntimeMs": 30000,
+    "maxToolSteps": 2,
+    "maxSpendUsd": 0.1,
+    "expectedOutput": "No provider result is present in this fixture.",
+    "resultFormat": "text",
+    "networkPolicy": "provider-only"
+  },
+  "instructionHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pid": 2677,
+  "createdAt": "2026-01-01T00:00:00.000Z",
+  "updatedAt": "2026-10-22T20:20:04.691Z",
+  "error": {
+    "code": "FIXTURE_ONLY",
+    "message": "Generated locally from the v1.0.0 Store; no provider call was made."
+  }
+}

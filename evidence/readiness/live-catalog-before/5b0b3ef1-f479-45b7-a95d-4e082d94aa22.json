@@ -1,0 +1,62 @@
+{
+  "run": {
+    "id": "5b0b3ef1-f479-45b7-a95d-4e082d94aa22",
+    "correlationId": "562aa397-ce88-4610-86e7-4c1f551ad765",
+    "state": "FAILED",
+    "task": {
+      "version": 1,
+      "taskId": "5b0b3ef1-f479-45b7-a95d-4e082d94aa22",
+      "correlationId": "562aa397-ce88-4610-86e7-4c1f551ad765",
+      "provider": "openrouter",
+      "backend": "api",
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "instructions": "Use read_file to read fact.txt. Return only its exact content, with no commentary.",
+      "workspaceRoot": "<fixture>/repo",
+      "allowedOperations": [
+        "read_file",
+        "list_files"
+      ],
+      "readablePaths": [
+        "fact.txt"
+      ],
+      "writablePaths": [],
+      "maxRuntimeMs": 120000,
+      "maxToolSteps": 8,
+      "maxSpendUsd": 0.02,
+      "expectedOutput": "Exact fact.txt contents",
+      "resultFormat": "text",
+      "networkPolicy": "provider-only"
+    },
+    "instructionHash": "cb6ebf7e7ce84c3170fc6232c783f360473cf1fdd07e542eb2121e70974b93aa",
+    "pid": 67572,
+    "createdAt": "2026-10-23T05:10:06.382Z",
+    "updatedAt": "2026-10-23T05:10:06.585Z",
+    "workspace": "<fixture>/state/runs/5b0b3ef1-f479-45b7-a95d-4e082d94aa22/workspace",
+    "error": {
+      "code": "MALFORMED_CATALOG",
+      "message": "OpenRouter catalog is invalid"
+    }
+  },
+  "events": [
+    {
+      "at": "2026-10-23T05:10:06.417Z",
+      "type": "state",
+      "detail": {
+        "state": "RUNNING"
+      }
+    },
+    {
+      "at": "2026-10-23T05:10:06.594Z",
+      "type": "state",
+      "detail": {
+        "state": "FAILED",
+        "error": {
+          "code": "MALFORMED_CATALOG",
+          "message": "[OMITTED]"
+        }
+      }
+    }
+  ],
+  "reportedCostUsd": 0,
+  "parent": "Delegation failed: `MALFORMED_CATALOG` — OpenRouter catalog is invalid."
+}

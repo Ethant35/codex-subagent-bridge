@@ -1,0 +1,18 @@
+{
+  "author": "Ethan",
+  "version": "1.1.0",
+  "date": "2026-10-22",
+  "file": "codex-subagent-bridge-1.1.0.tgz",
+  "sha256": "b03097979cb55a6a62a019ce0b12df0bbf330ad9ef11aecb8063effe90a47f2c",
+  "sizeBytes": 177944,
+  "files": 138,
+  "runtimeFiles": 39,
+  "runtimeMatchesLiveTestedConsumer": true,
+  "packageAuthor": "Ethan",
+  "allRelativeMarkdownLinksResolve": true,
+  "accountPathsAndKnownKeyPatternsAbsent": true,
+  "bundledThirdPartyDependencies": false,
+  "evidence": "evidence/readiness/clean-package.json and live-summary.json",
+  "scope": "macOS arm64 / Node 22.13.1 / trusted local OpenRouter CLI and native Codex MCP; Claude experimental",
+  "finalPostPublicationVerification": "Download/hash/smoke recorded in HANDOFF.md; manifest excluded from npm package to avoid a self-referential hash."
+}

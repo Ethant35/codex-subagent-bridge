@@ -7,7 +7,7 @@ Codex Subagent Bridge exposes `cpb_delegate`, a local MCP tool for a native Open
 
 ## Install from source
 
-Requires Node.js 22.13+ and npm on macOS or Linux. Windows is unsupported for supervised Claude execution. Node 22 may print an experimental SQLite warning on stderr. SQLite is used locally; no server is required.
+Requires Node.js 22.13+ and npm. Qualification covers macOS arm64 with Node 22.13.1 only; Linux and other Node/platform combinations are unqualified. Windows is unsupported for supervised Claude execution. Node 22 may print an experimental SQLite warning on stderr. SQLite is used locally; no server is required.
 
 ```sh
 git clone https://github.com/Ethant35/codex-subagent-bridge.git
@@ -19,6 +19,10 @@ node dist/cli.js doctor --json
 ```
 
 Use `npm link` if you want the `cpb` command on PATH. A package can also be built with `npm pack` and installed from the resulting archive. Do not put credentials in task files, shell command arguments, or Codex configuration files. Pass `OPENROUTER_API_KEY` in the launching process environment using your normal secret-management method.
+
+## Safe first run
+
+Run `cpb sample --directory ./cpb-example`, then `cpb validate --task-file ./cpb-example/task.json`. This creates local sample data with spending disabled. Set an explicit finite budget and process credential before delegating. See [OPERATIONS.md](OPERATIONS.md) for pagination, diagnostics, recovery, backups, retention and rollback. See [READINESS.md](READINESS.md) for the current evidence and limits.
 
 ## Delegate a task
 
@@ -76,4 +80,8 @@ All data commands emit JSON; `--json` is accepted explicitly. `doctor` reports d
 
 Records live in `~/.cpb` or a private `CPB_HOME` directory. States are `QUEUED`, `RUNNING`, `COMPLETED`, `FAILED`, `TIMED_OUT`, `CANCELLED`, and `BLOCKED`. A lost owner becomes `FAILED` on inspection. Cancellation is cooperative at the bridge boundary and forceful for supervised local process groups; it cannot guarantee remote inference stops billing instantly.
 
-Run `npm test` for local E2E. Live suites require explicit environment opt-in. No GitHub Actions workflows are provided or enabled, per the project owner's instruction. See [CONTRIBUTING.md](CONTRIBUTING.md), [ARCHITECTURE.md](ARCHITECTURE.md), and [SECURITY.md](SECURITY.md).
+Run `npm test` for deterministic fault tests and local CLI/MCP E2E. Live suites require explicit environment opt-in. No GitHub Actions workflows are provided or enabled, per the project owner's instruction. See [CONTRIBUTING.md](CONTRIBUTING.md), [ARCHITECTURE.md](ARCHITECTURE.md), and [SECURITY.md](SECURITY.md).
+
+## Dependency terms
+
+The bridge source is MIT licensed; its dependency tree is not MIT-only. Installing the pinned Claude SDK also installs Anthropic’s separately licensed runtime. Review [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) before redistribution. Release archives do not bundle dependency executables.

@@ -1,0 +1,28 @@
+{
+  "author": "Ethan",
+  "date": "2026-10-22",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "nativeParentModel": "gpt-6-luna",
+  "nativeParentAttempts": 2,
+  "initialAttempt": "Both tasks failed before inference due to catalog parser; one native parent attempt used.",
+  "finalTests": {
+    "CB-05": "PASS exact authorized edit; unrelated files preserved",
+    "CB-06": "PASS native Codex parent consumes actual child result"
+  },
+  "reportedOpenRouterCostUsd": 0.00037277,
+  "tasks": [
+    {
+      "id": "36c472b9-259b-46c7-aa89-9cba64b9e2a2",
+      "state": "COMPLETED",
+      "costUsd": 0.00018003
+    },
+    {
+      "id": "35fc1a6f-ec37-4307-81fd-6adb2cad3633",
+      "state": "COMPLETED",
+      "costUsd": 0.00019274
+    }
+  ],
+  "applicationCapPerChildUsd": 0.02,
+  "subscriptionCost": "Native parent use is subscription usage, separate from OpenRouter billing; no dollar-equivalent estimate invented.",
+  "artifactBinding": "Installed archive; final dist hashes must equal clean-package.json. Documentation-only repack needs no repeat paid test."
+}

@@ -1,0 +1,56 @@
+TAP version 13
+# (node:99421) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: publication disk-full failure preserves the original destination bytes
+ok 1 - publication disk-full failure preserves the original destination bytes
+  ---
+  duration_ms: 102.664458
+  ...
+# Subtest: partial publication retains originals and a durable per-file recovery journal
+ok 2 - partial publication retains originals and a durable per-file recovery journal
+  ---
+  duration_ms: 53.074833
+  ...
+# Subtest: publication checks cancellation between files and records recoverable progress
+ok 3 - publication checks cancellation between files and records recoverable progress
+  ---
+  duration_ms: 60.715958
+  ...
+# Subtest: publication preserves existing file mode and leaves no temporary source files
+ok 4 - publication preserves existing file mode and leaves no temporary source files
+  ---
+  duration_ms: 78.0455
+  ...
+# Subtest: recovery compares observed bytes after interruption and never overwrites divergent edits
+ok 5 - recovery compares observed bytes after interruption and never overwrites divergent edits
+  ---
+  duration_ms: 59.550458
+  ...
+# Subtest: recovery reads a bounded journal for the maximum valid path count
+not ok 6 - recovery reads a bounded journal for the maximum valid path count
+  ---
+  duration_ms: 1.391042
+  location: '<checkout>/tests/publication.test.mjs:20:1'
+  failureType: 'testCodeFailure'
+  error: 'Publication journal is unreadable or invalid; preserve the store for investigation'
+  code: 'RECOVERY_CORRUPT'
+  name: 'BridgeError'
+  stack: |-
+    recovery (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/dist/local-commands.js:96:15)
+    TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/publication.test.mjs:27:18)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:931:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:629:18)
+    Test.postRun (node:internal/test_runner/test:1042:19)
+    Test.run (node:internal/test_runner/test:970:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 439.0835

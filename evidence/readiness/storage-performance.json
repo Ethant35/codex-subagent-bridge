@@ -1,0 +1,29 @@
+{
+  "author": "Ethan",
+  "measuredAt": "2026-10-22",
+  "baseline": "v1.0.0 (5f3a3eb62b9e0341839a5c78ecdd2eb5c1859f0e)",
+  "runtime": "Node.js v22.13.1 on macOS arm64",
+  "method": {
+    "records": 500,
+    "pageSize": 100,
+    "iterations": 9,
+    "statistic": "median of 9 warm repeated reads",
+    "oldOperation": "released Store.list() returns and sorts all 500 records",
+    "newOperation": "Store.list({limit: 100}) validates all records and retains at most 100 in its page heap",
+    "dataset": "synthetic terminal COMPLETED records in separate temporary local directories; no provider calls"
+  },
+  "medianMilliseconds": {
+    "v1ListAll": 10.598500000000058,
+    "currentBoundedPage": 17.81370799999968
+  },
+  "retainedHeapBytesAfterForcedGC": {
+    "v1ListAll500Records": 507448,
+    "currentList100Records": 68248
+  },
+  "interpretation": "The bounded page costs about 68% more elapsed time in this small warm-read sample, while its retained heap delta is about 87% lower and its result count is capped at 100 instead of 500. The cost includes stricter record and task validation and safe file opens. Both implementations scan and parse all files, so listing remains O(N); the result does not claim faster reads or a service-level latency target.",
+  "limits": [
+    "One local filesystem and one Node/macOS environment were measured.",
+    "The sample does not establish cold-cache performance or peak process RSS; retained V8 heap after forced GC is not peak allocation.",
+    "Pagination bounds returned and retained records but each cursor page rescans the directory."
+  ]
+}

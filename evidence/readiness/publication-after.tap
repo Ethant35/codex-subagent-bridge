@@ -1,0 +1,42 @@
+TAP version 13
+# (node:99698) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: publication disk-full failure preserves the original destination bytes
+ok 1 - publication disk-full failure preserves the original destination bytes
+  ---
+  duration_ms: 101.663916
+  ...
+# Subtest: partial publication retains originals and a durable per-file recovery journal
+ok 2 - partial publication retains originals and a durable per-file recovery journal
+  ---
+  duration_ms: 55.995416
+  ...
+# Subtest: publication checks cancellation between files and records recoverable progress
+ok 3 - publication checks cancellation between files and records recoverable progress
+  ---
+  duration_ms: 57.024167
+  ...
+# Subtest: publication preserves existing file mode and leaves no temporary source files
+ok 4 - publication preserves existing file mode and leaves no temporary source files
+  ---
+  duration_ms: 71.629417
+  ...
+# Subtest: recovery compares observed bytes after interruption and never overwrites divergent edits
+ok 5 - recovery compares observed bytes after interruption and never overwrites divergent edits
+  ---
+  duration_ms: 61.426625
+  ...
+# Subtest: recovery reads a bounded journal for the maximum valid path count
+ok 6 - recovery reads a bounded journal for the maximum valid path count
+  ---
+  duration_ms: 25.505792
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 457.107125

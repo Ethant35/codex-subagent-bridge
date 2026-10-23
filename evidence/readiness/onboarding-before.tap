@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: fresh sample and validation are offline, private, noninteractive and never overwrite
+not ok 1 - fresh sample and validation are offline, private, noninteractive and never overwrite
+  ---
+  duration_ms: 120.463
+  location: '<checkout>/tests/onboarding.test.mjs:9:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    {
+      "error": {
+        "code": "CLI_ERROR",
+        "message": "Command failed; check arguments, file permissions, and cpb doctor"
+      }
+    }
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/onboarding.test.mjs:9:220)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:931:25)
+    Test.start (node:internal/test_runner/test:829:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: task-file FIFO is rejected promptly without hanging the CLI
+not ok 2 - task-file FIFO is rejected promptly without hanging the CLI
+  ---
+  duration_ms: 5012.838792
+  location: '<checkout>/tests/onboarding.test.mjs:10:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + Error: spawnSync <home>/.nvm/versions/node/v22.13.1/bin/node ETIMEDOUT
+    +     at Object.spawnSync (node:internal/child_process:1120:20)
+    +     at spawnSync (node:child_process:868:24)
+    +     at Object.run (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/onboarding.test.mjs:8:251)
+    +     at TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/onboarding.test.mjs:10:191)
+    +     at Test.runInAsyncScope (node:async_hooks:211:14)
+    +     at Test.run (node:internal/test_runner/test:931:25)
+    +     at Test.processPendingSubtests (node:internal/test_runner/test:629:18)
+    +     at Test.postRun (node:internal/test_runner/test:1042:19)
+    +     at Test.run (node:internal/test_runner/test:970:12)
+    +     at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3) {
+    +   code: 'ETIMEDOUT',
+    +   errno: -60,
+    +   path: '<home>/.nvm/versions/node/v22.13.1/bin/node',
+    +   spawnargs: [
+    +     '<checkout>/dist/cli.js',
+    +     'delegate',
+    +     '--provider',
+    +     'openrouter',
+    +     '--model',
+    +     'x',
+    +     '--task-file',
+    +     '/private/var/folders/j_/l874vytd19j5hkhl05ymffbc0000gn/T/cpb-onboarding-hhzhkS/pipe'
+    +   ],
+    +   syscall: 'spawnSync <home>/.nvm/versions/node/v22.13.1/bin/node'
+    + }
+    - undefined
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  actual:
+  error: 'spawnSync <home>/.nvm/versions/node/v22.13.1/bin/node ETIMEDOUT'
+  stack: |-
+    Object.spawnSync (node:internal/child_process:1120:20)
+    spawnSync (node:child_process:868:24)
+    Object.run (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/onboarding.test.mjs:8:251)
+    TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/onboarding.test.mjs:10:191)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:931:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:629:18)
+    Test.postRun (node:internal/test_runner/test:1042:19)
+    Test.run (node:internal/test_runner/test:970:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/onboarding.test.mjs:10:275)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:931:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:629:18)
+    Test.postRun (node:internal/test_runner/test:1042:19)
+    Test.run (node:internal/test_runner/test:970:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: help contains actual quickstart and recovery/diagnostic commands without terminal controls
+not ok 3 - help contains actual quickstart and recovery/diagnostic commands without terminal controls
+  ---
+  duration_ms: 108.917833
+  location: '<checkout>/tests/onboarding.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: 'sample'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/onboarding.test.mjs:11:260)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:931:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:629:18)
+    Test.postRun (node:internal/test_runner/test:1042:19)
+    Test.run (node:internal/test_runner/test:970:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+# Subtest: shareable diagnostics exclude exact task instructions and output content
+not ok 4 - shareable diagnostics exclude exact task instructions and output content
+  ---
+  duration_ms: 100.312208
+  location: '<checkout>/tests/onboarding.test.mjs:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file://<home>/Documents/ChatGPT/Open%20source/codex-subagent-bridge/tests/onboarding.test.mjs:12:158)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:931:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:629:18)
+    Test.postRun (node:internal/test_runner/test:1042:19)
+    Test.run (node:internal/test_runner/test:970:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:629:7)
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 0
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5393.034917
