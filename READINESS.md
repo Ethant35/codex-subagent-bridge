@@ -1,3 +1,15 @@
+# v1.2.0 guided CLI readiness
+
+Author: Ethan. Review date: 2026-10-22. Baseline: v1.1.0.
+
+The guided CLI and project MCP workflow passed 129 local tests, with 23 explicit external skips and zero failures. A clean source export used fresh npm ci, type checking, build, and a zero-finding dependency audit. The final source suite was repeated after the readable recovery refinement. The installed archive completed a real file read and native Luna High prepare/delegate/result-consumption test, each with a $0.02 application cap. Combined reported OpenRouter cost: $0.000133344. Native subscription usage is separate.
+
+Project trust was tested in a temporary Codex home using the same authorized account; global configuration was not edited. Existing JSON interfaces are retained. The new CLI commands default to readable output with --json available. No unfamiliar-user study or assistive-technology testing is claimed. [Qualification evidence](evidence/usability/qualification.json), [update/recovery drill](evidence/usability/update-recovery.json), and [workflow/review](docs/readiness/usability.md) record exact evidence and limits. Final publication hashes and downloaded-release checks are recorded separately in RELEASE_ARTIFACT.json and PUBLICATION_VERIFICATION.json.
+
+The supported platform and provider boundary below remains unchanged. The older performance/security figures are v1.1.0 evidence, not a fresh scan of the new code.
+
+---
+
 # v1.1.0 readiness
 
 Author: Ethan. Review date: 2026-10-22. Baseline: released v1.0.0, commit `5f3a3eb62b9e0341839a5c78ecdd2eb5c1859f0e`.

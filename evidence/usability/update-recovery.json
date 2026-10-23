@@ -1,0 +1,11 @@
+{
+  "author": "Ethan",
+  "checks": [
+    "downloaded v1.1.0 reads the two new completed runs",
+    "same-prefix update preserves history",
+    "post-update inspect and read-only recovery work",
+    "corruption visible; stopped-store backup restores record",
+    "rollback to downloaded v1.1.0 keeps history inspectable"
+  ],
+  "providerCalls": 0
+}

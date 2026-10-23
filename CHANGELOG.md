@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0
+
+- Add a release-first, replayable CLI onboarding path with task and ID generation.
+- Add project MCP preview and explicit trust, preserving unrelated settings.
+- Require an explicit finite cap and spending consent for each guided run.
+- Add read-only MCP preparation and opt-in human output for existing commands.
+- Preserve experimental Claude and existing platform qualification limits.
+
 Author: Ethan
 
 ## 1.1.0

@@ -1,0 +1,46 @@
+{
+  "id": "55e2717b-35bd-4429-8456-334e0ab4155e",
+  "correlationId": "a0e46425-7262-4124-bcf9-945c66deda03",
+  "state": "COMPLETED",
+  "task": {
+    "version": 1,
+    "taskId": "55e2717b-35bd-4429-8456-334e0ab4155e",
+    "correlationId": "a0e46425-7262-4124-bcf9-945c66deda03",
+    "provider": "openrouter",
+    "backend": "api",
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "instructions": "Use read_file to read fact.txt and return only its exact content.",
+    "workspaceRoot": "<journey>/project",
+    "allowedOperations": [
+      "read_file"
+    ],
+    "readablePaths": [
+      "fact.txt"
+    ],
+    "writablePaths": [],
+    "maxRuntimeMs": 60000,
+    "maxToolSteps": 8,
+    "maxSpendUsd": 0.02,
+    "expectedOutput": "Complete the requested task using only authorized files.",
+    "resultFormat": "text",
+    "networkPolicy": "provider-only"
+  },
+  "instructionHash": "ce3de071cbdeefe9ceb2182dee6a319b09bc5452d39bfb4763364e7b232caff2",
+  "pid": 99516,
+  "createdAt": "2026-10-23T06:41:22.570Z",
+  "updatedAt": "2026-10-23T06:41:25.657Z",
+  "workspace": "<journey>/state/runs/55e2717b-35bd-4429-8456-334e0ab4155e/workspace",
+  "changedPaths": [],
+  "result": {
+    "output": "native-0585566e-472b-49ef-9d2f-98da2c31388a",
+    "usage": {
+      "inputTokens": 819,
+      "outputTokens": 67,
+      "costUsd": 6.7022e-05
+    },
+    "sessionId": "gen-1792737684-XTo9HN1LIsTMDJ0tpQsT",
+    "sources": [
+      "fact.txt"
+    ]
+  }
+}
