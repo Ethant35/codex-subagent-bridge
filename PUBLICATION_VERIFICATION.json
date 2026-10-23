@@ -1,0 +1,21 @@
+{
+  "author": "Ethan",
+  "date": "2026-10-22",
+  "release": "https://github.com/Ethant35/codex-subagent-bridge/releases/tag/v1.1.0",
+  "tagCommit": "6e75bd384a1a8a7d1be3f9f693a13f944d9a65a1",
+  "downloadedSha256": "b03097979cb55a6a62a019ce0b12df0bbf330ad9ef11aecb8063effe90a47f2c",
+  "exactUploadedBytes": true,
+  "smokeCommandsPassed": [
+    "--help",
+    "--version",
+    "doctor",
+    "sample",
+    "validate",
+    "diagnose",
+    "runs"
+  ],
+  "dependencyUse": "Published archive extracted with already clean-installed final-consumer dependencies; no second inference.",
+  "actionsEnabled": false,
+  "actionsRunCount": 0,
+  "packageAuthor": "Ethan"
+}
