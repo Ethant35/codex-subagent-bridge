@@ -1,6 +1,6 @@
 {
   "name": "codex-subagent-bridge",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Bounded external delegation for native OpenAI Codex",
   "type": "module",
   "bin": {
@@ -40,6 +40,7 @@
   "dependencies": {
     "@anthropic-ai/claude-agent-sdk": "0.3.308",
     "@modelcontextprotocol/sdk": "1.32.1",
+    "smol-toml": "1.9.1",
     "zod": "^4.0.0"
   },
   "devDependencies": {
