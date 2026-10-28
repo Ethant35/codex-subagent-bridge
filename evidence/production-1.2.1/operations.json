@@ -1,0 +1,158 @@
+{
+  "author": "Ethan",
+  "runtime": {
+    "node": "v22.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "outcome": "PASS",
+  "archives": {
+    "previous": {
+      "sha256": "ca57d622aca0c31e6dc49b0557f0b0ca4594a65ba34b76fc651992befd342437"
+    },
+    "candidate": {
+      "sha256": "5d6c4a6b0ecbb003073972b3ad0da8a40a5069b31d18e06345d9e0936bd47a83"
+    }
+  },
+  "steps": [
+    {
+      "name": "clean install previous public archive",
+      "result": "PASS"
+    },
+    {
+      "name": "create and inspect synthetic v1.2.0 history",
+      "result": "PASS",
+      "runId": "4d8c8bbc-1936-4ef9-bdfc-fe2420c60879",
+      "state": "BLOCKED",
+      "errorCode": "MISSING_CREDENTIALS"
+    },
+    {
+      "name": "upgrade and restart with history retained",
+      "result": "PASS",
+      "version": "1.2.1"
+    },
+    {
+      "name": "stopped complete private-store backup",
+      "result": "PASS",
+      "fileCount": 17
+    },
+    {
+      "name": "corruption visible and full-store restore",
+      "result": "PASS",
+      "errorCode": "STORE_CORRUPT"
+    },
+    {
+      "name": "rollback inspection of retained state",
+      "result": "PASS",
+      "version": "1.2.0"
+    },
+    {
+      "name": "uninstall and reinstall preserve state and Codex project config",
+      "result": "PASS",
+      "version": "1.2.1"
+    }
+  ],
+  "networkGuard": {
+    "enabled": true,
+    "attempts": 0
+  },
+  "scratchRemoved": true,
+  "stateFiles": [
+    {
+      "path": ".",
+      "kind": "directory",
+      "mode": 448
+    },
+    {
+      "path": "runs",
+      "kind": "directory",
+      "mode": 448
+    },
+    {
+      "path": "runs/1d3ad4d6-ed5a-4317-95a7-c893220d79f2",
+      "kind": "directory",
+      "mode": 448
+    },
+    {
+      "path": "runs/1d3ad4d6-ed5a-4317-95a7-c893220d79f2/events.jsonl",
+      "kind": "file",
+      "mode": 384,
+      "sha256": "0ae9c67099a0a2164bd1770afa4a76595a5aacf53a5b60eed753d5550364e9b7"
+    },
+    {
+      "path": "runs/1d3ad4d6-ed5a-4317-95a7-c893220d79f2/originals",
+      "kind": "directory",
+      "mode": 448
+    },
+    {
+      "path": "runs/1d3ad4d6-ed5a-4317-95a7-c893220d79f2/originals/fact.txt",
+      "kind": "file",
+      "mode": 384,
+      "sha256": "482b22aaf40819424c033ee434c86577b7af8080fe1c2d8aa5efd3528a1131ac"
+    },
+    {
+      "path": "runs/1d3ad4d6-ed5a-4317-95a7-c893220d79f2/run.json",
+      "kind": "file",
+      "mode": 384,
+      "sha256": "2c9080f4287855cd78379151f41b925b3ccf10b1e2aa57ddf4a8bec6d1bea88f"
+    },
+    {
+      "path": "runs/1d3ad4d6-ed5a-4317-95a7-c893220d79f2/workspace",
+      "kind": "directory",
+      "mode": 448
+    },
+    {
+      "path": "runs/1d3ad4d6-ed5a-4317-95a7-c893220d79f2/workspace/fact.txt",
+      "kind": "file",
+      "mode": 384,
+      "sha256": "482b22aaf40819424c033ee434c86577b7af8080fe1c2d8aa5efd3528a1131ac"
+    },
+    {
+      "path": "runs/4d8c8bbc-1936-4ef9-bdfc-fe2420c60879",
+      "kind": "directory",
+      "mode": 448
+    },
+    {
+      "path": "runs/4d8c8bbc-1936-4ef9-bdfc-fe2420c60879/events.jsonl",
+      "kind": "file",
+      "mode": 384,
+      "sha256": "b57462441b685ab5f3ef3e1ad5a065b81c6177dbcd70e355bbd647f30c70f6d1"
+    },
+    {
+      "path": "runs/4d8c8bbc-1936-4ef9-bdfc-fe2420c60879/originals",
+      "kind": "directory",
+      "mode": 448
+    },
+    {
+      "path": "runs/4d8c8bbc-1936-4ef9-bdfc-fe2420c60879/originals/fact.txt",
+      "kind": "file",
+      "mode": 384,
+      "sha256": "482b22aaf40819424c033ee434c86577b7af8080fe1c2d8aa5efd3528a1131ac"
+    },
+    {
+      "path": "runs/4d8c8bbc-1936-4ef9-bdfc-fe2420c60879/run.json",
+      "kind": "file",
+      "mode": 384,
+      "sha256": "075123c2fcb4aa6e3db41167821c7761f1a21a6f38c3253290cdf49baed37728"
+    },
+    {
+      "path": "runs/4d8c8bbc-1936-4ef9-bdfc-fe2420c60879/workspace",
+      "kind": "directory",
+      "mode": 448
+    },
+    {
+      "path": "runs/4d8c8bbc-1936-4ef9-bdfc-fe2420c60879/workspace/fact.txt",
+      "kind": "file",
+      "mode": 384,
+      "sha256": "482b22aaf40819424c033ee434c86577b7af8080fe1c2d8aa5efd3528a1131ac"
+    },
+    {
+      "path": "scheduler.sqlite",
+      "kind": "file",
+      "mode": 384,
+      "sha256": "669b8528a26bd11715b710ff29cc306e56f0097568faf4225dd8f46aa3d625b6"
+    }
+  ],
+  "projectConfigSha256": "5e275016c7a2ba09aef9eae88065f6636124c98e2f45ce0da2d791565b03448e",
+  "limits": "Synthetic blocked records and real archive installations; does not establish provider inference. Initial harness run used a noncanonical macOS temp path and failed before inference. Corrected with realpath; original failure retained locally."
+}

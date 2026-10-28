@@ -1,0 +1,7 @@
+{"at":"2026-10-28T03:27:31.656Z","type":"state","detail":{"state":"RUNNING"}}
+{"at":"2026-10-28T03:27:32.064Z","type":"provider_request","detail":{"turn":0,"model":"deepseek/deepseek-v4.1-flash-1017","maxTokens":4096}}
+{"at":"2026-10-28T03:27:33.017Z","type":"provider_response","detail":{"generationId":"gen-1793158052-w5B1S1HH4aW0JHY71Bd3","inputTokens":370,"outputTokens":40,"costUsd":0.000032376,"turn":0}}
+{"at":"2026-10-28T03:27:33.031Z","type":"tool_allowed","detail":{"name":"read_file","path":"fact.txt","step":1}}
+{"at":"2026-10-28T03:27:33.036Z","type":"provider_request","detail":{"turn":1,"model":"deepseek/deepseek-v4.1-flash-1017","maxTokens":4096}}
+{"at":"2026-10-28T03:27:33.662Z","type":"provider_response","detail":{"generationId":"gen-1793158053-60vaGXwVOdiQonY4Mn3k","inputTokens":447,"outputTokens":32,"costUsd":0.000032196,"turn":1}}
+{"at":"2026-10-28T03:27:33.705Z","type":"state","detail":{"state":"COMPLETED"}}

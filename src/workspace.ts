@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { atomicJSON } from './store.js';
+import { atomicJSON } from './private-files.js';
 import { randomUUID, createHash } from 'node:crypto';
 import { BridgeError, type Task } from './types.js';
 export const MAX_FILE_BYTES=512_000;

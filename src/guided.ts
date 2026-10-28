@@ -22,15 +22,32 @@ export function prepareTask(input:z.input<typeof prepareSchema>) {
     maxRuntimeMs:60_000,maxToolSteps:8,maxSpendUsd:0,
     expectedOutput:'Complete the requested task using only authorized files.',resultFormat:'text',networkPolicy:'provider-only',
   });
-  return {task,validation:validateLocalTask(task),next:'Review the exact paths and instructions. Obtain explicit user consent to a finite maxSpendUsd before calling cpb_delegate. No inference has run.'};
+  const validation=validateLocalTask(task);
+  const next=validation.credentialStatus==='missing'
+    ? `Credential ${validation.credentialSource} is missing. Make it available in the process environment that launches Codex, then run cpb doctor --provider ${task.provider} --human and prepare the task again. No inference has run.`
+    : 'Review the exact paths and instructions. Obtain explicit user consent to a finite maxSpendUsd before calling cpb_delegate. No inference has run.';
+  return {task,validation,next};
 }
 export const shellQuote=(s:string)=>"'"+s.replaceAll("'","'\\''")+"'";
+function nextSteps(task:Task,taskFile:string,validation:ReturnType<typeof validateLocalTask>,extra:string[]=[]):string {
+  const validate=`cpb validate --task-file ${shellQuote(taskFile)} --human`;
+  const doctor=`cpb doctor --provider ${task.provider} --human`;
+  const run=`cpb run --task-file ${shellQuote(taskFile)} --max-spend 0.02 --consent-spend`;
+  const lines:string[]=[];
+  if(validation.credentialStatus==='missing'){
+    lines.push(`Credential ${validation.credentialSource} is missing. Make it available in the process environment before launching Codex.`,doctor,validate,...extra);
+    return lines.join('\n');
+  }
+  if(validation.credentialStatus==='unverified')lines.push(`Credential source ${validation.credentialSource} is not verified by offline validation. Check it before running a task:`,doctor);
+  lines.push(...extra,validate,run);
+  return lines.join('\n');
+}
 export function saveTask(input:z.input<typeof prepareSchema>,file:string) {
   const prepared=prepareTask(input),taskFile=path.resolve(file);
   const relative=path.relative(prepared.task.workspaceRoot,taskFile);
   if([...prepared.task.readablePaths,...prepared.task.writablePaths].includes(relative))throw new BridgeError('TASK_PATH_CONFLICT','Task output must not replace an authorized source file');
   fs.writeFileSync(taskFile,JSON.stringify(prepared.task,null,2)+'\n',{mode:0o600,flag:'wx'});
-  return {taskFile,...prepared,next:`cpb validate --task-file ${shellQuote(taskFile)}\ncpb run --task-file ${shellQuote(taskFile)} --max-spend 0.02 --consent-spend`};
+  return {taskFile,...prepared,next:nextSteps(prepared.task,taskFile,prepared.validation)};
 }
 export function start(directory:string,model?:string) {
   const absolute=path.resolve(directory),taskFile=path.join(absolute,'task.json');
@@ -39,7 +56,7 @@ export function start(directory:string,model?:string) {
   return {
     directory:absolute,taskFile,validation,
     prerequisites:{node:process.version,platform:process.platform,architecture:process.arch,qualified:process.platform==='darwin'&&process.arch==='arm64'&&process.version==='v22.13.1'},
-    next:`cpb connect --directory ${shellQuote(absolute)}\ncpb run --task-file ${shellQuote(taskFile)} --max-spend 0.02 --consent-spend`,
+    next:nextSteps(task,taskFile,validation,[`cpb connect --directory ${shellQuote(absolute)}`]),
   };
 }
 export function consentedTask(task:Task,cap:string|undefined,consent:boolean):Task {
@@ -53,6 +70,25 @@ const printable=(value:unknown)=>String(value??'').replace(/[\u0000-\u0008\u000b
 export function humanOutput(value:unknown):string {
   const v=value as Record<string,any>;
   const lines:string[]=[];
+  if(typeof v.node==='string'&&typeof v.platform==='string'&&typeof v.integration==='string'){
+    lines.push('Codex Subagent Bridge checks',`Runtime: Node ${v.node} on ${v.platform}`,`Supported runtime: ${v.supported?'yes':'no'}`,`Qualified environment: ${v.qualifiedEnvironment?'yes':'no'}`,`Integration: ${v.integration}`);
+    if(v.openrouter){
+      const present=v.openrouter.apiKeyPresent===true;
+      lines.push(`OpenRouter API key: ${present?'present':'missing'} (${v.openrouter.status??'unknown'})`);
+      lines.push('Key presence does not verify that it is valid.');
+      if(!present)lines.push('Next: make OPENROUTER_API_KEY available in the shell that launches Codex, then rerun cpb doctor --provider openrouter --human.');
+    }
+    if(v.claude){
+      lines.push(`Claude API key: ${v.claude.configuredCredentialNames?.includes('ANTHROPIC_API_KEY')?'present':'missing'}. Presence does not verify access; subscription login is separate.`);
+      lines.push(`Claude SDK: ${v.claude.sdk?.available?'available':'unavailable'}; setup validated: ${v.claude.sdkSetup?.validated?'yes':'no'}`,
+        `Claude CLI: ${v.claude.cli?.available?'available':'not found'}`,
+        `Claude CLI login: ${v.claude.auth?.loggedIn===true?'logged in':v.claude.auth?.loggedIn===false?'not logged in':'unverified'}`);
+      if(v.claude.configuredCredentialNames?.length)lines.push(`Configured credential names: ${v.claude.configuredCredentialNames.join(', ')}`);
+      for(const warning of v.claude.warnings??[])lines.push(`Warning: ${warning}`);
+    }
+    lines.push('No model inference was performed.');
+    return lines.map(printable).join('\n')+'\n';
+  }
   if(v.review){const t=v.review;lines.push(`Provider: ${t.provider}; model: ${t.model}`,`Workspace: ${t.workspaceRoot}`,`Read: ${t.readablePaths.join(', ')||'(none)'}`,`Write: ${t.writablePaths.join(', ')||'(none)'}`,`Application cap: ${t.maxSpendUsd??'unbounded'} USD`,`Instructions: ${t.instructions}`);}
   if(Array.isArray(v)){
     if(!v.length)return 'No runs yet. Start with cpb start --directory ./cpb-example\n';
@@ -77,7 +113,6 @@ export function humanOutput(value:unknown):string {
     lines.push(`Task ready: ${v.taskFile??v.task?.taskId}`,'Local validation passed. No network requests or charges.',
       `Files: ${check.readableFiles} readable, ${check.writableFiles} writable.`,
       `Credentials: ${check.credentialSource} ${check.credentialStatus}. Presence does not verify access.`);
-    if(check.credentialStatus==='missing')lines.push('Load the key into the launching process environment, then run validate again.');
     if(v.prerequisites)lines.push(`Runtime: ${v.prerequisites.node} ${v.prerequisites.platform}/${v.prerequisites.architecture}. ${v.prerequisites.qualified?'Qualified platform.':'This runtime is not release-qualified.'}`);
     lines.push('Next:',v.next);
   } else if(v.valid){lines.push('Local validation passed. No network requests or charges.',`Credentials: ${v.credentialSource} ${v.credentialStatus}.`,`Spending in envelope: ${v.spendingEnabled?'enabled':'disabled'}.`);}

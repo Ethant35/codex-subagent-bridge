@@ -2,19 +2,27 @@
 
 Author: Ethan
 
-This path installs the released CLI, checks local prerequisites, creates a no-spend example, connects Codex to that project, validates the task offline, and then runs one bounded delegation after you approve its cost.
+This path installs the CLI, checks local prerequisites, creates a no-spend example, optionally connects Codex to that project, validates the task offline, and then runs one bounded delegation after you approve its cost.
 
 ## 1. Install and check the local setup
 
-Use Node.js 22.13.1 on macOS arm64, the environment qualified for OpenRouter. Install the release into a private per-user directory:
+Use Node.js 22.13.1 on macOS arm64. OpenRouter CLI and native Codex MCP were verified on this environment for v1.2.1. Install the release into a per-user directory:
 
 ```sh
 npm install --prefix "$HOME/.local/share/cpb" \
-  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.2.0/codex-subagent-bridge-1.2.0.tgz
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.2.1/codex-subagent-bridge-1.2.1.tgz
 export PATH="$HOME/.local/share/cpb/node_modules/.bin:$PATH"
 cpb --version
-cpb doctor --provider openrouter
+cpb doctor --provider openrouter --human
 ```
+
+The `PATH` change applies to this shell. On zsh, make it persistent by adding this line once to `~/.zshrc`, then opening a new terminal:
+
+```zsh
+export PATH="$HOME/.local/share/cpb/node_modules/.bin:$PATH"
+```
+
+The CLI works without Codex. Install Codex only if you want to use the optional MCP connection below. No `sudo`, global npm configuration, or source build is needed.
 
 `doctor` checks the runtime and whether the expected credential is present. It does not test the key or contact a model. If you manage the key outside Codex, this zsh prompt reads it without echoing or saving it in shell history:
 
@@ -36,9 +44,9 @@ cpb start --directory ./cpb-example
 
 This creates `fact.txt` and a valid `task.json` with spending set to zero. It checks prerequisites and credential availability without inference. If the directory already contains a valid generated task, `start` replays it without changing it. Otherwise, choose a new directory; existing files are never overwritten. The generated files stay on your machine.
 
-## 3. Preview and connect the project
+## 3. Optional: connect native Codex
 
-Review the exact project MCP configuration first:
+Direct CLI use does not require this step. To let Codex use the bridge, first install Codex using the [official Codex installation instructions](https://developers.openai.com/codex/cli). Then review the exact project MCP configuration:
 
 ```sh
 cpb connect --directory ./cpb-example
@@ -87,7 +95,7 @@ For local run history and recovery, use `cpb runs`, `cpb inspect RUN_ID`, and `c
 
 ## Native Codex MCP use
 
-Install the Codex CLI using its [official installation instructions](https://learn.chatgpt.com/docs/extend/mcp), then launch it from the shell where the key is available:
+Launch Codex from the shell where the key is available:
 
 ```sh
 codex -C ./cpb-example
@@ -101,23 +109,55 @@ After connecting the project, give Codex this instruction:
 
 The legacy advanced route accepts a complete version 1 envelope in `cpb_delegate`. Keep its IDs, paths, provider, model, permissions, and budget accurate. Prefer `cpb_prepare` so the tool generates identifiers and validates the envelope. The parent still needs explicit finite-spend consent before any nonzero-budget call.
 
+Codex also controls approval of the MCP tool call. In an interactive session, approve the exact bounded `cpb_delegate` call after reviewing it. Project trust, MCP tool approval, and provider spending consent are separate. A headless launch with approval policy `never` can refuse this tool before any provider request. Inspect the refusal; do not bypass it or assume that retrying is free. The ordinary CLI `cpb run` path remains available with its explicit cap and consent flags.
+
 ## Credentials and provider support
 
-OpenRouter is verified on macOS arm64 with Node 22.13.1. Claude SDK and CLI support are experimental and live verification is pending. `doctor` and offline validation do not authenticate against a provider. See [Providers and authentication](../PROVIDERS.md) for credential modes and [Readiness](../READINESS.md) for the full qualification boundary.
+OpenRouter v1.2.1 is verified on macOS arm64 with Node 22.13.1. Claude SDK and CLI support remain experimental and live verification is pending. `doctor` and offline validation do not authenticate an API key against its provider. See [Providers and authentication](../PROVIDERS.md) for credential modes and [Readiness](../READINESS.md) for the full qualification boundary.
+
+## If a command stops
+
+- `MISSING_CREDENTIALS`: the run was blocked before a provider request because the named credential was unavailable. Make the variable available to the process that runs `cpb`, then rerun `cpb doctor --provider PROVIDER --human` and validate again. A variable being present does not prove that the provider accepts the key. Inspect the blocked run before deciding whether to submit a new run; each deliberate submission uses fresh execution IDs and may incur a charge.
+- `NOT_FOUND`: check the exact relative input file and project path. Create a missing input yourself; the bridge does not guess a replacement file.
+- `ALREADY_EXISTS`: `start` can replay an existing valid `task.json` without changing it. If the folder is not a valid example, choose a new directory and preserve the existing contents.
+- `SPEND_CONSENT_REQUIRED`: no provider call was made. Review the task, then use a finite `--max-spend` and `--consent-spend` only if you approve that run.
+- `FAILED`, `BLOCKED`, or another non-completed run: inspect the run and use read-only `cpb recovery RUN_ID --human` if source publication may have started. Check possible provider charges before a deliberate retry. See [Operations](../OPERATIONS.md#interrupted-publication).
 
 ## Update or roll back
 
-To reinstall v1.2.0, use the pinned command from the README, then confirm `cpb --version` and run `cpb doctor`. To update later, substitute the exact archive URL for the reviewed release. Keep the previous archive available until the updated CLI can inspect your run store. There is no automatic updater.
-
-The v1.1.0 rollback command is:
+To install v1.2.1, use the pinned command from the README, then confirm `cpb --version` and run `cpb doctor --provider openrouter --human`. The exact update command is:
 
 ```sh
 npm install --prefix "$HOME/.local/share/cpb" \
-  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.1.0/codex-subagent-bridge-1.1.0.tgz
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.2.1/codex-subagent-bridge-1.2.1.tgz
 cpb --version
 ```
 
-Guided `start`, `connect`, `task`, and `run` commands are unavailable in v1.1.0. Before an upgrade or rollback, stop active bridge tasks and back up the complete private `CPB_HOME` or `~/.cpb` directory while the bridge is stopped. Follow the tested backup and compatibility steps in [Operations](../OPERATIONS.md); a CLI rollback does not undo source-file edits from a completed task.
+There is no automatic updater. Keep the prior release available until the updated CLI can inspect your run store.
+
+To roll back to v1.2.0, install its exact archive in the same prefix:
+
+```sh
+npm install --prefix "$HOME/.local/share/cpb" \
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.2.0/codex-subagent-bridge-1.2.0.tgz
+cpb --version
+```
+
+Both releases include the guided commands. Update from v1.2.0, rollback inspection, and state-preserving reinstall were checked with the installed v1.2.1 package. Before an upgrade or rollback, stop active bridge tasks and back up the complete private `CPB_HOME` or `~/.cpb` directory while the bridge is stopped. Follow the backup and compatibility steps in [Operations](../OPERATIONS.md); a CLI rollback does not undo source-file edits from a completed task.
+
+## Uninstall and cleanup
+
+Remove the installed npm package without deleting the state store or projects:
+
+```sh
+npm uninstall --prefix "$HOME/.local/share/cpb" codex-subagent-bridge
+```
+
+This removes the bridge package from that npm prefix. It does not remove your run store (`~/.cpb` or `CPB_HOME`), task files, project files, or project MCP configuration. If you added the PATH line to `~/.zshrc`, remove that line yourself when you no longer use this prefix.
+
+To disconnect Codex, back up the project's `.codex/config.toml`, then edit only the `cpb` server entry or the exact marked bridge block. Preserve other project settings. Do not delete the entire `.codex` directory or edit the global `~/.codex/config.toml` for this cleanup.
+
+Keep or remove run records separately. Before deleting a `CPB_HOME` or `~/.cpb` store, stop all bridge processes and copy the complete private store if you need an archive. Run history can contain private instructions and model output. Removing the package does not undo source-file changes from completed tasks.
 
 ## Source installation
 
