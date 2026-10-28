@@ -1,0 +1,105 @@
+{
+  "author": "Ethan",
+  "engine": "Semgrep Community 1.182.1",
+  "metrics": false,
+  "crossFileAnalysis": false,
+  "rulesets": {
+    "baseline": [
+      "p/security-audit",
+      "p/secrets"
+    ],
+    "typescript": [
+      "p/typescript"
+    ],
+    "javascript": [
+      "p/javascript",
+      "p/nodejs"
+    ],
+    "third_party": [
+      "https://github.com/trailofbits/semgrep-rules",
+      "https://github.com/elttam/semgrep-rules",
+      "https://github.com/apiiro/malicious-code-ruleset"
+    ]
+  },
+  "scanGroups": 8,
+  "failed": [],
+  "skipped": [],
+  "partial": [
+    {
+      "ruleset": "https://github.com/elttam/semgrep-rules",
+      "reason": "Upstream rule parse errors; see raw output"
+    },
+    {
+      "ruleset": "https://github.com/apiiro/malicious-code-ruleset",
+      "reason": "Upstream rule parse errors; see raw output"
+    }
+  ],
+  "coveredNothing": [],
+  "oversized": [],
+  "findings": [
+    {
+      "file": ".agents/verify-codex-subagent-bridge/scripts/verify.mjs",
+      "line": 17,
+      "rule": "apiiro-malicious-code-ruleset.obfuscation.javascript_typescript.javascript-obfuscation-methods-masking",
+      "disposition": "Reviewed: ordinary path redaction, regex definitions, command options, or test reporting; no hidden executable payload or source exfiltration.",
+      "sourceLineSha256": "3ef0230cd0a29dc8afad178adf76c941e3a900931aecd091242a5d8009c05aea"
+    },
+    {
+      "file": "scripts/floor-guard.mjs",
+      "line": 76,
+      "rule": "apiiro-malicious-code-ruleset.obfuscation.generic-obfuscation-operators",
+      "disposition": "Reviewed: ordinary path redaction, regex definitions, command options, or test reporting; no hidden executable payload or source exfiltration.",
+      "sourceLineSha256": "dbe9cd470a992cf5c038205fb60f4b249b478220e0fd26c5134fec5c19dbc5fc"
+    },
+    {
+      "file": "scripts/floor-guard.mjs",
+      "line": 77,
+      "rule": "apiiro-malicious-code-ruleset.obfuscation.generic-obfuscation-operators",
+      "disposition": "Reviewed: ordinary path redaction, regex definitions, command options, or test reporting; no hidden executable payload or source exfiltration.",
+      "sourceLineSha256": "5dc4249b46388753eeb5bbca5d843f7cd17c2920f44051687d42f07580f29dda"
+    },
+    {
+      "file": "scripts/operations-drill.mjs",
+      "line": 50,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "disposition": "Reviewed: ordinary path redaction, regex definitions, command options, or test reporting; no hidden executable payload or source exfiltration.",
+      "sourceLineSha256": "53369eb106f5ea1e7c87f89c57bfaf0f637af9e388a0e9bafc2df7b7a83f30c7"
+    },
+    {
+      "file": "scripts/readiness-performance.mjs",
+      "line": 14,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "disposition": "Reviewed: ordinary path redaction, regex definitions, command options, or test reporting; no hidden executable payload or source exfiltration.",
+      "sourceLineSha256": "e7a5d22950fe7dfcb9cbeed1d6144d37fe6588532162d8d2cee0ccd205753cf1"
+    },
+    {
+      "file": "scripts/readiness-performance.mjs",
+      "line": 44,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "disposition": "Reviewed: ordinary path redaction, regex definitions, command options, or test reporting; no hidden executable payload or source exfiltration.",
+      "sourceLineSha256": "84e8e4687330128ac39b0531b9148b74b818d7845b37f531b0f55f195d333a06"
+    },
+    {
+      "file": "scripts/release-operations.mjs",
+      "line": 56,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "disposition": "Reviewed: ordinary path redaction, regex definitions, command options, or test reporting; no hidden executable payload or source exfiltration.",
+      "sourceLineSha256": "d8327080af582c9acaf4b115bfd7c73757da88149d87ba0df2d2ae3b7fdae4eb"
+    },
+    {
+      "file": "src/cli.ts",
+      "line": 87,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "disposition": "Reviewed: ordinary path redaction, regex definitions, command options, or test reporting; no hidden executable payload or source exfiltration.",
+      "sourceLineSha256": "8dc5baa88356b05b5527a9909252a8b3ee8eff2986271da1f8732a84370d756c"
+    },
+    {
+      "file": "src/cli.ts",
+      "line": 97,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "disposition": "Reviewed: ordinary path redaction, regex definitions, command options, or test reporting; no hidden executable payload or source exfiltration.",
+      "sourceLineSha256": "593194069771e9d73b94b839e5ea472185775fd372674e7ca5fe9c755911b96d"
+    }
+  ],
+  "limitation": "Two third-party groups partial; one JavaScript obfuscation-conditions rule did not compile. No claim of complete rule coverage or security proof."
+}

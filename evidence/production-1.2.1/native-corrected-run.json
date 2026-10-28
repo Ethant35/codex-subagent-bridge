@@ -1,0 +1,46 @@
+{
+  "id": "d634906a-af7a-40d7-a8fa-547e1aa6b5ce",
+  "correlationId": "685adfaa-f158-4080-a3b4-7b70ce4aef4c",
+  "state": "COMPLETED",
+  "task": {
+    "version": 1,
+    "taskId": "d634906a-af7a-40d7-a8fa-547e1aa6b5ce",
+    "correlationId": "685adfaa-f158-4080-a3b4-7b70ce4aef4c",
+    "provider": "openrouter",
+    "backend": "api",
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "instructions": "Read fact.txt with read_file and return only its exact content.",
+    "workspaceRoot": "<scratch>/native-corrected",
+    "allowedOperations": [
+      "read_file"
+    ],
+    "readablePaths": [
+      "fact.txt"
+    ],
+    "writablePaths": [],
+    "maxRuntimeMs": 60000,
+    "maxToolSteps": 8,
+    "maxSpendUsd": 0.02,
+    "expectedOutput": "Complete the requested task using only authorized files.",
+    "resultFormat": "text",
+    "networkPolicy": "provider-only"
+  },
+  "instructionHash": "647da0584744ec74be802b477de45b84ed714f0ce8dc1271dd9fd449a8259960",
+  "pid": 40245,
+  "createdAt": "2026-10-28T03:27:31.639Z",
+  "updatedAt": "2026-10-28T03:27:33.697Z",
+  "workspace": "<scratch>/home/.cpb/runs/d634906a-af7a-40d7-a8fa-547e1aa6b5ce/workspace",
+  "changedPaths": [],
+  "result": {
+    "output": "native-corrected-373e3038-aadd-4fb5-aa77-352530dfc11c",
+    "usage": {
+      "inputTokens": 817,
+      "outputTokens": 72,
+      "costUsd": 6.4572e-05
+    },
+    "sessionId": "gen-1793158053-60vaGXwVOdiQonY4Mn3k",
+    "sources": [
+      "fact.txt"
+    ]
+  }
+}

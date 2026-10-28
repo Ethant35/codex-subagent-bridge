@@ -6,6 +6,8 @@ import { randomUUID } from 'node:crypto';
 import { BridgeError, type Task, type State, type ProviderResult } from './types.js';
 import { redact } from './redact.js';
 import { taskSchema } from './schema.js';
+import {atomicJSON,readPrivateFile} from './private-files.js';
+export {atomicJSON,readPrivateFile} from './private-files.js';
 
 const RUN_ID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const RUN_STATES = new Set<State>(['QUEUED', 'RUNNING', 'COMPLETED', 'FAILED', 'TIMED_OUT', 'CANCELLED', 'BLOCKED']);
@@ -37,35 +39,6 @@ export interface ListOptions {
   limit?: number;
   /** Exclusive key from the last record in the previous page. */
   before?: { createdAt: string; id: string };
-}
-
-export function atomicJSON(file: string, value: unknown): void {
-  const directory = path.dirname(file);
-  assertDirectory(directory, 'STORE_IO');
-  assertRegularDestination(file);
-
-  const temp = `${file}.${randomUUID()}.tmp`;
-  let fd: number | undefined;
-  let renamed = false;
-  try {
-    fd = fs.openSync(temp, fs.constants.O_WRONLY | fs.constants.O_CREAT | fs.constants.O_EXCL, 0o600);
-    fs.writeFileSync(fd, `${JSON.stringify(redact(value), null, 2)}\n`);
-    fs.fsyncSync(fd);
-    fs.closeSync(fd);
-    fd = undefined;
-    fs.renameSync(temp, file);
-    renamed = true;
-    syncDirectory(directory);
-  } catch (error) {
-    throw asStoreIOError(error, 'Could not safely write a local run record.');
-  } finally {
-    if (fd !== undefined) {
-      try { fs.closeSync(fd); } catch { /* preserve the original write error */ }
-    }
-    if (!renamed) {
-      try { fs.unlinkSync(temp); } catch { /* preserve the primary failure; a private temporary file may remain */ }
-    }
-  }
 }
 
 /** Validate a private regular file without following a symbolic link. */
@@ -476,19 +449,6 @@ function assertPrivateDirectory(directory: string, id?: string): void {
   }
 }
 
-function assertRegularDestination(file: string): void {
-  try {
-    const stat = fs.lstatSync(file);
-    if (stat.isSymbolicLink() || !stat.isFile() || (stat.mode & PRIVATE_MODE_MASK) !== 0) {
-      throw new BridgeError('UNSAFE_STORE', 'The run record path must be a private regular file.');
-    }
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return;
-    if (error instanceof BridgeError) throw error;
-    throw asStoreIOError(error, 'Could not inspect the run record path.');
-  }
-}
-
 function assertPrivateRegularFile(file: string): void {
   let stat: fs.Stats;
   try { stat = fs.lstatSync(file); } catch (error) { throw error; }
@@ -500,38 +460,6 @@ function assertPrivateRegularFile(file: string): void {
 function assertPrivateRegularFd(fd: number): void {
   const stat = fs.fstatSync(fd);
   if (!stat.isFile() || (stat.mode & PRIVATE_MODE_MASK) !== 0) throw new BridgeError('UNSAFE_STORE', 'A local run-state file is not a private regular file.');
-}
-
-export function readPrivateFile(file: string, maxBytes: number): string {
-  let fd: number | undefined;
-  try {
-    // O_NONBLOCK makes a replaced FIFO safe to inspect; O_NOFOLLOW plus fstat
-    // checks the opened inode without a separate path-check/open race.
-    if (fs.constants.O_NOFOLLOW === undefined) {
-      const stat = fs.lstatSync(file);
-      if (stat.isSymbolicLink() || !stat.isFile() || (stat.mode & PRIVATE_MODE_MASK) !== 0) throw new BridgeError('UNSAFE_STORE', 'A local run record is unsafe or exceeds the supported size.');
-    }
-    fd = fs.openSync(file, fs.constants.O_RDONLY | fs.constants.O_NONBLOCK | (fs.constants.O_NOFOLLOW ?? 0));
-    const stat = fs.fstatSync(fd);
-    if (!stat.isFile() || (stat.mode & PRIVATE_MODE_MASK) !== 0 || stat.size > maxBytes) throw new BridgeError('UNSAFE_STORE', 'A local run record is unsafe or exceeds the supported size.');
-    const chunks: Buffer[] = [];
-    let total = 0;
-    const chunk = Buffer.alloc(Math.min(64 * 1024, maxBytes + 1));
-    while (true) {
-      const count = fs.readSync(fd, chunk, 0, Math.min(chunk.length, maxBytes + 1 - total), null);
-      if (count === 0) break;
-      total += count;
-      if (total > maxBytes) throw new BridgeError('UNSAFE_STORE', 'A local run record is unsafe or exceeds the supported size.');
-      chunks.push(Buffer.from(chunk.subarray(0, count)));
-    }
-    return Buffer.concat(chunks, total).toString('utf8');
-  } catch (error) {
-    if (error instanceof BridgeError) throw error;
-    if ((error as NodeJS.ErrnoException).code === 'ELOOP') throw new BridgeError('UNSAFE_STORE', 'A local run record cannot be a symbolic link.');
-    throw error;
-  } finally {
-    if (fd !== undefined) fs.closeSync(fd);
-  }
 }
 
 function syncDirectory(directory: string): void {

@@ -28,7 +28,18 @@ There is no automatic retention deletion. Successful runs remove the staging wor
 6. To restore, stop all users again, preserve the damaged store for diagnosis, and restore the complete backup into a different private directory. Point `CPB_HOME` there only after verification. Never merge selected database files from different snapshots.
 7. Application rollback to v1.0.0 was tested for inspection of the migrated store. Use the newer tool for publication-journal recovery; v1.0.0 lacks those safeguards. To resume old execution, restore the pre-upgrade store and source snapshot. Do not assume rollback reverses source edits.
 
-The reproducible offline drill is `node scripts/operations-drill.mjs` from the source checkout after building. It archives the actual released tag, builds it with the identical dependency lock, creates real records, migrates, copies the complete store, detects corruption, restores, and checks old-code inspection and current slot reuse. It never calls a provider. See `evidence/readiness/operations.json`.
+The offline source-checkout drill is `node scripts/operations-drill.mjs`. It builds from the checkout and exercises fixture records, migration, complete-store copying, corruption detection, restore, old-code inspection, and slot reuse without provider calls. The recorded drill is historical evidence for its recorded source revision; it does not qualify a later package or release. See `evidence/readiness/operations.json`.
+
+For a released-package update, install the exact versioned archive into the same prefix used for the current installation. For the standard per-user prefix:
+
+```sh
+npm install --prefix "$HOME/.local/share/cpb" \
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.2.1/codex-subagent-bridge-1.2.1.tgz
+cpb --version
+cpb doctor --provider openrouter --human
+```
+
+Use this command only after that version is published. Until then, v1.2.1 remains a candidate. Keep the previous archive so you can restore the prior CLI. Updating the package does not migrate or delete source files. Review the current release evidence and changelog before selecting an archive.
 
 ## Interrupted publication
 
@@ -39,3 +50,17 @@ All source hashes are checked before publication. Do not edit the same paths con
 After the process stops, use `cpb recovery RUN_ID`. It compares actual current hashes with the journal and reports `original`, `published`, `diverged`, or `unreadable`. It never changes a source file. A crash between rename and journal update can make the recorded status lag the observed bytes. Preserve the store and current source first. Compare each file, then explicitly restore a backup only when `backupValid` is true. Preserve divergent user edits separately before any replacement. A newly created file has no original backup; decide whether to remove it after inspection. Legacy runs without a journal need manual comparison.
 
 Storage failure may prevent the final run/error record from being written. A finalization error from the CLI/MCP is authoritative even if an older on-disk state says COMPLETED. Inspect source hashes and recovery artifacts before retrying, and use a fresh task ID. A retry can incur another charge. Local cancellation cannot guarantee that remote billing has stopped.
+
+## Uninstall and cleanup
+
+To remove the package from the standard per-user npm prefix:
+
+```sh
+npm uninstall --prefix "$HOME/.local/share/cpb" codex-subagent-bridge
+```
+
+This removes the package from that prefix. It does not delete the run store (`CPB_HOME` or `~/.cpb`), task files, project files, or project MCP configuration. If you added the `~/.local/share/cpb/node_modules/.bin` entry to `~/.zshrc`, remove that line separately. If you use a different npm prefix, use that same prefix with `npm uninstall`.
+
+To disconnect a project, first back up its `.codex/config.toml`. Remove only the bridge server entry or the exact block created for the bridge, and preserve other project settings. Do not delete the whole `.codex` directory. This cleanup does not require or authorize editing the global `~/.codex/config.toml`.
+
+Keep the run store if you may need history or recovery. Before deleting it, stop every CLI/MCP/Claude process using it and copy the full directory to a private location if you need an archive. Run history can contain task instructions, model output, and recovery data. Inspect and export anything needed before deleting the store. Uninstalling the package does not undo file changes made by completed tasks.

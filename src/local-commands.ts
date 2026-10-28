@@ -4,7 +4,8 @@ import path from 'node:path';
 import {createHash,randomUUID} from 'node:crypto';
 import {z} from 'zod';
 import {parseTask} from './schema.js';
-import {Store,readPrivateFile} from './store.js';
+import type {Store} from './store.js';
+import {readPrivateFile} from './private-files.js';
 import {readFileSafe,checkedPath} from './workspace.js';
 import {BridgeError,type Task} from './types.js';
 
@@ -19,7 +20,13 @@ export function validateLocalTask(task:Task) {
   if(fs.realpathSync(task.workspaceRoot)!==task.workspaceRoot||!fs.statSync(task.workspaceRoot).isDirectory())throw new BridgeError('INVALID_WORKSPACE','Use a canonical existing workspace directory');
   let bytes=0;
   for(const p of new Set([...task.readablePaths,...task.writablePaths])){
-    try{bytes+=readFileSafe(task.workspaceRoot,p).length;}catch(e){if((e as NodeJS.ErrnoException).code==='ENOENT'&&task.writablePaths.includes(p)){checkedPath(task.workspaceRoot,p,true);continue;}throw e;}
+    try{bytes+=readFileSafe(task.workspaceRoot,p).length;}catch(e){
+      if((e as NodeJS.ErrnoException).code==='ENOENT'){
+        if(task.writablePaths.includes(p)){checkedPath(task.workspaceRoot,p,true);continue;}
+        if(task.readablePaths.includes(p))throw new BridgeError('NOT_FOUND',`Authorized input "${p}" was not found. Check that relative path or create the file before retrying.`);
+      }
+      throw e;
+    }
   }
   if(bytes>8_000_000)throw new BridgeError('WORKSPACE_LIMIT','Authorized snapshot exceeds 8 MB');
   const subscription=task.provider==='claude'&&task.credentialMode==='subscription';
@@ -47,9 +54,10 @@ export function createSample(directory:string,model='deepseek/deepseek-v4.1-flas
   return {directory:workspace,taskFile:path.join(workspace,'task.json'),maxSpendUsd:0,next:'Run cpb validate --task-file <taskFile>. Set an explicit spending cap and provide credentials before delegate.'};
 }
 const safeCode=(value:unknown)=>typeof value==='string'&&/^[A-Z_]{1,64}$/.test(value)?value:'UNKNOWN';
-export function diagnostics(store:Store,id?:string) {
+export function diagnostics(store:Store|undefined,id?:string) {
   const environment={node:process.version,platform:process.platform,architecture:process.arch,osRelease:os.release(),formatVersion:1};
   if(!id)return {environment,privacy:'No prompts, file contents, paths, outputs, or credentials are included.'};
+  if(!store)throw new BridgeError('STORE_IO','A run store is required to diagnose a specific run.');
   const run=store.get(id);
   const number=(value:unknown)=>typeof value==='number'&&Number.isFinite(value)&&value>=0?value:null;
   const usage=run.result?.usage?{inputTokens:number(run.result.usage.inputTokens),outputTokens:number(run.result.usage.outputTokens),costUsd:number(run.result.usage.costUsd)}:null;

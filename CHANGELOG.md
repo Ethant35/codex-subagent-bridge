@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.1 — 2026-10-27
+
+- Make `doctor --human` readable while preserving the JSON interface.
+- Show provider-specific credential setup before a paid guided run when the credential is missing.
+- Explain how to fix an authorized input path that does not exist.
+- Avoid initializing the run store for setup and other commands that do not need persistent state.
+- Add a repository-local, explicit-path verification procedure and journey map.
+
+Local tests, installed-package operations, OpenRouter CLI and native Codex MCP checks passed on the supported platform. Final public download verification is recorded in `PUBLICATION_VERIFICATION.json`. See [Readiness](READINESS.md) and [Guided onboarding](docs/onboarding.md) for current evidence and support limits.
+
 ## 1.2.0
 
 - Add a release-first, replayable CLI onboarding path with task and ID generation.

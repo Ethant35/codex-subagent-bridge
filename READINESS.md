@@ -1,3 +1,15 @@
+# v1.2.1 CLI and release readiness
+
+Author: Ethan. Review date: 2026-10-27 (America/Los_Angeles).
+
+The supported macOS arm64 / Node22.13.1 candidate passed 139 local tests with 23 explicit external skips and zero failures, eleven installed CLI checks, and seven installed-package operations checks. OpenRouter completed a synthetic read from the installed CLI and another through native Codex0.164.0 using Luna High. The native parent consumed the returned child output. Combined reported OpenRouter cost for these two checks: $0.000139548. Subscription usage is separate. The downloaded-release check and final archive hash are recorded in PUBLICATION_VERIFICATION.json and RELEASE_ARTIFACT.json.
+
+[Production qualification](docs/readiness/production-1.2.1.md) explains the exact scope, independent review, corrected harness failures, Semgrep partial coverage, test-floor dispositions, privacy and accessibility limits. [Evidence](evidence/production-1.2.1/qualification.json) binds the tested runtime hashes. [Operations evidence](evidence/production-1.2.1/operations.json) covers update from1.2.0, restart, complete-store backup, corruption, restore, rollback and uninstall/reinstall with retained state and project configuration.
+
+This is a single-user local CLI/MCP release. Claude remains experimental; other platforms, hostile local processes, unfamiliar-user performance and assistive technology are unqualified. The historical records below retain their original scope and dates.
+
+---
+
 # v1.2.0 guided CLI readiness
 
 Author: Ethan. Review date: 2026-10-22. Baseline: v1.1.0.
