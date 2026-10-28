@@ -1,3 +1,20 @@
+# Completed production release 1.2.1
+
+Author: Ethan. Updated 2026-10-27 (America/Los_Angeles).
+
+Release: https://github.com/Ethant35/codex-subagent-bridge/releases/tag/v1.2.1
+Implementation PR6 merged; tag commit e90069d8916ca52c6b4dd74615351fab4d1a3161. Archive SHA256 34c4401f58bcddb493ddf299c1f3845740cf1649d7466c19d7f428c057b66823;216367bytes;171files;48runtime files. Archive was promoted from public prerelease after the last approved live check and an independent fresh public-URL install passed. Public downloaded bytes match the clean-export archive; runtime matches actual live-tested installation.
+
+Outcome: reliable credential-first CLI/native preparation, readable diagnostics, specific missing-input errors, deferred SQLite imports, and installation/update/recovery/uninstall documentation. Qualified only for established single trusted user/macOSarm64/Node22.13.1/OpenRouter CLI and native Codex0.164.0. Claude experimental; other platforms and assistive technologies unqualified. Native app signing/notarization inapplicable to Node CLI distribution.
+
+Validation: final clean-export typecheck/build and139 local passes,23 explicit external skips,0fail;11 candidate installed checks;7 actual installed-package operations checks from1.2.0;8 fresh public-install checks. Semgrep8groups,6complete/2partial;9heuristic findings reviewed with no blocking defect identified. Upstream rule parse errors and no cross-file analysis disclosed. Dependency audit0vulnerabilities. Test-floor notices reviewed, no weakened assertions/skips/constraints. Evidence/production-1.2.1 and root RELEASE_ARTIFACT.json/PUBLICATION_VERIFICATION.json retain public records; ignored .readiness-backups/production-2026-10-27 retains archives/raw logs/failure provenance.
+
+All3 approved OpenRouter checks passed, each capped0.02, total reported0.000200040USD. First run e1a5cf6a-4782-44b2-afb1-0f2d675a889f; native d634906a-af7a-40d7-a8fa-547e1aa6b5ce; public return c2d074c0-2033-4b5b-a08d-81fafa9b6fe3. Two Luna High subscription parents were consumed: first blocked at MCP approval before child request; separately approved corrected parent succeeded. No remaining live check or parent allowance; no further inference authorized. Driver released credential, temporary auth symlink removed, global configuration unchanged. Both assistants completed/interrupted. Temporary clean export/live install/projects/stores removed; retained evidence/archive only. Actions disabled. Unrelated README 2.md and PUBLICATION_VERIFICATION 2.json remain untouched.
+
+Publication bookkeeping is being committed separately so the already-tested release archive/tag remain immutable. Once bookkeeping is merged and checks confirm stable release/evidence, mark actual broader goal complete and stop usage guard. Current guard is >=95%used (<=5%remaining) or observed in-work reset to100%remaining, not the older90%objective text. Baseline49%used/reset1793599137. No automatic continuation after completion.
+
+---
+
 # Active production release checkpoint
 
 Author: Ethan. Updated 2026-10-27 (America/Los_Angeles).

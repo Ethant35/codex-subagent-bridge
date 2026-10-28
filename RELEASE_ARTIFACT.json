@@ -1,7 +1,7 @@
 {
   "author": "Ethan",
   "version": "1.2.1",
-  "status": "candidate-verified",
+  "status": "verified-published",
   "file": "codex-subagent-bridge-1.2.1.tgz",
   "sha256": "34c4401f58bcddb493ddf299c1f3845740cf1649d7466c19d7f428c057b66823",
   "bytes": 216367,
@@ -12,5 +12,6 @@
   "sourceCommit": "9038a562fe3e04635f34f0467759fd9c0037b68d",
   "authorVerified": true,
   "localMarkdownLinksVerified": true,
-  "noBundledDependenciesOrSecretsOrAccountPaths": true
+  "noBundledDependenciesOrSecretsOrAccountPaths": true,
+  "tagCommit": "e90069d8916ca52c6b4dd74615351fab4d1a3161"
 }
