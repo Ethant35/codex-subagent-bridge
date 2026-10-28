@@ -59,7 +59,7 @@
         "<scratch>/example"
       ],
       "exitCode": 0,
-      "stdout": "Project MCP configuration preview:\n<scratch>/example/.codex/config.toml\n# >>> codex-subagent-bridge managed MCP server >>>\n[mcp_servers.cpb]\ncommand = \"/Users/ethantarnarider/.nvm/versions/node/v22.13.1/bin/node\"\nargs = [\"<scratch>/home/.local/share/cpb/node_modules/codex-subagent-bridge/dist/cli.js\", \"mcp\"]\nenv_vars = [\"OPENROUTER_API_KEY\"]\ntool_timeout_sec = 180\n# <<< codex-subagent-bridge managed MCP server <<<\nReview the preview, then apply it with: cpb connect --directory '<scratch>/example' --trust-project. Codex still asks separately before trusting project configuration.\n",
+      "stdout": "Project MCP configuration preview:\n<scratch>/example/.codex/config.toml\n# >>> codex-subagent-bridge managed MCP server >>>\n[mcp_servers.cpb]\ncommand = \"<home>/.nvm/versions/node/v22.13.1/bin/node\"\nargs = [\"<scratch>/home/.local/share/cpb/node_modules/codex-subagent-bridge/dist/cli.js\", \"mcp\"]\nenv_vars = [\"OPENROUTER_API_KEY\"]\ntool_timeout_sec = 180\n# <<< codex-subagent-bridge managed MCP server <<<\nReview the preview, then apply it with: cpb connect --directory '<scratch>/example' --trust-project. Codex still asks separately before trusting project configuration.\n",
       "stderr": ""
     },
     {
