@@ -1,0 +1,91 @@
+{
+  "author": "Ethan",
+  "version": "1.2.1",
+  "status": "passed",
+  "url": "https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.2.1/codex-subagent-bridge-1.2.1.tgz",
+  "checks": [
+    {
+      "args": [
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"version\": \"1.2.1\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdout": "Codex Subagent Bridge (cpb)\nUsage:\n  cpb start --directory NEW_DIRECTORY [--json]\n  cpb connect --directory PROJECT [--trust-project] [--json]\n  cpb task --directory PROJECT --read FILE --instructions TEXT --output FILE [--json]\n  cpb run --task-file FILE --max-spend USD --consent-spend [--json]\n  cpb sample --directory NEW_DIRECTORY [--model MODEL]\n  cpb validate --task-file FILE [--json]\n  cpb doctor [--provider openrouter|claude] [--json]\n  cpb diagnose [RUN_ID] [--json]\n  cpb recovery RUN_ID [--json]\n  cpb providers [--json]\n  cpb models --provider openrouter [--json]\n  cpb auth-status --provider claude [--json]\n  cpb delegate --provider PROVIDER --model MODEL --task-file FILE\n               [--backend api|sdk|cli] [--json]\n  cpb runs [--limit 1..1000] [--before JSON_CURSOR] [--json]\n  cpb inspect RUN_ID [--json]\n  cpb cancel RUN_ID [--json]\n  cpb mcp\n\nQuickstart: start -> connect -> validate -> run with explicit spending consent.\nRepeat --read or --write for task file access. task creates a zero-budget envelope.\nNew commands print text; --json gives JSON. Legacy commands keep JSON; --human gives text.\nrun creates new IDs each time. maxSpendUsd is an application cap, not an invoice guarantee.\nSample data is local. Its maxSpendUsd is 0, so inference is disabled.\nCPB_HOME selects private records (default ~/.cpb). diagnose is safe to share.\nrecovery only inspects files. Exact task instructions remain in private records.\nProvider credentials come only from the process environment or official Claude CLI login.\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "doctor",
+        "--provider",
+        "openrouter",
+        "--human"
+      ],
+      "exitCode": 0,
+      "stdout": "Codex Subagent Bridge checks\nRuntime: Node v22.13.1 on darwin\nSupported runtime: yes\nQualified environment: yes\nIntegration: MCP stdio cpb_delegate\nOpenRouter API key: missing (MISSING_CREDENTIALS)\nKey presence does not verify that it is valid.\nNext: make OPENROUTER_API_KEY available in the shell that launches Codex, then rerun cpb doctor --provider openrouter --human.\nNo model inference was performed.\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "start",
+        "--directory",
+        "<scratch>/example"
+      ],
+      "exitCode": 0,
+      "stdout": "Task ready: <scratch>/example/task.json\nLocal validation passed. No network requests or charges.\nFiles: 1 readable, 0 writable.\nCredentials: OPENROUTER_API_KEY missing. Presence does not verify access.\nRuntime: v22.13.1 darwin/arm64. Qualified platform.\nNext:\nCredential OPENROUTER_API_KEY is missing. Make it available in the process environment before launching Codex.\ncpb doctor --provider openrouter --human\ncpb validate --task-file '<scratch>/example/task.json' --human\ncpb connect --directory '<scratch>/example'\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "validate",
+        "--task-file",
+        "<scratch>/example/task.json",
+        "--human"
+      ],
+      "exitCode": 0,
+      "stdout": "Provider: openrouter; model: deepseek/deepseek-v4.1-flash-1017\nWorkspace: <scratch>/example\nRead: fact.txt\nWrite: (none)\nApplication cap: 0 USD\nInstructions: Use read_file to read fact.txt. Return its exact contents.\nLocal validation passed. No network requests or charges.\nCredentials: OPENROUTER_API_KEY missing.\nSpending in envelope: disabled.\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "connect",
+        "--directory",
+        "<scratch>/example"
+      ],
+      "exitCode": 0,
+      "stdout": "Project MCP configuration preview:\n<scratch>/example/.codex/config.toml\n# >>> codex-subagent-bridge managed MCP server >>>\n[mcp_servers.cpb]\ncommand = \"<home>/.nvm/versions/node/v22.13.1/bin/node\"\nargs = [\"<scratch>/home/.local/share/cpb/node_modules/codex-subagent-bridge/dist/cli.js\", \"mcp\"]\nenv_vars = [\"OPENROUTER_API_KEY\"]\ntool_timeout_sec = 180\n# <<< codex-subagent-bridge managed MCP server <<<\nReview the preview, then apply it with: cpb connect --directory '<scratch>/example' --trust-project. Codex still asks separately before trusting project configuration.\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "connect",
+        "--directory",
+        "<scratch>/example",
+        "--trust-project"
+      ],
+      "exitCode": 0,
+      "stdout": "Project MCP configuration saved.\n<scratch>/example/.codex/config.toml\nProject MCP configuration was added. Open '<scratch>/example' in Codex and approve its project trust prompt separately.\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "run",
+        "--task-file",
+        "<scratch>/example/task.json",
+        "--max-spend",
+        "0.02"
+      ],
+      "exitCode": 1,
+      "stdout": "SPEND_CONSENT_REQUIRED: Run requires --max-spend USD and --consent-spend. Each invocation starts a new paid task.\n",
+      "stderr": ""
+    }
+  ],
+  "allInstalledFilesMatchDownloadedArchive": 171,
+  "scratchRemoved": true
+}
