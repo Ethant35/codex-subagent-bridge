@@ -1,18 +1,23 @@
 # Providers and authentication
 
-Author: Ethan. Official sources checked 2026-10-22.
+Author: Ethan. Official sources checked 2026-10-28.
 
 | Provider | Backend | Credentials | Verification |
 | --- | --- | --- | --- |
-| OpenRouter | api | OPENROUTER_API_KEY | Live DeepSeek read/edit and native Codex parent verified; see readiness evidence |
+| OpenRouter | api | OPENROUTER_API_KEY | v1.2.1 live evidence; current review mode tested offline only |
 | Claude | sdk | Explicit api-key mode and ANTHROPIC_API_KEY | Official SDK loads and submission configuration initializes; live pending |
-| Claude | cli | Explicit api-key or official subscription login | Process handling tested; official standalone CLI absent; live pending |
+| Claude | cli | Explicit api-key mode and ANTHROPIC_API_KEY | Adapter implemented; authenticated inference not verified |
+| Claude | sdk or cli | Subscription | Blocked pending prior Anthropic approval |
 
 No other provider is implemented. Alternate Claude cloud-provider routes, custom endpoints, raw OAuth token variables, and conflicting credential sources are refused. API-key mode emits a billing warning in run events and diagnostics. Subscription mode does not silently select API billing. Diagnostics disclose credential variable names and booleans, never values. They do not read OAuth storage or estimate subscription quota.
 
-Anthropic's [Agent SDK overview](https://code.claude.com/docs/en/agent-sdk/overview) says third-party developers may not offer claude.ai login or rate limits without prior approval. Therefore this project's SDK subscription mode returns BLOCKED. The CLI uses only the user's official installed runtime and [documented authentication](https://code.claude.com/docs/en/authentication); subscription mode verifies `claude auth status` reports a claude.ai login. The author has no Claude account. A maintainer must review applicable terms for their deployment and complete the live gates before claiming compatibility.
+Anthropic's [Agent SDK overview](https://code.claude.com/docs/en/agent-sdk/overview) restricts third-party products from offering claude.ai login or rate limits without prior approval. CPB has no recorded approval. Both SDK and CLI subscription delegation now return BLOCKED. This is a conservative product decision based on that guidance; calling the official CLI does not establish approval for this bridge. Existing subscription envelopes remain inspectable and locally valid, but cannot execute. No token extraction, login automation, or fallback to API billing is used.
 
-[CLI programmatic mode](https://code.claude.com/docs/en/headless) documents that `--bare` does not read subscription login. API-key mode uses it; subscription mode does not. Both disable native tools with `--tools ""`, use explicit MCP servers and a noninteractive permission mode, and disable file mentions, attachments, memory, background work, hooks, and automatic connectors. [CLI reference](https://code.claude.com/docs/en/cli-reference) and [documented environment controls](https://code.claude.com/docs/en/env-vars) describe these boundaries. Administrator-managed runtime settings remain part of the trusted host configuration. Unexpected tools in runtime initialization are rejected. Old CLIs that reject required flags fail closed.
+The official [authentication guide](https://code.claude.com/docs/en/authentication) documents subscription login for Claude Code itself. That is distinct from permission to offer it through a third-party product. CPB can report the installed CLI's login status, but a logged-in result does not enable subscription delegation.
+
+The API-key adapters use `ANTHROPIC_API_KEY`. They remain experimental: SDK import, typed configuration, process supervision, and local boundary tests are evidence of implementation, not authenticated inference. No fresh Claude or OpenRouter model request was made for the current update. Live qualification would require separate authorization and successful account/runtime tests.
+
+The [CLI reference](https://code.claude.com/docs/en/cli-reference) documents restricted mode, explicit tool lists, strict MCP configuration, and authentication status. The adapter disables native tools with `--tools ""`, passes only its file broker, and retains restricted mode, bare mode, no hooks, and no automatic fallback. Required flags that an older CLI cannot accept fail closed. Managed runtime policy remains part of the trusted host configuration. Neither API-key adapter claims OS-level containment.
 
 The official SDK dependency is pinned in package-lock.json and package.json; TypeScript compiles against its real exported types. CLI installation and login remain user-managed. The SDK installs its own separately licensed Anthropic runtime, while CLI mode uses the user-installed official executable; no terminal UI is scraped, and no proprietary Codex patch is used.
 

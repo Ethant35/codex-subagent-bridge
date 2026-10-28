@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.3.0-dev.0 — unreleased
+
+- Add opt-in review before apply, persistent proposals, exact before/after display, token-bound apply, and discard.
+- Reject changed proposals and conflicting project edits; retain per-file journals and originals after interrupted apply.
+- Keep Codex connection optional in first-use guidance; show a hidden-input credential command and an existing-directory correction.
+- Block Claude CLI subscription delegation pending provider approval, alongside the existing SDK block. API-key adapters remain experimental and live-unverified.
+- Preserve automatic publication for existing envelopes. New review records require the new code; use a separate state directory for evaluation.
+
+Offline verification only. No new paid model calls or public release are part of this development update. See [verification](docs/readiness/review-before-apply.md).
+
 ## 1.2.1 — 2026-10-27
 
 - Make `doctor --human` readable while preserving the JSON interface.

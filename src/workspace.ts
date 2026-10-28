@@ -72,7 +72,7 @@ export class Workspace {
   }
   publish(checkpoint:()=>void=()=>{}):string[] {
     const changes:Array<{p:string;data:Buffer;target:string}>=[];
-    for(const p of this.task.writablePaths) {
+    for(const p of new Set(this.task.writablePaths)) {
       checkpoint();
       const staged=checkedPath(this.root,p,true);if(!fs.existsSync(staged))continue;
       const data=readFileSafe(this.root,p);if(digest(data)===this.original.get(p))continue;
@@ -87,7 +87,11 @@ export class Workspace {
     try {
       journal.state='PUBLISHING';atomicJSON(journalPath,journal);
       for(const [index,c] of changes.entries()) {
-        checkpoint();writeFileSafe(this.task.workspaceRoot,c.p,c.data);
+        checkpoint();
+        let current:string|null=null;
+        try{current=digest(readFileSafe(this.task.workspaceRoot,c.p));}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
+        if(current!==this.original.get(c.p))throw new BridgeError('WRITE_CONFLICT','Source changed before publication; inspect the recovery journal.','BLOCKED');
+        writeFileSafe(this.task.workspaceRoot,c.p,c.data);
         journal.files[index]!.status='published';atomicJSON(journalPath,journal);
       }
       checkpoint();journal.state='COMPLETED';atomicJSON(journalPath,journal);

@@ -10,6 +10,7 @@ import { BridgeError, type ProviderResult } from './types.js';
 import { runOpenRouter } from './providers/openrouter.js';
 import { runClaude } from './providers/claude.js';
 import { safeText } from './redact.js';
+import { saveProposal } from './review.js';
 
 const POLL_FAILURE = new BridgeError('STORE_CANCEL_CHECK_FAILED', 'Could not check local cancellation state; execution stopped for safety.', 'FAILED');
 
@@ -91,9 +92,12 @@ export async function delegate(value: unknown, store = new Store(), externalSign
       try { JSON.parse(result.output); } catch { throw new BridgeError('INVALID_RESULT', 'Child result is not valid JSON'); }
     }
     checkpoint();
-    run.changedPaths = ws.publish(checkpoint);
+    if (task.reviewBeforeApply) {
+      saveProposal(ws, checkpoint);
+      run.changedPaths = [];
+    } else run.changedPaths = ws.publish(checkpoint);
     run.result = result;
-    run.state = 'COMPLETED';
+    run.state = task.reviewBeforeApply ? 'AWAITING_REVIEW' : 'COMPLETED';
   } catch (error) {
     const err = controller.signal.aborted ? controller.signal.reason : error;
     run.state = err instanceof BridgeError ? err.state : 'FAILED';
