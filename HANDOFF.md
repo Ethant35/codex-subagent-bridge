@@ -2,6 +2,8 @@
 
 Author: Ethan. Updated 2026-10-28 (America/Los_Angeles).
 
+Implementation PR: https://github.com/Ethant35/codex-subagent-bridge/pull/8 (open for review). Implementation commit: 91bba12.
+
 Current branch: codex/review-before-apply. Source version 1.3.0-dev.0 is a development update, not a published release. v1.2.1 archive, tag, and public qualification records remain unchanged. The requested setup improvements, Claude reassessment, and optional review-before-apply are implemented and checked offline. See docs/readiness/review-before-apply.md and evidence/review-before-apply/verification.json.
 
 Behavior: credential guidance includes a hidden-input zsh command; existing-directory errors have a corrective action; Codex setup is optional. Claude API-key adapters remain experimental/live-unverified. Both SDK and CLI subscription delegation block pending provider approval based on current official guidance. reviewBeforeApply holds a task in AWAITING_REVIEW; cpb review shows exact before/after bytes, cpb apply requires the proposal token and unchanged authorized source/staged files, and cpb discard preserves project files. Apply/discard are not MCP tools. Permission checks, private files, per-file journals, original backups, and conflict handling are tested. Existing tasks retain automatic publication.
@@ -12,7 +14,7 @@ Dependency audit:0 vulnerabilities; no dependency changes. Actions remains disab
 
 Compatibility: keep evaluation in a separate CPB_HOME. v1.2.1 cannot inspect new review states/envelopes; new code can inspect old records. Apply is atomic per file, not a whole-task transaction. Avoid concurrent edits during apply. Read SECURITY.md and OPERATIONS.md for exact-content review privacy, retained locks, and interrupted apply recovery.
 
-Usage guard was updated during this work by Ethan's source-chat instruction: stop at **50% REMAINING (50% consumed)** in any applicable allowance, or an observed in-work reset to100%remaining. This supersedes the older5%threshold in the objective/history. Baseline6%used/reset1793774143; latest18%used/82%remaining with same reset. No stop condition observed. Tools cannot edit the active objective; this record does not claim an objective change. Stop monitoring on completion; do not resume automatically. The implementation will be retained in a reviewable PR; no release promotion or fresh live qualification is included.
+Usage guard was updated during this work by Ethan's source-chat instruction: stop at **50% REMAINING (50% consumed)** in any applicable allowance, or an observed in-work reset to100%remaining. This supersedes the older5%threshold in the objective/history. Baseline6%used/reset1793774143; latest19%used/81%remaining with same reset. No stop condition observed. Tools cannot edit the active objective; this record does not claim an objective change. Stop monitoring on completion; do not resume automatically. Implementation and offline verification are complete in PR8. Monitoring stops at completion; no owned test/install processes remain. No release promotion or fresh live qualification is included.
 
 ---
 
