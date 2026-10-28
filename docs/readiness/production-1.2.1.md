@@ -22,7 +22,7 @@ The floor guard is not reported as clean. Against the previous HEAD it flags two
 
 ## Live and public release checks
 
-Live and publication evidence is recorded in [qualification.json](../../evidence/production-1.2.1/qualification.json), `RELEASE_ARTIFACT.json`, and `PUBLICATION_VERIFICATION.json`. A first Luna High parent prepared the native task but Codex 0.164.0 refused delegation under approval policy `never`; no child request occurred. Ethan separately authorized one corrected parent run using a temporary per-tool approval. Normal interactive users must approve the MCP call separately from project trust and the task's spending consent.
+Prepublication live evidence is recorded in [qualification.json](../../evidence/production-1.2.1/qualification.json). Final archive and public-download records are maintained separately in root `RELEASE_ARTIFACT.json` and `PUBLICATION_VERIFICATION.json`; require version1.2.1 and completed status. The archive snapshot predates the third public-download check. A first Luna High parent prepared the native task but Codex 0.164.0 refused delegation under approval policy `never`; no child request occurred. Ethan separately authorized one corrected parent run using a temporary per-tool approval. Normal interactive users must approve the MCP call separately from project trust and the task's spending consent.
 
 ## Support limits
 

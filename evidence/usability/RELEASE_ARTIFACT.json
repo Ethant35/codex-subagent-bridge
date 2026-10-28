@@ -1,0 +1,13 @@
+{
+  "author": "Ethan",
+  "version": "1.2.0",
+  "file": "codex-subagent-bridge-1.2.0.tgz",
+  "sha256": "ca57d622aca0c31e6dc49b0557f0b0ca4594a65ba34b76fc651992befd342437",
+  "bytes": 199461,
+  "files": 153,
+  "runtimeFiles": 45,
+  "runtimeMatchesLiveTestedConsumer": true,
+  "authorVerified": true,
+  "localMarkdownLinksVerified": true,
+  "noBundledDependenciesOrSecretsOrAccountPaths": true
+}
