@@ -213,3 +213,10 @@ test('duplicate authorized paths publish once and pending recovery names the rev
   const report=recovery(f.store,f.id);assert.equal(report.recovery,'PENDING_REVIEW');assert.equal(report.modified,false);assert.match(report.message,/cpb review/);
   const view=reviewChanges(f.store,f.id);assert.equal(view.changes.length,1);assert.deepEqual(applyChanges(f.store,f.id,view.reviewToken).changedPaths,['a.txt']);
 });
+
+test('apply publishes verified bytes even if staging changes after token validation',t=>{
+  const f=fixture(t),view=reviewChanges(f.store,f.id),save=f.store.save.bind(f.store);
+  f.store.save=run=>{save(run);if(run.state==='RUNNING')fs.writeFileSync(path.join(f.dir,'workspace','a.txt'),'unreviewed late change\n');};
+  assert.equal(applyChanges(f.store,f.id,view.reviewToken).state,'COMPLETED');
+  assert.equal(fs.readFileSync(path.join(f.source,'a.txt'),'utf8'),'proposed\n');
+});

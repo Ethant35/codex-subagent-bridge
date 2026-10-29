@@ -70,12 +70,19 @@ export class Workspace {
       const target=checkedPath(this.root,p,true);fs.mkdirSync(path.dirname(target),{recursive:true,mode:0o700});fs.writeFileSync(target,b,{mode:0o600});
     }
   }
-  publish(checkpoint:()=>void=()=>{}):string[] {
+  publish(checkpoint:()=>void=()=>{}, reviewed?:ReadonlyMap<string,Buffer|null>):string[] {
     const changes:Array<{p:string;data:Buffer;target:string}>=[];
     for(const p of new Set(this.task.writablePaths)) {
       checkpoint();
-      const staged=checkedPath(this.root,p,true);if(!fs.existsSync(staged))continue;
-      const data=readFileSafe(this.root,p);if(digest(data)===this.original.get(p))continue;
+      let data:Buffer|null;
+      if(reviewed){
+        if(!reviewed.has(p))throw new BridgeError('PROPOSAL_INVALID','Reviewed bytes are missing for an authorized path.');
+        data=reviewed.get(p)!;
+      }else{
+        const staged=checkedPath(this.root,p,true);if(!fs.existsSync(staged))continue;
+        data=readFileSafe(this.root,p);
+      }
+      if(data===null||digest(data)===this.original.get(p))continue;
       const target=checkedPath(this.task.workspaceRoot,p,true);
       let now:string|null=null;try{now=digest(readFileSafe(this.task.workspaceRoot,p));}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
       if(now!==this.original.get(p))throw new BridgeError('WRITE_CONFLICT','Source changed during task; staged edits retained, no changes published','BLOCKED');

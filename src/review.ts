@@ -133,7 +133,8 @@ export function applyChanges(store: Store, id: string, token: string | undefined
     run.state = 'RUNNING'; run.pid = process.pid;
     store.save(run);
     try {
-      run.changedPaths = ws.publish();
+      // Publish the bytes verified against the token, never a later reread of staging.
+      run.changedPaths = ws.publish(undefined, new Map(data.files.map(file => [file.path, file.after])));
       run.state = 'COMPLETED';
       store.save(run);
       store.event(id, 'review_applied', { changedFileCount: run.changedPaths.length });
