@@ -1,3 +1,17 @@
+# Release 1.3.0 qualification complete; publication in progress
+
+Author: Ethan. Updated 2026-10-28 (America/Los_Angeles).
+
+PR8 was reviewed, repaired, and merged at3e3cb1de782cbbcf2115827ab354d8c70ced5e1e. Review found a staged-file reread between token validation and publication; ef59f24 fixes it by applying the verified buffers. Regression and full suite pass. Source release commit b2795c3a2080520942bef4641333036597336f4b is exported cleanly; the final archive was sealed from that export.
+
+Candidate1.3.0 SHA256:6c3d99c1ba8dbecde56c642dc1ef1d95000495c345e181e5f287fe65215bdbcc;237981bytes;185files;51runtime files matched. Clean npm ci/check/build/test:166 pass,23 existing external skips,0fail. All27 installed review/setup tests pass. Seven actual installed operations checks pass from public1.2.1, with zero provider fetch attempts. Dependency audit0; Actions disabled. Semgrep8groups,6complete/2partial(upstream rule errors),11heuristic findings reviewed without blockers; no cross-file claim. No paid calls or native parent run. Claude experimental/API-key only; subscriptions blocked. Live evidence remains historical from1.2.1.
+
+Release metadata is excluded from npm packaging. Root records track this release; prior root1.2.1 records are preserved under release-history/v1.2.1 and old assets remain untouched. Candidate/raw logs remain in ignored .readiness-backups/release-1.3.0. Clean-build and installed-test scratch removed. Unrelated README 2.md and PUBLICATION_VERIFICATION 2.json preserved. An invalid duplicate Git ref .git/refs/remotes/origin/main 2 blocked fetch; its exact bytes were preserved in the ignored git-ref-repair folder before removal from active refs. Fetch then succeeded.
+
+Remaining: publish the sealed candidate, verify public hash/all installed files and fresh public installation, promote stable, record final publication and stop monitoring. User stop:50%remaining in any allowance, or an observed in-work reset to100%remaining. Active baseline21%used/reset1793774143; latest29%used/71%remaining, unchanged reset. No automatic resume. No current goal record exists; do not claim it was paused or completed.
+
+---
+
 # Completed setup and review-before-apply update
 
 Author: Ethan. Updated 2026-10-28 (America/Los_Angeles).

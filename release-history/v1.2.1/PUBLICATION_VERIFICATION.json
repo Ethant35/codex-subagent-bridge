@@ -1,0 +1,80 @@
+{
+  "author": "Ethan",
+  "version": "1.2.1",
+  "status": "completed",
+  "date": "2026-10-27",
+  "releaseUrl": "https://github.com/Ethant35/codex-subagent-bridge/releases/tag/v1.2.1",
+  "sha256": "34c4401f58bcddb493ddf299c1f3845740cf1649d7466c19d7f428c057b66823",
+  "bytes": 216367,
+  "publicAnonymousDownloadMatchesQualifiedArchive": true,
+  "publicUrlFreshInstall": true,
+  "allInstalledFilesMatchDownloadedArchive": 171,
+  "publicInstallChecks": 8,
+  "runtimeFilesMatchLiveTestedConsumer": 48,
+  "liveChecks": [
+    {
+      "check": "first",
+      "runId": "e1a5cf6a-4782-44b2-afb1-0f2d675a889f",
+      "costUsd": 7.4976e-05,
+      "state": "COMPLETED",
+      "factReturned": true,
+      "readToolObserved": true
+    },
+    {
+      "check": "native-corrected",
+      "runId": "d634906a-af7a-40d7-a8fa-547e1aa6b5ce",
+      "costUsd": 6.4572e-05,
+      "state": "COMPLETED",
+      "factReturned": true,
+      "readToolObserved": true,
+      "parentConsumedActualChildOutput": true
+    },
+    {
+      "check": "return",
+      "runId": "c2d074c0-2033-4b5b-a08d-81fafa9b6fe3",
+      "costUsd": 6.0492e-05,
+      "state": "COMPLETED",
+      "factReturned": true,
+      "readToolObserved": true
+    }
+  ],
+  "liveReportedCostUsd": 0.00020004,
+  "maxApplicationSpendPerTaskUsd": 0.02,
+  "authorizedTotalApplicationCapUsd": 0.06,
+  "remainingLiveChecks": 0,
+  "nativeParentRuns": [
+    {
+      "run": "native-parent.jsonl",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "subscription": true,
+      "usage": {
+        "input_tokens": 57774,
+        "cached_input_tokens": 48128,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 642,
+        "reasoning_output_tokens": 159
+      }
+    },
+    {
+      "run": "native-corrected-parent.jsonl",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "subscription": true,
+      "usage": {
+        "input_tokens": 58244,
+        "cached_input_tokens": 51584,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 611,
+        "reasoning_output_tokens": 166
+      }
+    }
+  ],
+  "nativeApprovalFailure": "First parent prepared task but approval_policy never blocked cpb_delegate before child inference. Human separately approved one corrected parent with a temporary test-only per-tool approval.",
+  "nativeCorrectedResult": "PASS: exactly one prepare, one delegate and parent consumed actual child output. Validator originally rejected a space after PARENT:; offline transcript and persisted-result inspection confirmed exact fact without retry.",
+  "globalConfigUnchanged": true,
+  "credentialReleased": true,
+  "actionsEnabled": false,
+  "scope": "Single trusted local user; macOS arm64 / Node22.13.1, OpenRouter CLI/native MCP. Claude experimental; other platforms unqualified.",
+  "packageEvidenceSnapshot": "Packaged qualification.json predates final public check; this post-publication record binds the unchanged archive to the third run."
+}
