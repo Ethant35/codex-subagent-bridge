@@ -123,7 +123,10 @@ export function humanOutput(value:unknown):string {
     if(v.result){lines.push(v.result.output,`Reported cost: ${v.result.usage?.costUsd??'unknown'} USD`);}
     if(v.changedPaths?.length)lines.push(`Changed files: ${v.changedPaths.join(', ')}`);
     lines.push(`Inspect: cpb inspect ${v.id} --human`);
-    if(v.state==='AWAITING_REVIEW')lines.push('No project files changed.',`Review: cpb review ${v.id}`,`Discard: cpb discard ${v.id}`);
+    if(v.state==='AWAITING_REVIEW'){
+      if(Array.isArray(v.proposedPaths))lines.push(`Proposed files: ${v.proposedPaths.join(', ')||'(none)'}`);
+      lines.push('No project files changed.',`Review: cpb review ${v.id}`,`Discard: cpb discard ${v.id}`);
+    }
     else if(!['COMPLETED','DISCARDED'].includes(v.state))lines.push(`Recovery: cpb recovery ${v.id} --human`,'Do not repeat a failed request until you inspect its state and possible charges.');
   } else if(v.configPath){
     lines.push(v.applied?'Project MCP configuration saved.':v.alreadyConfigured?'Project MCP configuration is current.':'Project MCP configuration preview:',v.configPath);

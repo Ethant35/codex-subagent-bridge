@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Resolve parent aliases in `CPB_HOME` before creating run workspace paths; still reject a symlink at the store directory or unsafe permissions.
+- Add `proposedPaths` to review-mode run results and records. Keep `changedPaths` for files published to the project and show proposed files in human output.
+- Expose Claude diagnostic support as `support.apiKeyStatus` so the status remains visible without relaxing credential redaction.
+- Correct the Operations update command to v1.3.0 and explain the v1.2.1 rollback compatibility limit.
+
 ## 1.3.0 — 2026-10-28
 
 - Add opt-in review before apply, persistent proposals, exact before/after display, token-bound apply, and discard.
