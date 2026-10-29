@@ -1,0 +1,56 @@
+{
+  "author": "Ethan",
+  "platform": "darwin",
+  "arch": "arm64",
+  "node": "v22.13.1",
+  "syntheticDataOnly": true,
+  "networkGuard": {
+    "enabled": true,
+    "attempts": 0
+  },
+  "steps": [
+    {
+      "name": "clean install previous public archive",
+      "result": "PASS"
+    },
+    {
+      "name": "create and inspect synthetic 1.3.0 history",
+      "result": "PASS",
+      "runId": "9a5a765b-9b1e-4912-a168-329bd80429d4",
+      "state": "BLOCKED",
+      "errorCode": "MISSING_CREDENTIALS"
+    },
+    {
+      "name": "upgrade and restart with history retained",
+      "result": "PASS",
+      "version": "1.3.1"
+    },
+    {
+      "name": "stopped complete private-store backup",
+      "result": "PASS",
+      "fileCount": 17
+    },
+    {
+      "name": "corruption visible and full-store restore",
+      "result": "PASS",
+      "errorCode": "STORE_CORRUPT"
+    },
+    {
+      "name": "rollback inspection of retained state",
+      "result": "PASS",
+      "version": "1.3.0"
+    },
+    {
+      "name": "uninstall and reinstall preserve state and Codex project config",
+      "result": "PASS",
+      "version": "1.3.1"
+    }
+  ],
+  "scratchRemoved": true,
+  "outcome": "PASS",
+  "topLevelStatus": {
+    "exitCode": 0,
+    "completedSteps": 7,
+    "totalSteps": 7
+  }
+}
