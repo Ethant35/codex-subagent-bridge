@@ -186,8 +186,10 @@ test('MCP preparation and delegation retain review mode; no apply or discard too
     await client.connect(new StdioClientTransport({command:process.execPath,args:['--require',preload,cli,'mcp'],env:{PATH:process.env.PATH,CPB_HOME:f.store.root},stderr:'pipe'}));
     const tools=await client.listTools();assert.deepEqual(tools.tools.map(t=>t.name),['cpb_prepare','cpb_delegate']);
     const prepared=await client.callTool({name:'cpb_prepare',arguments:{directory:f.source,instructions:'Propose a change',writablePaths:['a.txt'],model:f.task.model,reviewBeforeApply:true}});assert.ok(!prepared.isError,JSON.stringify(prepared));
+    assert.deepEqual(prepared.structuredContent,JSON.parse(prepared.content[0].text));
     const task=JSON.parse(prepared.content[0].text).task;assert.equal(task.reviewBeforeApply,true);assert.equal(task.maxSpendUsd,0);task.maxSpendUsd=0.02;
     const result=await client.callTool({name:'cpb_delegate',arguments:task});assert.equal(result.isError,false,JSON.stringify(result));
+    assert.deepEqual(result.structuredContent,JSON.parse(result.content[0].text));
     const run=JSON.parse(result.content[0].text);assert.equal(run.state,'AWAITING_REVIEW');assert.equal(run.result.output,'Done');unchanged(f);
     assert.deepEqual(run.proposedPaths,['a.txt']);assert.deepEqual(run.changedPaths,[]);
     assert.equal(reviewChanges(f.store,run.id).changes.length,1);

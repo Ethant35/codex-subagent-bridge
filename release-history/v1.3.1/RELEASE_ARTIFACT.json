@@ -1,0 +1,19 @@
+{
+  "author": "Ethan",
+  "version": "1.3.1",
+  "status": "verified-published",
+  "file": "codex-subagent-bridge-1.3.1.tgz",
+  "sha256": "7658940b1127e0d3a8c7f7d368c177ab7e73a2b0785da76248ff5069502f9e12",
+  "bytes": 241663,
+  "files": 190,
+  "runtimeFiles": 51,
+  "sourceCommit": "20e43708e89e306668b767c375a1950f2809365d",
+  "runtimeMatchesCleanExport": true,
+  "authorVerified": true,
+  "qualification": "offline only; historical live evidence v1.2.1",
+  "liveProviderCalls": 0,
+  "historicalRecords": "release-history/v1.3.0",
+  "tagCommit": "c18f583236bc355ab05e2391af9824f54dbedb0e",
+  "allInstalledFilesMatchArchive": true,
+  "publicUrl": "https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.1/codex-subagent-bridge-1.3.1.tgz"
+}

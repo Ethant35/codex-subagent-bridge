@@ -4,11 +4,11 @@ Author: Ethan
 
 ## 1. Install and check the local setup
 
-Use Node.js 22.13.1 on macOS arm64. v1.3.1 was verified offline on this environment. Live OpenRouter/native Codex evidence is historical from v1.2.1. Install the release into a per-user directory:
+Use Node.js 22.13.1 on macOS arm64. v1.3.2 was verified offline on this environment. Live OpenRouter/native Codex evidence is historical from v1.2.1. Install the release into a per-user directory:
 
 ```sh
 npm install --prefix "$HOME/.local/share/cpb" \
-  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.1/codex-subagent-bridge-1.3.1.tgz
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.2/codex-subagent-bridge-1.3.2.tgz
 export PATH="$HOME/.local/share/cpb/node_modules/.bin:$PATH"
 cpb --version
 cpb doctor --provider openrouter --human
@@ -125,11 +125,11 @@ OpenRouter v1.2.1 is verified on macOS arm64 with Node 22.13.1. Claude SDK and C
 
 ## Update or roll back
 
-To install v1.3.1, use the pinned command from the README, then confirm `cpb --version` and run `cpb doctor --provider openrouter --human`. The exact update command is:
+To install v1.3.2, use the pinned command from the README, then confirm `cpb --version` and run `cpb doctor --provider openrouter --human`. The exact update command is:
 
 ```sh
 npm install --prefix "$HOME/.local/share/cpb" \
-  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.1/codex-subagent-bridge-1.3.1.tgz
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.2/codex-subagent-bridge-1.3.2.tgz
 cpb --version
 ```
 
@@ -162,3 +162,5 @@ Keep or remove run records separately. Before deleting a `CPB_HOME` or `~/.cpb` 
 ## Source installation
 
 For development only, clone the repository, run `npm ci`, then `npm run build`. The published package is the normal user installation path; source installation is not required for first use. See the [README](../README.md) for the commands.
+
+In v1.3.2, MCP preparation and delegation return structured objects as well as the same JSON text. Native parents can take the prepared task directly from `structuredContent.task`, then obtain spending consent before delegation. Review mode still requires a separate local apply or discard decision.
