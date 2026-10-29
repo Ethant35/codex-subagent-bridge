@@ -20,7 +20,7 @@ Report vulnerabilities privately through the repository owner's GitHub contact o
 
 Use `diagnose` for a reduced report; `inspect` and `runs` retain private instructions/output. See [OPERATIONS.md](OPERATIONS.md) for stopped-process backups, recovery, retention and limitations of atomic replacement. State paths reject symlinks, FIFOs and public modes. Cancellation-marker I/O failure stops execution; final persistence/cleanup failure rejects the caller and releases the slot where storage permits.
 
-## Review before apply (current source)
+## Review before apply (v1.3.0)
 
 `reviewBeforeApply: true` retains edits in the private run store. The child can use only its existing file capability; it cannot apply or discard a proposal. Those decisions are CLI commands, not MCP tools. Proposal hashes bind the task and staged file bytes; apply requires the token shown by `cpb review` and checks changed source files before publication. The token prevents accidental use of a different proposal; it is not proof of a human decision or protection against a hostile process running as the same user.
 

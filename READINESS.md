@@ -1,8 +1,8 @@
 # v1.2.1 CLI and release readiness
 
-## Current source: review before apply
+## v1.3.0: review before apply
 
-The 1.3.0-dev.0 update adds setup guidance, a conservative Claude subscription policy, and optional review before apply. It is separate from the published v1.2.1 qualification below. The current workflow is tested offline with synthetic provider responses; it has no new live-provider or native-parent qualification. See [current verification](docs/readiness/review-before-apply.md).
+v1.3.0 adds setup guidance, a conservative Claude subscription policy, and optional review before apply. Its CLI/MCP workflow is tested offline with synthetic responses. Live-provider and native-parent qualification remains historical from v1.2.1. See [release verification](docs/readiness/production-1.3.0.md).
 
 
 Author: Ethan. Review date: 2026-10-27 (America/Los_Angeles).

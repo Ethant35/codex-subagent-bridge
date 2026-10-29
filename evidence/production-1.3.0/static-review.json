@@ -1,0 +1,109 @@
+{
+  "author": "Ethan",
+  "engine": "Semgrep Community 1.182.1",
+  "metrics": "off",
+  "mode": "run-all",
+  "groups": 8,
+  "complete": 6,
+  "partial": 2,
+  "failed": [],
+  "skipped": [],
+  "coveredNothing": [],
+  "oversized": [],
+  "excludePattern": "static_analysis_semgrep_1/release-1.3.0",
+  "maxTargetBytes": 20000000,
+  "findings": [
+    {
+      "file": ".agents/verify-codex-subagent-bridge/scripts/verify.mjs",
+      "line": 17,
+      "rule": "apiiro-malicious-code-ruleset.obfuscation.javascript_typescript.javascript-obfuscation-methods-masking",
+      "severity": "WARNING",
+      "disposition": "Reviewed: dense code, regex syntax, or path redaction; no concealed payload or exfiltration identified."
+    },
+    {
+      "file": "scripts/floor-guard.mjs",
+      "line": 76,
+      "rule": "apiiro-malicious-code-ruleset.obfuscation.generic-obfuscation-operators",
+      "severity": "WARNING",
+      "disposition": "Reviewed: dense code, regex syntax, or path redaction; no concealed payload or exfiltration identified."
+    },
+    {
+      "file": "scripts/floor-guard.mjs",
+      "line": 77,
+      "rule": "apiiro-malicious-code-ruleset.obfuscation.generic-obfuscation-operators",
+      "severity": "WARNING",
+      "disposition": "Reviewed: dense code, regex syntax, or path redaction; no concealed payload or exfiltration identified."
+    },
+    {
+      "file": "scripts/operations-drill.mjs",
+      "line": 50,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "severity": "INFO",
+      "disposition": "Reviewed: dense code, regex syntax, or path redaction; no concealed payload or exfiltration identified."
+    },
+    {
+      "file": "scripts/readiness-performance.mjs",
+      "line": 14,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "severity": "INFO",
+      "disposition": "Reviewed: dense code, regex syntax, or path redaction; no concealed payload or exfiltration identified."
+    },
+    {
+      "file": "scripts/readiness-performance.mjs",
+      "line": 44,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "severity": "INFO",
+      "disposition": "Reviewed: dense code, regex syntax, or path redaction; no concealed payload or exfiltration identified."
+    },
+    {
+      "file": "scripts/release-operations.mjs",
+      "line": 61,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "severity": "INFO",
+      "disposition": "Reviewed: dense code, regex syntax, or path redaction; no concealed payload or exfiltration identified."
+    },
+    {
+      "file": "src/cli.ts",
+      "line": 64,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "severity": "INFO",
+      "disposition": "Reviewed: dense code, regex syntax, or path redaction; no concealed payload or exfiltration identified."
+    },
+    {
+      "file": "src/cli.ts",
+      "line": 91,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "severity": "INFO",
+      "disposition": "Reviewed: dense code, regex syntax, or path redaction; no concealed payload or exfiltration identified."
+    },
+    {
+      "file": "src/cli.ts",
+      "line": 103,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "severity": "INFO",
+      "disposition": "Reviewed: dense code, regex syntax, or path redaction; no concealed payload or exfiltration identified."
+    },
+    {
+      "file": "src/guided.ts",
+      "line": 112,
+      "rule": "apiiro-malicious-code-ruleset.generic-one-liners",
+      "severity": "INFO",
+      "disposition": "Reviewed: dense code, regex syntax, or path redaction; no concealed payload or exfiltration identified."
+    }
+  ],
+  "severityCounts": {
+    "WARNING": 3,
+    "INFO": 8
+  },
+  "ruleErrors": {
+    "typescript-typescript.json": 0,
+    "all-secrets.json": 0,
+    "all-trailofbits-semgrep-rules.json": 0,
+    "javascript-javascript.json": 0,
+    "all-elttam-semgrep-rules.json": 12,
+    "all-apiiro-malicious-code-ruleset.json": 3,
+    "all-security-audit.json": 0,
+    "javascript-nodejs.json": 0
+  },
+  "limits": "No cross-file analysis. Elttam and Apiiro contain upstream rule parse errors; partial coverage. No blocking finding identified after manual review."
+}

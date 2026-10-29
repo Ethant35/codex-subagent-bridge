@@ -2,7 +2,7 @@
 
 Author: Ethan
 
-Available in current source; not in published v1.2.1. Build from source as described in the README. In the commands below, replace `cpb` with `node /absolute/path/to/codex-subagent-bridge/dist/cli.js` when using that build; an older installed `cpb` still refers to its released version. For evaluation, set `CPB_HOME` to a new private state directory so older releases do not encounter new review records.
+Available in v1.3.0. Install the release as described in the README. For evaluation, set `CPB_HOME` to a new private state directory so older releases do not encounter new review records.
 
 Create a task with explicit files:
 
@@ -32,6 +32,6 @@ Apply publishes only the authorized changes, then marks the run `COMPLETED`. Dis
 
 For native Codex, pass `reviewBeforeApply: true` to `cpb_prepare`, preserve it in `cpb_delegate`, and keep the normal spending consent. Ask Codex to return the run ID. Use the CLI yourself to inspect and decide. The child file broker has no apply tool, and the parent MCP server exposes no apply/discard tool.
 
-Automatic publication remains the default for envelopes without this option. A pre-existing version 1 task remains valid. Older v1.2.1 code cannot inspect new review envelopes/states; do not downgrade a store containing them. See [Operations](../OPERATIONS.md#pending-reviews-current-source) for backups and interrupted apply recovery.
+Automatic publication remains the default for envelopes without this option. A pre-existing version 1 task remains valid. Older v1.2.1 code cannot inspect new review envelopes/states; do not downgrade a store containing them. See [Operations](../OPERATIONS.md#pending-reviews-v130) for backups and interrupted apply recovery.
 
-Publication is atomic per file. Disk failure or interruption can leave some files applied; the journal and original backups identify them. After an apply failure, inspect `cpb recovery RUN_ID --human`; never retry by changing the run state. The single-user trust boundary and concurrent-writer limits in [Security](../SECURITY.md#review-before-apply-current-source) still apply.
+Publication is atomic per file. Disk failure or interruption can leave some files applied; the journal and original backups identify them. After an apply failure, inspect `cpb recovery RUN_ID --human`; never retry by changing the run state. The single-user trust boundary and concurrent-writer limits in [Security](../SECURITY.md#review-before-apply-v130) still apply.

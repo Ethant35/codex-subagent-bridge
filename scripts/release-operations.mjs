@@ -1,5 +1,5 @@
 // Author: Ethan. Installed-package upgrade, recovery, rollback and reinstall drill.
-// Usage: node scripts/release-operations.mjs --previous FILE.tgz --candidate FILE.tgz --output DIR
+// Usage: node scripts/release-operations.mjs --previous FILE.tgz --candidate FILE.tgz --output DIR [--previous-version VERSION --candidate-version VERSION]
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -11,6 +11,8 @@ import {fileURLToPath} from 'node:url';
 const args=process.argv.slice(2);
 function option(name){const i=args.indexOf(name);if(i<0||!args[i+1])throw new Error(`Required: ${name} VALUE`);return path.resolve(args[i+1]);}
 const previous=option('--previous'),candidate=option('--candidate'),output=option('--output');
+const expectedVersion=(flag,fallback)=>{const i=args.indexOf(flag);const value=i<0?fallback:args[i+1];assert.match(value??'',/^\d+\.\d+\.\d+(?:-[A-Za-z0-9.-]+)?$/);return value;};
+const previousVersion=expectedVersion('--previous-version','1.2.0'),nextVersion=expectedVersion('--candidate-version','1.2.1');
 for(const file of [previous,candidate])assert.ok(fs.statSync(file).isFile(),`Archive missing: ${file}`);
 assert.notEqual(previous,candidate,'Use separate previous and candidate archives');
 const npmCache=path.join(os.homedir(),'.npm');assert.ok(fs.statSync(npmCache).isDirectory(),'Expected existing npm cache at os.homedir()/.npm');
@@ -79,7 +81,7 @@ evidence.directoryModes={scratch:mode(work),application:mode(app),project:mode(p
 try{
  evidence.workspaceStatusBefore=command('git',['status','--short','--branch'],{cwd:repoRoot}).stdout.trim();
  install(previous);evidence.steps.push({name:'clean install previous public archive',result:'PASS'});
- const versionOld=cpb(['--version']);assert.equal(versionOld.value.version,'1.2.0');
+ const versionOld=cpb(['--version']);assert.equal(versionOld.value.version,previousVersion);
  const sampleDir=path.join(project,'sample');const sample=cpb(['sample','--directory',sampleDir]);assert.equal(sample.status,0);
  evidence.directoryModes.sample=mode(sampleDir);
  taskFile=path.join(sampleDir,'task.json');factFile=path.join(sampleDir,'fact.txt');const generatedTaskHash=hash(fs.readFileSync(taskFile));const task=JSON.parse(fs.readFileSync(taskFile,'utf8'));
@@ -91,9 +93,9 @@ try{
  assert.equal(first.value.state,'BLOCKED');assert.equal(first.value.error?.code,'MISSING_CREDENTIALS','No key should block before provider access');
  const runId=task.taskId;
  const oldInspect=assertReadsPreserveState(()=>cpb(['inspect',runId]));assert.equal(oldInspect.value.id,runId);
- evidence.steps.push({name:'create and inspect synthetic v1.2.0 history',result:'PASS',runId,state:first.value.state,errorCode:first.value.error.code});
+ evidence.steps.push({name:`create and inspect synthetic ${previousVersion} history`,result:'PASS',runId,state:first.value.state,errorCode:first.value.error.code});
 
- install(candidate);const candidateVersion=cpb(['--version']).value.version;assert.equal(candidateVersion,'1.2.1','Candidate archive must be exactly version 1.2.1');
+ install(candidate);const candidateVersion=cpb(['--version']).value.version;assert.equal(candidateVersion,nextVersion,'Candidate version must match the requested release');
  assert.equal(assertReadsPreserveState(()=>cpb(['inspect',runId])).value.id,runId);
  assert.ok(assertReadsPreserveState(()=>cpb(['runs','--limit','1000'])).value.some(x=>x.id===runId));
  // A fresh process above reopens the same private store, proving restart persistence.
@@ -124,7 +126,7 @@ try{
  npm(['install',previous]);
  const oldRollback=assertReadsPreserveState(()=>cpb(['inspect',secondId],{state:restored}),restored);assert.equal(oldRollback.value.id,secondId);
  const oldRuns=assertReadsPreserveState(()=>cpb(['runs','--limit','1000'],{state:restored}),restored);assert.ok(oldRuns.value.some(x=>x.id===runId));
- const rollbackVersion=cpb(['--version']).value.version;assert.equal(rollbackVersion,'1.2.0');
+ const rollbackVersion=cpb(['--version']).value.version;assert.equal(rollbackVersion,previousVersion);
  evidence.steps.push({name:'rollback inspection of retained state',result:'PASS',version:rollbackVersion});
 
  // Remove and reinstall the package with state and the separate project untouched.
@@ -133,7 +135,7 @@ try{
  npm(['install',candidate]);
  const reinstated=cpb(['inspect',secondId],{state:restored});assert.equal(reinstated.value.id,secondId);
  assert.equal(hash(fs.readFileSync(projectConfig)),projectConfigHash);assert.deepEqual(inventory(restored),before);
- const reinstalledVersion=cpb(['--version']).value.version;assert.equal(reinstalledVersion,'1.2.1');
+ const reinstalledVersion=cpb(['--version']).value.version;assert.equal(reinstalledVersion,nextVersion);
  evidence.steps.push({name:'uninstall and reinstall preserve state and Codex project config',result:'PASS',version:reinstalledVersion});
  assert.deepEqual({sampleFact:hash(fs.readFileSync(factFile)),task:hash(fs.readFileSync(taskFile))},{sampleFact:fixtureHashes.sampleFact,task:fixtureHashes.taskAfterSecondExplicitEdit},'CLI flow changed the synthetic source/task outside the explicit fixture edit');
  const fetchAttempts=fs.existsSync(fetchCount)?fs.readFileSync(fetchCount,'utf8').trim().split('\n').filter(Boolean).length:0;
