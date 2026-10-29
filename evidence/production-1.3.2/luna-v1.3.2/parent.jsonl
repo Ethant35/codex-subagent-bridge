@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"01a188de-c3c4-7322-850d-a82e82321460"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Stopped: `cpb_prepare` was unavailable (`tools.cpb_prepare is not a function`), so I did not retry or submit a task."}}
+{"type":"turn.completed","usage":{"input_tokens":28173,"cached_input_tokens":23040,"cache_write_input_tokens":0,"output_tokens":456,"reasoning_output_tokens":246}}

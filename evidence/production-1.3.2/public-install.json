@@ -1,0 +1,55 @@
+{
+  "author": "Ethan",
+  "version": "1.3.2",
+  "url": "https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.2/codex-subagent-bridge-1.3.2.tgz",
+  "paidCalls": 0,
+  "liveProviderVerified": false,
+  "commands": [
+    {
+      "name": "download",
+      "exit": 0
+    },
+    {
+      "name": "public-url-install",
+      "exit": 0
+    },
+    {
+      "name": "version",
+      "exit": 0
+    },
+    {
+      "name": "help",
+      "exit": 0
+    },
+    {
+      "name": "doctor",
+      "exit": 0
+    },
+    {
+      "name": "start",
+      "exit": 0
+    },
+    {
+      "name": "validate",
+      "exit": 0
+    },
+    {
+      "name": "connect-preview",
+      "exit": 0
+    },
+    {
+      "name": "no-consent",
+      "exit": 1
+    },
+    {
+      "name": "installed-review-tests",
+      "exit": 0
+    }
+  ],
+  "scratchRemoved": true,
+  "sha256": "918ce8790ab45916fe69acc1b56423323407a725c5d2c3fc76c728e151f252cd",
+  "allInstalledFilesMatch": 196,
+  "authorVerified": true,
+  "installedRegressionTests": 95,
+  "status": "passed"
+}

@@ -1,0 +1,9 @@
+{
+  "error": {
+    "code": "WRITE_CONFLICT",
+    "message": "Project files changed after the snapshot. No changes applied. Discard and prepare a new task."
+  }
+}
+
+(node:8808) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -1,5 +1,7 @@
 # Local acceptance record
 
+Current release: public v1.3.2 passed the [frozen OpenRouter completion contract](docs/readiness/openrouter-final-contract.md) using current installed tests, one real Sol Medium/DeepSeek review workflow, and explicitly reused unchanged evidence. Reported response cost: $0.00013662. Test-local approval/state forwarding was required; two earlier Luna attempts stopped before inference. Claude remains experimental. The original acceptance record below is historical and is not relabeled as a fresh run.
+
 Author: Ethan. Verification date: 2026-10-22. Core v1.0: **PASS, CB-01 through CB-18**. Live Claude remains pending.
 
 GitHub Actions is intentionally omitted and disabled at repository level per Ethan. All evidence here is local. No CI pass is claimed. The core gate and final packaging checks pass; the authorized main merge and v1.0.0 release can proceed.

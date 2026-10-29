@@ -1,0 +1,34 @@
+{
+  "author": "Ethan",
+  "sourceCommit": "ab253df138af9f6aae47465ad89a85e46affe31a",
+  "commands": [
+    {
+      "name": "clean-ci",
+      "exit": 0
+    },
+    {
+      "name": "types",
+      "exit": 0
+    },
+    {
+      "name": "tests",
+      "exit": 0
+    },
+    {
+      "name": "package",
+      "exit": 0
+    },
+    {
+      "name": "audit",
+      "exit": 0
+    }
+  ],
+  "sourceScratchRemoved": true,
+  "tests": {
+    "passed": 171,
+    "skippedExternal": 23,
+    "failed": 0
+  },
+  "auditVulnerabilities": 0,
+  "status": "passed"
+}

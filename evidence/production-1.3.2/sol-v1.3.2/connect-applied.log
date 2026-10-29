@@ -1,0 +1,8 @@
+{
+  "configPath": "<scratch>/project/.codex/config.toml",
+  "applied": true,
+  "alreadyConfigured": false,
+  "config": "# >>> codex-subagent-bridge managed MCP server >>>\n[mcp_servers.cpb]\ncommand = \"<home>/.nvm/versions/node/v22.13.1/bin/node\"\nargs = [\"<scratch>/install/node_modules/codex-subagent-bridge/dist/cli.js\", \"mcp\"]\nenv_vars = [\"OPENROUTER_API_KEY\"]\ntool_timeout_sec = 180\n# <<< codex-subagent-bridge managed MCP server <<<",
+  "next": "Project MCP configuration was added. Open '<scratch>/project' in Codex and approve its project trust prompt separately."
+}
+

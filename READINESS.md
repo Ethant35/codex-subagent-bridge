@@ -1,3 +1,11 @@
+# v1.3.2: public native review workflow verified
+
+Author: Ethan. Updated 2026-10-29.
+
+The public package passed 171 source tests (23 existing external skips), 95 installed regressions, and one real review-before-apply workflow through Codex 0.165.0 / GPT-6.1 Sol Medium on macOS arm64 / Node 22.13.1. DeepSeek reported $0.00013662 across three requests. Staging, source-conflict refusal, exact apply, persistence and unchanged global configuration passed. The test used explicit local MCP approval and CPB_HOME forwarding. Both earlier Luna attempts failed before inference; no general native-model reliability claim is made.
+
+[Qualification](docs/readiness/production-1.3.2.md), [frozen completion contract and results](docs/readiness/openrouter-final-contract.md), and [sanitized evidence](evidence/production-1.3.2/completion.json) distinguish fresh checks from reused cancellation, discard and recovery evidence. Claude remains experimental/live-unverified. This is maintainer integration evidence, not a human usability study. The historical release records below retain their original scope.
+
 # v1.3.1: UX fixes
 
 The patch resolves parent aliases in private state paths, exposes proposed edits separately from published paths, and keeps Claude support status visible without weakening secret redaction. Verification is offline/synthetic; see [release verification](docs/readiness/production-1.3.1.md). Live evidence remains historical from v1.2.1.

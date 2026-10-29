@@ -4,7 +4,7 @@ Author: Ethan. Official sources checked 2026-10-28.
 
 | Provider | Backend | Credentials | Verification |
 | --- | --- | --- | --- |
-| OpenRouter | api | OPENROUTER_API_KEY | v1.2.1 live evidence; current review mode tested offline only |
+| OpenRouter | api | OPENROUTER_API_KEY | v1.3.2 public-package DeepSeek review workflow passed through native Sol Medium |
 | Claude | sdk | Explicit api-key mode and ANTHROPIC_API_KEY | Official SDK loads and submission configuration initializes; live pending |
 | Claude | cli | Explicit api-key mode and ANTHROPIC_API_KEY | Adapter implemented; authenticated inference not verified |
 | Claude | sdk or cli | Subscription | Blocked pending prior Anthropic approval |
@@ -15,7 +15,7 @@ Anthropic's [Agent SDK overview](https://code.claude.com/docs/en/agent-sdk/overv
 
 The official [authentication guide](https://code.claude.com/docs/en/authentication) documents subscription login for Claude Code itself. That is distinct from permission to offer it through a third-party product. CPB can report the installed CLI's login status, but a logged-in result does not enable subscription delegation.
 
-The API-key adapters use `ANTHROPIC_API_KEY`. They remain experimental: SDK import, typed configuration, process supervision, and local boundary tests are evidence of implementation, not authenticated inference. No fresh Claude or OpenRouter model request was made for the current update. Live qualification would require separate authorization and successful account/runtime tests.
+The API-key adapters use `ANTHROPIC_API_KEY`. They remain experimental: SDK import, typed configuration, process supervision, and local boundary tests are evidence of implementation, not authenticated inference. No fresh Claude request was made. Public v1.3.2 completed one authorized OpenRouter task on deepseek/deepseek-v4.1-flash-1017 through Codex 0.165.0 / GPT-6.1 Sol Medium, with test-local tool approval and CPB_HOME forwarding. Its three provider responses reported $0.00013662; this is not an invoice reconciliation. See the [completion record](docs/readiness/openrouter-final-contract.md). Claude live qualification still requires separate authorization and successful account/runtime tests.
 
 The [CLI reference](https://code.claude.com/docs/en/cli-reference) documents restricted mode, explicit tool lists, strict MCP configuration, and authentication status. The adapter disables native tools with `--tools ""`, passes only its file broker, and retains restricted mode, bare mode, no hooks, and no automatic fallback. Required flags that an older CLI cannot accept fail closed. Managed runtime policy remains part of the trusted host configuration. Neither API-key adapter claims OS-level containment.
 
