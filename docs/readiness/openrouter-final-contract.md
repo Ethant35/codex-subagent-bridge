@@ -28,3 +28,28 @@ The goal service currently returns no existing goal. Do not invent or recreate o
 ## Demonstrated blocker and bounded repair
 
 The approved v1.3.1 Luna High parent stopped after cpb_prepare, reporting that it could not extract the task from text content. No cpb_delegate call or OpenRouter request occurred. The valid text response lacked structuredContent. v1.3.2 adds that field without changing the frozen requirements. On 2026-10-29 Ethan approved one corrected Luna High parent on the public v1.3.2 candidate, using the same unused $0.02 allocation and four-tool-step limit, with no retries. The original parent attempt remains consumed and recorded.
+
+The separately authorized v1.3.2 Luna parent also stopped before delegation, reporting an incorrect `tools.cpb_prepare` function name. Its transcript contains no completed MCP call. Free follow-up checks confirmed that Codex enabled the configured server and that a direct client discovered both tools and received structured task data. Both Luna parent allowances are consumed; no OpenRouter request was made. A separate stronger-parent authorization was requested rather than silently retrying. Core OR-04/05/06/11 remain pending.
+
+## Final result: PASS on public v1.3.2
+
+On 2026-10-29 Ethan separately approved one GPT-6.1 Sol Medium parent, with explicit test-local CPB_HOME forwarding and the same unused $0.02 allocation. That one attempt passed on Codex 0.165.0. It called the exposed cpb_prepare and cpb_delegate tools once each and consumed the unpredictable child result. The two Luna failures remain recorded; this does not establish reliable Luna operation. No parent or child retry followed the Sol run.
+
+The one DeepSeek task made three provider requests and three file-tool calls (two reads and one staged write). Received provider costs sum to **$0.00013662**, matching persisted usage. The task had a $0.02 application cap, four-step cap and 60-second runtime limit. This is response-level accounting, not an account invoice or guaranteed settlement ceiling. Subscription usage is separate.
+
+| Contract | Final evidence |
+| --- | --- |
+| OR-01 | PASS: public v1.3.2 archive hash matched; all 196 installed files matched; 95 installed regressions passed |
+| OR-02 | PASS: installed setup/consent checks plus actual connection preview/apply; global config bytes unchanged |
+| OR-03 | PASS: 171 source passes, existing boundary checks, exact live envelope and private state modes; unrelated files unchanged |
+| OR-04 | PASS: native Sol Medium prepared, delegated and consumed the real result; actual MCP calls retained |
+| OR-05 | PASS: AWAITING_REVIEW, source unchanged, draft.txt proposed only, full before/after bytes and hashes checked |
+| OR-06 | PASS: concurrent edit caused WRITE_CONFLICT with no publication; restoring original source allowed exact reviewed bytes to apply with the valid token |
+| OR-07 | PASS, reused: public installed discard/empty-proposal tests and Terra retest; no extra paid discard task |
+| OR-08 | PASS: separate CLI processes inspected pending/completed state and preserved exact cost |
+| OR-09 | PASS, reused: historical real cancellation and Terra active synthetic CANCELLED evidence; runner/process/store cancellation code unchanged from v1.3.1 |
+| OR-10 | PASS: public storage/review regressions, unchanged seven-step operations evidence, and live read-only conflict recovery |
+| OR-11 | PASS: three actual response events reconciled to usage; three allowed file-tool steps; exact finite bounds retained |
+| OR-12 | PASS: narrow OpenRouter/macOS qualification; Claude remains experimental/live-unverified; no independent human usability claim |
+
+[Completion evidence](../../evidence/production-1.3.2/completion.json) binds the exact archive, live run and evidence reused. Sanitized parent transcripts include both failed Luna attempts and the successful Sol attempt. The test-local approval and environment forwarding qualify this native CLI configuration; they do not certify unattended delegation in every Codex UI or default approval policy. All three parent allowances and the one child-task allowance are consumed. No automatic continuation or further paid calls are authorized.

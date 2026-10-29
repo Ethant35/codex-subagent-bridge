@@ -1,0 +1,55 @@
+{
+  "id": "f0c4197a-6425-49d0-b655-8e4e7bb041e0",
+  "correlationId": "8db5fceb-5381-409d-8e47-ad2705bc2e37",
+  "state": "AWAITING_REVIEW",
+  "task": {
+    "version": 1,
+    "taskId": "f0c4197a-6425-49d0-b655-8e4e7bb041e0",
+    "correlationId": "8db5fceb-5381-409d-8e47-ad2705bc2e37",
+    "provider": "openrouter",
+    "backend": "api",
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "instructions": "Read fact.txt and draft.txt using read_file. Replace draft.txt using write_file with exactly the text Reviewed: followed by one space and the entire contents of fact.txt, including its final newline. Do not change any other file. Return only the exact contents of fact.txt.",
+    "workspaceRoot": "<scratch>/project",
+    "allowedOperations": [
+      "read_file",
+      "write_file"
+    ],
+    "readablePaths": [
+      "fact.txt",
+      "draft.txt"
+    ],
+    "writablePaths": [
+      "draft.txt"
+    ],
+    "maxRuntimeMs": 60000,
+    "maxToolSteps": 4,
+    "maxSpendUsd": 0.02,
+    "expectedOutput": "Complete the requested task using only authorized files.",
+    "resultFormat": "text",
+    "networkPolicy": "provider-only",
+    "reviewBeforeApply": true
+  },
+  "instructionHash": "7d89142cec0d482d0b2022ec59933f21fea2cab4fb2b338b3f6a3c014eda467a",
+  "pid": 8584,
+  "createdAt": "2026-10-29T18:23:10.582Z",
+  "updatedAt": "2026-10-29T18:23:26.991Z",
+  "workspace": "<scratch>/state/runs/f0c4197a-6425-49d0-b655-8e4e7bb041e0/workspace",
+  "proposedPaths": [
+    "draft.txt"
+  ],
+  "changedPaths": [],
+  "result": {
+    "output": "live-review-c1a54a19-18dd-4e5b-9658-3afbd6b6bb25",
+    "usage": {
+      "inputTokens": 1912,
+      "outputTokens": 244,
+      "costUsd": 0.00013662
+    },
+    "sessionId": "gen-1793298200-Vk0U2HTatEblFy6v6nR0",
+    "sources": [
+      "fact.txt",
+      "draft.txt"
+    ]
+  }
+}

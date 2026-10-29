@@ -1,0 +1,10 @@
+{
+  "id": "f0c4197a-6425-49d0-b655-8e4e7bb041e0",
+  "state": "AWAITING_REVIEW",
+  "recovery": "PENDING_REVIEW",
+  "modified": false,
+  "message": "No proposal has been applied. Use cpb review f0c4197a-6425-49d0-b655-8e4e7bb041e0, then apply with its token or discard."
+}
+
+(node:8809) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)

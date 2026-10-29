@@ -1,0 +1,50 @@
+{
+  "author": "Ethan",
+  "version": "1.3.2",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "parentModel": "gpt-6.1-sol",
+  "parentEffort": "medium",
+  "codexVersion": "0.165.0",
+  "authorizedParentAttempts": 1,
+  "parentAttempts": 1,
+  "authorizedTasks": 1,
+  "applicationCapUsd": 0.02,
+  "maxToolSteps": 4,
+  "retries": 0,
+  "separateCorrectedParentAuthorization": true,
+  "priorParentAttempts": 2,
+  "priorOpenRouterRequests": 0,
+  "checks": {
+    "projectConnectionPrepared": true,
+    "nativePrepareDelegateResult": true,
+    "liveEnvelopeBounds": true,
+    "pendingSourceUnchanged": true,
+    "costReconciled": true,
+    "exactReviewBytes": true,
+    "privateStateModes": true,
+    "sourceConflictRefused": true,
+    "recoveryReadOnly": true,
+    "exactApply": true,
+    "sourceModePreserved": true,
+    "unrelatedFilesUnchanged": true,
+    "persistenceAcrossProcesses": true,
+    "stagingCleanedAfterApply": true
+  },
+  "status": "passed",
+  "runId": "f0c4197a-6425-49d0-b655-8e4e7bb041e0",
+  "toolSteps": 3,
+  "nativeTools": [
+    "cpb_prepare",
+    "cpb_delegate"
+  ],
+  "reportedCostUsd": 0.00013662,
+  "providerRequests": 3,
+  "providerResponses": 3,
+  "generationIds": [
+    "gen-1793298190-xzqBUb2XcTJ2AKUKEB5k",
+    "gen-1793298195-mpDnAMAiqfLteNtbU3I0",
+    "gen-1793298200-Vk0U2HTatEblFy6v6nR0"
+  ],
+  "credentialReleased": true,
+  "globalConfigUnchanged": true
+}

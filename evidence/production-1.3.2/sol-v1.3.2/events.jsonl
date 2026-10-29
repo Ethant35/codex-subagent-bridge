@@ -1,0 +1,11 @@
+{"at":"2026-10-29T18:23:10.617Z","type":"state","detail":{"state":"RUNNING"}}
+{"at":"2026-10-29T18:23:10.807Z","type":"provider_request","detail":{"turn":0,"model":"deepseek/deepseek-v4.1-flash-1017","maxTokens":4096}}
+{"at":"2026-10-29T18:23:15.219Z","type":"provider_response","detail":{"generationId":"gen-1793298190-xzqBUb2XcTJ2AKUKEB5k","inputTokens":516,"outputTokens":76,"costUsd":0.000051812,"turn":0}}
+{"at":"2026-10-29T18:23:15.236Z","type":"tool_allowed","detail":{"name":"read_file","path":"fact.txt","step":1}}
+{"at":"2026-10-29T18:23:15.242Z","type":"tool_allowed","detail":{"name":"read_file","path":"draft.txt","step":2}}
+{"at":"2026-10-29T18:23:15.246Z","type":"provider_request","detail":{"turn":1,"model":"deepseek/deepseek-v4.1-flash-1017","maxTokens":4096}}
+{"at":"2026-10-29T18:23:19.961Z","type":"provider_response","detail":{"generationId":"gen-1793298195-mpDnAMAiqfLteNtbU3I0","inputTokens":644,"outputTokens":138,"costUsd":0.00006071,"turn":1}}
+{"at":"2026-10-29T18:23:19.975Z","type":"tool_allowed","detail":{"name":"write_file","path":"draft.txt","step":3}}
+{"at":"2026-10-29T18:23:19.980Z","type":"provider_request","detail":{"turn":2,"model":"deepseek/deepseek-v4.1-flash-1017","maxTokens":4096}}
+{"at":"2026-10-29T18:23:26.978Z","type":"provider_response","detail":{"generationId":"gen-1793298200-Vk0U2HTatEblFy6v6nR0","inputTokens":752,"outputTokens":30,"costUsd":0.000024098,"turn":2}}
+{"at":"2026-10-29T18:23:26.998Z","type":"state","detail":{"state":"AWAITING_REVIEW"}}

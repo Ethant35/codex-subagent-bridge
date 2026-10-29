@@ -1,0 +1,20 @@
+{
+  "id": "f0c4197a-6425-49d0-b655-8e4e7bb041e0",
+  "state": "AWAITING_REVIEW",
+  "changes": [
+    {
+      "path": "draft.txt",
+      "beforeHash": "356e365e790b22301fa31ae06102c8cfb59d03fd3b6245fb4cc566207a9f50fa",
+      "afterHash": "626d42c0b726b6d040b3813e0600abc6a5006b755d2fba608ac4678db04e184e",
+      "encoding": "utf8",
+      "before": "Original synthetic draft.\n",
+      "after": "Reviewed: live-review-c1a54a19-18dd-4e5b-9658-3afbd6b6bb25\n",
+      "conflict": false
+    }
+  ],
+  "reviewToken": "34537a01139b0b652712bf3f6dd91dc4ce3202c7d732531759888518d6be66cd",
+  "modified": false
+}
+
+(node:8805) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -1,0 +1,1 @@
+ERROR: `cpb_prepare` returned the task inside its text content, and I failed to extract it. I stopped without calling `cpb_delegate`.

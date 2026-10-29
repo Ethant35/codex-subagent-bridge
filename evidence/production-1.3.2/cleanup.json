@@ -1,0 +1,22 @@
+{
+  "author": "Ethan",
+  "ownedTemporaryDirectoriesRemoved": [
+    "cpb-final-contract-odw2u_4u",
+    "cpb-final-corrected-y_1ee01p"
+  ],
+  "buildDirectoriesRemoved": [
+    "node_modules",
+    "dist"
+  ],
+  "credentialCopiesRemoved": true,
+  "ownedProcessesRemaining": 0,
+  "globalConfigUnchanged": true,
+  "retained": [
+    "sanitized committed evidence",
+    "ignored raw audit records and sealed archives",
+    "static_analysis_semgrep evidence",
+    "README 2.md",
+    "PUBLICATION_VERIFICATION 2.json"
+  ],
+  "sourceReadyFor": "npm ci; npm run build"
+}

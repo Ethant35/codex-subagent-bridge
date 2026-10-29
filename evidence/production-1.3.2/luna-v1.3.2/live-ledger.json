@@ -1,0 +1,41 @@
+{
+  "author": "Ethan",
+  "version": "1.3.2",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "parentModel": "gpt-6-luna",
+  "parentEffort": "high",
+  "codexVersion": "0.165.0",
+  "authorizedParentAttempts": 1,
+  "parentAttempts": 1,
+  "authorizedTasks": 1,
+  "applicationCapUsd": 0.02,
+  "maxToolSteps": 4,
+  "retries": 0,
+  "separateCorrectedParentAuthorization": true,
+  "priorParentAttempts": 1,
+  "priorOpenRouterRequests": 0,
+  "checks": {
+    "projectConnectionPrepared": true
+  },
+  "status": "stopped",
+  "failure": "Parent did not consume expected child result",
+  "credentialReleased": true,
+  "globalConfigUnchanged": true,
+  "delegatedTasks": 0,
+  "openRouterInferenceRequests": 0,
+  "reportedOpenRouterCostUsd": 0,
+  "providerAllocationUnused": true,
+  "parentStoppedAt": "Reported tools.cpb_prepare is not a function; no completed MCP call in native transcript",
+  "directDiscovery": {
+    "tools": [
+      "cpb_prepare",
+      "cpb_delegate"
+    ],
+    "structuredTaskPresent": true,
+    "spend": 0,
+    "server": {
+      "name": "codex-subagent-bridge",
+      "version": "1.3.2"
+    }
+  }
+}
