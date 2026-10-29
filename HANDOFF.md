@@ -10,7 +10,7 @@ No paid/model/native-parent calls or credential use. New release verification is
 
 Final public records: RELEASE_ARTIFACT.json, PUBLICATION_VERIFICATION.json, evidence/production-1.3.0. Old root1.2.1 records preserved under release-history/v1.2.1; old assets untouched. The final bookkeeping commit does not change the sealed archive/tag. Raw evidence and candidate retained under ignored .readiness-backups/release-1.3.0. All owned build/install/test scratch removed; Semgrep clones and temporary runtime removed. Unrelated README 2.md and PUBLICATION_VERIFICATION 2.json preserved. Invalid duplicate remote ref main 2 was preserved in ignored git-ref-repair before removing it from active refs; fetch succeeded. User/global settings unchanged.
 
-Stop policy:50%usage REMAINING or an observed in-work reset to100%remaining. Active baseline21%used/reset1793774143; latest32%used/68%remaining, same reset. No stop condition reached. Stop monitoring at task completion. No active goal record existed, so none is marked complete/paused. No automatic continuation. Only final publication-bookkeeping PR merge remains before delivery.
+Stop policy:50%usage REMAINING or an observed in-work reset to100%remaining. Active baseline21%used/reset1793774143; latest32%used/68%remaining, same reset. No stop condition reached. Stop monitoring at task completion. No active goal record existed, so none is marked complete/paused. No automatic continuation. No product or release verification work remains. Final publication bookkeeping is recorded in GitHub PR history.
 
 ---
 
