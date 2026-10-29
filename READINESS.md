@@ -1,3 +1,7 @@
+# v1.3.1: UX fixes
+
+The patch resolves parent aliases in private state paths, exposes proposed edits separately from published paths, and keeps Claude support status visible without weakening secret redaction. Verification is offline/synthetic; see [release verification](docs/readiness/production-1.3.1.md). Live evidence remains historical from v1.2.1.
+
 # v1.2.1 CLI and release readiness
 
 ## v1.3.0: review before apply

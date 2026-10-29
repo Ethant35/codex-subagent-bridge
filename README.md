@@ -4,7 +4,7 @@ Author: Ethan
 
 Run bounded OpenRouter tasks from the CLI or native Codex. Claude API-key adapters are experimental; subscription delegation is blocked.
 
-v1.3.0 adds optional review before apply. See [review workflow](docs/review-before-apply.md) and [current verification](docs/readiness/review-before-apply.md).
+v1.3.1 fixes state-path aliases, distinguishes proposed edits from published edits, and restores the Claude support label in diagnostics. See [review workflow](docs/review-before-apply.md) and [current verification](docs/readiness/production-1.3.1.md).
 
 ## Install the release
 
@@ -12,7 +12,7 @@ The supported release path uses the published package and does not require a sou
 
 ```sh
 npm install --prefix "$HOME/.local/share/cpb" \
-  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.0/codex-subagent-bridge-1.3.0.tgz
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.1/codex-subagent-bridge-1.3.1.tgz
 export PATH="$HOME/.local/share/cpb/node_modules/.bin:$PATH"
 cpb --version
 cpb doctor --provider openrouter --human
@@ -22,7 +22,7 @@ The `PATH` command applies to the current shell. For zsh, add `export PATH="$HOM
 
 ## Provider and spending limits
 
-v1.3.0 is verified offline on macOS arm64 / Node 22.13.1, including installed CLI/MCP with synthetic responses. Live OpenRouter and native Codex evidence remains from v1.2.1. See [release qualification](docs/readiness/production-1.3.0.md) for evidence and limits. Both Claude backends remain experimental and live verification is pending. Set `OPENROUTER_API_KEY` in the environment before running `cpb` or launching Codex for MCP use. In zsh, `read -rs 'OPENROUTER_API_KEY?OpenRouter key: '; echo; export OPENROUTER_API_KEY` prompts without echoing the key or saving it in shell history. The key remains available to processes launched from that shell. Never put it in a task file, command argument, project config, or shared diagnostic.
+v1.3.1 is verified offline on macOS arm64 / Node 22.13.1, including installed CLI/MCP with synthetic responses. Live OpenRouter and native Codex evidence remains from v1.2.1. See [release qualification](docs/readiness/production-1.3.1.md) for evidence and limits. Both Claude backends remain experimental and live verification is pending. Set `OPENROUTER_API_KEY` in the environment before running `cpb` or launching Codex for MCP use. In zsh, `read -rs 'OPENROUTER_API_KEY?OpenRouter key: '; echo; export OPENROUTER_API_KEY` prompts without echoing the key or saving it in shell history. The key remains available to processes launched from that shell. Never put it in a task file, command argument, project config, or shared diagnostic.
 
 The guided task starts with a zero budget. A live CLI run requires an explicit finite cap and `--consent-spend`. Each deliberate run gets new execution IDs; failed calls are not automatically retried. The application cap is a control, not a guaranteed invoice maximum: a provider may settle an in-flight request later. Use the provider’s account or key limits for a hard monetary limit. See [Providers and authentication](PROVIDERS.md).
 

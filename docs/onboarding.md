@@ -4,11 +4,11 @@ Author: Ethan
 
 ## 1. Install and check the local setup
 
-Use Node.js 22.13.1 on macOS arm64. v1.3.0 was verified offline on this environment. Live OpenRouter/native Codex evidence is historical from v1.2.1. Install the release into a per-user directory:
+Use Node.js 22.13.1 on macOS arm64. v1.3.1 was verified offline on this environment. Live OpenRouter/native Codex evidence is historical from v1.2.1. Install the release into a per-user directory:
 
 ```sh
 npm install --prefix "$HOME/.local/share/cpb" \
-  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.0/codex-subagent-bridge-1.3.0.tgz
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.1/codex-subagent-bridge-1.3.1.tgz
 export PATH="$HOME/.local/share/cpb/node_modules/.bin:$PATH"
 cpb --version
 cpb doctor --provider openrouter --human
@@ -125,11 +125,11 @@ OpenRouter v1.2.1 is verified on macOS arm64 with Node 22.13.1. Claude SDK and C
 
 ## Update or roll back
 
-To install v1.3.0, use the pinned command from the README, then confirm `cpb --version` and run `cpb doctor --provider openrouter --human`. The exact update command is:
+To install v1.3.1, use the pinned command from the README, then confirm `cpb --version` and run `cpb doctor --provider openrouter --human`. The exact update command is:
 
 ```sh
 npm install --prefix "$HOME/.local/share/cpb" \
-  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.0/codex-subagent-bridge-1.3.0.tgz
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.1/codex-subagent-bridge-1.3.1.tgz
 cpb --version
 ```
 

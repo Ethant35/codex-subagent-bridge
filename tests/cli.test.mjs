@@ -32,6 +32,7 @@ test('CB-08 production MCP file capability enforces reads, writes, traversal, an
     const config=path.join(f.root,'capability.json'),events=path.join(f.root,'events.jsonl');
     fs.writeFileSync(config,JSON.stringify({task:{...f.task,allowedOperations:['read_file','write_file','list_files'],writablePaths:['new.txt'],maxToolSteps:6},workspace,eventPath:events,deadline:Date.now()+15000}),{mode:0o600});
     client=new Client({name:'cpb-e2e',version:'1'});await client.connect(new StdioClientTransport({command:process.execPath,args:[cli,'tool-server',config],env:f.env,stderr:'pipe'}));
+    assert.equal(client.getServerVersion().version,JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8')).version);
     const read=await client.callTool({name:'read_file',arguments:{path:'fact.txt'}});assert.equal(read.content[0].text,'Willamette\n');
     const write=await client.callTool({name:'write_file',arguments:{path:'new.txt',content:'exact change\n'}});assert.ok(!write.isError);assert.equal(fs.readFileSync(path.join(workspace,'new.txt'),'utf8'),'exact change\n');
     for(const [name,p] of [['read_file','private.txt'],['read_file','../repo/fact.txt'],['write_file','fact.txt']]){const result=await client.callTool({name,arguments:{path:p,...(name==='write_file'?{content:'bad'}:{})}});assert.equal(result.isError,true);}
@@ -48,3 +49,16 @@ test('CB-18 SDK subscription fails closed under official authentication policy',
 test('CB-08 hard-linked source is rejected',()=>{const f=fixture();try{fs.linkSync(path.join(f.repo,'fact.txt'),path.join(f.repo,'hard.txt'));const r=submit(f);assert.equal(JSON.parse(r.stdout).error.code,'FILE_DENIED');}finally{f.clean();}});
 test('CB-14 conflicting synthetic Claude credentials never leak to logs',()=>{const f=fixture();try{const secret='synthetic-key-'+randomUUID();const r=submit(f,{...f.task,provider:'claude',backend:'sdk',credentialMode:'api-key'},{ANTHROPIC_API_KEY:secret,ANTHROPIC_BASE_URL:'https://invalid.example/'+secret});assert.equal(JSON.parse(r.stdout).error.code,'UNSUPPORTED_CREDENTIAL_ROUTE');assert.ok(!r.stdout.includes(secret));assert.ok(!fs.readFileSync(path.join(f.home,'runs',f.task.taskId,'events.jsonl'),'utf8').includes(secret));}finally{f.clean();}});
 test('CB-09 task deadline before provider submission persists TIMED_OUT',()=>{const f=fixture();try{for(let i=0;i<60;i++)fs.writeFileSync(path.join(f.repo,`f${i}.txt`),'x'.repeat(100000));const t={...f.task,maxRuntimeMs:1,readablePaths:Array.from({length:60},(_,i)=>`f${i}.txt`)};const r=submit(f,t);assert.equal(JSON.parse(r.stdout).state,'TIMED_OUT');assert.equal(JSON.parse(run(f,['inspect',t.taskId]).stdout).state,'TIMED_OUT');}finally{f.clean();}});
+
+
+test('CLI and parent MCP report the package release version',async()=>{
+  const f=fixture();let client;
+  try{
+    const version=JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8')).version;
+    const result=run(f,['--version']);assert.equal(result.status,0,result.stdout+result.stderr);
+    assert.equal(JSON.parse(result.stdout).version,version);
+    client=new Client({name:'version-check',version:'1'});
+    await client.connect(new StdioClientTransport({command:process.execPath,args:[cli,'mcp'],env:f.env,stderr:'pipe'}));
+    assert.equal(client.getServerVersion().version,version);
+  }finally{await client?.close();f.clean();}
+});
