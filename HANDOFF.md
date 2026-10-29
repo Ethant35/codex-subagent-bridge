@@ -1,3 +1,19 @@
+# Completed release 1.3.0
+
+Author: Ethan. Updated 2026-10-28 (America/Los_Angeles).
+
+PR8 reviewed/repaired/merged; release PR9 merged. Stable release: https://github.com/Ethant35/codex-subagent-bridge/releases/tag/v1.3.0 . Tag target809d844ff98d37b00d805e513d6b47419bac0da9; clean-export source b2795c3a2080520942bef4641333036597336f4b. Archive SHA2566c3d99c1ba8dbecde56c642dc1ef1d95000495c345e181e5f287fe65215bdbcc,237981bytes,185files. Public anonymous download hash and GitHub asset digest match. All185 files in the fresh public-URL install match the archive; all51 runtime files match the clean candidate. Package/Git/tag author Ethan.
+
+Review found one apply race: staged files were reread after token validation. ef59f24 makes apply use verified buffers; regression confirms late staging changes cannot replace reviewed bytes. Complete clean-build suite:166pass,23existing external skips,0fail. All27 review/setup tests pass against both candidate and public installations. Seven upgrade/restart/backup/corruption/restore/rollback/uninstall checks pass from public1.2.1 with zero provider fetch attempts. Audit0vulnerabilities; dependency/licenses unchanged; Actions disabled. Semgrep8groups,6complete/2partial(upstream Elttam/Apiiro rule errors);11heuristic findings reviewed without blockers, no cross-file claim. Current-change floor guard clean; historical v1.0.0 discovery notice retained.
+
+No paid/model/native-parent calls or credential use. New release verification is offline/synthetic; OpenRouter live evidence remains historical from1.2.1. Claude API-key adapters remain experimental/live-unverified; subscription routes blocked pending approval. Review is optional; old envelopes retain automatic publication. Old1.2.1 cannot read new review records. Preserve full stopped-store backups and use separate CPB_HOME for evaluation. Publication is atomic per file; exact review output is private.
+
+Final public records: RELEASE_ARTIFACT.json, PUBLICATION_VERIFICATION.json, evidence/production-1.3.0. Old root1.2.1 records preserved under release-history/v1.2.1; old assets untouched. The final bookkeeping commit does not change the sealed archive/tag. Raw evidence and candidate retained under ignored .readiness-backups/release-1.3.0. All owned build/install/test scratch removed; Semgrep clones and temporary runtime removed. Unrelated README 2.md and PUBLICATION_VERIFICATION 2.json preserved. Invalid duplicate remote ref main 2 was preserved in ignored git-ref-repair before removing it from active refs; fetch succeeded. User/global settings unchanged.
+
+Stop policy:50%usage REMAINING or an observed in-work reset to100%remaining. Active baseline21%used/reset1793774143; latest32%used/68%remaining, same reset. No stop condition reached. Stop monitoring at task completion. No active goal record existed, so none is marked complete/paused. No automatic continuation. Only final publication-bookkeeping PR merge remains before delivery.
+
+---
+
 # Release 1.3.0 qualification complete; publication in progress
 
 Author: Ethan. Updated 2026-10-28 (America/Los_Angeles).

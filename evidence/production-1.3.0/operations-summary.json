@@ -1,0 +1,50 @@
+{
+  "author": "Ethan",
+  "version": "1.3.0",
+  "previous": "1.2.1",
+  "outcome": "PASS",
+  "steps": [
+    {
+      "name": "clean install previous public archive",
+      "result": "PASS"
+    },
+    {
+      "name": "create and inspect synthetic 1.2.1 history",
+      "result": "PASS",
+      "runId": "acc295f3-a48c-436f-9fae-a5b5e9f8aca9",
+      "state": "BLOCKED",
+      "errorCode": "MISSING_CREDENTIALS"
+    },
+    {
+      "name": "upgrade and restart with history retained",
+      "result": "PASS",
+      "version": "1.3.0"
+    },
+    {
+      "name": "stopped complete private-store backup",
+      "result": "PASS",
+      "fileCount": 17
+    },
+    {
+      "name": "corruption visible and full-store restore",
+      "result": "PASS",
+      "errorCode": "STORE_CORRUPT"
+    },
+    {
+      "name": "rollback inspection of retained state",
+      "result": "PASS",
+      "version": "1.2.1"
+    },
+    {
+      "name": "uninstall and reinstall preserve state and Codex project config",
+      "result": "PASS",
+      "version": "1.3.0"
+    }
+  ],
+  "networkGuard": {
+    "enabled": true,
+    "attempts": 0
+  },
+  "scratchRemoved": true,
+  "note": "Synthetic installed-package operations; no provider calls."
+}

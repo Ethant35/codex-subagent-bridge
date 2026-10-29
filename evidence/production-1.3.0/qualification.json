@@ -1,0 +1,144 @@
+{
+  "author": "Ethan",
+  "kind": "post-publication-record",
+  "cleanExport": {
+    "author": "Ethan",
+    "sourceCommit": "b2795c3a2080520942bef4641333036597336f4b",
+    "commands": [
+      {
+        "name": "clean-ci",
+        "exit": 0
+      },
+      {
+        "name": "types",
+        "exit": 0
+      },
+      {
+        "name": "tests",
+        "exit": 0
+      },
+      {
+        "name": "package",
+        "exit": 0
+      }
+    ],
+    "scratchRemoved": true,
+    "status": "passed"
+  },
+  "candidate": {
+    "author": "Ethan",
+    "kind": "clean-source-release-candidate",
+    "runtime": {
+      "node": "v22.13.1",
+      "platform": "darwin",
+      "arch": "arm64"
+    },
+    "paidCalls": 0,
+    "liveVerified": false,
+    "scratchRemoved": true,
+    "commands": [
+      {
+        "name": "pack",
+        "status": 0
+      },
+      {
+        "name": "install",
+        "status": 0
+      },
+      {
+        "name": "version",
+        "status": 0
+      },
+      {
+        "name": "help",
+        "status": 0
+      },
+      {
+        "name": "start",
+        "status": 0
+      },
+      {
+        "name": "validate",
+        "status": 0
+      },
+      {
+        "name": "connect-preview",
+        "status": 0
+      },
+      {
+        "name": "review-tests",
+        "status": 0
+      }
+    ],
+    "archive": {
+      "file": "codex-subagent-bridge-1.3.0.tgz",
+      "sha256": "6c3d99c1ba8dbecde56c642dc1ef1d95000495c345e181e5f287fe65215bdbcc",
+      "size": 237981,
+      "fileCount": 185
+    },
+    "runtimeFilesMatched": 51,
+    "installedReviewTests": 27,
+    "status": "passed"
+  },
+  "public": {
+    "author": "Ethan",
+    "version": "1.3.0",
+    "url": "https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.0/codex-subagent-bridge-1.3.0.tgz",
+    "paidCalls": 0,
+    "liveProviderVerified": false,
+    "commands": [
+      {
+        "name": "download",
+        "exit": 0
+      },
+      {
+        "name": "public-url-install",
+        "exit": 0
+      },
+      {
+        "name": "version",
+        "exit": 0
+      },
+      {
+        "name": "help",
+        "exit": 0
+      },
+      {
+        "name": "doctor",
+        "exit": 0
+      },
+      {
+        "name": "start",
+        "exit": 0
+      },
+      {
+        "name": "validate",
+        "exit": 0
+      },
+      {
+        "name": "connect-preview",
+        "exit": 0
+      },
+      {
+        "name": "no-consent",
+        "exit": 1
+      },
+      {
+        "name": "installed-review-tests",
+        "exit": 0
+      }
+    ],
+    "scratchRemoved": true,
+    "sha256": "6c3d99c1ba8dbecde56c642dc1ef1d95000495c345e181e5f287fe65215bdbcc",
+    "allInstalledFilesMatch": 185,
+    "authorVerified": true,
+    "installedReviewTests": 27,
+    "status": "passed"
+  },
+  "tests": {
+    "passed": 166,
+    "skippedExternal": 23,
+    "failed": 0
+  },
+  "note": "Records added after packaging. Released archive and tag are immutable; sourceCommit identifies the exact clean build."
+}
