@@ -1,0 +1,95 @@
+{
+  "author": "Ethan",
+  "checkedOn": "2026-10-28",
+  "status": "offline-verified-development-update",
+  "version": "1.3.0-dev.0",
+  "runtime": {
+    "node": "v22.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "tests": {
+    "total": 188,
+    "passed": 165,
+    "skippedExternal": 23,
+    "failed": 0,
+    "newTests": 26
+  },
+  "paidCalls": 0,
+  "liveProviderVerified": false,
+  "nativeParentVerified": false,
+  "package": {
+    "author": "Ethan",
+    "kind": "local-development-package",
+    "runtime": {
+      "node": "v22.13.1",
+      "platform": "darwin",
+      "arch": "arm64"
+    },
+    "paidCalls": 0,
+    "liveVerified": false,
+    "scratchRemoved": true,
+    "commands": [
+      {
+        "name": "pack",
+        "status": 0
+      },
+      {
+        "name": "install",
+        "status": 0
+      },
+      {
+        "name": "version",
+        "status": 0
+      },
+      {
+        "name": "help",
+        "status": 0
+      },
+      {
+        "name": "start",
+        "status": 0
+      },
+      {
+        "name": "validate",
+        "status": 0
+      },
+      {
+        "name": "connect-preview",
+        "status": 0
+      },
+      {
+        "name": "review-tests",
+        "status": 0
+      }
+    ],
+    "archive": {
+      "file": "codex-subagent-bridge-1.3.0-dev.0.tgz",
+      "sha256": "d6c70fca7852ad45357054946d05dc168f6cc3882b9466ec5cb113a76a8bb2d5",
+      "size": 233379,
+      "fileCount": 181
+    },
+    "runtimeFilesMatched": 51,
+    "installedReviewTests": 26,
+    "status": "passed"
+  },
+  "dependencies": {
+    "auditVulnerabilities": 0,
+    "dependencyChanges": false
+  },
+  "actionsEnabled": false,
+  "floor": {
+    "currentChanges": "clean",
+    "v1.0.0": "historical MCP discovery assertion adds cpb_prepare; existing tests unchanged in this update"
+  },
+  "publishedReleaseUnchanged": "v1.2.1",
+  "scopeLimits": [
+    "single trusted local user",
+    "publication atomic per file",
+    "no protection against hostile same-user processes",
+    "old releases cannot read new review records",
+    "Claude API-key adapters experimental; subscription delegation blocked"
+  ],
+  "testLogSha256": "55158e11e4bd2fc8b2e2ea6280df9124fc694aa7c3a29a302b6d50d21ec6be0f",
+  "packageNote": "Archive was tested before adding this post-test evidence and handoff; runtime hashes bind the implementation. No public release created."
+}

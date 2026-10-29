@@ -71,7 +71,7 @@ export function validateClaudeCredentials(task: Task): CredentialValidation {
     if (safeEnvValue('ANTHROPIC_API_KEY') || safeEnvValue('CLAUDE_CODE_OAUTH_TOKEN')) {
       fail('AMBIGUOUS_CREDENTIALS', 'Claude subscription mode is blocked while API credentials are present.');
     }
-    warnings.push('Claude subscription usage and remaining quota are controlled by Anthropic; this bridge does not estimate account quota.');
+    fail('SUBSCRIPTION_CLI_UNSUPPORTED', 'Claude subscription delegation through this third-party bridge requires prior Anthropic approval. Use explicit API-key mode (experimental).', 'BLOCKED');
   }
   return { env: cleanEnvironment(task), warnings };
 }
@@ -250,12 +250,6 @@ function hasToolFailure(event: Record<string, unknown>): boolean {
 export async function runClaude(ctx: ProviderContext): Promise<ProviderResult> {
   if (ctx.task.maxSpendUsd === 0) fail('BUDGET_EXHAUSTED', 'Claude execution is blocked because the spending limit is zero.');
   const { env, warnings } = validateClaudeCredentials(ctx.task);
-  if (ctx.task.credentialMode === 'subscription') {
-    const auth = await safeAuthStatus(env);
-    if (auth.available !== true || auth.loggedIn !== true || auth.authMethod !== 'claude.ai') {
-      fail('CLAUDE_SUBSCRIPTION_LOGIN_REQUIRED', 'Claude CLI must have an existing claude.ai subscription login.');
-    }
-  }
   for (const warning of warnings) ctx.event('claude.warning', { message: warning });
   if (ctx.task.backend === 'sdk') {
     const runner = fileURLToPath(new URL('../claude-sdk-runner.js', import.meta.url));
@@ -399,5 +393,6 @@ export async function claudeDiagnostics(): Promise<object> {
     configuredCredentialNames: credentialConflicts,
     warnings,
     liveInference: 'not-tested',
+    support: { apiKey: 'experimental', subscription: 'blocked-pending-provider-approval', guidanceChecked: '2026-10-28' },
   };
 }

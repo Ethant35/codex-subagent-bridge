@@ -2,7 +2,9 @@
 
 Author: Ethan
 
-Codex Subagent Bridge (`cpb`) lets a native Codex parent delegate a bounded task to OpenRouter or Claude and receive the child’s actual result. It runs locally as a CLI and MCP server. It does not replace Codex’s built-in subagents.
+Run bounded OpenRouter tasks from the CLI or native Codex. Claude API-key adapters are experimental; subscription delegation is blocked.
+
+Current source adds optional review before apply. It is not in the published v1.2.1 package. See [review workflow](docs/review-before-apply.md) and [current verification](docs/readiness/review-before-apply.md).
 
 ## Install the release
 
@@ -16,7 +18,7 @@ cpb --version
 cpb doctor --provider openrouter --human
 ```
 
-The `PATH` command applies to the current shell. For zsh, add `export PATH="$HOME/.local/share/cpb/node_modules/.bin:$PATH"` once to `~/.zshrc`, then open a new terminal. No `sudo`, global npm configuration, or source build is needed. Direct CLI use does not require Codex to be installed. See [Guided onboarding](docs/onboarding.md) for a first task, optional Codex connection, repeat use, updates, and recovery.
+The `PATH` command applies to the current shell. For zsh, add `export PATH="$HOME/.local/share/cpb/node_modules/.bin:$PATH"` once to `~/.zshrc`, then open a new terminal. No `sudo`, global npm configuration, or source build is needed. Direct CLI use does not require Codex to be installed. Continue with the [first task](docs/onboarding.md#first-task).
 
 ## Provider and spending limits
 
@@ -24,13 +26,18 @@ OpenRouter CLI and native Codex MCP are verified on macOS arm64 / Node 22.13.1 f
 
 The guided task starts with a zero budget. A live CLI run requires an explicit finite cap and `--consent-spend`. Each deliberate run gets new execution IDs; failed calls are not automatically retried. The application cap is a control, not a guaranteed invoice maximum: a provider may settle an in-flight request later. Use the provider’s account or key limits for a hard monetary limit. See [Providers and authentication](PROVIDERS.md).
 
-## Advanced use
+## First task
 
-The ordinary CLI path uses `cpb start` to create a zero-spend example, `cpb validate --human` to review it, and `cpb run` for an explicitly consented bounded run. Use `cpb task` to generate a custom task without editing JSON. Native Codex MCP connection is optional. For that path, call `cpb_prepare` through native Codex before `cpb_delegate`; the MCP tool does not establish spending consent. Obtain explicit consent for a finite cap before setting it and calling the tool.
+```sh
+cpb start --directory ./cpb-example
+cpb validate --task-file ./cpb-example/task.json --human
+```
 
-The legacy `delegate`, `sample`, `validate`, `doctor`, `runs`, `inspect`, and recovery commands remain available. Their JSON interface is stable; pass `--human` for readable terminal output and `--json` for machine-readable output. New guided commands use readable output by default and accept `--json` for automation.
+These commands make no model request. `start` shows credential setup if the key is missing. Only run the paid command after reviewing the task and choosing a finite cap. Codex connection is optional; see [onboarding](docs/onboarding.md).
 
-See [Guided onboarding](docs/onboarding.md) for installation, credential setup, Codex connection, first run, repeat use, updates, and recovery. See [Operations](OPERATIONS.md) for private run records, pagination, backups, rollback, and interrupted publication. See [Readiness](READINESS.md) for the evidence and remaining platform limits. See [Security](SECURITY.md) before using the bridge with sensitive work.
+For source builds, add `--review-before-apply` to `task` or `run` to hold edits for review. Use `cpb review RUN_ID`, then apply with the displayed token or discard. These commands make no model requests. Automatic publication remains the default for existing envelopes.
+
+[Operations](OPERATIONS.md) covers state, backup, recovery, and updates. [Security](SECURITY.md) defines the local permission boundary. Legacy commands keep JSON output by default; `--human` enables readable text. Guided and review commands use text by default; `--json` enables automation.
 
 To uninstall, remove the package with `npm uninstall --prefix "$HOME/.local/share/cpb" codex-subagent-bridge`. This does not remove your `~/.cpb` run store, any `CPB_HOME` directory, project files, or project MCP configuration. See [Operations](OPERATIONS.md#uninstall-and-cleanup) before removing any of those separately.
 

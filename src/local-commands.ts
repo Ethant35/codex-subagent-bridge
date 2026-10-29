@@ -37,6 +37,7 @@ export function validateLocalTask(task:Task) {
     authorizedBytes:bytes,readableFiles:task.readablePaths.length,writableFiles:task.writablePaths.length,
     spendingEnabled:task.maxSpendUsd!==0,credentialSource,credentialPresent,
     credentialStatus:subscription?'unverified':credentialPresent?'present':'missing',networkRequests:0,
+    ...(subscription?{delegationStatus:'blocked',action:'Claude subscription delegation is blocked pending provider approval. Use an explicit API-key task (experimental).'}:{}),
   };
 }
 export function createSample(directory:string,model='deepseek/deepseek-v4.1-flash-1017') {
@@ -79,6 +80,7 @@ const journalSchema=z.object({version:z.literal(1),taskId:z.string().uuid(),stat
 export function recovery(store:Store,id:string) {
   const run=store.get(id);
   if(['QUEUED','RUNNING'].includes(run.state))throw new BridgeError('RUN_ACTIVE','Wait for the run to stop before inspecting recovery');
+  if(run.state==='AWAITING_REVIEW')return {id,state:run.state,recovery:'PENDING_REVIEW',modified:false,message:`No proposal has been applied. Use cpb review ${id}, then apply with its token or discard.`};
   const dir=store.dir(id),file=path.join(dir,'publication.json');
   if(!fs.existsSync(file))return {id,state:run.state,recovery:'NO_JOURNAL',message:'No publication journal exists. Legacy runs may have unknown partial changes. Inspect source and retained workspace manually.'};
   let journal:z.infer<typeof journalSchema>;

@@ -13,7 +13,8 @@ export const taskSchema = z.object({
   maxRuntimeMs: z.number().int().min(1).max(3_600_000), maxToolSteps: z.number().int().min(1).max(1000),
   maxSpendUsd: z.number().finite().nonnegative().max(1000).nullable(),
   expectedOutput: z.string().trim().min(1).max(10_000), resultFormat: z.enum(['text','json']),
-  networkPolicy: z.literal('provider-only'), credentialMode: z.enum(['api-key','subscription']).optional()
+  networkPolicy: z.literal('provider-only'), credentialMode: z.enum(['api-key','subscription']).optional(),
+  reviewBeforeApply: z.boolean().optional()
 }).strict().superRefine((t,ctx) => {
   if ((t.provider === 'openrouter') !== (t.backend === 'api')) ctx.addIssue({code:'custom',message:'Provider/backend mismatch'});
   if (t.writablePaths.length && !t.allowedOperations.includes('write_file')) ctx.addIssue({code:'custom',message:'Writable paths require write_file'});

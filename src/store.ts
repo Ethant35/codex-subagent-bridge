@@ -10,7 +10,7 @@ import {atomicJSON,readPrivateFile} from './private-files.js';
 export {atomicJSON,readPrivateFile} from './private-files.js';
 
 const RUN_ID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const RUN_STATES = new Set<State>(['QUEUED', 'RUNNING', 'COMPLETED', 'FAILED', 'TIMED_OUT', 'CANCELLED', 'BLOCKED']);
+const RUN_STATES = new Set<State>(['QUEUED', 'RUNNING', 'AWAITING_REVIEW', 'DISCARDED', 'COMPLETED', 'FAILED', 'TIMED_OUT', 'CANCELLED', 'BLOCKED']);
 const MAX_RUN_RECORD_BYTES = 8 * 1024 * 1024;
 const DEFAULT_LIST_LIMIT = 100;
 const MAX_LIST_LIMIT = 1000;

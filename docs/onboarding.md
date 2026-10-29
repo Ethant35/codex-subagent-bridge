@@ -2,8 +2,6 @@
 
 Author: Ethan
 
-This path installs the CLI, checks local prerequisites, creates a no-spend example, optionally connects Codex to that project, validates the task offline, and then runs one bounded delegation after you approve its cost.
-
 ## 1. Install and check the local setup
 
 Use Node.js 22.13.1 on macOS arm64. OpenRouter CLI and native Codex MCP were verified on this environment for v1.2.1. Install the release into a per-user directory:
@@ -32,9 +30,9 @@ echo
 export OPENROUTER_API_KEY
 ```
 
-The key remains in this shell's environment and is inherited by processes you launch from it; this does not isolate it from those processes. Start Codex from this shell so its MCP server can read the variable. Do not put the key in a command argument, task file, or project configuration.
+The key remains in this shell's environment and is inherited by processes you launch from it; this does not isolate it from those processes. For optional MCP use, start Codex from this shell so its server can read the variable. Do not put the key in a command argument, task file, or project configuration.
 
-## 2. Create an offline example
+## First task
 
 From a directory where you want a small example project:
 
@@ -44,23 +42,7 @@ cpb start --directory ./cpb-example
 
 This creates `fact.txt` and a valid `task.json` with spending set to zero. It checks prerequisites and credential availability without inference. If the directory already contains a valid generated task, `start` replays it without changing it. Otherwise, choose a new directory; existing files are never overwritten. The generated files stay on your machine.
 
-## 3. Optional: connect native Codex
-
-Direct CLI use does not require this step. To let Codex use the bridge, first install Codex using the [official Codex installation instructions](https://developers.openai.com/codex/cli). Then review the exact project MCP configuration:
-
-```sh
-cpb connect --directory ./cpb-example
-```
-
-If the displayed project path and configuration are correct, write them with explicit trust:
-
-```sh
-cpb connect --directory ./cpb-example --trust-project
-```
-
-This writes project-scoped Codex configuration only. Codex may still show its own project trust prompt when it loads the configuration. Review that prompt before accepting it. `cpb` never edits your global `~/.codex/config.toml`.
-
-## 4. Validate the generated task
+### Validate
 
 The starter task reads the sample fact and asks the child to report its contents:
 
@@ -72,7 +54,7 @@ Read the displayed provider, model, cap, instructions, workspace, and allowed re
 
 For a custom task, use `cpb task --directory ./cpb-example --read FILE --instructions '...' --output ./cpb-example/my-task.json`. Repeat `--read FILE` for every input and add `--write FILE` only for intended outputs. The command generates identifiers, sets spending to zero, and validates the envelope. Paths are explicit relative file names, not globs. Task files contain instructions and paths, so keep them private.
 
-## 5. Run once with explicit spending consent
+### Run once with spending consent
 
 The run command is noninteractive. `--consent-spend` is your explicit consent to submit the task at the supplied finite cap; the command will not ask a second time. First review the complete task with `cpb validate --human`. If you accept its provider, model, files, instructions, and a $0.02 application budget, run:
 
@@ -87,11 +69,27 @@ Without `--consent-spend`, the command refuses and makes no provider call. A zer
 
 The result shows the run state and generated IDs. Successful runs report the actual child output and any usage or cost the provider returned. Missing cost data stays unknown. Failed runs show an error and recovery guidance; inspect the run before trying again because a retry can incur a new charge.
 
-## 6. Use it again
+## Use it again
 
-To change instructions or file access, generate a new file with `cpb task`, validate it, and run the same command with a new deliberate `--consent-spend` invocation. The CLI generates fresh execution IDs for each run. It does not silently repeat failed provider calls. Review write results and changed paths before relying on them.
+To change instructions or file access, generate a new file with `cpb task`, validate it, and run the same command with a new deliberate `--consent-spend` invocation. The CLI generates fresh execution IDs for each run. It does not silently repeat failed provider calls. For source builds, add `--review-before-apply` to `task` or `run` to hold edits before they reach the project. See [review before apply](review-before-apply.md). Published v1.2.1 does not include this option.
 
 For local run history and recovery, use `cpb runs`, `cpb inspect RUN_ID`, and `cpb recovery RUN_ID`. These can include private instructions, output, or local paths; do not share them as diagnostics. `cpb diagnose` is the reduced report intended for sharing, but review it first. See [Operations](../OPERATIONS.md) for backups, updates, rollback, retention, and interrupted file publication.
+
+## Optional: connect native Codex
+
+Direct CLI use does not require this step. To let Codex use the bridge, first install Codex using the [official Codex installation instructions](https://developers.openai.com/codex/cli). Then review the exact project MCP configuration:
+
+```sh
+cpb connect --directory ./cpb-example
+```
+
+If the displayed project path and configuration are correct, write them with explicit trust:
+
+```sh
+cpb connect --directory ./cpb-example --trust-project
+```
+
+This writes project-scoped Codex configuration only. Codex may still show its own project trust prompt when it loads the configuration. Review that prompt before accepting it. `cpb` never edits your global `~/.codex/config.toml`.
 
 ## Native Codex MCP use
 
@@ -113,14 +111,16 @@ Codex also controls approval of the MCP tool call. In an interactive session, ap
 
 ## Credentials and provider support
 
-OpenRouter v1.2.1 is verified on macOS arm64 with Node 22.13.1. Claude SDK and CLI support remain experimental and live verification is pending. `doctor` and offline validation do not authenticate an API key against its provider. See [Providers and authentication](../PROVIDERS.md) for credential modes and [Readiness](../READINESS.md) for the full qualification boundary.
+OpenRouter v1.2.1 is verified on macOS arm64 with Node 22.13.1. Claude SDK and CLI API-key adapters remain experimental and live verification is pending. Subscription delegation is blocked for both adapters in current source; CLI login status does not change that policy. `doctor` and offline validation do not authenticate an API key against its provider. See [Providers and authentication](../PROVIDERS.md) for credential modes and [Readiness](../READINESS.md) for the full qualification boundary.
 
 ## If a command stops
 
 - `MISSING_CREDENTIALS`: the run was blocked before a provider request because the named credential was unavailable. Make the variable available to the process that runs `cpb`, then rerun `cpb doctor --provider PROVIDER --human` and validate again. A variable being present does not prove that the provider accepts the key. Inspect the blocked run before deciding whether to submit a new run; each deliberate submission uses fresh execution IDs and may incur a charge.
 - `NOT_FOUND`: check the exact relative input file and project path. Create a missing input yourself; the bridge does not guess a replacement file.
+- `START_DIRECTORY_NOT_READY`: the existing folder has no `task.json`. Use `cpb task` for that project, or choose a new folder for the example. Existing files are preserved.
 - `ALREADY_EXISTS`: `start` can replay an existing valid `task.json` without changing it. If the folder is not a valid example, choose a new directory and preserve the existing contents.
 - `SPEND_CONSENT_REQUIRED`: no provider call was made. Review the task, then use a finite `--max-spend` and `--consent-spend` only if you approve that run.
+- `AWAITING_REVIEW` (current source): no project files changed. Run `cpb review RUN_ID`, then apply with its token or discard. This is not a failed provider request; do not pay to repeat it.
 - `FAILED`, `BLOCKED`, or another non-completed run: inspect the run and use read-only `cpb recovery RUN_ID --human` if source publication may have started. Check possible provider charges before a deliberate retry. See [Operations](../OPERATIONS.md#interrupted-publication).
 
 ## Update or roll back

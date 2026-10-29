@@ -1,5 +1,10 @@
 # v1.2.1 CLI and release readiness
 
+## Current source: review before apply
+
+The 1.3.0-dev.0 update adds setup guidance, a conservative Claude subscription policy, and optional review before apply. It is separate from the published v1.2.1 qualification below. The current workflow is tested offline with synthetic provider responses; it has no new live-provider or native-parent qualification. See [current verification](docs/readiness/review-before-apply.md).
+
+
 Author: Ethan. Review date: 2026-10-27 (America/Los_Angeles).
 
 The supported macOS arm64 / Node22.13.1 candidate passed 139 local tests with 23 explicit external skips and zero failures, eleven installed CLI checks, and seven installed-package operations checks. OpenRouter completed a synthetic read from the installed CLI and another through native Codex0.164.0 using Luna High. The native parent consumed the returned child output. Combined reported OpenRouter cost for these two checks: $0.000139548. Subscription usage is separate. Final publication records are maintained separately in PUBLICATION_VERIFICATION.json and RELEASE_ARTIFACT.json; require version1.2.1 and a completed status. This packaged evidence snapshot precedes the third public-download check.
