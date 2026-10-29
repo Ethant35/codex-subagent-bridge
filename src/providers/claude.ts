@@ -393,6 +393,6 @@ export async function claudeDiagnostics(): Promise<object> {
     configuredCredentialNames: credentialConflicts,
     warnings,
     liveInference: 'not-tested',
-    support: { apiKey: 'experimental', subscription: 'blocked-pending-provider-approval', guidanceChecked: '2026-10-28' },
+    support: { apiKeyStatus: 'experimental', subscription: 'blocked-pending-provider-approval', guidanceChecked: '2026-10-28' },
   };
 }

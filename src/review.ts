@@ -26,7 +26,7 @@ function optionalFile(root: string, file: string): Buffer | null {
 const fileHash = (data: Buffer | null) => data === null ? null : hash(data);
 
 /** Persist immutable proposal hashes outside the child's file capability. */
-export function saveProposal(ws: Workspace, checkpoint: () => void = () => {}): void {
+export function saveProposal(ws: Workspace, checkpoint: () => void = () => {}): string[] {
   let bytes = 0;
   const files = [...new Set(ws.task.writablePaths)].map(file => {
     checkpoint();
@@ -40,6 +40,7 @@ export function saveProposal(ws: Workspace, checkpoint: () => void = () => {}): 
     return { path: file, beforeHash, afterHash: fileHash(data) };
   });
   atomicJSON(path.join(path.dirname(ws.root), 'proposal.json'), { version: 1, taskHash: taskHash(ws.task), files });
+  return files.filter(file => file.beforeHash !== file.afterHash).map(file => file.path);
 }
 
 function pending(store: Store, id: string) {

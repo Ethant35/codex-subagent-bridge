@@ -289,3 +289,14 @@ test('run record FIFO is rejected promptly in a child process', (t) => {
   assert.equal(child.error?.code, undefined);
   assert.equal(child.status, 0, child.stderr);
 });
+
+
+test('store resolves parent aliases but still rejects a symlink at its root and public permissions',t=>{
+  const {root,store}=fixture(t);
+  const alias=path.join(root,'alias');fs.symlinkSync(fs.realpathSync(root),alias);
+  assert.equal(new Store(path.join(alias,'state')).root,fs.realpathSync(store.root));
+  const linked=path.join(root,'linked-root');fs.symlinkSync(store.root,linked);
+  assert.throws(()=>new Store(linked),{code:'UNSAFE_STORE'});
+  fs.chmodSync(store.root,0o755);
+  assert.throws(()=>new Store(path.join(alias,'state')),{code:'UNSAFE_STORE'});
+});

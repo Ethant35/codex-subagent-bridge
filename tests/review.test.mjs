@@ -189,6 +189,7 @@ test('MCP preparation and delegation retain review mode; no apply or discard too
     const task=JSON.parse(prepared.content[0].text).task;assert.equal(task.reviewBeforeApply,true);assert.equal(task.maxSpendUsd,0);task.maxSpendUsd=0.02;
     const result=await client.callTool({name:'cpb_delegate',arguments:task});assert.equal(result.isError,false,JSON.stringify(result));
     const run=JSON.parse(result.content[0].text);assert.equal(run.state,'AWAITING_REVIEW');assert.equal(run.result.output,'Done');unchanged(f);
+    assert.deepEqual(run.proposedPaths,['a.txt']);assert.deepEqual(run.changedPaths,[]);
     assert.equal(reviewChanges(f.store,run.id).changes.length,1);
   }finally{await client.close();}
 });
@@ -219,4 +220,29 @@ test('apply publishes verified bytes even if staging changes after token validat
   f.store.save=run=>{save(run);if(run.state==='RUNNING')fs.writeFileSync(path.join(f.dir,'workspace','a.txt'),'unreviewed late change\n');};
   assert.equal(applyChanges(f.store,f.id,view.reviewToken).state,'COMPLETED');
   assert.equal(fs.readFileSync(path.join(f.source,'a.txt'),'utf8'),'proposed\n');
+});
+
+
+test('parent-aliased CPB_HOME runs through review, apply, and empty discard with distinct path fields',t=>{
+  const f=fixture(t,{seed:false}),preload=syntheticPreload(f);
+  const alias=path.join(f.root,'parent-alias');fs.symlinkSync(f.root,alias);
+  const file=path.join(f.root,'task.json');fs.writeFileSync(file,JSON.stringify(f.task));
+  const run=()=>{
+    const r=spawnSync(process.execPath,['--require',preload,cli,'run','--task-file',file,'--max-spend','0.02','--consent-spend','--json'],{env:{PATH:process.env.PATH,CPB_HOME:path.join(alias,'state')},encoding:'utf8',timeout:10000});
+    assert.equal(r.status,0,r.stdout+r.stderr);return JSON.parse(r.stdout);
+  };
+  const pending=run();assert.equal(pending.state,'AWAITING_REVIEW');
+  assert.equal(pending.workspace,fs.realpathSync(pending.workspace));
+  assert.deepEqual(pending.proposedPaths,['a.txt']);assert.deepEqual(pending.changedPaths,[]);unchanged(f);
+  assert.match(f.run(['inspect',pending.id,'--human']).stdout,/Proposed files: a.txt/);
+  assert.deepEqual(f.store.get(pending.id).proposedPaths,['a.txt']);
+  const applied=applyChanges(f.store,pending.id,reviewChanges(f.store,pending.id).reviewToken);
+  assert.deepEqual(applied.changedPaths,['a.txt']);assert.deepEqual(applied.proposedPaths,['a.txt']);
+  assert.equal(fs.readFileSync(path.join(f.source,'a.txt'),'utf8'),'proposed\n');
+  const empty=run();assert.deepEqual(empty.proposedPaths,[]);assert.deepEqual(empty.changedPaths,[]);
+  assert.match(f.run(['inspect',empty.id,'--human']).stdout,/Proposed files: \(none\)/);
+  assert.deepEqual(discardChanges(f.store,empty.id).proposedPaths,[]);
+  fs.writeFileSync(path.join(f.source,'a.txt'),'original\n');
+  const rejected=run();const discarded=discardChanges(f.store,rejected.id);
+  assert.deepEqual(discarded.proposedPaths,['a.txt']);assert.deepEqual(discarded.changedPaths,[]);unchanged(f);
 });

@@ -93,7 +93,7 @@ export async function delegate(value: unknown, store = new Store(), externalSign
     }
     checkpoint();
     if (task.reviewBeforeApply) {
-      saveProposal(ws, checkpoint);
+      run.proposedPaths = saveProposal(ws, checkpoint);
       run.changedPaths = [];
     } else run.changedPaths = ws.publish(checkpoint);
     run.result = result;

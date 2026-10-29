@@ -31,7 +31,10 @@ export interface Run {
   workspace?: string;
   result?: ProviderResult;
   error?: { code: string; message: string };
+  /** Paths published to the project; empty while awaiting review. */
   changedPaths?: string[];
+  /** Paths changed in the saved proposal, retained after apply or discard. */
+  proposedPaths?: string[];
 }
 
 export interface ListOptions {
@@ -120,8 +123,11 @@ export class Store {
   readonly runsRoot: string;
 
   constructor(root = process.env.CPB_HOME || path.join(os.homedir(), '.cpb')) {
-    this.root = path.resolve(root);
-    fs.mkdirSync(this.root, { recursive: true, mode: 0o700 });
+    const requestedRoot = path.resolve(root);
+    fs.mkdirSync(requestedRoot, { recursive: true, mode: 0o700 });
+    // Reject a symlink at the store itself before resolving parent aliases (e.g. /var).
+    assertPrivateDirectory(requestedRoot);
+    this.root = fs.realpathSync(requestedRoot);
     assertPrivateDirectory(this.root);
     this.runsRoot = path.join(this.root, 'runs');
     fs.mkdirSync(this.runsRoot, { recursive: true, mode: 0o700 });

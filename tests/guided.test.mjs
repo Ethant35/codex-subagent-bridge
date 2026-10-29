@@ -39,3 +39,18 @@ test('Claude doctor distinguishes absent API key, key presence, and subscription
 });
 
 test('MCP prepare with a synthetic key keeps zero budget and requires explicit consent',async()=>{const f=fixture();let client;try{fs.writeFileSync(path.join(f.root,'a.txt'),'source');const secret='synthetic-prepare-key';client=new Client({name:'guided-test',version:'1'});await client.connect(new StdioClientTransport({command:process.execPath,args:[cli,'mcp'],env:{...f.env,OPENROUTER_API_KEY:secret},stderr:'pipe'}));const r=await client.callTool({name:'cpb_prepare',arguments:{directory:f.root,instructions:'Read a.txt',readablePaths:['a.txt']}});assert.ok(!r.isError,JSON.stringify(r));const data=JSON.parse(r.content[0].text);assert.equal(data.task.maxSpendUsd,0);assert.match(data.next,/explicit user consent/);assert.match(data.next,/finite maxSpendUsd/);assert.ok(!JSON.stringify(r).includes(secret));assert.equal(fs.existsSync(f.env.CPB_HOME),false);assert.deepEqual(fs.readdirSync(f.root),['a.txt']);}finally{await client?.close();f.clean();}});
+
+
+test('Claude JSON support status stays visible while real credential fields remain redacted',()=>{
+  const f=fixture();try{
+    const sentinel='synthetic-claude-status-key-never-print';
+    for(const command of ['doctor','auth-status']){
+      const r=f.run([command,'--provider','claude','--json'],{ANTHROPIC_API_KEY:sentinel});
+      assert.equal(r.status,0,r.stdout+r.stderr);const data=JSON.parse(r.stdout);
+      const status=command==='doctor'?data.claude:data;
+      assert.equal(status.support.apiKeyStatus,'experimental');
+      assert.equal(status.support.subscription,'blocked-pending-provider-approval');
+      assert.ok(!r.stdout.includes(sentinel));
+    }
+  }finally{f.clean();}
+});
