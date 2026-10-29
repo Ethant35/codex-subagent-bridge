@@ -54,3 +54,20 @@ test('Claude JSON support status stays visible while real credential fields rema
     }
   }finally{f.clean();}
 });
+
+
+test('MCP preparation returns matching structured and text data with redaction and structured errors',async()=>{
+  const f=fixture();let client;const secret='synthetic-structured-secret-do-not-print';
+  try{
+    fs.writeFileSync(path.join(f.root,'fact.txt'),'safe synthetic fact');
+    client=new Client({name:'structured-result-test',version:'1'});
+    await client.connect(new StdioClientTransport({command:process.execPath,args:[cli,'mcp'],env:{...f.env,TEST_SECRET:secret},stderr:'pipe'}));
+    const result=await client.callTool({name:'cpb_prepare',arguments:{directory:f.root,instructions:'Read fact.txt '+secret,readablePaths:['fact.txt'],reviewBeforeApply:true}});
+    assert.equal(result.isError,false);assert.deepEqual(result.structuredContent,JSON.parse(result.content[0].text));
+    assert.equal(result.structuredContent.task.reviewBeforeApply,true);assert.equal(result.structuredContent.task.maxSpendUsd,0);
+    assert.match(result.structuredContent.task.instructions,/\[REDACTED\]/);assert.ok(!JSON.stringify(result).includes(secret));
+    const error=await client.callTool({name:'cpb_prepare',arguments:{directory:path.join(f.root,'missing'),instructions:'Read'}});
+    assert.equal(error.isError,true);assert.deepEqual(error.structuredContent,JSON.parse(error.content[0].text));assert.ok(error.structuredContent.error.code);
+    assert.equal(fs.existsSync(f.env.CPB_HOME),false);
+  }finally{await client?.close();f.clean();}
+});

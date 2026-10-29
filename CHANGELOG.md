@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.2 — 2026-10-29
+
+- Return matching redacted MCP structured and text results for preparation and delegation. Native parents can access task/result fields directly; existing text clients remain supported.
+- Preserve provider, spend, permission, review/apply and cancellation behavior.
+
+
 ## 1.3.1 — 2026-10-29
 
 - Resolve parent aliases in `CPB_HOME` before creating run workspace paths; still reject a symlink at the store directory or unsafe permissions.

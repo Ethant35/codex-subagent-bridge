@@ -34,12 +34,12 @@ For a released-package update, install the exact versioned archive into the same
 
 ```sh
 npm install --prefix "$HOME/.local/share/cpb" \
-  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.1/codex-subagent-bridge-1.3.1.tgz
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.2/codex-subagent-bridge-1.3.2.tgz
 cpb --version
 cpb doctor --provider openrouter --human
 ```
 
-v1.3.1 is the published release. Keep the previous archive for rollback, but do not use v1.2.1 with a store containing v1.3.0 review states or envelopes. Restore a complete, stopped-process pre-upgrade backup for that rollback; see [Update or roll back](docs/onboarding.md#update-or-roll-back). Updating the package does not migrate or delete source files. Review the current release evidence and changelog before selecting an archive.
+v1.3.2 is the published release. Keep the previous archive for rollback, but do not use v1.2.1 with a store containing v1.3.0 review states or envelopes. Restore a complete, stopped-process pre-upgrade backup for that rollback; see [Update or roll back](docs/onboarding.md#update-or-roll-back). Updating the package does not migrate or delete source files. Review the current release evidence and changelog before selecting an archive.
 
 ## Interrupted publication
 
