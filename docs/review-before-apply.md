@@ -17,7 +17,7 @@ The task starts with a zero budget. Only after you approve the instructions, fil
 
 The child works in a private snapshot. Successful review-mode runs return `AWAITING_REVIEW`, keep the child result, and leave project files unchanged. This is a successful provider run awaiting a local decision, so CLI exit status is zero and MCP `isError` is false.
 
-In source builds after v1.3.0, run results and stored records include `proposedPaths`: the files changed in the saved proposal. `changedPaths` continues to mean files published to the project, so it is empty while awaiting review or after discard. `proposedPaths` remains as proposal history after apply or discard; an empty array means no proposed edits. Older records may omit it; use `review` to inspect an older pending proposal. Automatic-mode runs do not have a proposal. These fields are returned through both CLI and MCP; they do not replace review-token and conflict checks.
+Starting in v1.3.1, run results and stored records include `proposedPaths`: the files changed in the saved proposal. `changedPaths` continues to mean files published to the project, so it is empty while awaiting review or after discard. `proposedPaths` remains as proposal history after apply or discard; an empty array means no proposed edits. Older records may omit it; use `review` to inspect an older pending proposal. Automatic-mode runs do not have a proposal. These fields are returned through both CLI and MCP; they do not replace review-token and conflict checks.
 
 No provider request is needed for the remaining steps:
 

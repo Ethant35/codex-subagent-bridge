@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.3.1 — 2026-10-29
 
 - Resolve parent aliases in `CPB_HOME` before creating run workspace paths; still reject a symlink at the store directory or unsafe permissions.
 - Add `proposedPaths` to review-mode run results and records. Keep `changedPaths` for files published to the project and show proposed files in human output.
