@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.3.0-dev.0 — unreleased
+## 1.3.0 — 2026-10-28
 
 - Add opt-in review before apply, persistent proposals, exact before/after display, token-bound apply, and discard.
 - Reject changed proposals and conflicting project edits; retain per-file journals and originals after interrupted apply.
@@ -8,7 +8,7 @@
 - Block Claude CLI subscription delegation pending provider approval, alongside the existing SDK block. API-key adapters remain experimental and live-unverified.
 - Preserve automatic publication for existing envelopes. New review records require the new code; use a separate state directory for evaluation.
 
-Offline verification only. No new paid model calls or public release are part of this development update. See [verification](docs/readiness/review-before-apply.md).
+Offline verification only for this release; no new paid model calls. Live provider evidence remains historical from v1.2.1. See [release verification](docs/readiness/production-1.3.0.md).
 
 ## 1.2.1 — 2026-10-27
 

@@ -35,7 +35,7 @@ Reproducible checks: `npm ci`, `npm run check`, `npm test`, `npm audit --omit=de
 | CB-15 | Claude availability | PASS | CLI absence reported; auth is unknown rather than falsely logged out |
 | CB-16 | SDK initialization | PASS (setup only) | Real official SDK import and typed submission setup; explicitly no inference |
 | CB-17 | CLI process handling | PASS (process boundary) | Nine real-process E2E scenarios cover stdout/stderr/exit, exact stdin, missing executable, overflow, timeout, cancellation, and descendants |
-| CB-18 | Credential precedence | PASS | Explicit modes; API/subscription and alternate-route conflicts refused; SDK and CLI subscription delegation blocked pending provider approval (current source) |
+| CB-18 | Credential precedence | PASS | Explicit modes; API/subscription and alternate-route conflicts refused; SDK and CLI subscription delegation blocked pending provider approval (v1.3.0) |
 | CB-19 | Live SDK task | BLOCKED_EXTERNAL | No authorized Claude account/API key |
 | CB-20 | Live CLI task | BLOCKED_EXTERNAL | No installed official CLI/account |
 | CB-21 | Codex to Claude SDK | BLOCKED_EXTERNAL | No authorized Claude account/API key |

@@ -53,7 +53,7 @@ Provider credentials come only from the process environment or official Claude C
 let human=false;
 function output(value:unknown) {process.stdout.write(human?humanOutput(redact(value)):JSON.stringify(redact(value),null,2)+'\n');}
 async function mcp() {
-  const server=new McpServer({name:'codex-subagent-bridge',version:'1.3.0-dev.0'});
+  const server=new McpServer({name:'codex-subagent-bridge',version:'1.3.0'});
   server.registerTool('cpb_prepare',{description:'Prepare and validate a zero-budget OpenRouter envelope. Generates IDs and canonical paths. No inference, no files written. Ask user for spending consent before changing maxSpendUsd and calling cpb_delegate.',inputSchema:prepareSchema,annotations:{readOnlyHint:true,destructiveHint:false,idempotentHint:false,openWorldHint:false}},async args=>{
     try{return {content:[{type:'text' as const,text:JSON.stringify(redact(prepareTask(args)))}]};}
     catch(e){return {content:[{type:'text' as const,text:JSON.stringify({error:{code:e instanceof BridgeError?e.code:'PREPARE_FAILED',message:e instanceof BridgeError?e.message:'Check the existing directory and explicit file paths.'}})}],isError:true};}
@@ -73,7 +73,7 @@ async function toolServer(file:string) {
   const st=fs.lstatSync(file);if(!st.isFile() || st.isSymbolicLink() || (st.mode&0o077))throw new BridgeError('UNSAFE_CAPABILITY','Capability must be a private regular file');
   const config=JSON.parse(fs.readFileSync(file,'utf8')) as ToolConfig;parseTask(config.task);
   const {FileTools,toolSchemas}=await import('./file-tools.js');
-  const tools=new FileTools(config);const server=new Server({name:'cpb-files',version:'1.3.0-dev.0'},{capabilities:{tools:{}}});
+  const tools=new FileTools(config);const server=new Server({name:'cpb-files',version:'1.3.0'},{capabilities:{tools:{}}});
   const timer=setTimeout(()=>process.exit(1),Math.max(1,config.deadline-Date.now()));timer.unref();
   server.setRequestHandler(ListToolsRequestSchema,async()=>({tools:config.task.allowedOperations.map(name=>({name,description:`Authorized workspace operation: ${name}`,inputSchema:z.toJSONSchema(toolSchemas[name]) as {type:'object'},annotations:{readOnlyHint:name!=='write_file',destructiveHint:name==='write_file',openWorldHint:false}}))}));
   // The broker must see calls before argument validation so denied calls are durable too.
@@ -92,7 +92,7 @@ async function main() {
   const command=positionals[0];
   human=!values.json&&(!!values.human||['start','connect','task','run','review','apply','discard'].includes(command??''));
   if(values.json&&values.human)throw new BridgeError('OUTPUT_CONFLICT','Choose --json or --human, not both');
-  if(values.version){output({version:'1.3.0-dev.0'});return;}
+  if(values.version){output({version:'1.3.0'});return;}
   if(values.help || !command){process.stdout.write(help);return;}
   if(values['review-before-apply']&&!['task','run'].includes(command))throw new BridgeError('INVALID_OPTION','--review-before-apply is supported only by task and run. For delegate, set reviewBeforeApply in the envelope.');
   if(values['review-token']!==undefined&&command!=='apply')throw new BridgeError('INVALID_OPTION','--review-token is supported only by apply.');

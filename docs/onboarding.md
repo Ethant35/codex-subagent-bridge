@@ -4,11 +4,11 @@ Author: Ethan
 
 ## 1. Install and check the local setup
 
-Use Node.js 22.13.1 on macOS arm64. OpenRouter CLI and native Codex MCP were verified on this environment for v1.2.1. Install the release into a per-user directory:
+Use Node.js 22.13.1 on macOS arm64. v1.3.0 was verified offline on this environment. Live OpenRouter/native Codex evidence is historical from v1.2.1. Install the release into a per-user directory:
 
 ```sh
 npm install --prefix "$HOME/.local/share/cpb" \
-  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.2.1/codex-subagent-bridge-1.2.1.tgz
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.0/codex-subagent-bridge-1.3.0.tgz
 export PATH="$HOME/.local/share/cpb/node_modules/.bin:$PATH"
 cpb --version
 cpb doctor --provider openrouter --human
@@ -71,7 +71,7 @@ The result shows the run state and generated IDs. Successful runs report the act
 
 ## Use it again
 
-To change instructions or file access, generate a new file with `cpb task`, validate it, and run the same command with a new deliberate `--consent-spend` invocation. The CLI generates fresh execution IDs for each run. It does not silently repeat failed provider calls. For source builds, add `--review-before-apply` to `task` or `run` to hold edits before they reach the project. See [review before apply](review-before-apply.md). Published v1.2.1 does not include this option.
+To change instructions or file access, generate a new file with `cpb task`, validate it, and run the same command with a new deliberate `--consent-spend` invocation. The CLI generates fresh execution IDs for each run. It does not silently repeat failed provider calls. Add `--review-before-apply` to `task` or `run` to hold edits before they reach the project. See [review before apply](review-before-apply.md).
 
 For local run history and recovery, use `cpb runs`, `cpb inspect RUN_ID`, and `cpb recovery RUN_ID`. These can include private instructions, output, or local paths; do not share them as diagnostics. `cpb diagnose` is the reduced report intended for sharing, but review it first. See [Operations](../OPERATIONS.md) for backups, updates, rollback, retention, and interrupted file publication.
 
@@ -111,7 +111,7 @@ Codex also controls approval of the MCP tool call. In an interactive session, ap
 
 ## Credentials and provider support
 
-OpenRouter v1.2.1 is verified on macOS arm64 with Node 22.13.1. Claude SDK and CLI API-key adapters remain experimental and live verification is pending. Subscription delegation is blocked for both adapters in current source; CLI login status does not change that policy. `doctor` and offline validation do not authenticate an API key against its provider. See [Providers and authentication](../PROVIDERS.md) for credential modes and [Readiness](../READINESS.md) for the full qualification boundary.
+OpenRouter v1.2.1 is verified on macOS arm64 with Node 22.13.1. Claude SDK and CLI API-key adapters remain experimental and live verification is pending. Subscription delegation is blocked for both adapters in v1.3.0; CLI login status does not change that policy. `doctor` and offline validation do not authenticate an API key against its provider. See [Providers and authentication](../PROVIDERS.md) for credential modes and [Readiness](../READINESS.md) for the full qualification boundary.
 
 ## If a command stops
 
@@ -120,12 +120,22 @@ OpenRouter v1.2.1 is verified on macOS arm64 with Node 22.13.1. Claude SDK and C
 - `START_DIRECTORY_NOT_READY`: the existing folder has no `task.json`. Use `cpb task` for that project, or choose a new folder for the example. Existing files are preserved.
 - `ALREADY_EXISTS`: `start` can replay an existing valid `task.json` without changing it. If the folder is not a valid example, choose a new directory and preserve the existing contents.
 - `SPEND_CONSENT_REQUIRED`: no provider call was made. Review the task, then use a finite `--max-spend` and `--consent-spend` only if you approve that run.
-- `AWAITING_REVIEW` (current source): no project files changed. Run `cpb review RUN_ID`, then apply with its token or discard. This is not a failed provider request; do not pay to repeat it.
+- `AWAITING_REVIEW` (v1.3.0): no project files changed. Run `cpb review RUN_ID`, then apply with its token or discard. This is not a failed provider request; do not pay to repeat it.
 - `FAILED`, `BLOCKED`, or another non-completed run: inspect the run and use read-only `cpb recovery RUN_ID --human` if source publication may have started. Check possible provider charges before a deliberate retry. See [Operations](../OPERATIONS.md#interrupted-publication).
 
 ## Update or roll back
 
-To install v1.2.1, use the pinned command from the README, then confirm `cpb --version` and run `cpb doctor --provider openrouter --human`. The exact update command is:
+To install v1.3.0, use the pinned command from the README, then confirm `cpb --version` and run `cpb doctor --provider openrouter --human`. The exact update command is:
+
+```sh
+npm install --prefix "$HOME/.local/share/cpb" \
+  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.3.0/codex-subagent-bridge-1.3.0.tgz
+cpb --version
+```
+
+There is no automatic updater. Keep the prior release available until the updated CLI can inspect your run store.
+
+For an old-store rollback to v1.2.1, install its exact archive in the same prefix:
 
 ```sh
 npm install --prefix "$HOME/.local/share/cpb" \
@@ -133,17 +143,7 @@ npm install --prefix "$HOME/.local/share/cpb" \
 cpb --version
 ```
 
-There is no automatic updater. Keep the prior release available until the updated CLI can inspect your run store.
-
-To roll back to v1.2.0, install its exact archive in the same prefix:
-
-```sh
-npm install --prefix "$HOME/.local/share/cpb" \
-  https://github.com/Ethant35/codex-subagent-bridge/releases/download/v1.2.0/codex-subagent-bridge-1.2.0.tgz
-cpb --version
-```
-
-Both releases include the guided commands. Update from v1.2.0, rollback inspection, and state-preserving reinstall were checked with the installed v1.2.1 package. Before an upgrade or rollback, stop active bridge tasks and back up the complete private `CPB_HOME` or `~/.cpb` directory while the bridge is stopped. Follow the backup and compatibility steps in [Operations](../OPERATIONS.md); a CLI rollback does not undo source-file edits from a completed task.
+v1.3.0 reads old v1.2.1 records, but v1.2.1 cannot inspect new review states/envelopes. Use a separate CPB_HOME for review evaluation, or restore a complete pre-upgrade store when rolling back. Never reset review state to make old code accept it. Before an upgrade or rollback, stop active bridge tasks and back up the complete private `CPB_HOME` or `~/.cpb` directory while the bridge is stopped. Follow the backup and compatibility steps in [Operations](../OPERATIONS.md); a CLI rollback does not undo source-file edits from a completed task.
 
 ## Uninstall and cleanup
 
